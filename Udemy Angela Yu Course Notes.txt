@@ -52,4 +52,25 @@ Tags:
             <hr size="3" noshade>
         </center>
     
-    
+
+HTML Boilerplate:   Simply the structure of writing HTML
+<!DOCTYPE html>     - says reading document of HTML5 version
+<html lang="en">    
+    <head> contain info of website
+    <meta> info of website
+    <title> name displayed over tab bar
+
+    <body> content of site goes in body
+==================================================
+<em> or <i> tag for italics always prefer to use <em> tag cause it conveys the meaning
+<b> or <strong> for boldness of text always use strong.
+
+semantic in HTML:A semantic element/tag clearly describes its meaning 
+                 to both the browser and the developer
+                 eg. <form> , <table> , and <article> - Clearly defines its content.
+
+non-semantic tag:   <div> and <span> - Tells nothing about its content
+
+-to center element use <center> tag or
+    text-align:center;  or
+    display: flex; then justify-content:center;
