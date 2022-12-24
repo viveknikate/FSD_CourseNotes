@@ -74,3 +74,88 @@ non-semantic tag:   <div> and <span> - Tells nothing about its content
 -to center element use <center> tag or
     text-align:center;  or
     display: flex; then justify-content:center;
+
+#Building Personal Site here..
+Content in that
+    *Unorder Listening
+    eg
+        <h3>Education</h3>
+        <ul>
+           <li>B-Tech in CSE with 88% aggregate.</li>
+           <li>HSC with 81% grade</li>
+           <li>SCC with 82%</li> 
+        </ul>
+    *Ordered List :
+        also you can use attribute "type" to count items & "start" to start the count from that number start must be decimal numbern like 
+        eg. <ol type="i" start="2"> or            
+            <ol type="a"> or
+            <ol type="A"> or
+            <ol type="I">
+
+    Value	Description
+        1	Default. Decimal numbers (1, 2, 3, 4)
+        a	Alphabetically ordered list, lowercase (a, b, c, d)
+        A	Alphabetically ordered list, uppercase (A, B, C, D)
+        i	Roman numbers, lowercase (i, ii, iii, iv)
+        I	Roman numbers, uppercase (I, II, III, IV)
+
+        <h3>Hobbies:</h3>
+        <ol type="i" start="5">
+            <li>Learning new things</li>
+            <li>Listening Music</li>
+            <li>3D Modeling</li>
+            <li>Thinking</li>
+        </ol>
+    -------------------------------------------------------------------------------------
+    Img tag:
+        " ../../ " used here to locate my image which is 2 folder back from the current folder.
+        if it is inside the folder then you need to describe the path like  folder1/folder2/imgName.png
+        if file & image in same folder/location then just use img name
+
+        <img src="../../Vivek.jpg" alt="Vivek's profile photo" width="100" height="100"> 
+        <img style="border-radius:90%; border:7px solid rgb(182, 12, 216);">
+        <img style="border-radius:10px; border:7px solid rgb(182, 12, 216);">
+    -------------------------------------------------------------------------------------------
+      Hyper Link:-
+        here the target attribute used to open the page on new tab      
+        <a href="https://www.capgemini.com/" target="_blank">Capgemini</a>
+    ------------------------------------------------------------------------------------------
+    table:
+    cellspacing ="4" 
+    <table border="4">
+            <caption>Project 1</caption>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr> 
+                    <td>Project</td>
+                    <td>Blood Donation Camp Management Syste</td>
+                </tr>
+                <tr>
+                    <td>Client</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>Developer</td>
+                </tr>
+                <tr>
+                    <td>Tech. used</td>
+                    <td>C#, .Net Framework, ASP.Net</td>
+                </tr>   
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Description </td>
+                    <td>The main objective of the Blood donation camp 
+                        management system is to manage the details of Blood, 
+                        Donor, Blood Group, Blood Bank, Stock etc. It to create an 
+                        efficient system for the donors, where they can get ideas 
+                        about ongoing Blood Donation Camp timing.</td>
+                </tr>
+            </tfoot>
+        </table>
