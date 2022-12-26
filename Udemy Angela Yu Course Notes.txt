@@ -159,3 +159,388 @@ Content in that
                 </tr>
             </tfoot>
         </table>
+        --------------------------------------------------------------------------------------
+        form:-
+            <form action="mailto:vivek.nikate@capgemini.com">
+            <form action="page address">
+
+        <input type="date">
+        <input type="file">
+        <input type="submit">
+        <input type="email">
+        <input type="range">
+        <input type="time">
+        <input type="button">
+        <form>
+            <label for="name">Your name:</label>
+            <input type="text" required> <br>
+
+            <label for="">Password</label>
+            <input type="password" name="" id=""><br>
+
+            <label for="">Color</label>
+            <input type="color" name="" id="" required><br>
+        </form>
+        ------------------------------------------------
+
+        " To submit the static pages on github..
+          create the repo & upload the files on it
+          then go to setting in that pages section choose main branch & 
+          then click save to host the application live "
+
+          Home page name must must "index.html" lowercase
+==========================================================================================================
+NOTE:- if you don't give any styling to the page keep in mind that there is always 
+        default styling given by browser. you can override it.
+
+CSS: Cascading Style Sheets
+    #Giving background color 
+        <body bgcolor="hotpink">
+        <body bgcolor="#FFD4B2">
+        <body bgcolor="FFD4B2">
+        <body style="background-color:crimson">
+
+    1.Inline Styling 
+    2.Internal Styling (in the head tag inside that style tag)
+    3.External Styling (Adding link of styling file to the web)
+
+            hr{
+                background-color: powderblue;
+                border-style: dotted none none;
+                            /* top (left right)  bottom */
+                width: 5%;
+                height: 1px;
+                border-color: grey;
+                border-width: 8px;   
+            }
+
+            hr{
+                border-bottom: 10px dotted;
+                border-top: none;
+            }
+
+    Syntax:
+        Selector {
+            property : value;
+        }
+        Selector means "whos property you want to change?"
+        property means "what you want to change about that Selector?"
+        value means " what value want  to give to that property?"
+    
+    h1{
+    color: red;
+    font-size: 150px;
+    }
+
+    HTML ELEMENT HAVE ONE ID ONLY BUT MAY HAVE MORE THAN ONE CLASSES
+    CLASS NAME ID NAME ARE CASE SENSITIVE
+    IMG HAS 2 CLASSES BELOW 1. becon2 & 2.CIRCULAR
+    <img class="becon2 CIRCULAR" src="https://emojipedia-us.s3.amazonaws.com/thumbs/240/apple/118/bacon_1f953.png" alt="bacon-img">
+    .becon2{
+        background-color: rebeccapurple;
+    }
+
+    .CIRCULAR{
+        border-radius: 40px;
+    }
+
+    -------------------------------------------------------------------------
+    CLASS: -
+    The .class selector selects elements with a specific class attribute.
+    To select elements with a specific class, write a period (.) dot character, followed by the name of the class.
+
+    <img class="becon2" src="https://emojipedia-us.s3.amazonaws.com/thumbs/240/apple/118/bacon_1f953.png" alt="bacon-img">            
+    
+     .becon2{
+            background-color: rebeccapurple;
+        }
+
+    eg.
+        In this example all HTML elements with class="center" will be red and center-aligned: 
+        .center {
+        text-align: center;
+        color: red;
+        }
+        <p class="center">This paragraph will be red and center-aligned.</p>
+
+    eg.2nd
+        You can also specify that only specific HTML elements should be affected by a class.
+        Example
+        In this example only <p> elements with class="center" will be red and center-aligned:
+
+        p.center {
+        text-align: center;
+        color: red;
+        }
+        p.center {
+            text-align: center;
+            color: red;
+        }
+        p.large {
+            font-size: 300%;
+        }
+
+    <h1 class="center">This heading will not be affected</h1>
+    <p class="center">This paragraph will be red and center-aligned.</p>
+    <p class="center large">This paragraph will be red, center-aligned, and in a large font-size.</p> 
+
+
+    -----------------------------------------------------------------------------------
+    
+    ID Selector:-
+    The id selector uses the id attribute of an HTML element to select a specific element.
+    The id of an element is unique within a page(once in a page), so the id selector is used to select one unique element!
+    To select an element with a specific id, write a hash (#) pound character, followed by the id of the element.
+    eg.
+        <p id="para1">Hello World!</p>
+        #para1 {
+                text-align: center;
+                color: red;
+            }
+        
+    --------------------------------------------------------------------------------------
+    * Selector:-
+
+    Select all elements, and set their background color to yellow:
+        * {
+            background-color: yellow;
+        }
+    eg.
+        this gets applied to the complete body.
+                
+        * {
+            background-color: yellow;
+            font-size:20px;
+            font-weight:bold;
+            color:blue;
+        }
+
+    select all elements inside <div> elements and set their background color to yellow:
+    div * {
+           background-color: yellow;
+        }
+        
+        <div class="intro">
+        <p id="firstname">My name is Donald.</p>
+        <p id="hometown">I live in Duckburg.</p>
+        </div>
+    --------------------------------------------------------------------------------------
+    Adding Favourite Icon 
+    <link rel="icon" href="../MySite/favicons/favicon.ico">
+    <link rel="icon" href="../MySite/favicons/favicon.ico?v=2"> 
+        -last parameter is optional like "?v=2" is called the version 2 for cached browser
+    --------------------------------------------------------------------------------------
+    <div> is a content division element, allows you to split or divide your content into 
+        separate container's
+    NOTE: To change the default margin of h1 & body tag by default given by browser, not mandatory to mention 
+            unit(px) when value is 0.
+            body{
+                margin: 0;
+            }
+            h1{
+                margin: 0px;
+            }
+    --------------------------------------------------------------------------------------
+    CSS properties:
+        .middle-container{
+                height: 200px;
+                width: 200px;
+                background-color: rgb(255, 111, 135);
+                border: 20px solid black;
+                margin-left: 260px;
+                text-align: center;
+                border-top-left-radius: 20px;
+                font-size: 30px;
+                font-weight: bolder;
+                color: white;
+                border-bottom-right-radius: 30px;
+            }
+    ---------------------------------------------------------------------------------------
+    Block elements in CSS:
+        block elements are those who takes complete/whole width of screen on web page
+        eg.
+            header h1 to h6
+            paragraph
+            div
+            list
+            form
+    Inline elements : takes space as much as they want for their height & width,
+    eg. 
+            span
+            img
+            anchors 
+    NOTE: why we use block element instead of inline
+        -> for inline element we can't mention the width as 
+            that of block elements
+        
+        to change block to inline or viceversa then use 
+        display property
+        eg. 
+        span {
+            display:block;
+        }
+        or
+        p {
+            display:inline;
+        }
+
+        NOTE: to use both property inline & block use 
+        property as
+        eg. 
+        p {
+            display : inline-block;
+        }
+    ====================================================================================
+    *quize answer to hide
+    when you hide the element on screen like it never exists use 
+    display : none property/ when we use this it don't gives its original space completely disappears
+    p{
+        display:none;
+    }
+    or
+    you want to hide element but want to show empty space on screen then use visibility property
+    p {
+        visibility : hidden;
+    }
+===================================================================================
+  Position in CSS:
+    4 types:
+        1.Static
+            all html element are static in Position by default, go along with HTML rule & keep the flow
+        2.Relative:-
+            Adding margin relative to the current position of object
+            to make relative use position property first then decide by how much distance want to move the 
+            div/image
+            here image is relative posed & moved from the left edge by 50px to right side;
+            & from top edge push to the bottom by 100px; & so far
+            eg.
+                img{
+                     position:relative;
+                     left:50px;
+                     top:100px;
+                     right:100px;
+                     bottom:400px;
+                }
+        eg.
+            HTML code:
+                <div class="red">1</div>
+                <div class="green">2</div>
+                <div class="blue">3</div>
+            CSS code:
+                .red{
+                    background-color:red;
+                    height:100px;
+                    width:100px;
+                    display:inline-block;
+                    position:relative;
+                    left:400px;
+                    top:100px
+                }
+
+                .green{
+                    background-color:greenyellow;
+                    height:100px;
+                    width:100px;
+                    display:inline-block;
+                    position:relative;
+                    right:100px;      
+                }
+
+                .blue{
+                    background-color:blue;
+                    height:100px;
+                    width:100px;
+                    display:inline-block;
+                    position:relative;
+                    right: 100px;
+                }
+        3.Absolute:
+            Adding margin to it's parent element/ the element get out of the natural HTML render process.
+            the original place will not there when we mention the position is Absolute
+            the Absolute positioned element is dead for other element
+            you can move anywhere on screen within it's parent.
+            eg. 
+                <div class="red">red</div>
+                .red{  
+                    background-color:red;
+                    height:100px;
+                    width:100px;
+                    position:absolute;
+                    bottom:50px;
+                    right:50px;
+                    top:100px;
+                    left:200px;
+                }
+                here red block is going to set 50px marginal distance from bottom edge of parent & same for other.
+            eg.
+            HTML code:-
+                <body>
+                    <div class="red">Red</div>
+                    <div class="blue">blue</div>
+                    <div class="yello">Yellow</div>
+                </body>
+            CSS code:-
+                body{
+                    margin:0;
+                }
+                .red{
+                    background-color:red;
+                    text-align:center;
+                    height:100px;
+                    width:100px;
+                    position:absolute;
+                    top:200px;
+                    left:200px;
+                }
+
+                .blue{
+                    background-color:blue;
+                    text-align:center;
+                    height:100px;
+                    width:100px;
+                    position:absolute;
+                    top:100px;
+                    left:100px;
+                }
+
+                .yello{
+                    background-color:yellow;
+                    text-align:center;
+                    height:100px;
+                    width:100px;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                }
+    ----------------------------------------------------------------------------------------------------
+        4.Fixed:
+             <!-- here in this case the nav bar is fixed even if we scroll the page 
+                    & we given the z-index to appear nav bar over the other content -->
+             nav{
+                position: fixed;
+                width: 100%;
+                background-color: aquamarine;
+                left: auto;
+                right: auto;
+                font-size: xx-large;
+                z-index: 1;
+            }
+            li{
+                display: inline;
+                margin: 30px;
+                padding: 30px;
+            }
+            body{
+                margin: 0;
+            }
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Login</li>
+                    <li>Signup</li>
+                </ul>
+            </nav>
+    -------------------------------------------------------------------------------------------
+    

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed position</title>
+    <style>
+         .red{
+            background-color: red;
+            height:100px;
+            width: 100px;
+            display: inline-block;
+        }
+        .blue{
+            background-color: blue;
+            height:100px;
+            width: 100px;
+            display: inline-block;
+        }
+        .green{
+            background-color: greenyellow;
+            height:100px;
+            width: 100px;
+            display: inline-block;
+        }
+        nav{
+            position: fixed;
+            width: 100%;
+            background-color: aquamarine;
+            left: auto;
+            right: auto;
+            font-size: xx-large;
+            z-index: 1;
+        }
+        li{
+            display: inline;
+            margin: 30px;
+            padding: 30px;
+        }
+        body{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- here in this case the nav bar is fixed even if we scroll the page 
+        & we given the z-index to appear nav bar over the other content -->
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+            <li>Login</li>
+            <li>Signup</li>
+        </ul>
+    </nav>
+    <div style="position: relative; top: 100px;">
+        <div class="red">Red</div>
+        <div class="blue">blue</div>
+        <div class="green">Yellow</div>
+        <div class="red">Red</div>
+        <div class="blue">blue</div>
+        <div class="green">Yellow</div>
+        <div class="red">Red</div>
+        <div class="blue">blue</div>
+        <div class="green">Yellow</div>
+        <div class="red">Red</div>
+        <div class="blue">blue</div>
+        <div class="green">Yellow</div>
+        <div class="red">Red</div>
+        <div class="blue">blue</div>
+        <div class="green">Yellow</div>
+        <div class="blue">blue</div>
+    </div>
+    <br><br><br><br>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+</body>
+</html>
