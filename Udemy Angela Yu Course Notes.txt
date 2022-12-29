@@ -543,4 +543,68 @@ CSS: Cascading Style Sheets
                 </ul>
             </nav>
     -------------------------------------------------------------------------------------------
+    margin: 0;      //for all sides;
     
+    margin: 10px 20px; // 10px margin for top-bottom
+                       // 20px margin for left-right
+
+    margin: 12px 13px 14px; 
+                        // 12px margin for top
+                        // 13px margin for left right
+                        // 14px margin for bottom   
+    margin : 1px 12px 13px 14px;
+              top right bottom left     
+    ---------------------------------------------------------------------------------------------
+    Fallback for font-family:-
+        -here if Arial is present the use that font to render the site else go for next font
+        or next is also not installed then go for next font again.
+        more specific to less specific
+         -font-family:Arial, Helvetica, sans-serif;
+    ---------------------------------------------------------------------------------------------
+    Favourite Icon on tab bar:
+        put ?v=2 after icon name in href if icon not shows.
+        rel is to be icon 
+    <link rel="icon" href="../MySite/favicons/favicon.ico?v=2">
+    ---------------------------------------------------------------------------------------------
+    Font size:
+        100% == 16px
+        1em = capital M width(in older days) but now
+        1em = 16px
+        16px == 100% == 1em
+
+        -if we put font size in px then it won't change when browser font size changes
+         to change the font size of our site we need to implement the dynamically 
+         changing font size 
+         So use 'em' or '%' unit for font size to changable as per browser's font size
+
+        -dynamic size depends & inherited from parent element
+         else the static size like px does not depends on parent element or their size they are 
+         contstant
+
+        rem:- Root em  (recommended)
+             This is like root size for font 
+             ignore/ don't inherit the font size coming from parent.
+        eg.
+            font-size: 16rem
+        NOTE:  MOSTLY USE THE rem UNIT FOR FONT-SIZE ie. most adaptable, useful, least error prone
+    ---------------------------------------------------------------------------------------------------
+    Line-height: without unit
+        line-height:2
+    --------------------------------------------------------------
+    float property to float img or text
+    eg. 
+        float: left;    //float on left side
+        float: right    //float on right side
+
+        Never use the float property to position a element always use position property to 
+        position a element.
+        float use for the just wrap out the text 
+    --------------------------------------------------------------
+    clear property to clear the margin..
+    eg. 
+        clear: left;    //This is like anti- float property 
+                        //clear means left side of that thing is clear 
+        clear: right;
+=========================================================================================================
+#BootStrap :
+    A Frotend Library
