@@ -607,4 +607,40 @@ CSS: Cascading Style Sheets
         clear: right;
 =========================================================================================================
 #BootStrap :
-    A Frotend Library
+    A Frotend Library/framework
+    devleoped by Twitter for responsive applications
+    just to give the class name to particular para it'll design it automatically
+    CDN: - Content Delivery Network.
+    
+    Front-end : HTML, CSS, JavaScript, BootStrap
+    Back-end  : .NET, PHP, Java, SQL, NodeJS, Ruby
+
+    Basics classes of BootStrap:-
+        btn, btn-primary, btn-dark, btn-danger, btn-outline-dark & btn-lg (large)
+        navbar, bg-dark
+
+    -To use BootStrap class need to download the style file or we need to ues the CDN link
+     always try to use CDN cause it decreased the network latency increases the speed.
+     
+     CDN link:
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    while adding this link,
+        this link must go before your css file's link.
+    or download it & then use it, like 
+        
+        <link rel="stylesheet" href="path/styleFiles/bootstrap.css">
+ ----------------------------------------------------------------------------------------
+ before creating website make it's wireframe first
+    1.https://balsamiq.com/
+    2.https://sneakpeekit.com/
+ ------------------------------------------------------------------------------------------
+    BootStrap classes:- class="btn btn-primary"
+                        class="bg-dark"
+        primary         light
+        secondary       success
+        dark            info
+        warning         link 
+        danger
+----------------------------------------------------------------------------------------------
+navbar-brand class is used for company logo.
+
