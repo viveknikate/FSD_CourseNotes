@@ -641,6 +641,78 @@ CSS: Cascading Style Sheets
         dark            info
         warning         link 
         danger
+
+        class="btn btn-outline-primary"
+        class="btn btn-outline-dark"
+        class="btn btn-outline-success"
 ----------------------------------------------------------------------------------------------
 navbar-brand class is used for company logo.
+----------------------------------------------------
+row, col = row  & column
 
+-Full Screen total width is 12 box  (not responsive)
+    col-6 means 50% of screen width
+    col-3 means 25% of total screen width.
+
+-Responsive column row
+    col-md-6 => column medium 6
+    md- medium screen
+    lg- large screen
+    sm- smaller screen
+--------------------------------------------------------------------------------------------------
+eg.
+    <div class="row">
+        <div class="col" style="border:2px solid; background-color:black;color:white;">
+            1
+        </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;">
+            2
+        </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;">
+            3
+        </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;">
+            4
+        </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;">
+            5
+        </div>
+    </div>
+
+#2.
+    <div class="row">
+        <div class="col-6" style="border:2px solid; background-color:black;color:white;">col-6</div>
+        <div class="col-3" style="border:2px solid; background-color:black;color:white;">col-3</div>
+        <div class="col-2" style="border:2px solid; background-color:black;color:white;">col-2</div>
+        <div class="col-1" style="border:2px solid; background-color:black;color:white;">col-1</div>
+    </div>
+
+#3.
+    More responsive:-
+    <div class="row">
+        <div class="col-md-3" style="border:2px solid; background-color:black;color:white;">col-md-3</div>
+        <div class="col-md-3" style="border:2px solid; background-color:black;color:white;">col-md-3</div>
+        <div class="col-md-3" style="border:2px solid; background-color:black;color:white;">col-md-3</div>
+        <div class="col-md-3" style="border:2px solid; background-color:black;color:white;">col-md-3</div>
+    </div>
+
+#4.
+    <div class="row">
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+        <div class="col-lg-1 col-md-4 col-sm-6" style="border:2px solid; background-color:black;color:white;">col-lg-1</div>
+    </div>
+---------------------------------------------------------------------------------------------------------------------------------
+-container:- container class with some padding-margin.
+            eg. class="container"
+
+-container-fluid:- container-fluid takes full width of screen 
+                    adjust according to the screen size.
+            eg. class="container-fluid"
+---------------------------------------------------------------------------------------------------------------------------
+Always remember:
+    #fff - white
+    #000 - black
