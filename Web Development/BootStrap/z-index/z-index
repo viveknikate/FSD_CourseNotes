@@ -1,0 +1,8 @@
+z-index will only work when position property is set,
+else z-index won't work
+
+eg.
+    position:absolute;
+    then 
+    z-index:1       //top of all
+    z-index:-1      //behind the content.

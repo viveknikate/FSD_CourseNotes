@@ -314,4 +314,27 @@ git push -d <name_of_repo> <branch_name>
 //branch rename locally
  git branch -m software_Engine SoftwareDevelopment
  git branch -m <old name> <New_name>
+
+//commands
+git config --global user.email <your email address>
+git --version
+git config --global user.name "Your Name"
+
+-to checkout the default config list.
+git config --list
+
+
+-To check out the index.html from the second commit, find the number of the second commit using the git log, and then type the following at the prompt:
+git checkout <second commit's number> index.html
+git checkout 900cfcf index.html
+
+-To discard the effect of the previous operation and restore index.html to its state at the end of the third commit, type:
+git reset HEAD index.html
+git checkout -- index.html
+
+git reset <file>
+	unstage a staged file, but leave working directory unchanged.
+git reset
+	reset staging area to the last commit without disturbing the working directory
+
 ================================================END=========================================================
