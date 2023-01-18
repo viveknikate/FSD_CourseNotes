@@ -716,3 +716,70 @@ eg.
 Always remember:
     #fff - white
     #000 - black
+---------------------------------------------------------------------------------------------------------------------------
+#Media-query breakpoint:
+eg.
+    @media <type> <feature>
+
+    1) @media print {
+
+    }
+
+    2) @media screen (min-width:900px){
+        //change things displayed
+    }
+    eg.
+        @media (max-width:900px){
+            h1{
+                color:red;
+            }
+        }
+        -> here the h1 will change color to red 
+            when the width is 900 or less than 900
+        
+        @media (min-width:900px)
+        {
+            h1{
+                font-size:5rem;
+            }
+        }
+        -> here h1 will change its size when the minimum width must be 900 or more;
+            like if the width of screen >= 900px then 
+            increases the font size of h1 to 5rem.
+    
+    3) Multiple queries:-
+        @media (min-width:700px) and (max-width:1000px){
+            h1{
+                color:red;
+                font-size:4rem;
+            }
+        }
+        ->
+            here h1 will change its color & font-size when the
+            minimum width is 700px & maximum width is 1000px
+    
+Font awesome link:-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+     font awesome working classes icon
+     <i class="fa fa-twitter"></i>
+      <i class="fa fa-facebook"></i>
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-envelope"></i>
+---------------------------------------------------------------------------------------
+As a programmer, we're always aspiring to be DRY.
+D - Do not
+R - Repeat
+Y - Yourself
+--------------
+Opposite of dry is WET code.
+W - We
+E - Enjoy
+T - Typing
+-----------------------
+Code Refactoring:-
+    1.Readability
+    2.Modularity
+    3.Efficiency
+    4.Length
+---------------------------------------------------------------------------------------

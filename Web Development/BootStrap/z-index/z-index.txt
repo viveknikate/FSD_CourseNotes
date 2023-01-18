@@ -1,6 +1,8 @@
 z-index will only work when position property is set,
 else z-index won't work
 
+-The z-index won't work when position is set to static.
+    static means as it is not defined.
 eg.
     position:absolute;
     then 
