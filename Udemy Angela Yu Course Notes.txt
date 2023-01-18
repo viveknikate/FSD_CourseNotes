@@ -290,7 +290,7 @@ CSS: Cascading Style Sheets
     ID Selector:-
     The id selector uses the id attribute of an HTML element to select a specific element.
     The id of an element is unique within a page(once in a page), so the id selector is used to select one unique element!
-    To select an element with a specific id, write a hash (#) pound character, followed by the id of the element.
+    To select an element with a specific id, write a hash (#) POUND character, followed by the id of the element.
     eg.
         <p id="para1">Hello World!</p>
         #para1 {
@@ -783,3 +783,98 @@ Code Refactoring:-
     3.Efficiency
     4.Length
 ---------------------------------------------------------------------------------------
+1.Multiple Selector:
+
+    Selector1, selector2,.. {
+        //styles
+    }
+    eg.
+        h1,  h2, h3, h4, h5, h6 {
+            font-family: Arial;
+        }
+    
+2.Hierarchical Selector:-
+    -space is crucial here in between selector
+    -first selector is parent selector & 2nd one is child selector
+
+    -WHEN THERE IS SPACE BETWEEN SELECTORS THEN read it from right to left like below 
+        selector2 is child of Selector1.
+
+    Selector1 selector2{
+        //style
+    }
+
+    eg.
+        #title .container-fluid{
+            padding:3% 5%;
+        }
+        -> here the the class container-fluid which are INSIDE the title ID will 
+        get applied the padding of 3% for top-bottom & 5% left-right
+
+    div h1{
+        color:red;
+    }
+    -> here the h1 tags text color will be red only if then are inside the div tag
+
+    container-fluid h1{
+        color:red;
+    }
+    -> here the h1 heading will get the text color of red which are INSIDE class container-fluid.
+    (colored red only when h1 is the child of container-fluid)
+
+3.Combined Selector:- DOT(.) for Class
+                      POUND(#) for ID
+
+    -WHEN THERE IS NO SPACE BETWEEN SELECTORS read it from left to right
+    
+    Selector1.selector2{
+
+    }
+
+    Selector1.#ID_selector{
+
+    }
+    eg.
+        h1.container1.title{
+            color:red;
+        }
+        -here h1 have class container1 & title have the color red;
+
+    eg.
+        h1#title{
+            color:red;
+        }
+        -> here its like   "h1 has an ID of title should have color of red"
+------------------------------------------------------------------------------------------------------------------
+HTML
+    <div class="container1">
+        <h1 class="title">Hello World..!!</h1>
+    </div>
+    <div class="container2">
+        <h1 class="title">Good Bye World..!!</h1>
+    </div>
+CSS
+    div.container1{
+        color:red;      //here the container1's h1 will be red colored
+    }
+------------------------------------------------------------------------------------------------------------------------
+inline styling > ID > class > html elements 
+
+Priority:-  
+            the last style will be applied.
+            eg.
+                h1{
+                    color:red;
+                    color:green;
+                }
+                ->here the h1 color first turn to red then it'll be green
+                
+        -classes have higher priority than HTML elements(h1, div, section, etc)
+        -ID have higher priority than classes
+        -inline styling has higher priority than ID
+
+RECOMMENDED:
+=FIRST CONSIDER USING CLASS INSTEAD OF GOING STRAIGHT TO AN ID,even if it only appears once.
+=ID are also used for navigation purpose
+=Try to apply only a single custom class to each of your elements
+=Avoid inline styling at all costs.
