@@ -1,0 +1,680 @@
+Udemy git course
+
+-Version control system
+-Decentralized/ Distributed
+    can be centralized
+-created for linux kernel project
+-local operation
+    super fast
+-open source
+
+-The default branch for git is master
+-The default branch for github is main
+
+#TO STOP ANY COMMAND EXCUTION:
+    -ctrl+C (press control+C)
+
+#OR to get out of any editor or log just press "q"
+
+#When you use commit command then press "i" to insert the content,
+ when you done, press "esc" then ":wq" then "enter"
+
+#TO CHECK THE GIT SOFTWARE Version:
+    $ git -v
+    $ git version
+    $ git --version
+    ※output:
+        git version 2.38.1.windows.1    
+
+#TO SET THE USER NAME:
+    -git config --global user.name "<name>"
+    eg.
+        -git config --global user.name "Vivek"
+
+#TO CHECK THE USER NAME:
+    -git config user.name
+
+#TO SET THE EMAIL:
+    -git config --global user.email "<EMAIL>"
+    eg.
+        -git config --global user.email "viveknikate.2000@gmail.com"
+
+#TO SEEK HELP 
+    -git help <command-name>
+    eg.
+        -git help rm
+        -git help fetch
+
+※TO CHECK UP TILL NOW HOW MANY COMMANDS YOU USED/ RUNNED ON PROMT USE:
+    -history
+
+#Repository:
+    Collection of Files Managed by Git is called Repository.
+    -History (all of it)
+    -Quasi-hidden .git folder
+    
+#Commits and files:
+    -Snapshots are Commits
+    -one or more file changes
+    -Commits are saved on (Timeline)branch
+    -default branch is master branch
+
+#Github:
+    -most popular git hosting platform
+    -free plan 
+        free ulimited public Repository
+        no private Repository
+    -business model
+        private Repository
+===========================================================================
+Git commands:
+
+PRESENT WORKING DIRECTORY:
+    -pwd
+
+TO LIST ALL FOLDER/ FILES IN SPECIFIC FOLDER:
+    -ls
+    detail info:
+    -ls -l
+
+TO CLEAR THE SCREEN USE NEED TO USE:
+    -clear
+
+TO CHECKOUT THE HIDDEN FOLDER ALSO 
+    ls -al
+
+TO CHANGE THE DIRECTORY
+    cd folder_name
+    cd folder_name1/folder_name2
+or  
+BACK TO PARENT
+    -cd ..          //back by 1 step    
+    -cd ../../../   //back by 3 step
+
+
+GIT INIT COMMAND:
+    -git init <folder_name>
+    eg.
+        -git init sample_folder
+        -git init "Main Project"            //when space is there in folder_name use quotes or back slash
+        -git init Main\ 2nd\ project        // for spacing back slash \ is used 
+
+    or 
+    within expected folder just enter the below command
+    -git init
+    or
+    -git init .        
+                 //DOT(.) to mention that initialize the .git folder in the current folder
+
+#git states:
+    1.working directory
+    2.staging area
+    3.repository(.git folder)
+
+#TO CHECKOUT THE THE STATUS
+    -git status
+
+#TO ADD FILE TO TRACKING: (to add file to staging area)
+    -git add <file_name>            //to add particular file
+
+    -git add .                      //to add all files in current folder with DOT(.)
+
+    -git add --all                  //to add all files
+
+    -git add -A                     // to add all files
+
+#TO REMOVE FILE FROM STAGING AREA (Unstage):
+    -git rm --cached <file_name>
+
+    -git restore --staged .         //remove all files from staging area
+
+    -git restore --staged <file_name>   //remove particular file from staging area
+
+    -git reset <file_name>
+
+    -git reset HEAD <file_name>
+
+#AFTER ADDING COMMIT THE CHANGES 
+TO COMMIT USE
+    -git commit -m "msg goes here"
+
+#TO CHECK THE COMMITS:
+    -git log            //all Commits
+
+    -git log -4         //last four Commits
+
+    -git log -5 --oneline       //last 5 commits with short msg 
+                                    description in one line
+                                
+                                //here in oneline 
+                                the first 7 character is taken as msg.
+    
+    -TO CHECK COMMITS WITH FULL DESCRIPTION:
+     this command shows the last commit with all changes we made in it.
+        -git show
+    
+        -git show <commit_SHA-1_code>
+        eg.
+            -git show 9f726c0
+            -git show 410a8d96d46022739582382cf37b352b8c045f41
+
+
+
+- '.git' folder is special folder where all directory Managed by Git.
+- just stay out of this folder
+
+#TO FORCEFULLY DELELTE ALL CONTENT IN .GIT FOLDER
+    -rm -rf .git
+
+#To get out of any editor press 'q'
+
+#TO CHECK WHAT ARE THE FILES WE ARE TRACKING:
+    it shows which files currently in tracking mode
+        -git ls-files
+
+#TO REMOVE FILES :
+    =The difference between the (rm <file_name>) command & (git rm <file_name>) is 
+    that, rm just delete the files without knowing to git 
+    & next time we have to stage the change we made & then 
+    further we have to commit the changes
+
+    =if we use the git rm <file_name> command then it remove the file 
+        & stage the change 
+        further we can directly  commit the changes 
+        ONE STEP IS REDUCED WHEN WE USE (git rm <file_name>) command
+
+    -rm <file_name>
+    -git rm <file_name>
+        eg.
+            rm sample.txt
+            git rm sample.txt
+
+#TO REMOVE THE DIRECTORY
+    -rm -rf <directory_name>
+    eg.
+        rm -rf newfolder
+    eg.
+        git rm -rf 'New folder'/
+
+
+#DIRECT COMMIT:
+    -git commit -a -m "direct commit"   //this will work when file is added 
+    -git commit -am "direct commit"     //this will work when the file is previously is in tracking mode of git
+
+#TO INGORE THE PARTICULAR FILE ADD THEM IN .gitignore folder
+name must be same 
+-to comment in gitignore folder use 
+
+    .gitignore  
+        -> to ignore the txt files
+            *.txt
+        
+        -> to ignore log folder which are machine generated 
+            *.log
+        
+        -> to ignore the particular file
+            name.extention
+            eg.
+                sample.txt
+        
+        ->to ignore folder
+            by default the git doesn't track the folder 
+            it tracks the files inside the folder
+            -to ingore the content of that folder 
+                just put the folder_name inside the  ".gitignore" file
+            FOLDER_NAME
+
+#TO RESTORE THE PREVIOUS BUG FREE FILE USE
+    -git checkout <file_name>
+    eg.
+        git checkout sample.txt
+    
+    -git checkout -- <file_name>
+    eg.
+        git checkout -- sample.txt
+    
+    -git restore -- <file_name>
+    -git restore <file_name>
+    eg.
+        git restore -- sample.txt
+        git restore sample.txt
+
+#to restore all files as that of previous 
+    -git checkout -f
+eg.
+    //folder restoring
+    name must match with previous
+
+    -git restore --staged 'New folder/34t.txt'      
+    -git restore 'New folder/34t.txt'
+
+
+#After deleting to restore the file
+    -git restore -- <file_name>
+    -git restore <file_name>
+    eg.
+        git restore -- sample.txt
+        git restore sample.txt
+
+
+#TO CHANGE THE FILE NAME IN GIT:
+    -mv <old_name> <new_name>
+    eg.
+        mv first1.txt first11.txt
+
+    -git mv <old_name> <new_name>
+        git mv first1.txt first11.txt
+
+#TO COPY THE FILE
+    -cp <path/filename.extention> <path/newname.extention>
+    eg.
+        -cp Git\ Course\ Udemy.txt ~/Desktop/GitUdemyCourseNotes.txt
+    
+    >>to copy all files inside folder
+        -cp -R <folder_path>/* <new-path>           
+        -cp -R <folder_path>/* .
+
+        //-R for recursively means copy subfolder file everything inside it 
+        //*  for everything
+        //. if you want to copy other folder's content inside 
+            the path where you are currently standing use DOT(.)  
+        
+#rm command
+    -git rm <file_name>
+    
+    -git add -u             //u -> update
+    changes staged by add command
+    
+#Differences:
+    -git diff <hash_code1> <hash_code2>
+        eg.
+            git diff e8a16f5 410a8d9
+
+    -git diff <hash_code1> HEAD
+    -git diff f6e1bd6 HEAD      (HEAD is the updated version of the project)
+        
+    -git difftool e8a16f5 HEAD
+        crtl + Q        (to quite from difftool)
+
+    -git diff   
+            (gives the difference between working directory & last commit)
+    
+    »This diff command also gives the difference between 2 branches 
+    eg.
+        -git diff <branch_1> <branch_2>
+        eg.
+            -git diff SecondBranch master
+
+---------------------------------------------------------------------------------
+Branch & Merging:
+    1. Fast Forward Merge
+    2. Automatic Merge
+    3. Manual Merge
+---------------------------------------------------------------------------------
+Spcial Markers:
+    -Like "pointers"
+    -HEAD
+        -Points to Last commit of current branch
+        -can be moved(Advanced)
+------------------------------------------------------------------
+#Branches:
+    #TO CHANGE THE NAME OF CURRENT BRANCH WE ARE WORKING IN, use:
+    -space should not be there.
+        -git branch -m <new_name>
+        -git branch -m <"new_name">
+        eg.
+            -git branch -m MainMaster
+            -git branch -m "MainMaster"
+
+    #TO CHECKOUT HOW MANY BRANCHES ARE THERE:
+    #Or to checkout in which branch currently we're working in
+        -git branch
+        ※output:
+                $ git branch
+                    * NewOne
+                      master
+                      
+        »»»Here the * denotes that we're currently working in branch
+           named NewOne 
+
+    #TO CREATE BRANCH:
+        -git branch <branch_name>
+        eg.
+            -git branch NewOne
+    
+    #TO SWITCH ANOTHER BRANCH:
+        -git checkout <branch_name>
+        eg.
+            -git checkout NewOne    //going inside NewOne branch
+            -git checkout master    //going inside master branch
+
+
+    #TO CREATE BRANCH & SWITCH TO THAT BRANCH:
+        -git checkout -b <branch_name>
+        eg.
+             git checkout -b Feature
+-------------------------------------------------------------------------
+#git Tags:
+    -to check how many tags are there simply run below command
+    -git tag --list (or)
+
+    -git show
+    -will show the tags after commit hash within parenthesis.
+        
+    2 Types of tags,
+    
+        1.Light Weigth tag:
+            -light Weigth tags are tags there's no information associated with it.
+            
+            #TO CREATE LIGHT WEIGHT TAG:
+                -git tag <tag_name>
+                eg. 
+                    git tag mytag
+
+        2.Annotated tags:
+            -Annotated are those tag, 
+             some extra information is associated with them are called Annotated tags.
+            -They contain some information 
+            
+            -In this Annotated tags the extra information shown is ,
+                » tag name
+                » Tagger's name
+                » tag's Commit msg
+                » The last Commits detail information
+
+            -The normal light weight tag will shows the just last commits detail information
+
+
+            #TO CREATE ANNOTATED TAGS:
+                -git tag -a <tag_name> -m "msg here"
+                eg.
+                    -git tag -a v1.0 -m "Released 1st version"
+
+                here, -a is to mention this is Annotated tag
+                      -m is for commit msg.
+
+
+    #TO DELETE A TAG:
+        -git tag --delete <tag_name>
+        -git tag -d <tag_name>
+        eg.
+            -git tag --delete mytag
+            -git tag -d mytag
+---------------------------------------------------------------------------------
+#Stashing : Save temporary changes
+    >>This command will save all the work temporarily 
+    >>& when we run the status command then show working directory is clean
+        -git stash 
+    
+    >>You can make as many changes you want & save them temporarily with this above stash command
+    >>later on to get back this changes you made, run "stash pop" command.
+
+    >>To check the list of stashes use command:
+        -git stash list
+        ※output:
+            stash{0} changes made in file1.txt
+            stash{1} changes made in file1.txt
+            
+    >>To get back the changes made & temporarily saved by stash command use:
+        -git stash pop
+--------------------------------------------------------------------------------------
+#TimeTravelling:    getting back in time 
+    -with reset & reflog
+
+    -Reseting means basically, all it does is change wher HEAD is pointing.
+    -it doesn't lose all the commits it saves the commit & just change the HEAD pointing
+    eg.
+        -git log 
+        ※output:
+                55551ABC    5th commit <- [HEAD]    (here the head is pointing)
+                44443ABC    4th commit
+                33333ABC    3rd commit
+                22222ABC    2nd commit
+                11111ABC    1st commit
+
+        -git reset 22222ABC --soft
+        -git log
+        ※output:
+                55551ABC    5th commit 
+                44443ABC    4th commit
+                33333ABC    3rd commit
+                22222ABC    2nd commit
+                22222ABC    2nd commit <- [HEAD]    (here the head is pointing)
+                11111ABC    1st commit
+
+    RESETING TYPES:
+        1.SOFT
+            -SOFT reset is the LEAST DESTRUCTIVE of them all.
+            -soft preserve the changes made in staging area & working directory. 
+            -when we run SOFT attribute then it just 
+             show all files but in STAGED CONDITION
+        2.MIX/ DEFAULT
+            -This is the default one
+            -when we run default attribute then it just 
+             show all files but in UNSTAGED CONDITION
+
+        3.HARD:
+            -HARD reset MOST DESTRUCTIVE of all of them
+            -when we run HARD attribute then it 
+             deletes all the files, and 
+             move the HEAD to that particular commit &
+             whatever the files created where the HEAD is pointing
+             (commites/files after HEAD) that will be completely (from project folder)
+             deleted by HARD attribute
+
+
+    >>To point back our head, use:
+        -git reset <commit_hash/commit_id> --soft
+        eg.
+            git reset 121212 --soft
+    
+    >>hard parameter
+        -git reset commit_id --hard
+        output:
+            HEAD is now at <commit_hash> <commit msg>
+        eg. 
+             git reset e8a16f5 --hard
+             output:
+                HEAD is now at e8a16f5 Added all files again
+
+    >>Reflog:
+        git log shows us the commit ids,
+        -git log
+        where 
+        git reflog shows us all the actions we've taken while in this repository 
+        -git reflog
+
+    => making directory as that of previous as it is before reset HEAD 
+        git reset --hard <commit_id>
+        git reset <commit_id>
+        eg.
+            git reset --hard fa2958d
+            git reset fa2958d
+--------------------------------------------------------------------------------
+#SAVING FILES ONLINE:
+    -git remote add <name> <link>
+    eg.
+        -git remote add origin https://github.com/repo
+----------------------------------------------------------------------------------
+#PUSHING LOCAL REPO :
+    -git push -u <name_of_remote_repo> <branch_name> --tags
+    eg.
+        -git push -u origin master --tags 
+    here, -u is define the relation between local master branch & remote master branch
+           --tags is for sending all the local tags to the remote repo
+
+    -WHEN WE DO PUSHES IN THE FUTURE, THE "-u" will no longer be required.
+        -git push
+----------------------------------------------------------------------------------
+eg. 
+    - git remote
+    Main
+
+    -git remote -v
+    Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (fetch)
+    Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (push)
+
+
+    -git push -u <remote_repo_name> <branch_name> 
+    or
+    -git push -u <remote_repo_name> <branch_name> --tags         //mention --tags if you want to push tags to github
+    eg.
+        git push -u Main master --tags
+        git push -u Main master
+
+eg. Delete the tags from github remote: 
+
+    git push -d <remote_repo_name> <tag_name>
+    eg.
+        -git push -d Main Tag1
+----------------------------------------------------------------------------------
+Q. is actually possible to specify the default branch to start a repo on local side
+=> Yes.
+    -git init -b Main local-repo
+    eg.
+        -git init -b <default_branch_name> <folder_name>
+
+        "-b" allows to specify the default branch_name.
+        folder_name where to initialize the git repo.
+-----------------------------------------------------------------------------------    
+    #TO SET THE DEFAULT BRANCHING 
+        -git config --global init.defaultBranch <branch_name>
+        eg.
+            -git config --global init.defaultBranch master
+            -git config --global init.defaultBranch Main
+
+    #TO CHECK THE GIT DEFAULT CONFIGURATION
+        -git config  --global  --list
+        -cat ~/.gitconfig           //default configuration information
+    
+    #TO SET THE DEFAULT EDITOR FOR GIT:
+        -git config --global core.editor "<application exe name>"  
+        eg.
+            -git config --global core.editor "code"     //here code is name for visual studio code
+        
+        -TO OPEN THAT .GITCONFIG FILE TO SEE THE DEFAULT CONFIGURATION:
+            -git config --global -e
+            -cat ~/.gitconfig
+
+
+    #TO DOWNLOAD/ PULL THE REPO
+        -git clone <repo_link>
+    
+    #NOTE:  WHEN YOU ARE WORKING WITH SAME DIRECTORY & ALREADY PUSHED THE CODES
+            THEN WHEN YOU'RE PUSHING THE CODE NEXT TIME JUST USE :
+            -git push
+            WITHOUT REPO-NAME BRANCH-NAME AFTER PUSH 
+-----------------------------------------------------------------------------------
+#SSH & HTTPS:
+    SSH- SecureShell
+    HTTPS-HyperText Transfer Protocol with Secure
+
+    -mkdir .ssh
+    -cd .ssh
+
+    #TO GENERATE THE SSH KEY USE BELOW COMMAND:
+        -ssh-keygen -t rsa -C "<email_id>"
+        -ssh-keygen -t rsa -C "vivek.nikate@capgemini.com"
+    here the -t is type of key
+
+
+    after running these commands check folder content with ls command
+    -here the .pub file is the public key
+    -other file is private key  
+    
+    -leave private key files
+
+    -Open the .pub file copy all content within it, go to github account setting 
+     in that ssh key section press add ssh key
+     give title then paste all the content in below box
+     that's it we're done with key generation.
+
+    #TO CHECK WE ARE CONNETECT TO Github OR NOT USE COMMAND:
+        -ssh -T git@github.com 
+        eg.
+            ssh -T git@github.com
+            output:
+                Hi viveknikate! You've successfully authenticated, 
+                but GitHub does not provide shell access.
+------------------------------------------------------------------------------------
+Git Fetch: is the command that tells the local repository that there 
+            are changes available in the remote repository without bringing 
+            the changes into the local repository.
+             -git fetch<remote>
+
+Git Pull:
+        -pull is 2 commands in one.(fetch+merge)
+        -Fetch brings remote changes to local repo & merge them to local repo
+        -pull brings the copy of the remote directory changes 
+         into the local repository.
+        -running pull command is little destructive coz sometimes Merging arises conflicts in repo.
+         so us fetch command
+            -git pull <remote> <branch>
+            
+            $ git pull
+            Already up to date.
+
+------------------------------------------------------------------------------------
+#Cloning:   Using
+            1)SSH:
+                    -git clone <repo_ssh_link>
+                    -git clone <repo_ssh_link> <folder_name>
+                    eg.
+                        -git clone git@github.com:viveknikate/CV2.git Vivek-CV      //all content cloned into vivek-cv named folder
+                        -git clone git@github.com:viveknikate/CV2.git 
+            2)HTTPS:
+                     -git clone <repo_https_link>
+                     -git clone <repo_https_link> <folder_name>
+                     eg.
+                        -git clone https://github.com/viveknikate/CV2.git
+                        -git clone https://github.com/viveknikate/CV2.git Sample-project
+                        -git clone https://github.com/viveknikate/CV2.git Updated_CV
+------------------------------------------------------------------------------------
+#If we changed the project name on GitHub then to sync on local repo use below commands:
+    
+    #TO SHOW ALL DETAIL INFO OF REPO:
+    -git remote show <remote-repo-name>
+    eg.    
+        $ git remote show Main
+        * remote Main
+            Fetch URL: git@github.com:viveknikate/UdemyCourseGitPractice.git
+            Push  URL: git@github.com:viveknikate/UdemyCourseGitPractice.git
+            HEAD branch: master
+            Remote branch:
+                master tracked
+            Local branch configured for 'git pull':
+                master merges with remote master
+            Local ref configured for 'git push':
+                master pushes to master (up to date)
+    
+    #To update local repo's name:
+        -git remote set-url <remote_repo_name> <repo_https_link>/<repo_ssh_link>
+        eg.
+            vnikate@lin80030770 MINGW64 ~/Desktop/Udemy Git/Project (master)
+            $ git remote -v
+            Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (fetch)           //before running set-url command name is UdemyCourseGitPractice
+            Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (push)
+
+            vnikate@lin80030770 MINGW64 ~/Desktop/Udemy Git/Project (master)
+            $ git remote set-url Main https://github.com/viveknikate/UdemyGit.git
+
+            vnikate@lin80030770 MINGW64 ~/Desktop/Udemy Git/Project (master)
+            $ git remote -v
+            Main    https://github.com/viveknikate/UdemyGit.git (fetch)                     //after running set-url command name is UdemyGit
+            Main    https://github.com/viveknikate/UdemyGit.git (push)
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+
