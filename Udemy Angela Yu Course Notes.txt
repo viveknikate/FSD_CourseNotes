@@ -878,3 +878,11 @@ RECOMMENDED:
 =ID are also used for navigation purpose
 =Try to apply only a single custom class to each of your elements
 =Avoid inline styling at all costs.
+===========================================================================================================================
+#4 Pillar's of Web Design:
+    1) Color Theory
+    2) Typography
+    3) User Interface (UI)
+    4) User Experience (UX)
+===========================================================================================================================
+#JavaScript(JS) :-  
