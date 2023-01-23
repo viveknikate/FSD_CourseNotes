@@ -141,6 +141,29 @@ TO COMMIT USE
 #TO CHECK THE COMMITS:
     -git log            //all Commits
 
+    -to see log with branches design 
+        -git log --oneline --graph
+        eg.
+        $ git log --oneline --graph
+            *   e36cb3e (HEAD -> master, Main/master) Merge pull request #2 from viveknikate/Example
+            |\
+            | * a93b6fb Update new11.txt
+            |/
+            *   423c0be Merge pull request #1 from viveknikate/viveknikate-patch-1
+            |\
+            | * 98522bb txt file
+            |/
+            * 91fa9ca Modified sample txt file added content name in it
+            * 9f726c0 Skipped stagin area Direct commit
+            *   fa2958d (tag: V1.0, tag: Tag2, tag: Tag1) modified new11 txt file
+            |\
+            | * aca8e21 Commiting changes in another branch before moving to master branch
+            * | 93bb9ba Third line in new11.txt file
+            |/
+            * 916aa17 modified new11 files in 2nd branch
+            * ad45864 modified git ignore folder
+            * cd7ede5 added new folder
+
     -git log -4         //last four Commits
 
     -git log -5 --oneline       //last 5 commits with short msg 
@@ -342,6 +365,36 @@ Spcial Markers:
         eg.
             -git branch NewOne
     
+    #TO CHECKOUT ALL REMOTE/ LOCAL BRANCHES:
+        -git branch -a
+        eg.
+             git branch  -a
+                * master                        //local branch will be shown first
+                remotes/Main/master             // remote branches shown here.
+
+    
+    #TO DELELTE BRANCH:
+        -git branch -d <branch_name>
+        -git branch --delete <branch_name>
+        -git branch -D <branch_name>            //forceful deletion of branch
+        eg.
+            git branch -d example
+            git branch --delete example2
+            git branch -D example3
+    
+    #TO DELELTE BRANCH OF REMOTE REPO:
+        -git push -d <remote_repo_name> <branch_name>
+        -git push <remote_repo_name> :<branch_name>
+        eg.
+            -git push -d Main VivekBranch
+            -git push Main :VivekBranch
+
+            $ git push Main :AnotherBranch
+            To https://github.com/viveknikate/UdemyGit.git
+            - [deleted]         AnotherBranch
+
+
+
     #TO SWITCH ANOTHER BRANCH:
         -git checkout <branch_name>
         eg.
@@ -591,6 +644,7 @@ Q. is actually possible to specify the default branch to start a repo on local s
 
     #TO CHECK WE ARE CONNETECT TO Github OR NOT USE COMMAND:
         -ssh -T git@github.com 
+        -SSH -T git@github.com 
         eg.
             ssh -T git@github.com
             output:
@@ -600,7 +654,8 @@ Q. is actually possible to specify the default branch to start a repo on local s
 Git Fetch: is the command that tells the local repository that there 
             are changes available in the remote repository without bringing 
             the changes into the local repository.
-             -git fetch<remote>
+             -git fetch <remote>
+             -git fetch     //makes related updates to the local repo from remote repo
 
 Git Pull:
         -pull is 2 commands in one.(fetch+merge)
@@ -663,7 +718,10 @@ Git Pull:
             Main    https://github.com/viveknikate/UdemyGit.git (fetch)                     //after running set-url command name is UdemyGit
             Main    https://github.com/viveknikate/UdemyGit.git (push)
 ------------------------------------------------------------------------------------
-
+#Merge:
+    -git merge <branch_name_exceptBranchYourCurrentlyIn>
+    eg.
+        -git merge example        
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
