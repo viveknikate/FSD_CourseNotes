@@ -410,6 +410,7 @@ Spcial Markers:
 #git Tags:
     -to check how many tags are there simply run below command
     -git tag --list (or)
+    -git tag    (or)
 
     -git show
     -will show the tags after commit hash within parenthesis.
@@ -423,6 +424,44 @@ Spcial Markers:
                 -git tag <tag_name>
                 eg. 
                     git tag mytag
+            
+            #CREATING TAG FOR PARTICULAR BRANCH:
+                -git tag <tag_name> <branch_name>
+                -git tag <tag_name> <commit_id>
+                eg.
+                    -git tag stable master          //created tag named stable on branch master
+                    -git tag unstable 916aa17       //created tag named unstable on commit_id
+                
+                Creating Annotated tag  
+                    -git tag -a <tag_name> -m "<tag msg>" <commit_id>
+                    eg
+                        -git tag -a V0.1 -m "Release 0.1 (Alpha)" 5b9c858
+
+            #PUSHING SPECIFIC TAG ON GitHub:
+                -git push <remote_repo_name> <tag_name>
+                eg.
+                    -git push Main stable
+            
+            #PUSH ALL TAG AT ONCE:
+                -git push --tags
+
+            
+
+            eg. Delete the tags from github remote: 
+            git push -d <remote_repo_name> <tag_name>
+            git push -d <remote_repo_name> <1st_tag_name> <2nd_tag_name>
+
+            git push <remote_repo_name> :<tag_name>
+            eg.
+                -git push -d Main Tag1
+                -git push -d Main stable unstable
+
+                -git push Main :<tag_name>
+                eg.
+                    $ git push Main :v1
+                    To https://github.com/viveknikate/UdemyGit.git
+                    - [deleted]         v1
+
 
         2.Annotated tags:
             -Annotated are those tag, 
@@ -446,13 +485,24 @@ Spcial Markers:
                 here, -a is to mention this is Annotated tag
                       -m is for commit msg.
 
-
     #TO DELETE A TAG:
         -git tag --delete <tag_name>
         -git tag -d <tag_name>
         eg.
             -git tag --delete mytag
             -git tag -d mytag
+
+    #TO CHANGE TAG WHERE IT IS CURRENTLY POINTING:
+        -git tag -f <tag_name> <commit_id>
+        eg.
+            -git tag -f v4 91fa9ca
+        
+        -to forcefully change the pointer of tag previously assigned 
+            -git push <remote_repo_name> <tag_name> --force
+            -git push --force <remote_repo_name> <tag_name>
+            eg.
+                -git push Main v4 --force
+                -git push --force Main v4
 ---------------------------------------------------------------------------------
 #Stashing : Save temporary changes
     >>This command will save all the work temporarily 
@@ -563,10 +613,20 @@ eg.
     - git remote
     Main
 
-    -git remote -v
+    -git remote -v          //here -v is verbose
     Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (fetch)
     Main    git@github.com:viveknikate/UdemyCourseGitPractice.git (push)
 
+    #TO ADD MORE REMOTE Repository:
+        -git remote add <remote_repo_name> <repo_link>
+        eg.
+            -git remote add UpStream https://github.com/viveknikate/UdemyGit.git
+
+    #prune:-
+        It will delete remote refs that are no longer in use on the remote repository. fetches the latest update from remote 
+        -git fetch --prune
+        -git fetch -p
+        
 
     -git push -u <remote_repo_name> <branch_name> 
     or
@@ -574,12 +634,6 @@ eg.
     eg.
         git push -u Main master --tags
         git push -u Main master
-
-eg. Delete the tags from github remote: 
-
-    git push -d <remote_repo_name> <tag_name>
-    eg.
-        -git push -d Main Tag1
 ----------------------------------------------------------------------------------
 Q. is actually possible to specify the default branch to start a repo on local side
 => Yes.
@@ -719,20 +773,11 @@ Git Pull:
             Main    https://github.com/viveknikate/UdemyGit.git (push)
 ------------------------------------------------------------------------------------
 #Merge:
-    -git merge <branch_name_exceptBranchYourCurrentlyIn>
+    -git merge <branch_name_(exceptBranchYourCurrentlyIn)>
     eg.
         -git merge example        
 ------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
-
-
+#Gist:-
+    short/ small program/script files.
+    Gist is a simple way to share snippets and pastes with others. 
+=================================End================================================
