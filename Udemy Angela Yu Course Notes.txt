@@ -885,4 +885,698 @@ RECOMMENDED:
     3) User Interface (UI)
     4) User Experience (UX)
 ===========================================================================================================================
-#JavaScript(JS) :-  
+>>Sample Design made with canva:
+https://www.canva.com/design/DAFYkEsiWUM/7fWPvRA2eHX4jhMVlvPB1A/view?website#4:hotel
+===========================================================================================================================
+#JavaScript(JS) :-  JavaScript uses camelCase (first letter lowercase next word letter will be uppercase)
+    -ECMAScript(ES6)
+    -JavaScript is Interpreted Language.
+    -alert("Hello");
+    -alert("Hello")
+    -alert('Hello')
+
+    -use console mode in chrome's inspect mode.
+        use this to print something on console tab
+        console.log("Hello world");
+
+    -use this to print on page.
+        a='Vivek'
+        document.write(a);
+
+        to add multiple instructions use shift for jumping on next line in Console of chrome
+            line 1      alert("Vivek")          //Shift + enter
+            line 2      alert("Nikate")
+
+    practice:   
+            console.log("hello world");
+            alert("Very nice");
+            v = prompt("Enter your name ");
+            alert("hey there\n Hello "+v);
+
+    -to create a sample JS file go to chrome inspect in that SOURCE section, in that SNIPPETS
+    eg.
+        22+55
+            77
+        22
+            22
+        alert(2+5)
+            undefined
+        typeof(22)
+            'number'
+        typeof('vivek')
+            'string'
+        typeof(true)
+            'boolean'
+------------------------------------------------------------------------------------------------------------------------
+Prompt in JS:
+    eg. 
+            -prompt("What is your name?");
+        or
+        displaying user name on screen:
+            -alert(prompt("What's your name?")); 
+        or
+        a = prompt("What's is your name?");
+        alert(a)
+
+    eg.
+        -var myName = "Vivek"; 
+        -myName
+            'Vivek'
+        -alert(myName);
+------------------------------------------------------------------------
+sample code:
+            MyName = 'Vivek';
+            Y = prompt("Your name?");
+            alert("Hello, My name is "+MyName+" welcome to my course "+Y+"!")
+------------------------------------------------------------------------
+JavaScript variable:
+    1)var
+    2)let
+    3)const
+------------------------------------------------------------------------
+    function test() {
+    var a = "3";
+    var b = "8";
+    
+        // [a,b] =[b,a]
+        
+        //a = a^b;
+        //b = a^b;
+        //a = a^b;
+
+        //let c = a;
+        // b = a;
+        // a = c;
+
+
+        console.log("a is " + a);
+        console.log("b is " + b);
+    }
+--------------------------------------------------------------------------------------------------------------------------------
+#JavaScript variable Naming:
+    var myname = "Vivek"
+    var myname = 'Vivek'
+    var myname = 123
+
+    -var Name should start with alphabates or $ or _
+    -var Name should NOT start with number
+    -var Name can contain $ & _ sign only. not other special symbols
+    -var Name can't contain space in between
+--------------------------------------------------------------------------------------------------------------------------------
+#String in JS:
+    1.Concatenation:
+        name= 'Vivek'
+        msg = 'Hello '
+        alert(msg+" there, "+ name)
+    
+    2.Length of string:
+        var name = 'nikate';
+            console.log(name.length)        //6        
+        var name = 'vivek'
+            console.log(name.length)        //5
+    
+    3.Text counter:
+        var n =140;
+        a = prompt("Enter text")
+        alert("Your have written "+(a.length)+" characters, You left with "+ (n-a.length))
+
+        n=10
+        a = prompt('hey what\'s your name')
+        alert("Your name is "+a.length+" character long.!!\n You left with " + (n-a.length) +" characters!!")
+    
+    COMMENTING IN JS:
+        //SINGLE LINE COMMENT
+        /*
+            Multi line comment.
+        */
+
+    4.Slice:
+        Syntax:
+            variableName.slice(x,y)
+
+        a = prompt("Information:");
+        alert(a.slice(0,20));
+        alert(a);
+        alert("You written "+a.length+" characters");
+
+        slice(x,y)  - x including
+                      y excluding
+        
+        var v = 'vivek';
+        v.slice(0,3);           //viv
+
+        //to find out total no.of character we get in slice function just 
+        //do upperbond-lowerbond
+        //ie. here 3-0 = 3 character
+        
+        slice(2,8)      //8-2 = 6 character we get here.
+        
+        //using just 10 character
+        alert(prompt("Information").slice(0,10))
+
+        NOTE: TO SKIP FIRST LETTER OF STRING USE        
+                var a = 'Vivek';
+                console.log(a.slice(1))             //ivek
+
+                console.log("Vivek".slice(1))       //ivek
+    
+        Note:
+            1.
+            charAt():
+            The charAt() function returns the character at a given position in a string.
+
+            Syntax:
+
+            string.charAt(index)
+            Example:
+
+            const str = 'flexiple';
+            const str2 = str.charAt(0);
+            console.log(str2);
+
+            //Output: f
+
+            2.
+            toUpperCase()
+            The toUpperCase() function converts all the characters of an input string to uppercase
+
+            Syntax:
+
+            string.toUpperCase()
+            Example
+
+            const str = 'flexiple';
+            const str2 = str.toUpperCase();
+            console.log(str2);
+
+            //Output: FLEXIPLE
+
+    eg.
+        var name = prompt("Enter your name:")
+        alert("Hello "+name.slice(0,1).toUpperCase()+name.slice(1))
+
+        -------------------------------------------------------------------|
+       | Parameter |	Description                                        |
+       | ----------|-------------------------------------------------------|
+       | start	   |  Optional.                                            |
+       |           |  Start position. Default is 0.                        |
+       |           |  Negative numbers select from the end of the array.   |
+       | ----------|-------------------------------------------------------|
+       | end       |  Optional.                                            |           
+       |           |  End position. Default is last element.               |
+       |           |  Negative numbers select from the end of the array.   |
+        -------------------------------------------------------------------|
+
+    TO MAKE FIRST LETTER OF SENTENCE CAPITAL:
+
+    str = "hello my name is vivek nice to meet you.!"
+    console.log(str)
+
+    arr = str.split(" ")
+
+    for(var i=0;i<arr.length;i++){
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+
+    str = arr.join(" ");
+
+    console.log(str)        
+
+    Output:
+            hello my name is vivek nice to meet you.!
+            Hello My Name Is Vivek Nice To Meet You.!
+    
+
+        //viVEK to fix this thing
+
+        name = prompt("Enter your name:");          
+        alert("Hello "+name.charAt(0).toUpperCase()+name.slice(1).toLowerCase())
+
+
+        function myFun(s) {
+            alert("Hello "+s.slice(0,1).toUpperCase()+s.slice(1).toLowerCase());
+        }
+
+        myFun('viVeK')              //Vivek
+        myFun('priyANKA')           //Priyanka
+--------------------------------------------------------------------------------------------------------------------------------
+Arithmatic Operator in JS:
+    +, -, *, /, %, **
+
+#Dog & Human Age Calculator:
+        dogAge = prompt("Enter dog age?");
+        humanAge = (dogAge-2)*4 + 21
+        alert("Your dog is "+humanAge+"years old in human years")
+--------------------------------------------------------------------------------------------------------------------------------
+Increment Operator: ++
+Decrement Operator: --
+eg.
+    var c = 4;
+    c++;        //5
+    
+    var  v = 5;
+    v--;       //4
+--------------------------------------------------------------------------------------------------------------------------------
+Assignment Operator:
+    =    +=    -=    *=    /=    %=    **=
+eg.
+    var a = 4;
+    a *= 2;     //a =a *2     
+                //8
+--------------------------------------------------------------------------------------------------------------------------------
+#Function in JS:
+    1.Function without parameter with return value
+    2.Function with parameter with return value
+    3.Function without parameter without return value
+    4.Function with parameter without return value
+  
+    function HumanAge(age) {
+        var HumanAge = (age-2)*4 +21;    
+        alert("Your dog's age in HumanAge:"+HumanAge)
+    }
+
+    HumanAge(5)         // Generates alert like :-> Your dog's age in HumanAge:33years
+    HumanAge(7)         // Generates alert like :-> Your dog's age in HumanAge:41years
+--------------------------------------------------------------------------------------------------------------------------------
+function example:
+    function getMilk(price) {   
+        console.log("leaveHouse");
+        console.log("You have only "+ price +" So, You can get only "+(price/5) +" bottles of milk");
+        console.log("enterHouse");
+        alert("you got "+(price/5)+" milk bottle")
+    }
+
+    getMilk(50);
+    getMilk(8);
+
+    *Rounding values:
+        price = 89;
+        alert("you got "+ ~~(price/5)+" milk bottle")               //use ~~ double tilde to round the value in JS
+        alert("you got "+ Math.floor(price/5)+" milk bottle")       //use floor method round the value in JS
+--------------------------------------------------------------------------------------------------------------------------------
+eg.
+    function lifeInWeeks(age) {
+
+        yearLeft = 90- age;
+        days = 365* yearLeft;
+        weeks = 52*yearLeft;
+        months = 12*yearLeft;
+
+        console.log(`You have ${days} days, ${weeks} weeks, and ${months} months left`)
+    }
+    lifeInWeeks(26)
+    //Output:   
+        You have 23360 days, 3328 weeks, and 768 months left
+--------------------------------------------------------------------------------------------------------------------------------
+eg.
+    function bmiCalculator(weight,height){
+        // return weight/(height*height);   
+        // return weight/Math.pow(height,2);                //Power Function
+        return Math.round(weight/Math.pow(height,2));       //round function to round the values
+    }
+--------------------------------------------------------------------------------------------------------------------------------
+#Random Number Generator:
+    n = Math.random();
+    console.log(n)
+    
+    -Generates 16 digit random num between 0-0.999-999-999-999-999-9
+    -never will be 1.
+    eg.
+        Generate num 1 to 10;
+        n = Math.random()*10;
+        console.log(Math.floor(n)+1)        //1 to 10
+        console.log(~~n)                //0 to 9
+
+    eg. Bonding random function to Generate 1 to 6 six number only.
+        n = Math.random();
+        to6 = ~~(n*10+1) % 7 +1;        //double tilde (~ ~) will round the value
+        console.log(to6);               //multiplying by 10 will Generate num between 0 to 9
+                                        //Added 1 to generate 1 to 10 
+                                        // modulo Operator with 7 will give remainder between 0 to 6
+                                        //to Avoid 0 in remainder, in last intentionally added the 1
+                                        //will generate the random num between 1 to 6 exacly
+         n = Math.random();
+         n = n*6;               //to generate the number between 0 to 5 to multiplied with 6
+         n = Math.floor(n)+1;
+         console.log(n);
+--------------------------------------------------------------------------------------------------------------------------------
+#Love Calculator in JS:
+eg.
+    prompt("Enter your name:");
+    prompt("Enter your crush's name:")
+
+    n = Math.random();
+    n = Math.floor((n * 100) + 1)
+    alert(`Your love story of chance ${n}%`);
+    alert('Your love story of chance'+n+'%');   
+    alert('Your love story of chance\'s '+n+'%');           //to escape the quote use back slash 
+    --------------------------------------------------------------------------------------
+    a = prompt("Enter your name:");
+    b = prompt("Enter your crush's name:")
+
+    n = Math.random();
+    n = Math.floor((n * 100) + 1)
+    alert('Your love story of '+a+' & '+b+' having a chance\'s of '+n+'%');
+--------------------------------------------------------------------------------------------------------------------------------
+Conditional Statement:
+    a = prompt("Enter your name:");
+    b = prompt("Enter your crush's name:")
+
+    n = Math.random();
+    LoveScore = Math.floor((n * 100) + 1)
+
+    if(LoveScore >80)
+        alert(`${a} & ${b} You both are crazy about each other, your LoveScore is ${LoveScore}%`)
+    else
+        alert(`${a} & ${b} Your LoveScore is ${LoveScore}%`)
+--------------------------------------------------------------------------------------------------------------------------------
+Comparator Operator:
+    <, >, <=, >=, ==, ===, !=, !==, ?
+    --------------------------------------
+    ==	equal to
+    ===	equal value and equal type
+    !=	not equal
+    !==	not equal value or not equal type
+    >	greater than
+    <	less than
+    >=	greater than or equal to
+    <=	less than or equal to
+    ?	ternary operator
+
+    eg.
+        a =10
+        b ='10'
+
+        if(a == b)
+            console.log('Same')     
+        else
+            console.log('not Same')
+
+        //Output Same       == double equal don't check for data type. just checks value
+
+        
+        if(a === b)
+            console.log('Same')
+        else
+            console.log('not Same')     
+
+        //Output not Same       === triple equal checks for value & data type 
+
+    ----------------------------------------
+Logical Operator:
+
+    &&	logical and
+    ||	logical or
+    !	logical not
+eg.
+        a = prompt("Enter your name:");
+        b = prompt("Enter your crush's name:")
+
+        n = Math.random();
+        LoveScore = Math.floor((n * 100) + 1)
+
+        if(LoveScore >80)
+            alert(`${a} & ${b} You both are crazy about each other, your LoveScore is ${LoveScore}%`)
+
+        if(LoveScore>=30 && LoveScore <=80)
+            alert(`${a} & ${b} Your LoveScore is ${LoveScore}%`)
+            
+        if(LoveScore<30)
+            alert(`${a} & ${b} Your LoveScore is ${LoveScore}%\n You both together like Oil & Water!`)
+--------------------------------------------------------------------------------------------------------------------------------
+#Leap year:-
+    if(year%4 === 0)
+            if(year%100 !== 0)
+                console.log('Leap year.');
+            else
+                if(year%400 === 0)
+                    console.log('Leap year.');
+                else
+                    console.log('Not leap year.');
+        else
+            console.log('Not leap year.');
+--------------------------------------------------------------------------------------------------------------------------------
+Bitwise     Operator:
+    &	    AND	                    5 & 1	0101 & 0001 	0001	 1
+    |	    OR	                    5 | 1	0101 | 0001 	0101	 5
+    ~	    NOT	                    ~ 5	    ~0101       	1010     10
+    ^	    XOR	                    5 ^ 1	0101 ^ 0001	    0100	 4
+    <<	    left shift	            5 << 1	0101 << 1	    1010	 10
+    >>	    right shift	            5 >> 1	0101 >> 1	    0010	 2
+    >>>	    unsigned right shift    5 >>> 1	0101 >>> 1	    0010	 2
+--------------------------------------------------------------------------------------------------------------------------------
+#Arrays:    
+
+    var a = [];
+
+    a=[1,2,3,4,5,6,7,8,9,10];
+    console.log(a);
+    console.log(a.length);
+
+    for(var i=0;i<a.length;i++)
+        document.write(a[i]+"<br />");
+
+    document.write("The 2nd item in list :"+a[1]+"<BR>");
+    //array starts counting from 0
+    document.write(`The last forth in list :${a[3]} <br/>`);
+
+    document.write(`The last item in list using length method :${a[a.length-1]} <br/>`);
+    document.write(`The last item in list using slice :${a.slice(-1)}`);
+
+    NOTE:   To access the last element in array 
+            3 ways are there.
+
+            1) arr[arr.length -1]   will give the last index put that in square of array to get element {13.798ms to execute}
+            2) arr.slice(-1);       will give the last element.                                         {8.839ms to execute}   
+            3) arr.pop();           will delete the last element in array & reduce the length by 1      {0.138ms to execute}
+--------------------------------------------------------------------------------------------------------------------------------
+#Arrays eg.
+    a=[1,2,3,4,5,6,7,8,9,10];
+    h =parseInt(prompt("enter your num :"));        //use parseInt method for conversion from other datatype to INT.
+
+    if(a.includes(h))
+        alert("Welcome to the party!!");
+    else
+        alert("Sorry.!\n Next time.");
+
+    OR
+    #using function:
+
+    function Checker(h) {  
+    a=[1,2,3,4,5,6,7,8,9,10];
+    //h =parseInt(prompt("enter your num :"));
+
+    if(a.includes(h))
+        alert(h+" Welcome to the party!!");
+    else
+        alert(h+" Sorry.!\n Next time.");
+    }
+
+    Checker(1)
+    Checker(2)
+    Checker(3)
+    Checker(4)
+    Checker(5)
+    Checker(10)
+    Checker(11)
+    Checker(21)
+    Checker(144)
+--------------------------------------------------------------------------------------------------------------------------------
+#FizzBuzz Code In JS:
+Q.1 - 100 number if divisible by 3 Fizz if divisible by 5 Buzz if both then FizzBuzz
+    for(var i=1;i<=100;i++)
+        if(i % 3 === 0 && i % 5 === 0)
+            document.write("FizzBuzz <br/>");
+        else if(i % 3 === 0)
+            document.write("Fizz <br/>");
+        else if(i % 5 === 0)
+            document.write("Buzz <br/>");
+        else 
+            document.write(i+"<br/>");
+--------------------------------------------------------------------------------------------------------------------------------
+#Array Push & Pop methods:
+    arr = [];
+
+    //to Insert element at LAST in array use PUSH method
+    arr.push(1);
+    arr.push(2);
+    arr.push('vivek');
+    arr.push(true)
+
+    console.log(arr)
+    console.log(arr.length)
+
+    //to Delete LAST element in array use POP method
+    arr.pop()
+    arr.pop();
+    console.log(arr)
+    console.log(arr.length)
+
+    //Output:
+        (4) [1, 2, 'vivek', true]
+        4
+        (2) [1, 2]
+        2
+--------------------------------------------------------------------------------------------------------------------------------
+#
+    eg.Whenever we call the function it adds next num to the array.
+    var i=1;
+    function FizzBuzz() {
+        arr.push(i);
+        i++;
+        console.log(arr)
+    }
+    
+    //Output:   
+        FizzBuzz()
+            [1]
+        FizzBuzz()
+         (2) [1, 2]
+        FizzBuzz()
+         (3) [1, 2, 3]
+        FizzBuzz()
+         (4) [1, 2, 3, 4]
+
+#Advance:
+    var arr= [];
+    var i=1;
+    function FizzBuzz() {
+        if(i % 3 === 0 && i % 5 === 0)
+            arr.push("FizzBuzz");
+        else if(i % 3 === 0)
+            arr.push("Fizz");
+        else if(i % 5 === 0)
+            arr.push("Buzz");
+        else
+            arr.push(i);
+        console.log(arr);
+        i++;
+    }
+
+    FizzBuzz()
+      [1]
+    undefined
+    FizzBuzz()
+      (2) [1, 2]
+    undefined
+    FizzBuzz()
+      (3) [1, 2, 'Fizz']
+    undefined
+    FizzBuzz()
+      (4) [1, 2, 'Fizz', 4]
+    undefined
+    FizzBuzz()
+      (5) [1, 2, 'Fizz', 4, 'Buzz']
+    undefined
+    FizzBuzz()
+      (6) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz']
+    undefined
+    FizzBuzz()
+      (7) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7]
+    undefined
+    FizzBuzz()
+      (8) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8]
+    undefined
+    FizzBuzz()
+      (9) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz']
+    undefined
+    FizzBuzz()
+      (10) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz']
+    undefined
+    FizzBuzz()
+      (11) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11]
+    undefined
+    FizzBuzz()
+      (12) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz']
+    undefined
+    FizzBuzz()
+      (13) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13]
+    undefined
+    FizzBuzz()
+      (14) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14]
+    undefined
+    FizzBuzz()
+      (15) [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'FizzBuzz']
+--------------------------------------------------------------------------------------------------------------------------------
+#Game:
+    function whosPaying(names) {        
+            
+            //Write your code here.
+            var n = Math.random();      //generate random num
+            var L = names.length;       
+            
+            n = n * L;                  //generate random num between 0 to length of array-1
+            var random = Math.floor(n); //rounds that num
+
+            return `${names[random]} is going to buy lunch today!`;
+        }
+--------------------------------------------------------------------------------------------------------------------------------
+#Control Statement:
+    1)While loop:
+        Syntax:
+            while(condition == true){
+                    //execute this
+            }
+        eg.
+            var count =100;
+            while(count>=0){
+                if(count == 1)
+                    document.write(`${count} bottles of beer on the wall, ${count} bottles of beer. Take 1 down, pass it around, no bottles of beer on the wall <br />`);
+                else
+                    if(count == 0)
+                        document.write(`no more bottles of beer on the wall,no more bottles of beer. Go to store & buy some more, 99 bottles of beer on the wall <br />`);
+                    else    
+                        document.write(`${count} bottles of beer on the wall, ${count} bottles of beer. Take 1 down, pass it around, ${count-1} bottles of beer on the wall <br />`);
+                count--;
+            }
+    
+    2)For loop:
+        for(var i=0;i<3;i++){
+            //Execute this
+        }
+        eg. 
+            Fibonacci Series:-
+                var cur = 1, pre = 0;
+                var arr =[];
+                n = parseInt(prompt("Enter n::"));
+                    var n2 = n+2;
+                    var temp;
+                    for(var i=0;i<n;i++){
+                        if(n2>n){
+                            arr.push(i);
+                            n2--;
+                        }
+                        else{
+                            temp = pre + cur;
+                            arr.push(temp);
+                            pre = cur;
+                            cur = temp;
+                        }
+                    }
+                console.log(arr);
+                
+                var cur = 1, pre = -1;
+                var arr =[];
+                var temp;
+                for(var i=0;i<n;i++){
+                        temp = pre + cur;       
+                        arr.push(temp);         
+                        pre = cur;              
+                        cur = temp;             
+                }
+                console.log(arr)
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
