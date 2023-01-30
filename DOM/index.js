@@ -1,0 +1,1 @@
+alert("From external script file :: Hello World..!");

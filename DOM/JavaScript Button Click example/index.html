@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button click</title>
+    <style>
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">Hello World..!</h1>
+
+    <button onclick="ButtonClick()">Change text</button>
+    <button onclick="ChangeColor()">Change color</button>
+
+    <button onclick="ChangeTextBack()">Orignal text</button>
+    <button onclick="ChangeColorOther()">Orignal Color</button>
+
+    <center>
+        <button onclick="GeneratePop()">POP Up</button>
+    </center>
+
+    <!-- internal scripts -->
+    <!-- 
+        <script>
+        function ButtonClick(){
+            document.getElementById('text').innerHTML = "Hey, Hacker..!!"
+        }
+        function ChangeColor(){
+            document.getElementById('text').style.color = 'red';
+        }
+        
+        function ChangeTextBack(){
+            document.getElementById('text').innerHTML = "Hello World..!";
+        }
+
+        function ChangeColorOther(){
+            document.getElementById('text').style.color='black';
+        }
+    </script>
+     -->
+
+     <!-- external scripts -->
+     <script src="./index.js"></script>
+</body>
+</html>

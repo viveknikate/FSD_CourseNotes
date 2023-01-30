@@ -202,7 +202,7 @@ CSS: Cascading Style Sheets
 
     1.Inline Styling 
     2.Internal Styling (in the head tag inside that style tag)
-    3.External Styling (Adding link of styling file to the web)
+    3.External Styling (Adding link of styling file to head section of html page)
 
             hr{
                 background-color: powderblue;
@@ -1566,16 +1566,370 @@ Q.1 - 100 number if divisible by 3 Fizz if divisible by 5 Buzz if both then Fizz
                 }
                 console.log(arr)
 --------------------------------------------------------------------------------------------------------------------------------
+#DOM (Document Object Model):-
+eg. Alert pop up after page loaded
+    <body onload="alert('Page Loaded')">
+        <h1>Hello World.!</h1>
+    </body>
+
+#JavaScript has 3 way to add script:
+    1)Inline Scripting (Adding script in html tags)
+        -its not modular
+        -its difficult to debug
+        -also it is not a good practice
+
+    2)Internal Scripting(Putting all scripts inside script tag at the end of BODY tag)
+        -Good practice to put script (script file) tag at the ending of body tag.
+        -& Good practice to put CSS file in head section of page. 
+         if we put inside body at the end then it gets loaded at last & start changing all styling after site loaded.
+
+        -STYLES MUST BE LOADED FIRST BEFORE THE SITE LOADS
+        -SCRIPTS MUST ENABLED AFTER COMPLETE COMPLETE SITE LOADING IS DONE. 
+        eg.
+            <head>
+                <meta charset="UTF-8">
+                <!-- Always remember put the style sheets or CSS files link inside head section -->
+                <link rel="stylesheet" href="./styles.css">
+                <title>DOM</title>
+            </head>
+            <body onload="alert('Page Loaded')">        //inline Scripting
+                <h1>Hello World.!</h1>
+
+                <script src="path/path"></script>       //internal Scripting before ending body tag
+                <script src="path/path"></script>       //internal Scripting before ending body tag
+            </body>
+
+    3)External Scripting(Putting all scripts to another file, JS file & adding link of file at ending of body tag)        
+            <!-- inline scripting -->
+            <body onload="alert('Page Loaded')">            //when page loaded fully then this alert generated    
+                <h1>Hello World.!</h1>
+
+                <!-- internal script -->
+                <script type="text/javascript">         
+                    alert('Hello World..!')                 //this will executed before below code is going to execute
+                </script>               
+
+                <!-- external script  -->
+                <script src="./index.js"></script>          //at the end this will get executed
+            </body>
 --------------------------------------------------------------------------------------------------------------------------------
+JS Sample functions:
+    -innerHTML/innerText are same you can use innerText instead innerHTML
+    -or also you can use textContent;
+
+    innerHTML - litterally work work as that of name. 
+                it gives all the content between that particular tag.
+        eg.
+                <h1>
+                    <strong>Hello world</strong>
+                </h1>
+
+                document.querySelector('h1').innerHTML;
+                    //it will give     
+                    //<strong>Hello world</strong>
+
+    This is how the ouput looks like for following:
+    
+        <h1 id="demo">
+            <strong>
+                Hello
+            </strong>
+        </h1>
+    ------------------------------------------------------------------------------
+    Changing text/ text manipulation:-
+    ------------------------------------------------------------------------------
+        1)textContent used:
+                        spacing & actual content will be given
+                document.querySelector('h1').textContent;
+    ouput:-         '\n      \n        Hello\n      \n    '
+
+                document.querySelectorAll('li')[1].textContent='<b>TextContent</b>';
+                    //won't work with tag 
+                        all content will get displayed as it is on screen like this <b>TextContent</b>
+
+    ------------------------------------------------------------------------------
+        2)innerHTML used:
+                        all the thing between mentioned tag will be given
+                document.querySelector('h1').innerHTML;
+    ouput:-         '\n      <strong>\n        Hello\n      </strong>\n    '
+
+               document.querySelectorAll('li')[1].innerHTML='<b>innerHTML</b>';
+                        //work with HTML tags
+                        document.querySelectorAll('li')[1].innerHTML='<b>innerHTML</b>';
+    ------------------------------------------------------------------------------
+        3)innerText used:   just gives the text between the tags 
+                            the actual content
+                document.querySelector('h1').innerText;
+    ouput:-         'Hello'
+
+                document.querySelectorAll('li')[1].innerText='<b>innerText</b>';
+                    //won't work with tag 
+                        all content will get displayed as it is on screen like this <b>innerText</b>
+----------------------------------------------------------------------------------------------------------------------------------
+
+    <h1 id="text">Hello world..!!</h1>
+
+    function ButtonClick(){
+        document.getElementById('text').innerHTML = "Hey, Hacker..!!"
+    }
+    function ChangeColor(){
+        document.getElementById('text').style.color = 'red';
+    }
+
+    function ChangeTextBack(){
+        document.getElementById('text').innerHTML = "Hello World..!";
+    }
+
+    function ChangeColorOther(){
+        document.getElementById('text').style.color='black';
+    }
+
+    function GeneratePop(){
+        alert("Hey, Hacker..!\n How are you...?");
+    }
 --------------------------------------------------------------------------------------------------------------------------------
+-Everything that is contained inside your HTML document is contained in an object call the document.
+    -in chrome developer tool
+    -console tab give this input
+
+    -document;          //this give complete html document
+    //Output:
+        <html>
+            <head>
+                <title></title>
+            </head>
+            <body></body>
+        <html>
+
+    -document.firstElementChild;       // <html>
+    -document.firstElementChild.firstElementChild   //firstChild's first child
+        <head>
+    
+    -document.firstElementChild.lastElementChild;     //last element of tag will get displayed on console.
+    
+    -document.firstElementChild.lastElementChild.firstElementChild;
+        //this will display the child of particular element.
+
+    -we can manipulate using above methods
+    REFERENCE-1:-
+            <html>
+                <head></head>
+                <body style="background-color: rgb(255, 224, 230);">
+                    <h1>Hello World...!!</h1> 
+                <body>    
+            </html>
+    -------------------------------------------------------------------------
+    -In querySelector we can pass 
+        HTML tag names,
+        class name,         //when giving class name specify '.' sign
+        ID also.            //when giving ID name specify '#' sign
+
+        BUT querySelector SELECTS ONLY THE FIRST ELEMENT OF ALL MATCHING CONDITIONS.
+    eg.
+            document.querySelector('h1');                   //select first element whos tag h1 
+            //    <h1 id=​"demo">​Hello​</h1>​
+
+            document.querySelector('#demo');                //Selects the elements having ID demo   
+            //   <h1 id=​"demo">​Hello​</h1>​                      //we gave the ID to one element so here also querySelector choose one element only.
+    
+            document.querySelector('.item');
+            //    <li class=​"item">​::marker​<a href=​"https:​/​/​www.google.com">​Google​</a>​</li>​
+
+
+    -TO SELECT ALL ELEMENT WHO SATISFIES THE CONDITIONS OF querySelector, use querySelectorAll instead querySelector only.
+    -In querySelectorAll for selecting particular element always mention the index of that element
+    -also you can calculate the length of querySelectorAll array
+        
+        document.querySelectorAll('.item').length;
+
+        document.querySelectorAll('.item');
+            //NodeList(3) [li.item, li.item, li.item]0: li.item1: li.item2: li.itemlength: 3[[Prototype]]: NodeList
+        
+        document.querySelectorAll('.item')[0];  //selecting specific element.
+
+    -Also in querySelector or querySelectorAll we can pass multiple selectors.
+    document.querySelector('#list a')           //selects element having anchor tag inside ID 'list'
+
+    var heading = document.firstElementChild.lastElementChild.firstElementChild;
+   
+    from REFERENCE 1
+    {    
+        document's firstElementChild is html
+        html's lastElementChild is body
+        body's firstElementChild is h1
+        so here heading will point to h1
+    }
+    heading;
+    // <h1>Hello World...!!</h1> 
+
+    heading.innerHTML = "Hello, Hacker..!!"
+    'Hello, Hacker..!!'
+
+    heading.style.color = 'blue';
+
+    document.querySelector('h1').style.fontStyle='italic';
+    heading.style.fontFamily = 'fantasy';
+
+    //for input selector,
+    document.querySelector("input").click();        //input will gets clicked automatically
+
+    document.querySelector('h1').innerHTML = "M Nikate";
+    'M Nikate'
+
+    document.querySelector('h1').innerText = "V. M. Nikate";
+    'V. M. Nikate'
 --------------------------------------------------------------------------------------------------------------------------------
+#Method & function:
+    Method has to be associated with an objects, while calling method we have to use the dot operator.
+        
+        -car is a class C is object.
+        C.drive();      //calling method.
+        .click();
+
+    function we can call directly, without using object.
+
+    properties don't need to put parenthesis, & we can call using dot operator
+        eg.
+            .innerHTML
+            .style.color
+            .firstChild
+        & we set using = (Assignment operator)
+            selector.innerHTML = 'something';           //setting
+            selector.innerHTML;                         //getting
 --------------------------------------------------------------------------------------------------------------------------------
+#When using HTML tree generator:- 
+    if it is just showing the loading text on screen.
+    or just load then 
+    -right click
+    -manage extension
+    -in that setting tabs "Allow access to file URLs" enable this.
+    STARTS WORKING.
+--------------------------------------------------------------------------------------------------------------------------------   
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+        <head>
+            <meta charset="utf-8">
+            <title>My Website</title>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <h1>Hello</h1>
+            <input type="checkbox">
+            <button style=":active color:red;">Click Me</button>
+            <ul>
+            <li class="list">
+                <a href="https://www.google.com">Google</a>
+            </li>
+                <li class="list">Second</li>    
+                <li class="list">Third</li>
+            </ul>
+        </body>
+    </html>
+
+    var ThirdListItem = document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;  
+    ThirdListItem.innerHTML = 'Vivek Mahesh Nikate';
+    ThirdListItem.style.color= '#A61F69';
+    ThirdListItem.style.fontSize = "3em";
+    ThirdListItem.style.fontStyle='italic'
+    ThirdListItem.style.fontWeight='bolder'
 --------------------------------------------------------------------------------------------------------------------------------
+#selecting element with JS:
+In JS single or double quote both work fine choose whatever you want 
+    
+    1)document.getElementById('id of element')                               //Selects single element in document
+        eg.
+            document.getElementById('text').innerHTML = "Hey, Hacker..!!"
+
+    2)document.getElementsByTagName('html tag here')          //selects more than one element (in array)
+
+    3)document.getElementsByClassName("html tags class name here")          //selects more than one element(like array)
+        eg.
+                document.getElementsByClassName('item')[0].innerHTML;   //give the content in that tag.
+
+                //To assign value
+                document.getElementsByClassName('item')[0].innerHTML = 'Vivek Nikate';
+
+Perform this operation on console of chrome developer tool.
+
+    1)getElementsByTagName('tag_here') method:
+        -this getElementsByTagName method give Output as an array.
+
+        document.getElementsByTagName('li');        //this will display all the li item on page in array form.
+            HTMLCollection(4) [li.list, li.list, li.list, li.list]
+        
+        document.getElementsByTagName('li').length          //Length of array 4
+        
+        document.getElementsByTagName('li').style.color = 'purple'; ❌
+            //above won't work ❌, cause this is array so need to select specific element, like below.
+
+        document.getElementsByTagName('li')[1].style.fontSize= '3em';
+        document.getElementsByTagName('li')[1].style.color= 'purple';
+    
+        document.getElementsByTagName('li')[2].innerHTML = 'Last Item';
+        'Last Item'
+        document.getElementsByTagName('li')[2].innerText = '2nd time changed';
+        '2nd time changed'
 --------------------------------------------------------------------------------------------------------------------------------
+#challenge: 
+    changing the color of anchor tag Having the ID 'list' as parent & 'a' tag is child
+    here 'a' tag is contained within the another tag whos ID is 'list'
+
+        document.querySelector('#list a').style.color = 'red';
+        document.querySelector('#list a').style.fontSize = '2em';
+
+    changing the color of anchor tag only whos class is item.
+    document.querySelector('.item a').style.color= 'red';
+
+THIS ALL ABOVE PROCESS OF SELECTING ELEMENT USING Document IS CALLED SELECTING ELEMENTS USING DOM.
 --------------------------------------------------------------------------------------------------------------------------------
+Modifying the button properties: 
+    check REFERENCE DOM file
+
+    document.querySelector('button').style.backgroundColor = 'yellow';
+    document.querySelector('button').style.fontSize = '2rem';
+    document.querySelector('button').style.margin = '10px 20px 30px 40px';
+    document.querySelector('button').style.margin = '15px';
+    document.querySelector('button').style.border = '2px solid crimson';
+    document.querySelector('button').style.borderRadius = '14px';
 --------------------------------------------------------------------------------------------------------------------------------
+#classList in JS:- 
+        -we can add class to the html tag using JS.
+        -3 methods are there.
+        -add        //adds class to the particular tag
+        -remove     //removes the class from that particular tag
+        -toggle     //reverse the situation if the class is already added then removes it     
+                        else it adds that class to that tag.
+
+    document.querySelector('button').classList;         //checking how many class applied to the button tag.
+    DOMTokenList ['btn', value: 'btn']
+
+    document.querySelector('button').classList.add('invisible');        //adding class named invisible from the button tag.
+                                                                        //here all the styling mention in class invisible
+                                                                             gets applied from the button
+
+    document.querySelector('button').classList.remove('invisible');     //removing class named invisible from the button tag.
+                                                                        //here all the styling mention in class invisible
+                                                                             will gets removed from the button
+  
+    document.querySelector('button').classList.toggle('invisible');
+    false
+    document.querySelector('button').classList.toggle('invisible');         //it will reverse the things 
+    true                                                                        //if already applied then gets removed
+                                                                                //if not applied then gets applied
 --------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------
+Attribute of tags:-
+    eg. src, height, width, href, class etc
+
+    document.querySelector('a').attributes;                //to check how many attributes is attached to this tag.
+    // NamedNodeMap {0: href, href: href, length: 1}       //length is 1 means only one attribute is there.
+
+    document.querySelector('a').getAttribute("href");       //to get the value of that attribute
+        //https://www.google.com
+    
+    document.querySelector('a').setAttribute("href","https://www.bing.com");        
+            
+            //setting the attribute
+            //here attribute changed now.
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
