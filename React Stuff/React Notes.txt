@@ -1,0 +1,392 @@
+coursera 1st course
+	react is powerful frontend library not a framework
+	Developed by facebook & released for the world in 2013
+	better than angular
+	react popular coz the shadow & virtual dom
+
+coursera 2nd course
+	REACT:
+		react is open-source javaScript library Developed by facebook
+		best for handling presentation like webpages
+		not be confused with react native
+		native is used for developing mobile apps
+		virtula DOM facilitates fast, partial screen update
+		DOM = document object model
+		JSX = javaScript xml (javaScript Syntax Extension)
+		npm - node package manager
+		npx - node package execute
+
+	To create a new react app:
+		-npx create-react-app <app-name>
+		-cd <app-name>
+		-npm start
+	
+	-JSX is almost a html little change require for being javaScript
+	-React return only 1 tag.
+		or if you want to return multiple tag use below Syntax
+		<>
+			<h1></h1>
+			<div></div>
+		</>
+	
+	* here we can declare the variable with 'var' keyword or 'let' keyword
+	* within single (' ') or double quote (" ") 
+	* with semicolon or without semicolon fine.
+	* while using it use {} put variable name inside it.
+	eg.
+		let name ='Vivek';
+		var name2 = "Nikate"
+
+	* The whatever code is written within app.js file inside return ( );
+	  is the code which is compiled by babel in proper javaScript
+	  Babel compiles JSX down to React.createElement().
+	
+	*React is in 2 parts 
+		Function based Components	
+		Class based Components
+		
+		-Function based is currently used MOSTLY cause feels it's easy than class Components
+----------------------------------------------------------------------------------------------------
+Props:- properties
+		-create components folder. create components file with first letter capital.
+		& import it where every you needed.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=--=--=-=-=-=-=-=-=-=-=--=--=---=-=-=-=---=-=-=-=-=-=-=-=-=-=-
+YouTube 5 Project Video:-
+
+Webapps:-
+    it is a thing which don't have multiple pages all things are done on single page only 
+    so it is called as SPA (single page application).
+Website:-
+    it is site having multiple pages called web-site
+    
+-Component is the thing in react that we can use multiple time
+-Component name must start with Capital letter. Capitalize tag is the Component.    
+    <h1></h1> is tag
+    <H1></H1> this is react Component
+-Component types:
+    1)Class based
+    2)Functional based  (function name's first letter Capital)
+-Make Component of type .jsx - javaScript Syntax Extension
+.js - javaScript
+
+-Component should return only one thing (anything) but must onet thing it should return.
+ wrap all thing in '<> </>' this. or <Fragment></Fragment>
+
+-normal function
+    export default function functionName(){
+        return(
+            
+        );
+    }
+
+    function MyHeading(){
+    return <h1>Heading</h1>
+    }
+
+-Arrow function
+ const SecondHeading = () =>{
+   return(
+     <h1>2nd Heading</h1>    
+   );
+ }
+
+-Arrow Function in react:
+    Syntax:
+
+        const function_name = () => //put whatever you want here.
+    eg.
+        const MainHeading = () => <h1>Hey, this is Main Heading</h1>
+
+-While exporting default function:
+    export default MainHeading;
+
+-While exporting more than one function:
+    export {MainHead2,MainHead3,MainHead4}; 
+
+-which importing one/default function:
+    -you can name it anything. while importing, 
+    but at the time of multiple function exporting you need to call them in {} braces &
+    while importing same name as you exported or you can change name using 'as' keyword
+
+    import name from 'path';
+    eg.
+        import Heading from './folder/file';
+
+-multiple importing:
+    same as exported.
+    import{Function1, Function2 as FUN2, Function3} from 'path';
+
+    use them as 
+    <function1 />     
+
+    use function2 as FUN2
+    <FUN2 />
+
+-default exported function you can import with any name but
+ the function which are not default imported,
+ the function which are exported mannually like below
+    export {Function1, Function2, Function3} need to import them with same name 
+    or change their name using as keyword, like
+    export {Function1 as Fun1, Function2 as Fun2, Function3}
+
+    using like  
+        <Fun1 />
+        <Fun2 />
+        <Function3 />
+
+or write export on same line to export that function
+eg.
+    export const MainHead2 = () => <h2>Main heading 2.</h2>
+
+importing default & mannual function same time.
+    import defaulOne, { Function1 as Fun1, Function2 as Fun2, Function3} from "path";
+    eg.
+        import React, { Fragment } from "react";
+-----------------------------------------------------------------------------------------------------
+
+Heading.jsx file:
+    const MainHeading = () => <h1>Hey, this is Main Heading</h1>
+
+    export const MainHead2 = () => <h2>Main heading 2.</h2>
+
+    const MainHead3 = () => <h2>Main heading 3.</h2>
+
+    const MainHead4 = () => <h2>Main heading 4.</h2>
+
+    export default MainHeading;
+    export {MainHead3, MainHead4}; 
+ ----------------------------------------------------------------------------------------------
+App.js file:
+    import React, { Fragment } from "react";
+    import MeraHeading from './Components/Heading';
+
+    import {MainHead2 as SecondHead ,MainHead3,MainHead4} from './Components/Heading';
+
+    // var a = 200;
+    // normal function
+    // export default function functionName(){}
+
+    // function MyHeading(){
+    //   return <h1>Heading</h1>
+    // }
+
+    //arrow function
+    // const SecondHeading = () =>{
+    //   return(
+    //     <h1>2nd Heading</h1>    
+    //   );
+    // }
+
+    //using arrow function we can reduce the code to one line also.
+    // const ThirdHeading = () => <h2>Third Heading</h2>
+
+    function App(){
+    return(
+        // <Fragment>
+        //   <div>
+        //     <MyHeading />
+        //     <SecondHeading />
+        //     <ThirdHeading />
+        //     <h1>Welcome page {a} </h1>
+        //     <p>This is paragraph</p>
+        //   </div>
+        //   <div>
+        //     <h1>Second Div</h1> 
+        //   </div>
+        // </Fragment> 
+        <>
+        <MeraHeading/>
+        <SecondHead />
+        <MainHead3 />
+        <MainHead4 />
+        </>
+    );
+    }
+    export default App;
+-----------------------------------------------------------------------------------------------------
+Sending props:
+
+    Heading.jsx
+    const MainHeading = (props) => <h1>Hey {props.name}, This is {props.place}</h1>
+
+    export const MainHead2 = (props) => <h2>{props.name}, Software Engineer at {props.compName}</h2>
+
+    const MainHead3 = (props) => {
+        var a = props.Lname;
+        return(
+        <h2>hey, {a}</h2>
+        );
+    }
+
+    App.jsx
+    import { MainHead2 as MH, MainHead3 as MH3 } from './Components/Heading'
+    <Title name='Vivek' place='Bengluru'/>
+    <MH name='Vivek Nikate' compName='Capgemini'/>
+    <MH3 Lname='Surname'/>
+--------------------------------------------------------------------------------------------------------
+De-Structuring:
+
+    const MainHead3 = (props) => {
+        var name = props.Lname;
+        const obj = {
+            a:1,
+            b:2,
+            c:3,
+        };
+        
+        const {a,b,c} = obj;            //this is de-structuring of object
+
+        return(
+        <>
+            <h2>hey, {props.name}</h2>
+            <h3>{obj.a}</h3>                 {/* Before de-structuring we have to use like this */}
+            <h4>{b}</h4>                     {/* After de-structuring we can use like this direcly name of varible*/}
+            <h4>{c}</h4>                     {/* After de-structuring we can use like this */}
+        </>
+        );
+    }
+--------------------------------------------------------------------------------------------------------
+Sending props using De-structure:
+    -props names are caseSensitive.
+    -you can pass string or number in {} braces as below with single quote.
+    -we Destructured data of props here instead of using props.varName
+
+    -inline styling in React:
+        <h1 style={{color:'green'}}>Salary is {Salary}</h1>
+
+    -You can pass props like
+        name = 'name here'  or 
+        name = {'name here'} or
+        Salary='999,999,999' or
+        Salary={'999,999,999'} or
+
+        Salary= {999999999}         //if number must enclose in curly braces
+    -=-=-=-=-=-=--=-=--=-=-=-=-=---=---=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+        export const Destructure = ({name,Age,place,Salary}) =>{
+        return(
+            <>
+                <h1>Destructuring</h1>
+                <h2>Hey, Hello <br /> My name is {name}, I'm from {place} & my age is {Age} </h2>
+                <h1 style={{color:'green'}}>Salary is {Salary}</h1>
+            </>
+            );
+        }
+
+    import { Destructure as DSR } from './Components/Heading'
+    <DSR name='Vivek' Age='23' Salary={'99,999,999,999'} place={'Solapur, Maharashtra'} />
+--------------------------------------------------------------------------------------------------------
+
+function to another function data transfer:
+    
+    Heading.jsx:
+
+    export const AnotherFun = ({value}) =>{
+        return(
+        <h2>This is value from another Function: {value}</h2>
+        );
+
+    export const Destructure = ({name,Age,place,Salary,price}) =>{
+        return(
+            <>
+                <h1>Destructuring</h1>
+                <h2>Hey, Hello <br /> My name is {name}, I'm from {place} & my age is {Age} </h2>
+                <h1 style={{color:'green'}}>Salary is {Salary}</h1>
+                <AnotherFun value={price}/>
+            </>
+        );
+    }
+    
+    App.jsx:
+
+    import { Destructure as DSR } from './Components/Heading'
+    <DSR name='Vivek' Age={23} Salary='999,999,999' place={'Solapur, Maharashtra'} price={101}/>
+--------------------------------------------------------------------------------------------------------
+Setting default value to props:
+    Function:
+    
+    export const Destructure = ({name= 'This is default name' ,Age ='faultAge 999' ,place='FaultPlace Alien' ,Salary ='Fault ∞' ,price='NaN'}) =>{
+    return(
+        <>
+            <h1>Destructuring</h1>
+            <h2>Hey, Hello <br /> My name is {name}, I'm from {place} & my age is {Age} </h2>
+            <h1 style={{color:'green'}}>Salary is {Salary}</h1>
+            <AnotherFun value={price}/>
+        </>
+    );
+
+    Calling:
+        <DSR />
+        <DSR name='Amazing' />              //here just the name will get settled. rest all have the default value. 
+}
+--------------------------------------------------------------------------------------------------------
+#Styling:
+    -Recommended,
+        always make a new folder to style the components.
+        put the link of style-sheet in 
+            public-> index.html or
+            src -> App.js       or
+            src -> index.js
+    eg.
+        import Header from './Components/Heading';          
+                --This is while importing particular function from file.
+
+        import './styles/App.css'
+                --This is while importing that complete file.
+            
+        import '../styles/Header.css';
+                --This is while importing that complete file, but out of current folder 
+                  there is another folder called style inside that Header.css file, include that.   
+                    that's why used '..' there.
+
+    box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.5);
+                x-offset | y-offset | blur-radius | Spread-radius | color
+    
+    background-color: pink !important;
+        -in usual case what happens when we style any thing in css the last style will
+         get applied to that element, & if we used this !important (extra parameter)
+         then by forcefully we are telling to the browswer that apply this style to that 
+         particular element.
+         Like here the 'background-color:pink' will get applied forcefully
+--------------------------------------------------------------------------------------------------------
+    <a href="#">Home</a>
+    <a href="/">Blog</a>
+What's difference between # or / in link:
+    -if we put # then just stay on same page or go to that particular id's content
+     like    
+         <a href="#demo">Home</a>
+    -if / is there then it is the root of all files.
+
+text-decoration: none; 
+    -use this property to remove text decoration like underLine strikethrough, wavy etc.
+    -use this property to remove text decoration like underLine strikethrough, wavy etc. 
+
+    strikethrough in css 
+        text-decoration: line-through;
+
+        text-decoration-line: overline underline;
+        text-decoration-style: wavy;
+
+text-decoration-style value:
+            solid	Default value. The line will display as a single line	
+            double	The line will display as a double line	
+            dotted	The line will display as a dotted line	
+            dashed	The line will display as a dashed line	
+            wavy    The line will display as a wavy line
+    ----------------------------------------
+    font:400 3rem cursive;
+        boldness size style
+
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
