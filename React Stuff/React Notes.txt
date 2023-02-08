@@ -1,8 +1,10 @@
 coursera 1st course
-	react is powerful frontend library not a framework
+	react is powerful frontend JS library not a framework
 	Developed by facebook & released for the world in 2013
 	better than angular
 	react popular coz the shadow & virtual dom
+
+    -Angular & NEXT.JS are framework, React is library.
 
 coursera 2nd course
 	REACT:
@@ -21,6 +23,13 @@ coursera 2nd course
 		-cd <app-name>
 		-npm start
 	
+    -When you download new project without node_modules then before running 'npm start'
+        download npm dependencies
+        -npm install or
+        -npm i
+        -npm start
+
+
 	-JSX is almost a html little change require for being javaScript
 	-React return only 1 tag.
 		or if you want to return multiple tag use below Syntax
@@ -140,7 +149,7 @@ eg.
     export const MainHead2 = () => <h2>Main heading 2.</h2>
 
 importing default & mannual function same time.
-    import defaulOne, { Function1 as Fun1, Function2 as Fun2, Function3} from "path";
+    import defaultOne, { Function1 as Fun1, Function2 as Fun2, Function3} from "path";
     eg.
         import React, { Fragment } from "react";
 -----------------------------------------------------------------------------------------------------
@@ -254,6 +263,9 @@ Sending props using De-structure:
 
     -inline styling in React:
         <h1 style={{color:'green'}}>Salary is {Salary}</h1>
+
+    -multiple styles: comma(,)
+        <h1 style={{color:'red',FontFamily:'cursive'}}>Enter your text here..!</h1>
 
     -You can pass props like
         name = 'name here'  or 
@@ -378,12 +390,168 @@ text-decoration-style value:
         boldness size style
 
 --------------------------------------------------------------------------------------------------------
+React-router-DOM:-
+    -packages used for routing in React.(navigating from one page to other without reloading the page)
+    -React won't reload the page, it just change the Component of that page. 
+
+    -npm i react-router-dom
+    or to download the specific version of that package use 
+        -npm i package_name@version
+    "npm i react-router-dom@6.4.2"
+
+    
+    import {  BrowserRouter as Router, Routes, Route } from "react-router-dom";
+        use this to import router related functionality.
 --------------------------------------------------------------------------------------------------------
+Import default related errors:
+    -suppose if you made function like this ..
+        
+        export const About = () => {
+            return 
+                <h1>
+                    About us page.
+                </h1>
+            }
+    
+    -export is on same line of function name, this is OK but at last mention the default export to 
+     to export that function like ↓
+        export const About = () => {
+            return 
+                <h1>
+                    About us page.
+                </h1>
+            }  
+        export default About;
+        
+        -function_name & export default should be same.
 --------------------------------------------------------------------------------------------------------
+#Routing for page not found:
+    
+      <Route path='*' element={<h1 style={{color:'red'}} >Page not Found 404</h1>} />
+
+      here, * - for all path except the mentioned.
+            shows the content that page not found
+            keep this React tag where you want in <Routes>, if page not found then this will be shown
 --------------------------------------------------------------------------------------------------------
+Accessing id by url: Dynamic URL. in app.js file
+      <Route path='/product/:id' element={<ProductName />} />
+      <Route path='/article/:ArtNum' element={<ArticlePage />} />
+      
+      normal URL: in app.js file
+        <Route path='/product/id' element={<ProductName />} />
+
+    URL to header.js file: file used to just display the content on screen in that file use this links
+        
+        <Link to="/PRODUCT/id">Products</Link>          //for Dynamic purpose is same link as that of normal
+        <Link to="/blog">Blog</Link>                    //when we put colon then before parameter then it become the Dynamic.
+        <Link to="/contact">Contact</Link>
+        <Link to="/about">About</Link>
+        <Link to="/ARTICLE/art">Article</Link>
+
+    To display that ID or its content use "useParams" a HOOK.
+    HOOK should be defined inside the components/function only.
 --------------------------------------------------------------------------------------------------------
+When you clicked to the link it reloads the site.
+    so use this import
+        import { Link } from 'react-router-dom';
+            -replace anchor tag (<a></a>) with Link
+            -& 'href' attribute with 'to'
+    
+    eg.
+        <a href="/">Home</a>
+        <a href="/PRODUCT/id">Products</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="/ARTICLE/art">Article</a>
+    ->
+        <Link to="/">Home</Link>
+        <Link to="/PRODUCT/id">Products</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/about">About</Link>
+        <Link to="/ARTICLE/art">Article</Link>
+    
+    -this will won't reload now.
 --------------------------------------------------------------------------------------------------------
+-To display all content of array till end.
+           const Home = () =>{
+            const arr = [1,2,3,4,5,6,7,8,9,10];
+                return(
+                    <>
+                        <h1>Home Page</h1>
+                        <h3>
+                            {
+                                arr.map(i=>(
+                                    <Products value={i}/>
+                                ))
+                            }
+                        </h3>
+                    </>
+                );
+            }
+            export default Home;
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Project-1:
+    Project explanation..
+    -npx create-react-app .         //to create app in current folder
+    -npm i react-router-dom         //dependencies
+
+    //installing multiple dependencies same time 
+    -npm i react-router-dom react-icons sass            //3 files downloaded
+
+    //npm i or npm install are same.
+    -3 Folder created.
+        -styles     //for styling
+        -components //different pages
+        -assets     //required stuff here.
+
+    SASS    -Syntactically Awesome Style Sheets
+             Sass is a CSS pre-processor.
+             Sass reduces repetition of CSS and therefore saves time.  
+             Sass is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets.  
+        -2 ways to to write
+        -2 extension also
+            1).scss
+            2).sass
+
+            1).scss syntax:-
+                p{
+                    background-color: red;
+                    height:100vh        // viewport height
+                }
+                --------------------------------
+                p{
+                    a{
+                        color: red;
+                    }
+                }
+
+            2).sass syntax:-    nearly similar synta to python (indentation)
+                p
+                    background-color:red
+                -----------------------------
+                p
+                    a
+                        color:red
+            ----------------------------------------
+    -Search good Google-Font.
+    ------------------------------------------------
+    -you can put {} braces or not, enclose in single or double quote no problem
+          <Link to={"/"}>Home</Link>
+          <Link to={"/contact"}>Contact</Link>
+          <Link to='/#brand'>Brands</Link>
+          <Link to='/#about'>About</Link>
+          <Link to={'/service'}>Services</Link>
 --------------------------------------------------------------------------------------------------------
+Project files:-
+    Study complete project throughly (line by line). Understand every line.
+    Study->
+        Project-one 
+            -assets
+            -components
+            -style
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------

@@ -32,6 +32,7 @@ a closing tag
 SECTION 2: Intro to HTML
 HTML : HyperText Markup Language
  HyperText means link, When we clicked goes to other documents
+ Extension is eiter .htm OR .html
 
 Tags:
     heading : <h1></h1>

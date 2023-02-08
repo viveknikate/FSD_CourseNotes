@@ -10,7 +10,15 @@ Udemy git course
 
 -The default branch for git is master
 -The default branch for github is main
-
+---------------------------------------------------------------------------------------------------
+#To Open any repository directly on browser
+ just paste this (vscode.dev/) in link of GitHub repo.
+ -https://github.com/viveknikate/CV     
+    
+    this above link you want to open directly in browser 
+    the link will modified to ->
+    https://vscode.dev/github.com/viveknikate/CV
+---------------------------------------------------------------------------------------------------
 #TO STOP ANY COMMAND EXCUTION:
     -ctrl+C (press control+C)
 

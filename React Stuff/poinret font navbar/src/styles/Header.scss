@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: aquamarine;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    a{
+        margin-right: 50px;
+        text-decoration: none;
+        font-weight: 800;
+        color: black;
+
+        &:hover{
+            color: rgb(106, 43, 255);
+        }
+    }
+}

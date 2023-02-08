@@ -1,0 +1,18 @@
+nav{
+    padding: 3rem;
+    background-color: pink !important;
+    box-shadow: 5px 5px 5px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+nav:hover{
+    box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.5);
+}   
+
+nav > a{
+    font:400 3rem cursive;
+    padding: 20px;
+    color: rgb(231, 113, 28);
+    text-decoration-line: underline;
+    text-decoration-style:dotted;
+}
