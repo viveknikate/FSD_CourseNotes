@@ -58,7 +58,7 @@ coursera 2nd course
 ----------------------------------------------------------------------------------------------------
 Props:- properties
 		-create components folder. create components file with first letter capital.
-		& import it where every you needed.
+		& import it wherever you needed.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=--=--=-=-=-=-=-=-=-=-=--=--=---=-=-=-=---=-=-=-=-=-=-=-=-=-=-
 YouTube 5 Project Video:-
@@ -76,11 +76,26 @@ Website:-
 -Component types:
     1)Class based
     2)Functional based  (function name's first letter Capital)
--Make Component of type .jsx - javaScript Syntax Extension
+-Make Component of type 
+.jsx - javaScript Syntax Extension
 .js - javaScript
 
--Component should return only one thing (anything) but must onet thing it should return.
+-Component should return only one thing (anything) but must one thing it should return.
  wrap all thing in '<> </>' this. or <Fragment></Fragment>
+    1).
+       <React.Fragment>
+            //content
+       </React.Fragment>
+
+    2).
+        <>
+            //Content
+        </>
+    
+    3). 
+        <Fragment>
+            //Content
+        </Fragment>
 
 -normal function
     export default function functionName(){
@@ -92,6 +107,7 @@ Website:-
     function MyHeading(){
     return <h1>Heading</h1>
     }
+    export default MyHeading;
 
 -Arrow function
  const SecondHeading = () =>{
@@ -350,6 +366,8 @@ Setting default value to props:
                 --This is while importing that complete file, but out of current folder 
                   there is another folder called style inside that Header.css file, include that.   
                     that's why used '..' there.
+        
+        -That style gets applied which is defineded at last.
 
     box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.5);
                 x-offset | y-offset | blur-radius | Spread-radius | color
@@ -527,7 +545,7 @@ Project-1:
                     }
                 }
 
-            2).sass syntax:-    nearly similar synta to python (indentation)
+            2).sass syntax:-    nearly similar syntax to python (indentation)
                 p
                     background-color:red
                 -----------------------------
@@ -550,8 +568,64 @@ Project files:-
         Project-one 
             -assets
             -components
-            -style
+            -style      (check this scss files for refering styles)
+    
+    importing sass/scss file
+        @import './colors.scss';        //in the same folder
+        @import "./colors.scss";
+
+        @import 'colors';               //in the same folder
+    
+    Note:-
+        position: fixed;        //fixed = absolute + sticky
+                                absolute - get out of the flow, means won't take space
+                                fixed -  stick to the particular position.
+
+        position: sticky        //sticky = stick to position + it'll take space also to show
+                                            his presence                        
+    
+    -To get scroll to the particular section of page where ID is.
+    download this package for react 
+        -npm i react-router-hash-link
+
+    -downloading the specific version of package
+        -npm i package_name@version             //here i is for install
+        -npm i react-router-hash-link@2.4.2
+    
+        Link tag used to go another page of Website, & HashLink used within page to scroll down 
+        to the particular section of page in 
+        
+            <HashLink to={"/#"}>Home</HashLink>
+            <Link to={"/contact"}>Contact</Link>
+            <HashLink to='/#brand'>Brands</HashLink>
+            <HashLink to='/#about'>About</HashLink>
+            <Link to={'/service'}>Services</Link>
+        
+    
+        for normal html we use anchor tag 
+            <a href='/#brand'>Brands</a>
+            -this will get to that specific section of page.
+        
+        footer{
+
+            >div{
+                    //this is the div which is child of footer
+                    //will get the this styling
+                    //all other div inside this div won't get this styling.
+
+                    //ie. direct child of footer
+            }
+        }
+
+        -npm i react-responsive-carousel
+
+        -npm i -g vercel        //first downlaod CLI
+            to deploy projec to web.
+        
+        -vercel login
+        -then deploy your project with name
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+--------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------

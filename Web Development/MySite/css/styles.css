@@ -29,9 +29,9 @@ h1{
 
 h2{
     margin-top: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    font-weight: normal;
+    font-family: arial;
+    font-size: 3rem;
+    font-style: italic;
     color: #66BFBF;
 }
 
@@ -47,17 +47,12 @@ h3{
 }
 
 a{
-    color: #11999E;x
+    color: #11999E;
 }
 
 .middle-container{
    
 }
-
-span{
-    text-decoration: underline;
-}
-
 .top-cloud{
     position:absolute;
     right: 400px;
@@ -74,7 +69,7 @@ span{
 .bottom-cloud{
     position: absolute;
     top: 250px;
-    left: 400px;
+    left: 250px;
 }
 
 .three-image1{
