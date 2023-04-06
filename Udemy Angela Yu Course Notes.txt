@@ -38,6 +38,9 @@ Tags:
     heading : <h1></h1>
     h1 to h6.
 
+    <h1 style="writing-mode:vertical-lr;">hello world</h1>
+    -vertical text
+
     Line break/new line not closing tag/self closing tag
     <br> or <br /> in XHTML
 
@@ -60,8 +63,21 @@ HTML Boilerplate:   Simply the structure of writing HTML
     <head> contain info of website
     <meta> info of website
     <title> name displayed over tab bar
-
     <body> content of site goes in body
+
+    <p contenteditable>This is paragraph</p>
+    <p contenteditable="true">This is paragraph</p>
+    <h1 contenteditable>Hello world..!</h1>
+    -here the paragraph is editable now.
+
+    changing the styles on page:
+        <style contenteditable="true" style="display: block;">
+            h1{
+                color: red;
+            }
+        </style>
+        -here you can change the value only, 
+         you can't define the value for new tag or new property for that tag.
 ==================================================
 <em> or <i> tag for italics always prefer to use <em> tag cause it conveys the meaning
 <b> or <strong> for boldness of text always use strong.
@@ -190,6 +206,32 @@ Content in that
           then click save to host the application live "
 
           Home page name must must "index.html" lowercase
+==========================================================================================================
+Video tag HTML:-
+    <video 
+            poster="http://placehold.it/1200x500" 
+            height="300px" 
+            width="500px"
+            style="background-color:green;"
+            //src="http://techslides.com/demos/sample-videos/small.webm"
+            controls
+            //type="video/mp4"
+        >
+        <source src="link" type="video/mp4" />
+    </video>
+       
+    -Adding multiple picture according to screen size,
+    <picture style="display: flex; justify-content: center;">
+          <source 
+               srcset="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+               media="(min-width:1200px)"
+          >
+          <source
+               srcset="https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9LCJ0b0Zvcm1hdCI6ImF2aWYifX0="
+               media="(min-width:720px)"
+          >
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg" alt="Person" title="I'm person">
+     </picture>
 ==========================================================================================================
 NOTE:- if you don't give any styling to the page keep in mind that there is always 
         default styling given by browser. you can override it.
@@ -357,6 +399,21 @@ CSS: Cascading Style Sheets
                 border-bottom-right-radius: 30px;
             }
     ---------------------------------------------------------------------------------------
+    //below styling will stop selecting the text from user end 
+        & won't be able to copy the text
+    <body>
+        <h1>
+            Hello world..!
+        </h1>
+    </body>
+    
+    body>h1{
+        color:red;
+        text-align: center;
+        cursor: not-allowed;
+        user-select:none;
+    }
+    ---------------------------------------------------------------------------------------
     Block elements in CSS:
         block elements are those who takes complete/whole width of screen on web page
         eg.
@@ -403,6 +460,23 @@ CSS: Cascading Style Sheets
     p {
         visibility : hidden;
     }
+===================================================================================
+CSS Animation:-
+    <h1>Hello world...!!</h1>
+
+     h1{
+        opacity: 0;
+        transform: translateY(50px);
+        animation: FadeUP 2s forwards;    
+        /* forwards retain the last keyframe properties*/
+      }
+
+      @keyframes FadeUP{
+        to{
+          opacity: 1;
+          transform: translateY(0);
+        }  
+      }
 ===================================================================================
   Position in CSS:
     4 types:
@@ -758,7 +832,47 @@ eg.
         ->
             here h1 will change its color & font-size when the
             minimum width is 700px & maximum width is 1000px
-    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    here, content of page should be get fit according to device-width.
+
+    @media (min-width:400px){
+        //This styles will get applied if the width is 400 or more than 400
+    }
+
+    or
+    @media (width >= 400){
+        //This styles will get applied if the width is 400 or more than 400
+    }
+
+    @media (width = 400)          //you can use any of this operator 
+    @media (width <= 400)
+    @media (width >= 400)
+
+    #RANGE:
+        @media(720px <=  width <= 1080px){
+            //apply styles if width is between 720px to 1080px
+        }
+
+        in css words AND
+        @media (min-width:720px) and (max-width:1080px){
+
+        }
+
+        OR use ','
+
+        @media (min-width:720px), (max-width:1080px){
+
+        }
+
+    @media (orientation:landscape){
+        //apply these styles if width > height
+    }
+
+    @media (orientation:portrait){
+        //apply these styles if height > width
+    }
+
 Font awesome link:-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      
@@ -921,7 +1035,7 @@ https://www.canva.com/design/DAFYkEsiWUM/7fWPvRA2eHX4jhMVlvPB1A/view?website#4:h
             v = prompt("Enter your name ");
             alert("hey there\n Hello "+v);
 
-    -to create a sample JS file go to chrome inspect in that SOURCE section, in that SNIPPETS
+    -to create a sample JS file go to chrome inspect in that side to Console tab,    SOURCE section, in that SNIPPETS
     eg.
         22+55
             77
@@ -938,7 +1052,8 @@ https://www.canva.com/design/DAFYkEsiWUM/7fWPvRA2eHX4jhMVlvPB1A/view?website#4:h
 ------------------------------------------------------------------------------------------------------------------------
 Prompt in JS:
     eg. 
-            -prompt("What is your name?");
+            -prompt("What is your name?",'Here Default name');
+            -prompt("What is your name?"    );
         or
         displaying user name on screen:
             -alert(prompt("What's your name?")); 
@@ -987,6 +1102,8 @@ JavaScript variable:
     var myname = 123
 
     -var Name should start with alphabates or $ or _
+        eg.
+            name, $one, _one 
     -var Name should NOT start with number
     -var Name can contain $ & _ sign only. not other special symbols
     -var Name can't contain space in between
@@ -1146,7 +1263,13 @@ eg.
     v--;       //4
 --------------------------------------------------------------------------------------------------------------------------------
 Assignment Operator:
-    =    +=    -=    *=    /=    %=    **=
+    =     Assign
+    +=    Addition
+    -=    Subtract
+    *=    multiply
+    /=    Divide
+    %=    Modulo
+    **=   Exponential
 eg.
     var a = 4;
     a *= 2;     //a =a *2     
@@ -1154,7 +1277,15 @@ eg.
 --------------------------------------------------------------------------------------------------------------------------------
 #Function in JS:
     1.Function without parameter with return value
+        function fun1(){
+            return 'something../anything';
+        }
+
     2.Function with parameter with return value
+        function fun1(a,b){
+            return a+b;
+        }
+        
     3.Function without parameter without return value
     4.Function with parameter without return value
   
@@ -1181,6 +1312,24 @@ function example:
         price = 89;
         alert("you got "+ ~~(price/5)+" milk bottle")               //use ~~ double tilde to round the value in JS
         alert("you got "+ Math.floor(price/5)+" milk bottle")       //use floor method round the value in JS
+--------------------------------------------------------------------------------------------------------------------------------
+    #Confirm in JS :-
+
+    <body>
+        <p>Click the button to display a confirm box.</p>
+        <button onclick="confirmation()">click</button>
+        <p id='demo'></p>
+
+        <script>
+            function confirmation(){
+                var a = confirm('Press OK..!!');
+                if(a == true)
+                    document.getElementById('demo').innerHTML = 'Task Executed successfully✔';
+                else
+                    document.getElementById('demo').innerHTML = 'Task Halted.❌';
+            }
+        </script>
+    </body>
 --------------------------------------------------------------------------------------------------------------------------------
 eg.
     function lifeInWeeks(age) {
@@ -1262,9 +1411,9 @@ Comparator Operator:
     <, >, <=, >=, ==, ===, !=, !==, ?
     --------------------------------------
     ==	equal to
-    ===	equal value and equal type
+    ===	equal value and equal datatype
     !=	not equal
-    !==	not equal value or not equal type
+    !==	not equal value or not equal datatype
     >	greater than
     <	less than
     >=	greater than or equal to
@@ -1363,7 +1512,7 @@ Bitwise     Operator:
     h =parseInt(prompt("enter your num :"));        //use parseInt method for conversion from other datatype to INT.
 
     if(a.includes(h))
-        alert("Welcome to the party!!");
+        alert("Welcome to the party!!");            //includes method will return true if it contain the value else return false. 
     else
         alert("Sorry.!\n Next time.");
 
@@ -1401,6 +1550,50 @@ Q.1 - 100 number if divisible by 3 Fizz if divisible by 5 Buzz if both then Fizz
             document.write("Buzz <br/>");
         else 
             document.write(i+"<br/>");
+--------------------------------------------------------------------------------------------------------------------------------
+Typing Animation using JavaScript:
+    CDN :-
+    <script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+    
+    <div style="padding: 50px;line-height: 30px;">
+          <span class="typed"></span>
+          <br>
+          <span id="typed"></span>
+          <br>
+          <input type="text" name="" id="placer">
+     </div>
+     
+     <script>
+          //for class selector
+          var typed = new Typed(".typed", {
+               strings:['Vivek',"Mahesh",'Nikate','Nikate Vivek Mahesh','Nikate Rohini Mahesh'],
+               typeSpeed: 10,
+               backSpeed: 60,
+               cursorChar: '/',
+               loop:true,
+               // smartBackspace:true //default
+          });
+          
+          //for Id selector
+          var typed = new Typed("#typed", {
+               strings:['Vivek',"Mahesh",'Nikate','Nikate Vivek Mahesh','Nikate Rohini Mahesh'],
+               typeSpeed: 100,
+               backSpeed: 60,
+               cursorChar: '_',
+               loop:true,
+               // smartBackspace:true //default
+          });
+
+          //for input placeholder
+          var n = new Typed("#placer",{
+               strings: ['Some strings without', 'Some HTML', 'Chars'],
+               typeSpeed: 30,
+               backSpeed: 0,
+               attr: 'placeholder',
+               bindInputFocusEvents: true,        //bindInputFocusEvents does when we click to input tag the animation gets pause for while
+               loop: true
+          });
+     </script>
 --------------------------------------------------------------------------------------------------------------------------------
 #Array Push & Pop methods:
     arr = [];
@@ -1760,7 +1953,7 @@ JS Sample functions:
 
     var heading = document.firstElementChild.lastElementChild.firstElementChild;
    
-    from REFERENCE 1
+    from REFERENCE 1 (Line num 1915)
     {    
         document's firstElementChild is html
         html's lastElementChild is body
@@ -1938,6 +2131,110 @@ Attribute of tags:-
             
             //setting the attribute
             //here attribute changed now.
+--------------------------------------------------------------------------------------------------------------------------------
+Adding click event to button:- 
+    document.querySelector('button').addEventListener('click',handleClick);
+    function handleClick(){
+        alert("I got clicked...!");
+    }
+
+    OR anonymous function:
+        document.querySelector('button').addEventListener('click',function (){
+            alert("I got clicked...!");
+        });
+--------------------------------------------------------------------------------------------------------------------------------
+Higher Order Function:-
+    Function that can take other functions as input.
+    eg. 
+        simple function-
+        function add(num1, num2) {
+                return num1+num2;
+        }
+        add(4,4);
+
+        higher order function:
+            function Multi(n1,n2){
+                return n1*n2;
+            }   
+
+            function diff(n1,n2){
+                return n1-n2;
+            }   
+
+            function calc(n1,n2,Operator){
+                return Operator(n1,n2)
+            }
+
+            //calling
+            calc(12,12,diff)    //0
+            calc(12,12,add)     //24
+
+    //Debugging JavaScript: inside Console
+        debugger;           //shift+enter
+        add(12,12)  
+            
+--------------------------------------------------------------------------------------------------------------------------------
+JavaScript Objects:-
+    eg.1)
+            var houseKeep ={
+                name: 'First Person',
+                age: 20,
+                Experience: 4,
+                Address: '12th street YT Road, Booter',
+                Language:['Marathi', 'English','Hindi'],
+                work: function (){
+                    alert('performing tasks');
+                    console.log(HouseKeep.name);
+                    console.log(HouseKeep.Experience);
+                    function2();
+                    fun3();
+                }
+            }
+
+        calling:
+            HouseKeep.work();
+            conso.log(HouseKeep.Address);
+        
+       2)
+            var obj1 = {
+                name:'Person1',
+                age:19,
+                exp:4,
+                lang:['English','Marathi','Hindi','Kannada'],
+                task: function (n='Default') {
+                    console.log("Hello "+n);
+                }
+            }
+        calling:
+            obj1.name;
+            obj1.task();                //Default gets called. Hello Default
+            obj1.task('John');          //Hello John.
+
+
+Constructor Function:-
+    function's every first letter is capitalized.
+    eg.
+        function HouseKeepers(name,age,exp,addrs,lang) {
+            this.name = name;
+            this.age = age;
+            this.exp = exp;
+            this.addrs = addrs;
+            this.lang = lang;
+            this.task = function (){
+                alert('Task is in progress');
+            }
+        }
+
+        eg.
+            var person1 = new HouseKeepers('First',20,4,'Pixel no.44 G-tech block, Z-pointer',['c','c++','java','python']);
+            var bot = new HouseKeepers('X-stream',15,2,'Pixel no.44 G-tech block, XZ-pointer',['ServerCommunication','CCNA']);
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------

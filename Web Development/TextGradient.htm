@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TextGradient</title>
+     <style>
+          body{
+               /* background-color: black; */
+          }
+          h1{
+               background-image: linear-gradient( to right , rgb(28, 211, 0), rgb(0, 255, 251));
+               width: fit-content;
+               padding: 20px;
+               -webkit-text-fill-color: transparent;
+               -webkit-background-clip: text;
+          }
+
+          h2{
+               /* color: white; */
+               padding: 20px;
+               /* background-image:linear-gradient(45deg, rgb(255, 39, 154), rgb(68, 202, 244)); */
+          }
+                    
+          h2:hover{
+               animation: animator 2s linear infinite; 
+
+          }
+
+          @keyframe animator{
+               to{
+                    font-size:10em;
+               }
+          }
+          h2{
+               background-image: linear-gradient(to bottom right, red , blue);
+               width:fit-content;
+               font-size:5em;
+               -webkit-text-fill-color:transparent;
+               -webkit-background-clip:text;
+          }
+
+          #h2:hover{
+               animation: animator 4s ease-in-out infinite;
+          }
+
+          @keyframes animator{
+               from{
+                    background-image:linear-gradient(45deg, red, green);
+                    -webkit-text-fill-color:transparent;
+                    -webkit-background-clio:text;
+               }
+               to{
+                    background-image:linear-gradient(to bottom right, deeppink, yellow);
+                    -webkit-text-fill-color:transparent;
+                    -webkit-background-clio:text;
+               }
+          }
+
+          div{
+               font-size: 50px;
+               font-weight: bold;
+               /* background-image: linear-gradient(45deg, rgb(0, 255, 26), rgb(0, 0, 0)); */
+               background-image:linear-gradient(to right, aqua, black, aqua);
+               width: fit-content;
+               -webkit-text-fill-color: transparent;
+               -webkit-background-clip: text;
+               animation: colorSlider 50s linear;
+          }
+
+          div:hover{
+          }
+
+          @keyframes colorSlider{
+               to{
+                    background-position: 450vh;
+               }
+          }
+     </style>
+</head>
+<body>
+     <h1>Hello world</h1>
+     <h2>Vivek Nikate</h2>
+     <div>Hey there...,</div>
+</body>
+</html>

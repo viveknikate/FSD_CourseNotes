@@ -5,6 +5,17 @@ GIT NOTES BY HARRY :-
 
     command
 
+    -to print on screen:
+        -echo '....text.....'
+        -echo "....text....."
+        -echo hello\'s world
+    
+    -To put some content in file
+        -echo my name >> name.txt
+        -echo "my name something" >> name.txt
+        -echo something here goes all time >> name.txt
+
+
     use in particular directory/ to create a git repo in that folder
     git init
 
@@ -60,7 +71,7 @@ GIT NOTES BY HARRY :-
     cloning
     git clone url optional_name 
 
-    pwd = to check present working directory
+    pwd = to check present working directory/ Print Working Directory.
 
     ls = list of folder/ files
     
@@ -108,7 +119,7 @@ GIT NOTES BY HARRY :-
     to untrack any file or remove from tracking
     git rm --cached home.html
 
-    Default branch of git is MASTER 
+    Default branch of git is MASTER or Main
 
     to see the short summary of commits
     git log --stat
@@ -194,6 +205,7 @@ GIT NOTES BY HARRY :-
 
     //to check branches
     git branch
+    git branch --list
 
     //to upload
     git push -u origin master
@@ -231,12 +243,13 @@ GIT NOTES BY HARRY :-
 
     //to switch branch
     git checkout software_Engine
-    git checkout branch_name
+    git checkout <branch_name>
     
     //just to create branch without swithing to that branch 
-    git branch branch_name
+    git branch <branch_name>
+    git branch version2
 
-    //to checkout all branches
+    //to checkout all branches & remote branches
     git branch -a
     git branch
 
@@ -316,6 +329,12 @@ GIT NOTES BY HARRY :-
     git branch -m software_Engine SoftwareDevelopment
     git branch -m <old name> <New_name>
 
+    //or to rename the current branch
+        git branch -m <new_name>
+        git branch -M <new_name>
+        eg.
+            git branch feature
+
     //commands
     git config --global user.email <your email address>
     git --version
@@ -383,6 +402,8 @@ GIT NOTES:
     to check all commits
     -git log
 
+    to exit from log history press just Q
+
     to check the last 5 commits use
     -git log -p -5
 
@@ -406,10 +427,12 @@ GIT NOTES:
     to just remove file from tracking only use
     -git rm --cached file_name
     eg.
-        git rm --cached index.html  
+        git rm --cached index.html
+        git rm --cached  -r -f .        //removing all files from staging area recursively & forcefully.
 
     to get short msg for git status
     -git status -s
+    -git status --short
 
     to check the branches use 
     -git branch
@@ -454,6 +477,9 @@ Udemy git course
 -The default branch for github is main
 ---------------------------------------------------------------------------------------------------
 #To Open any repository directly on browser
+
+-just press (.) Period key on keyboard.
+
  just paste this (vscode.dev/) in link of GitHub repo.
  -https://github.com/viveknikate/CV     
     
@@ -540,6 +566,9 @@ or
 BACK TO PARENT
     -cd ..          //back by 1 step    
     -cd ../../../   //back by 3 step
+    
+-to get back to root/ main directory:-
+    -cd ~
 
 
 GIT INIT COMMAND:
@@ -964,6 +993,7 @@ Spcial Markers:
 
     >>To check the list of stashes use command:
         -git stash list
+        -git stash show
         ※output:
             stash{0} changes made in file1.txt
             stash{1} changes made in file1.txt

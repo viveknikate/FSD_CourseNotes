@@ -13,6 +13,7 @@ h1{
     width: 40%;
     margin: 0 auto 0;
     top: 200px;
+    text-shadow: 5px 6px 7px rgb(0, 0, 0);
     font-family: 'Sacramento', cursive;
     font-size: 5.62rem;
     color: #66BFBF;
@@ -30,6 +31,7 @@ h1{
 h2{
     margin-top: 0px;
     font-family: arial;
+    text-shadow: 4px 3px 4px rgb(0, 0, 0);
     font-size: 3rem;
     font-style: italic;
     color: #66BFBF;

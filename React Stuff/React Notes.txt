@@ -96,6 +96,11 @@ Website:-
         <Fragment>
             //Content
         </Fragment>
+    
+    4)
+      <React.StrictMode>        //use for local application building purpose, it'll mount the component 2 times
+      </React.StrictMode>
+
 
 -normal function
     export default function functionName(){
@@ -468,6 +473,8 @@ Accessing id by url: Dynamic URL. in app.js file
 
     To display that ID or its content use "useParams" a HOOK.
     HOOK should be defined inside the components/function only.
+
+    HOOK always start with 'use'.
 --------------------------------------------------------------------------------------------------------
 When you clicked to the link it reloads the site.
     so use this import
@@ -561,72 +568,205 @@ Project-1:
           <Link to='/#brand'>Brands</Link>
           <Link to='/#about'>About</Link>
           <Link to={'/service'}>Services</Link>
---------------------------------------------------------------------------------------------------------
-Project files:-
-    Study complete project throughly (line by line). Understand every line.
-    Study->
-        Project-one 
-            -assets
-            -components
-            -style      (check this scss files for refering styles)
+    --------------------------------------------------------------------------------------------------------
+    Project files:-
     
-    importing sass/scss file
-        @import './colors.scss';        //in the same folder
-        @import "./colors.scss";
-
-        @import 'colors';               //in the same folder
-    
-    Note:-
-        position: fixed;        //fixed = absolute + sticky
-                                absolute - get out of the flow, means won't take space
-                                fixed -  stick to the particular position.
-
-        position: sticky        //sticky = stick to position + it'll take space also to show
-                                            his presence                        
-    
-    -To get scroll to the particular section of page where ID is.
-    download this package for react 
-        -npm i react-router-hash-link
-
-    -downloading the specific version of package
-        -npm i package_name@version             //here i is for install
-        -npm i react-router-hash-link@2.4.2
-    
-        Link tag used to go another page of Website, & HashLink used within page to scroll down 
-        to the particular section of page in 
+        -import 'react-responsive-carousel/lib/styles/carousel.min.css';    //carousel styling
         
-            <HashLink to={"/#"}>Home</HashLink>
-            <Link to={"/contact"}>Contact</Link>
-            <HashLink to='/#brand'>Brands</HashLink>
-            <HashLink to='/#about'>About</HashLink>
-            <Link to={'/service'}>Services</Link>
+        Study complete project throughly (line by line). Understand every line.
+        Study->
+            Project-one 
+                -assets
+                -components
+                -style      (check this scss files for refering styles)
         
-    
-        for normal html we use anchor tag 
-            <a href='/#brand'>Brands</a>
-            -this will get to that specific section of page.
+        importing sass/scss file
+            @import './colors.scss';        //in the same folder
+            @import "./colors.scss";
+
+            @import 'colors';               //in the same folder
         
-        footer{
+        Note:-
+            position: fixed;        //fixed = absolute + sticky
+                                    absolute - get out of the flow, means won't take space
+                                    fixed -  stick to the particular position.
 
-            >div{
-                    //this is the div which is child of footer
-                    //will get the this styling
-                    //all other div inside this div won't get this styling.
+            position: sticky        //sticky = stick to position + it'll take space also to show
+                                                his presence                        
+        
+        -To get scroll to the particular section of page where ID is.
+        download this package for react 
+            -npm i react-router-hash-link
 
-                    //ie. direct child of footer
+        -downloading the specific version of package
+            -npm i package_name@version             //here i is for install
+            -npm i react-router-hash-link@2.4.2
+        
+            Link tag used to go another page of Website, & HashLink used within page to scroll down 
+            to the particular section of page in 
+            
+                <HashLink to={"/#"}>Home</HashLink>
+                <Link to={"/contact"}>Contact</Link>
+                <HashLink to='/#brand'>Brands</HashLink>
+                <HashLink to='/#about'>About</HashLink>
+                <Link to={'/service'}>Services</Link>
+            
+        
+            for normal html we use anchor tag 
+                <a href='/#brand'>Brands</a>
+                -this will get to that specific section of page.
+            
+            footer{
+
+                >div{
+                        //this is the div which is child of footer
+                        //will get the this styling
+                        //all other div inside this div won't get this styling.
+
+                        //ie. direct child of footer
+                }
             }
-        }
 
-        -npm i react-responsive-carousel
+            -npm i react-responsive-carousel
 
-        -npm i -g vercel        //first downlaod CLI
-            to deploy projec to web.
-        
-        -vercel login
-        -then deploy your project with name
+            -npm i -g vercel        //first downlaod CLI
+                to deploy projec to web.
+            
+            -vercel login
+            -then deploy your project with name
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Project-2:
+    Chakra UI:-
+            Simple, Modular and accessible component library that gives 
+            you the building blocks you need to build your react applications.
+
+            -npx create-react-app . --template @chakra-ui
+            //create app in current folder with chakra ui library.
+
+            -npm i react-router-dom react-responsive-carousel
+            
+    Tailwind CSS:-
+        class based, just give the class name the 
+        properties will automatically gets applied.
+    
+    -Study all Components, imports.
+    -About Chakra library.
+    ------------------------------------------
+    Practice 2nd project:-
+        npx create-react-app . --template @chakra-ui
+        //creating application with chakra-ui library.
+
+        npm i react-router-dom react-icons
+        //installing extra packages
+
+        Chakra ui components:
+            <Button></Button>
+        
+        Menu bar like drawer: from 'react-icos/bi' file
+            <BiMenuAltLeft />
+        
+        Drawer sample:
+
+        //onClick handler's
+        const {isOpen,onClose,onOpen} = useDisclosure();
+
+
+            <Drawer isOpen={isOpen} onClose={onClose} placement={'left'}>
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader color={'purple.500'}>
+                            VIDEO HUB
+                        </DrawerHeader>
+                        <DrawerBody>
+                            <VStack alignItems={'flex-start'}>
+                                <Button onClick={onClose} colorScheme={'purple'} variant={'ghost'}>
+                                    <Link to={'/'}>Home</Link>
+                                </Button>
+                            </VStack>
+                        </DrawerBody>
+                    </DrawerContent>
+            </Drawer>    
 --------------------------------------------------------------------------------------------------------
+Basics of Hooks in React:-
+    1.useState :-   use to change/update the value dynamically.
+
+            const [text, setText] =useState('Type Something');          
+            return(
+                <h2>Type something to show up</h2>
+                <input type="text" placeholder="type here" onChange={e => setText(e.target.value)}/>
+                <p>{text}</p>
+            );
+    
+    2.useEffect :-
+        -if you used this hook in home page, then whenever the homepage will 
+        get displayed, hook get called.
+        -hook always used within component before return() function. 
+        syntax:-
+             useEffect(()=>{
+                console.log('Page displayed')
+            })
+
+            -this above will always gets executed whenever
+             a little thing changes on page.
+
+        -if you want to call this hook once when page is displayed/mounted first time then 
+         below will get called when the page is mounted first time & any changes made on page 
+         still it won't be called again.
+
+        -if you want to call the useEffect hook again then give some(tracking values)
+         variable in array then whenever the value of that variable changes the 
+         useEffect hook gets called again.
+
+        -for the below syntax this will gets called only once when the page is display/Rendered
+        syntax:-
+            useEffect(()=>{
+                console.log("Rendered Home Page..")
+            },[]) 
+            
+            -This will get's called when temp1, temp2 & temp3 values changes
+            -the array at end is used to call the useEffect when 
+             there is changes in specified variable of array else if other variable changes
+             useEffect won't get called.
+            useEffect(()=>{
+                console.log("Rendered Home Page..")
+            },[temp1, temp2, temp3])
+        
+
+        Mounting/ Unmounting:
+            useEffect(()=>{
+                console.log('Page displayed')
+                
+                return()=>{
+                    console.log('Unmounted');       //when we open other page this page will get cleaned
+                }
+
+                //return(()=>{
+                //    console.log("Un-mounted");
+                //})
+            },[])
 --------------------------------------------------------------------------------------------------------
+        #The difference between _blank & blank :-
+          <a href={'https://www.google.com'} target={"blank"}>Google</a>
+          <a href={'https://www.w3schools.com'} target={"blank"}>w3 School</a>
+            -above when you click first google's link it will open the page in new tab
+             then when you click the 2nd link of w3 School then it'll open that page
+             on previously open google's page ie. it override the previously opened google page
+
+            -& simply the target='_blank' will open all link in separate new tabs.
+        
+        -react function component without return statement:
+            const compo = ({p1,p2,p3,..,pn}) => {           //if we gave the { } braces then we have to return
+                return(
+                    //code..
+                )
+            }
+
+            const compo = ({p1,p2, p3,.., pn}) => (           //if we gave the round () brackets then we no need to return.
+                //code.
+            )
+
+            here, p1, p2, p3 are parameter's.
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
