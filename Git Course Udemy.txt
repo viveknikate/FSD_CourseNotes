@@ -96,6 +96,27 @@ GIT NOTES BY HARRY :-
     to check all commits made 
     git log
 
+    //stat:-
+    to check the changes made in repo : Like file deletion/insertion(updation).
+    it gives the complete folder structure at that commit.
+    git log --stat 
+    git log --stat -1       //it will give the last commit detail info.
+    
+
+    //patch:-
+    patch is like git diff, give more info made inside file. 
+    shows complete code & changes in it.
+    git log --patch 
+    git log --patch -1      //changes in last commit.
+    
+
+    //Revert
+    It will take progress back by to that particular commit_id we mentioned & generate new commit 
+    with previous error free commit.
+    
+    git revert <commit_id>  //create new commit with whatever changes made upto that mentioned commit_id. 
+
+
     to check last 4 commits with their complete discription
     git log -p -4
 
@@ -115,6 +136,13 @@ GIT NOTES BY HARRY :-
     to see the content of file
     cat home.html
     cat filename.ext
+
+    to create file with content:
+        cat > file_name.txt         //create new file & then you can add content inside file, by clicking enter button
+                                    // after adding content press 'crtl + c' or 'crtl + D' to get out from editing mode.
+        
+        cat >> file_name.txt        //to append the content inside the file.
+                                    //without changing the previous content.
 
     to untrack any file or remove from tracking
     git rm --cached home.html

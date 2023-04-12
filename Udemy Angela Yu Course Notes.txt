@@ -2138,7 +2138,18 @@ Adding click event to button:-
         alert("I got clicked...!");
     }
 
-    OR anonymous function:
+    OR anonymous function: function without any name,
+       and it can same as 
+        function (){
+
+        }
+        or
+        () =>{
+
+        }
+
+        you can pass arguments also.
+       eg.
         document.querySelector('button').addEventListener('click',function (){
             alert("I got clicked...!");
         });
@@ -2228,14 +2239,309 @@ Constructor Function:-
         eg.
             var person1 = new HouseKeepers('First',20,4,'Pixel no.44 G-tech block, Z-pointer',['c','c++','java','python']);
             var bot = new HouseKeepers('X-stream',15,2,'Pixel no.44 G-tech block, XZ-pointer',['ServerCommunication','CCNA']);
+        
+Callback Function:-
+    calling the particular function when keypress event happens.
+
+        function Listen(pheno, caller) {
+            var o ={
+                name:'Object-1',
+                num:22,
+                exp:5,
+                age:30,
+                engine:'cycle',
+                color:'pink',
+                phnm:'Vivek'
+            }
+            if(o.phnm === pheno)
+                caller(o);
+        }
+
+        function caller(e) {
+            console.log(e);
+        }
+
+        Listen('Vivek',function (e) {
+            console.log(e);
+        });
+
+Timer Function in JS:-
+    -This will generate alert of "Hello world" after 10 sec.
+
+    setTimeout(
+        function () {
+            alert("Hello world");
+        },10000
+    );
+
+    or
+
+    setTimeout(()=>{
+            alert("helo world");
+        },10000
+    );
 --------------------------------------------------------------------------------------------------------------------------------
+#jQuery:-
+    JavaScript Library used to prevent our fingers from breaking.
+
+    document.querySelector('h1');
+    document.querySelectorAll('h1');
+        //or
+    jQuery('h1');
+        //or
+    $('h1')
+        //This all will work same.
+    
+    use this jQuery CDN or latest one :
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    NOTE:- always put the CDN inside head tag & local JS file before the ending of body tag.
+    or use this method
+    $(document).ready(function (){
+        $('h1').css('color','deeppink');
+    });
+    -This above function will wait till the document get ready to perform next function.
+    
+    or put the jquery CDN then local js file inside body tag but in just before ending.
 --------------------------------------------------------------------------------------------------------------------------------
+#MiniFying:-
+    -Minification to reduce file size.
+    -intended for browser only.
+    -not human readable.
 --------------------------------------------------------------------------------------------------------------------------------
+    document.querySelectorAll('h1')   
+    //or
+    document.querySelector('h1') 
+    can be used as 
+    
+    jQuery('h1')
+    consider as same.or
+    $('h1')
 --------------------------------------------------------------------------------------------------------------------------------
+#Manipulating styles with jQuery:-
+    if you specify the single argument inside then it give the current value.       //getting 
+    if you give 2 argument inside then its set that value                           //setting
+
+    console.log($('h1').css('color'))            //prints the current color
+    console.log($('h1').css('font-size'))            //prints the font-size
+
+    $('h1').css("color",'deeppink');            //h1 will be deeppink colored.
+
+    NOTE:-  
+            keep all script code for behaviour/action inside js file.
+            keep your style code for appearance inside css file.
+            keep all your HTML for content.
+
+    -Adding class using jQuery:
+        $('h1').addClass('big-title');  
+
+    -Removing class using jQuery:
+        $('h1').removeClass('big-title');
+
+    -Adding multiple classes using jQuery:-
+
+        $('h1').addClass('big-title margin-50');
+    
+        -just include space between classes name.
+    
+    -Removing multiple classes using jQuery:-
+
+        $('h1').removeClass('big-title margin-50');
+    
+    -To check h1 has that class or not:
+        $('h1').hasClass('big-title');
+            -here if h1 has that big-title clas then Output will be true or else false.
 --------------------------------------------------------------------------------------------------------------------------------
+#Manipulating Text with jQuery:-
+    $('h1').text('new_text');
+        -here all h1 heading on the page will get that new_text.
+
+    $('button').html('<i>Click</i>')
+        -to add the content/text with tag.
 --------------------------------------------------------------------------------------------------------------------------------
+#Manipulating Attributes with jQuery:-  
+    //getting the values
+    
+    $('h1').attr('class')                       //gives the class list;
+
+    $('img').attr('src');                       //give the value of src attribute
+
+    $('a').attr('href');
+
+
+    //setting values
+
+    $('h1').attr('class','margin-50');                  //adding margin-50 class to h1.
+    $('a').attr('href','https://www.yahoo.com');        //changing the href to yahoo.
+
 --------------------------------------------------------------------------------------------------------------------------------
+Challenge:-
+    -when we press any key that will apear in place of h1
+    in jQuery:-
+        
+        $('body').keypress(
+            (e)=>{
+            $('h1').text(e.key)  
+            }
+        )    
+        or
+        $(document).keypress(
+            (e)=>{
+            $('h1').text(e.key)  
+            }
+        )
+
+    normal JS:-
+        document.querySelector('body').addEventListener('keypress',(e)=>{
+            var k = e.key;
+            document.querySelector('h1').innerHTML = k;
+        });
 --------------------------------------------------------------------------------------------------------------------------------
+#Adding EventListener using jQuery:-
+            JQuery reduces the code length.
+            we can use on() function for EventListener in jQuery.
+                eg. 
+                    $('h1').on('event-name',CallbackFunction);
+    1)Click:-
+        when we click to h1 it Changes it's color to hotpink.
+
+            $('h1').click(()=>{
+                $('h1').css("color",'hotpink');
+            });
+
+        -when we click any of button then color get changed to green using jQuery
+
+            $('button').click(()=>{
+                $("h1").css('color','green');
+            })
+        
+        using JS:-
+            for(i=0;i<btn.length;i++)
+            {
+                document.querySelectorAll('button')[i].addEventListener('click',()=>{
+                document.querySelector('h1').style.color = 'blue'  
+                })
+            }
+
+    2)keypress:-
+        Using JS
+        -whatever we put inside input field will get displayed in console.
+            document.querySelector('input').addEventListener("keypress",(e)=>{
+                console.log(e.key);
+            })
+
+        Using jQuery:-
+            $('input').keypress((e)=>{
+                console.log(e.key)
+            });
+
+
+    3)On function:-
+        -when we click h1 it will change it's color.
+            $("h1").on('click',()=>{
+                $('h1').css("color","rgb(128,132,100)")
+            })
+        
+        -when cursor is over the h1 then it will change its color.
+            $("h1").on('mouseover',()=>{
+                $('h1').css("color",'crimson')
+            })
 --------------------------------------------------------------------------------------------------------------------------------
+#Adding element using jquery:-
+    
+    --This will add text/button before h1 tag.
+        $("h1").before('Vivek')
+        $("h1").before('<button>new</button>')
+
+    --This will add text/button after h1 tag.
+        $("h1").after('Vivek')
+        $("h1").after('<button>new</button>')
+
+    --This will add text/button within h1 tag but at starting.
+        $("h1").prepend('Vivek')    
+        $("h1").prepend('<button>new</button>')
+
+    --This will add text/button within h1 tag but at ending.
+        $("h1").append('Vivek')
+        $("h1").append('<button>new</button>')
+
+    --Removing element using jQuery:-
+        $('button').remove();
 --------------------------------------------------------------------------------------------------------------------------------
+#JQuery Animation:-
+    1)hide(), show(), toggle():-
+        --This will hide the h1 when we click to it.
+            $("h1").on('click',()=>{
+                $('h1').hide(); 
+            });
+        
+        --This will hide the h1 when we click any button on page.
+            $("button").on('click',()=>{
+                $('h1').hide(); 
+            });
+        --This will show the h1 when we click any button on page.
+            $("button").on('click',()=>{
+                $('h1').show(); 
+            });
+        
+        --Toggle between hide & show.
+            $("button").on('click',()=>{
+                $('h1').toggle(); 
+            });
+    
+    2) fadeOut(), fadeInt(), fadeToggle():-
+    
+        --when we click to any of button on page this will make h1 invisible
+            $("button").on('click',()=>{
+                $('h1').fadeOut(); 
+            });
+
+        --when we click to any of button on page this will make h1 Visible
+            $("button").on('click',()=>{
+                $('h1').fadeIn(); 
+            });
+
+        --when we click to any of button on page this will make h1 to Toggle between hide & show.
+                    $("button").on('click',()=>{
+                        $('h1').fadeToggle(); 
+                    });
+
+    3)slideUp(), slideDown(), slideToggle():-
+
+        --h1 will get disappeared slideUP
+                    $("button").on('click',()=>{
+                        $('h1').slideUp(); 
+                    });
+
+        --h1 will re-appeared slideDown
+
+            $("button").on('click',()=>{
+                        $('h1').slideDown(); 
+                    });
+
+        --Toggle
+            $("button").on('click',()=>{
+                        $('h1').slideToggle(); 
+                    });
+        
+    4) Custom animation:-   
+        -in animate method inside {} braces you can add css rule who has numeric value not string.
+            property value should numeric only.
+                    $("button").on('click',()=>{
+                        $('h1').animate({opacity:0.5}); 
+                    });
+
+                    $("button").on('click',()=>{
+                        $('h1').animate({margin:"50%"}); 
+                    });
+
+        -Chaining the animation:-   
+            $('button').on('click',()=>{
+                $('h1').slideUp().slideDown().animate({opacity:.5})  
+            });
+
+            -first slideUp then slideDown laterwords opacity will change.
+--------------------------------------------------------------------------------------------------------------------------------
+Challenge:-
+    
 --------------------------------------------------------------------------------------------------------------------------------

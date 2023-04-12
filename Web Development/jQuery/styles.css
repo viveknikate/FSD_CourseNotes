@@ -1,0 +1,13 @@
+*{
+     background-color: aquamarine;
+}
+
+.big-title{
+     font-size: 4rem;
+     font-family: cursive;
+     color: yellow;
+}
+
+.margin-50{
+     margin: 100px;
+}
