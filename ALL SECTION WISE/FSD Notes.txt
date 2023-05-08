@@ -1,0 +1,106 @@
+#Front-end Development:-
+     to get IntelliSense in visual studio code use CRTL + SpaceBar
+
+     Section 2: Introduction to HTML
+          HTML:
+               Hyper Text Markup Language
+          
+          -Heading:
+               h1 to h6
+               <h1>Hello world..!</h1>
+               here,
+                    Anything inside the Angular bracket are tags, <h1> is a Opening tag.
+                    </h1> is a Closing tag.
+               
+               Element:-
+                    Content & tag Combinedly called element, 
+                         <h1>Hello world..!</h1>
+          
+          -There's a couple of things to note in terms of do's and don'ts when it comes to heading elements that
+               I want to talk to you about.
+               One important rule is notice how in our exercise there was only one H1.
+               It's not good practice to have more than one H1 because the H1 is the very top level heading.
+               Imagine the H1 as the book title and the table of contents as including the other parts
+               So maybe the H2 would be the first chapter.
+               Don't have more than one H1.
+               Instead, if you need another subtitle or another level of heading, then go to the H2 or H3 or all
+               of the other ones up until H6.
+               Now the other thing to watch out for is don't skip a level.
+               When you're creating heading elements, don't go straight from H1 to H3.
+               If you have an H3, there should also be an H2 somewhere on that web page.
+               Instead, I recommend to just go in order when you have an H1 that you've created and then you realize
+               you need another heading, then go to an H2.
+               And then if you need another level of heading that's even lower in priority, go to an H3.
+               Don't jump between the different level headings.
+
+          -Paragraph <p> :
+               <p>This is a paragraph.</p>
+               -paragraph used to organize content properly, to tell
+                that where statement ends & where new one starts.
+          
+          -Self Closing tags:-     
+               void element
+               eg.
+                    <hr />    Horizontal Rule
+                    <br />    break 
+
+     Section 3: Intermediate HTML
+          -Ordered List:
+               <ol>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+               </ol>
+          
+          -Un-order List:
+               <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+               </ul>
+          -Nesting List:
+               <ul>
+                    <li>Item 1
+                         <ol>
+                              <li> Item 1</li>
+                              <li> Item 2</li>
+                              <li> Item 3</li>
+                         </ol>
+                    </li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+               </ul>
+          
+          -List attributes:
+               <ol type="i" reversed>        //it will reverse the sequence
+               <ol type="i" start="2">       //It will start from 2
+          
+          -Anchor:-
+               Link:
+                    <a href="https://www.google.com">Google</a>
+
+               Draggable Link:
+                    <a href="https://www.youtube.com/" draggable="true">YouTube</a>
+
+          -Image:-
+               <img src="https://picsum.photos/400" alt="RandomImage" />
+               where,
+                    src - source/address of image.
+                    alt -  alternative text for image.
+               
+               -to generate random images use this url (at the end mention the size)
+                    https://picsum.photos/400
+                    -here image is of (400px X 400px).
+               
+     Section 4: Multi-Page WebSite
+          -Computer file path:
+               i) Absolute file path        - The path from root/ from starting
+              ii) Relative file path        - path related to some other file/ current file
+             iii) ./     - indicates the current folder
+              iV)  ../   - go back by one step. (upper folder)
+               v) ../../ - go back by 2 step. (2 times out of the current folder)
+
+          -Web Hosting:
+               -hosting your site to server/ uploading all files/ folder to internet.
+               -Using GitHub
+               -make sure your home file named as index.html only. other name won't work.
