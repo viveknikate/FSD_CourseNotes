@@ -1,4 +1,4 @@
-#Front-end Development:-
+     #Front-end Development:-
      to get IntelliSense in visual studio code use CRTL + SpaceBar
 
      Section 2: Introduction to HTML
@@ -101,6 +101,507 @@
                v) ../../ - go back by 2 step. (2 times out of the current folder)
 
           -Web Hosting:
-               -hosting your site to server/ uploading all files/ folder to internet.
-               -Using GitHub
-               -make sure your home file named as index.html only. other name won't work.
+               - Hosting your site to server/ uploading all files/ folder to internet.
+               - Using GitHub
+               - On GitHub make sure your home file named as index.html only. other name won't work.
+          
+          -HTML special concept:
+                <nav>
+                    <ul type="none">
+                         <li><a href="./Mahesh.html#one">Mahesh</a></li>
+                         <li><a href="./Vivek.html#second">Vivek</a></li>
+                    </ul>
+               </nav>
+               -------------------------------------------
+               for hyper link to next page use attribute target
+                    <a href="./Vivek.html#second" target="_blank">Vivek</a>
+                         -go to vivek.html page on that go to id named second.
+                         
+               • Definition list
+               <dl>
+                    <dt></dt>
+                    <dd> </dd>
+                    
+                    <dt> </dt>
+                    <dd> </dd>
+               </dl>
+               eg.
+                    <dl>
+                         <dt>Vivek :</dt>
+                         <dd>Vivek Mahesh Nikate</dd>
+                         <dt>Mahesh</dt>
+                         <dd>Mahesh Arun Nikate</dd>
+                    </dl>
+
+     Section 5: Introduction to CSS
+          -CSS - Cascading Style Sheets
+          -Adding CSS into HTML
+               -There are 3 ways to do it.
+                    1] Inline           <tag style="" />                        - Least recommended (use to target only particular/ one element)
+                    2] Internal         <style> CSS </style>
+                    3] External         <link href="style.css" rel="stylesheet" />               - Most recommended
+
+          -CSS Selector:-
+               1) Element Selector:-
+                    •element like h1,h2, p, article, section, div etc.
+                    eg.
+                         p{
+                              color: red;
+                         }
+
+               2) Class Selector:-
+                    • we can add class as an attribute to HTML element 
+                    • Selection with class name. 
+                    • Use dot(.) operator before class name.
+                    • multiple elements can have one class.
+                    • Class name start with (.) dot sing.   
+                    eg.
+                         <p class="para">This is paragraph</p>
+                         <style>
+                              .para{
+                                   //styles
+                                   color:red;
+                              }
+                         </style>                    
+                         
+               3) Id Selector:-
+                    •Id Selector selected using # sign.
+                    •ID is unique/ one time on complete page.
+                    eg.
+                         <p id="demo">This is paragraph</p>
+                              <style>
+                                   #demo{
+                                        //styles
+                                        color:red;
+                                   }
+                              </style>
+
+               4) Attribute Selector:-
+                    • Selection based on attributes we mentioned withing square brackets
+                    • attributes values are case-sensitive.
+                    • in Syntax html element before square bracket (p[draggable]) is not mandatory
+                    • Syntax:
+                         HTML element[attribute]{
+                              //styles
+                         } 
+                         or
+                         [attribute="value"]{
+                              //styles
+                         }
+                    • eg.
+                         <p id="demo" class="para" draggable='true'>This is paragraph</p>
+                              p[draggable]{
+                                   color:red;
+                              }
+                                   eg.
+                                   Selects all paragraph elements with a draggable attribute & change their color to red.
+                              --------------------------------------------------------------
+                              p[draggable='true']{
+                                   color:blue;
+                              }
+                                   eg.
+                                   Selects all paragraph elements with a draggable attribute set to true & change their color to blue.
+                              --------------------------------------------------------------
+                              [class*="te"] {
+                                   background: yellow;
+                              }
+                                   eg.
+                                   select all the element who has class name containing substring "te" word.
+
+                    Detail:-
+                              Selector	           Example	                         Example description
+                         [attribute]	          [target]	                    Selects all elements with a target attribute
+                         [attribute=value]	     [target="_blank"]	          Selects all elements with target="_blank"
+                         [attribute~=value]	     [title~="flower"]	          Selects all elements with a title attribute containing the word "flower"
+                         [attribute|=value]	     [lang|="en"]	               Selects all elements with a lang attribute value starting with "en"
+                         [attribute^=value]	     a[href^="https"]	          Selects every <a> element whose href attribute value begins with "https"
+                         [attribute$=value]	     a[href$=".pdf"]	          Selects every <a> element whose href attribute value ends with ".pdf"
+                         [attribute*=value]	     a[href*="w3schools"]	     Selects every <a> element whose href attribute value contains the substring "w3schools"
+               
+               5) Universal Selector:-
+                    • * - Asterisk 
+                    • Asterisk(*) means select all.
+                    • Syntax:
+                         *{
+                              color: yellow;
+                         }
+     
+     Section 6: CSS Properties
+          -CSS Colors:
+               •eg.
+                    html{
+                         background-color: red;        //setting html element's background color to red.
+                    }
+                    h1{
+                         color: blue;                  //setting the h1 text color to blue
+                    }
+
+          -Font Properties:
+           eg.
+               color
+               font-weight
+               font-family
+               font-size
+               --------------------------------------------
+               • font-size:-
+                         values-
+                              large
+                              x-large
+                              xx-large
+                              1px = 1/96th inch = 0.26mm
+                              1pt = 1/72nd inch = 0.35mm
+                              1em = 100% of parent (relative to parent)
+                              1rem= 100% of root  (relative to html(root) element)
+                    
+                    -em & rem are relative sizes.
+                    -Most reacommended use rem.
+                    -coz rem is changing its size according to the root (html) element.
+                    -& em is changing size according to its parent element size.
+                    eg.
+                         font-size: 20px; //      2em; 2rem;
+               ---------------------------------------------
+               • font-weight:-
+                    values-
+                         normal/ bold
+                         lighter/bolder           lighter will descrease by 100 (-100)
+                                                  bolder will increase by 100 (+100)
+                         number (100 - 900)       100- light , 900 - bold
+                    
+                    eg.  font-weight: bolder;          //700; lighter; normal;
+               ---------------------------------------------
+               • font-family:-
+                    eg.
+                         font-family: arial;      //Helvetica; san-serif; fantasy;
+                         font-family: "Times New Roman", serif;
+               ---------------------------------------------
+               • text-align:-
+                    eg.
+                         text-align: center;      //right; left; start; left;
+               ---------------------------------------------
+          
+          -Inspection CSS
+               -pesticide extension
+               -inspect mode
+               -More tools ⇒ CSS overview
+          
+          -CSS Box Model
+              •Border:
+                    border:10px solid red;
+                    -here 3 values separated by spaces
+                    -first describe the size. or (2em, 2pc)
+                    -second describe the style. or (dashed, grooved, inset, outset, dotted etc)
+                    -third describe the color. or (red, green, blue, black, yellow etc)
+                    -but border does not affect the size of content, it'll be same all time.
+               
+                    border-top:0px;
+                    border-width: 0px 4px 8px 16px;         // top right bottom left (TRBL)
+                    border-width: 10px 20px;                 // top-bottom left-right
+               
+                    If the border-style property has four values:
+                              border-style: dotted solid double dashed;
+                              top border is dotted
+                              right border is solid
+                              bottom border is double
+                              left border is dashed
+
+                         If the border-style property has three values:
+                              border-style: dotted solid double;
+                              top border is dotted
+                              right and left borders are solid
+                              bottom border is double
+                         
+                         If the border-style property has two values:
+                              border-style: dotted solid;
+                              top and bottom borders are dotted
+                              right and left borders are solid
+                         
+                         If the border-style property has one value:
+                              border-style: dotted;
+                              all four borders are dotted
+                    
+                    All CSS Border Properties
+                         Property	                              Description
+                         ---------------------------------------------------------------------------------------------
+                         border	                Sets all the border properties in one declaration
+                         border-bottom	           Sets all the bottom border properties in one declaration
+                         border-bottom-color	      Sets the color of the bottom border
+                         border-bottom-style	      Sets the style of the bottom border
+                         border-bottom-width	      Sets the width of the bottom border
+                         border-color	           Sets the color of the four borders
+                         border-left	           Sets all the left border properties in one declaration
+                         border-left-color	      Sets the color of the left border
+                         border-left-style	      Sets the style of the left border
+                         border-left-width	      Sets the width of the left border
+                         border-radius	           Sets all the four border-*-radius properties for rounded corners
+                         border-right	           Sets all the right border properties in one declaration
+                         border-right-color	      Sets the color of the right border
+                         border-right-style	      Sets the style of the right border
+                         border-right-width	      Sets the width of the right border
+                         border-style	           Sets the style of the four borders
+                         border-top	           Sets all the top border properties in one declaration
+                         border-top-color	      Sets the color of the top border
+                         border-top-style	      Sets the style of the top border
+                         border-top-width	      Sets the width of the top border
+                         border-width	           Sets the width of the four borders
+              ----------------------------------------------------------------------------------------------------------------
+               •Padding:
+                    -distance between content & border.
+                         padding-top: <length> | <percentage>
+                         padding-right: <length> | <percentage>
+                         padding-bottom: <length> | <percentage>
+                         padding-left: <length> | <percentage>
+
+                    -If the padding property has four values:
+                         padding:10px 5px 15px 20px;
+                         top padding is 10px
+                         right padding is 5px
+                         bottom padding is 15px
+                         left padding is 20px
+                         
+                    -If the padding property has three values:
+                         padding:10px 5px 15px;
+                         top padding is 10px
+                         right and left padding are 5px
+                         bottom    padding is 15px
+                    
+                    -If the padding property has two values:
+                         padding:10px 5px;
+                         top and bottom padding are 10px
+                         right and left padding are 5px
+
+                    -If the padding property has one value:
+                         padding:10px;
+                         all four paddings are 10px
+                    
+                    -Note: Negative values are not allowed. 
+
+               •Margin:
+                    -distance between border & other content's on page.
+                    
+                    Margin - Individual Sides
+                    CSS has properties for specifying the margin for each side of an element:
+                         margin-top
+                         margin-right
+                         margin-bottom
+                         margin-left
+
+                    All the margin properties can have the following values:
+                         auto - the browser calculates the margin
+                         length - specifies a margin in px, pt, cm, etc.
+                         % - specifies a margin in % of the width of the containing element
+                         inherit - specifies that the margin should be inherited from the parent element
+
+                    Tip: Negative values are allowed.
+
+                    Example
+                         Set different margins for all four sides of a <p> element:
+                         p {
+                         margin-top: 100px;
+                         margin-bottom: 100px;
+                         margin-right: 150px;
+                         margin-left: 80px;
+                         }
+                    
+                    
+                    -If the margin property has four values:
+                         margin: 25px 50px 75px 100px;
+                              top margin is 25px
+                              right margin is 50px
+                              bottom margin is 75px
+                              left margin is 100px
+
+                    -If the margin property has three values:
+                         margin: 25px 50px 75px;
+                              top margin is 25px
+                              right and left margins are 50px
+                              bottom margin is 75px
+
+                    -If the margin property has two values:
+                         margin: 25px 50px;
+                              top and bottom margins are 25px
+                              right and left margins are 50px
+
+                    -If the margin property has one value:
+                              margin: 25px;
+                                   all four margins are 25px
+
+                    -The auto Value
+                         You can set the margin property to auto to horizontally center the element within its container.
+                           margin: auto;
+                    
+                    -div element:
+                         division element to make separate section on page.
+               
+     Section 7: Intermediate CSS
+          -Spcificity & Inheritance
+               1) Position-
+                    li{
+                         color:green;
+                         color:red;
+                    }
+                    li{
+                         color:black;
+                    }
+                    -here black color will gets applied to the li item.
+                    -its completely at the end.
+
+               2) Spcificity-
+                    -element
+                    -class selector          
+                    -attribute selector
+                    -id selector
+
+                    (element selector) < (class selector) < (attribute selector) < (id selector) < (inline styling)
+
+                    -at the end if inline styling is present then it'll get applied else, styles which are
+                     defined in ID will gets applied.
+
+               3) Type-
+                    -External
+                    -Internal
+                    -Inline
+                    (Inline) > (Internal) > (External)
+                    
+                    -at the end the styles if mentioned inline it'll get applied
+                         else it'll check for Internal styles <style> </style> within styles tag
+                         or else it'll go for external styles.
+                    eg.
+                         -if the case is like this.
+                          styles mentioned internally also & added the external file after internal styling
+                          then it will override all your internal styling
+                          
+                         <style>
+                              h1{
+                                   color:red !important; 
+                              }
+                         </style>
+                         <link rel="stylesheet" href="./style.css">
+
+                         -here in above case h1 color will get changed according to the color mentioned inside style.css file
+                          coz it is added after internal styling so it will override all internal styles.
+
+               4) Importance-
+                    eg.
+                         color: red;
+                         color: yellow !important;
+                              -this style will override all your other styles
+                              -even inline style & Position does not matter
+                              -if you add at the top later words changed to bottom
+                              -still the important one style gets applied.
+                              -color will  be yellow only
+                         
+                         h1{
+                              color:rgb(255, 255, 255) !important; 
+                              color:red; 
+                              color:rgb(71, 42, 42) ; 
+                              color:blue;
+                         }
+                              -here according to Position the blue is at the last so
+                               the blue color should be get applied but here white will be applied coz its important.
+
+          -Combining CSS selector
+               1) Group Selector:
+                    - it will apply to all selector mentioned.
+                    - comma(,) between the selectors.
+                     Syntax:
+                         selector1, selector2,..., selector N{
+                              //styles
+                         }
+                     eg.
+                         h1, h2, h3, div, p{
+                              border: 4px solid pink;
+                              border-radius: 2px;
+                              color: blue;
+                         }
+
+               2) Child Selector:
+                    -apply to the direct child of left side.
+                    -greater than (>) symbol between selectors.
+                    -one level down only
+                    -only children no childrens of children.
+                    -only child.
+                    Syntax:
+                         selector1 >  selector2 {
+                              //styles
+                         }
+                    eg.
+                         div > p {
+                              color: firebrick;
+                         }
+
+                         .box > h1{                              //class name box having child all child h1 has bg color is yellow
+                              background-color: yellow;
+                         }
+
+               3) Descendant Selector:
+                    -Apply to all Descendant of left side
+                    -space between the selectors
+                     Syntax:
+                         selector1 selector2{
+                              //styles
+                         }
+                    eg.
+                         div li{
+                              color: blue;
+                         }
+               
+               4) Chaining selectors:
+                    -Chaining is used to be very specific element to style.
+                    -super specific selector.
+                    -no spaces between selector.
+                    -start with html element only.
+                    -if start class name or id name then all will
+                    -consider as id/ class name.
+                    eg.
+                         Syntax:
+
+                         <li class="done">Read</li>
+                         <li class="done">Maths Questions</li>
+
+                         li.done{
+                              color: seagreen;
+                         }
+
+               5) Combining All selectors:
+                    -You can Combine all type of selectors & you can be more specific.
+                    eg.
+                         Descendant + Chaining of Selectors
+
+                         ul p.done{
+                              color: red;
+                              font-size: 5rem;
+                         }
+                         -here <ul>'s descend element p having the class done is going to get affect
+                          with color red & font size of 5rem.
+
+          -CSS Positioning
+               1) Static:
+                    -This is default positioning  
+
+               2) Relative:
+                    -It will Positioned relatively by the current/ original position of that element/object
+
+               3) Absolute:
+                    -Absolute positioned element is get out of the flow of html document.
+                    -elements which are below this element will takes it's place
+                    -Absolute will An element with position: absolute; 
+                     is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport)
+                    -if ancestor has that position: relative style is mentioned.
+
+               4) Fixed:
+                    -Position relative to top left corner of browser window even if you scroll
+                     still it is there on same location of page.
+               
+               •Z-index:
+                    -higher the value will display the element/ content on top  of other;
+                    
+                     Syntax:
+                         z-index: <number>;
+                         eg.
+                          z-index: -1;
+                          z-index: 1;
+                          z-index: 99;
+
+     Section 8: Advance CSS
+          -CSS Display:
+               
