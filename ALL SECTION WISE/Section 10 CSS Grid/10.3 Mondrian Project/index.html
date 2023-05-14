@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    div.container{
+      display: grid;
+      gap:9px;
+      background-color: rgb(0, 0, 0);
+      width: 748px;
+      height: 748px;
+      grid-template-rows: 414px 130px 155px 20px;
+      grid-template-columns: 320px 198px 153px 50px;
+      /* padding: 1px; */
+    }
+    
+    div.container div {
+      background-color: rgb(255, 255, 255);
+      /* border-color: black;
+      border-style: solid; */
+      font-size: large;
+    }
+
+    #first{
+      background-color: red;
+      /* width: 320px;
+      height: 414px; */
+    }
+
+    #second{
+      grid-column: 2/-1;
+    }
+
+    #third{
+      /* height: 195px; */
+      grid-row: span 2;
+    }
+    
+    #forth{
+      grid-column: 2/-2;
+      /* width: 351px; */
+      /* height: 195px; */
+      grid-row: span 2;
+    }
+
+    #fifth{
+      background-color: blue;
+      /* width: 50px; */
+      height: 130px;
+    }
+
+    #seventh{
+    }
+    
+    #eigth{
+      background-color: yellow;
+    }
+
+    #sixth{
+      grid-row: span 2;
+      background-color: violet;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Write your HTML here -->
+  <div class="container">
+    <div id="first">1</div>
+    <div id="second">2</div>
+    <div id="third">3</div>
+    <div id="forth">4</div>
+    <div id="fifth">5</div>
+    <div id="sixth">6</div>
+    <div id="seventh">7</div>
+    <div id="eigth">8</div>
+    <div id="ninth">9</div>
+  </div>
+</body>
+
+</html>

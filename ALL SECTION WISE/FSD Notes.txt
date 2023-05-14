@@ -604,4 +604,573 @@
 
      Section 8: Advance CSS
           -CSS Display:
+               -Four values for display property.
+                    display: block;
+                         -block: displays the element as a block element
+                         -it takes complete width of page.
+                         -You can set the height & width to block element
+
+                    display: inline;
+                         -inline will display the element next to each other on same line
+                         -The width will be the same as that of content to fit.
+                         -You can NOT set width & height for inline element
+                          coz it will take the width to just fit the content in it.
+
+                    display: inline-block;
+                         -inline-block is the in-between option of block & inline.
+                         -in this case you can set the height & width to an element
+                         -& other thing is element are displayed next to each other on same line.
+
+                    display: none;
+                         -This styling will just disappear that element from page.
                
+          -CSS Float:
+               -So recommend to only use float when you want to wrap text around an image.
+               -Two values for float property.
+                float: left;
+                    -all the content will start floatig to right side.
+
+                float: right;
+                    -all the content will start float to left side.
+               eg.
+                    <img>
+                    <p>text</p>
+                    <footer> company </footer>
+
+                    <style>
+                         img {
+                              float: left;        
+                         }
+                    </style>
+
+                    //here img is going to stick to left side 
+                    // & paragraph will occupy the space of right side & viceversa
+                    //but footer also going to occupy the remaining space
+                    // so we need to use clear property to clear things out.
+
+                    <style>
+                         footer{
+                              clear: left;
+                         }
+                    </style>
+
+                    -clear property hsa 3 values
+                         clear: left;
+                         clear: right;
+                         clear: both;
+
+          -Responsive Website:
+               -For responsive website there are different ways by
+                -media queries
+                -CSS Grid (for 2D layouts)
+                -CSS Flexbox  (for 1D layouts)
+                -By Framework (like Bootstrap)
+               
+               Property-
+                    For grid
+                         -display: grid;
+
+                    For Flexbox
+                         -display: flex;
+                    
+                    -Bootstrap is built on top of Flexbox.
+                    -Bootstrap uses 12 division pattern for responsiveness.
+     
+          -Media Queries:
+           eg. <body>
+                    <div></div>
+               </body>
+               
+               div{
+                    width: 400px;
+                    height: 400px;
+                    background-color: aqua;
+               }
+
+               @media (max-width: 600px){
+                    div{
+                         width: 200px;
+                         height: 200px;
+                         background-color: rgb(58, 255, 74);
+                    }
+               }
+
+               @media (width <= 30em) {
+                    html { background: rgb(0 0 0 / 0.5); }
+               }
+
+               //and keyword: if both are true.
+               @media (min-width: 600px) and (max-width: 800px) {
+                    html { background: red; }
+               }
+
+               @media (600px <= width <= 800px) {
+                    html { background: red; }
+               }
+               
+               //Or keyword: if any one of them is true
+               Comma separate.
+               @media (max-width: 600px), (min-width: 800px) {
+                    html { background: red; }
+               }
+          
+     Section 9: FlexBox
+          -Display: flex
+               eg.  HTML code:
+                     <body>
+                         <div class='container'>
+                              <div style="background-color:red;">
+                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                   when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                   It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                                   It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                              </div>
+                              <div style="background-color:green;">
+                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                   when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                   It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                                   It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                              </div>
+                              <div style="background-color:blue;">
+                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                   when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                   It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                                   It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                              </div>
+                         </div>
+                    </body>
+
+                    CSS code:
+                         .container{
+                              display:flex;
+                              gap:20px;
+                         }
+
+               -When we give style display flex then all your conetent within it,
+                will be displayed on the same line & all content width will be 
+                as much as the content in it to fit.
+               -we can use the gap property to make space between element
+                    eg.  
+                         gap:20px; // 10%
+
+               -display flex property you applied to a div / section that will element
+                will considered as block level element. will occupy the full width of page 
+                width:100%;
+
+               -to rectify it. Use display:inline-flex property
+                this will make that element to adjust its width according to its size.
+                & next element also goes on the same line, if the space is available.
+          
+          -Flex Direction:
+               -The defualt value is row
+               -It has 2 values row & column
+                    -flex-direction: row;              //main axis Horizontal & cross axis perpendicular to main axis
+                    -flex-direction: row-reverse;
+                    -flex-direction: column;           //main axis Vertical & cross axis perpendicular to main axis
+                    -flex-direction: column-reverse;
+
+               -If the direction is row then flex-basis:100px 
+                here the 100px will be considered as width
+               -If its column then flex-basis will considered as height.
+
+               -Select all the elements that are the direct
+               children of the .container class.       
+
+                    .container > *{
+                         //styles
+                    }  
+
+               -flex-flow is short hand for flex-direction & flex-wrap.
+               -/* flex-flow: <'flex-direction'> */
+                    flex-flow: row;
+                    flex-flow: row-reverse;
+                    flex-flow: column;
+                    flex-flow: column-reverse;
+
+               -/* flex-flow: <'flex-wrap'> */
+                    flex-flow: nowrap;
+                    flex-flow: wrap;
+                    flex-flow: wrap-reverse;
+
+               -/* flex-flow: <'flex-direction'> and <'flex-wrap'> */
+                    flex-flow: row nowrap;
+                    flex-flow: column wrap;
+                    flex-flow: column-reverse wrap-reverse;
+          
+          -Flexible Layouts :
+               -when you use property display flex then you can use
+                order property.
+               -Any element having higher order value that will be displayed at
+                last.
+               -Syntax:
+                    order: <any_num>    //higher number item will be displayed at last.   
+                eg.
+                    .red {
+                              background-color: #eb4d4b;
+                              order: 12;
+                         }
+                    
+               -flex-wrap: nowrap;          
+                    -default  
+                    -if you shrink the screen still the item stay at same line some time get out of frame also.
+                    -this property is set on parent.
+
+               -flex-wrap: wrap;
+                    -This will shifts some items to the next line if you shrink the screen.
+                    -This is property set on parent
+
+               -flex-wrap: wrap-reverse
+                    -in reverse order (from bottom of page).
+               
+               -justify-content:
+                    -it has different values
+                         eg.                         
+                              justify-content: center;
+                                   -align to center 
+
+                              justify-content: left;
+                                   -align to the left of page         //default
+
+                              justify-content: right;
+                                   -align to the right side 
+
+                              justify-content: start;
+                                   -align to left/start
+
+                              justify-content: end;
+                                   -align to end/right
+                                   
+                              justify-content: flex-start;
+                                   -align to left/start
+
+                              justify-content: flex-end;
+                                   -align to end/right
+
+                              justify-content: stretch;
+               
+               -Align-items:
+                    -to use align-item property we have to give height to the container vh (viewport height).
+                    -justify Content will place the content along main axis.
+                    -Align item place the content along cross axis.
+                    -main & cross axis are perpendicular to each other.
+                    eg.
+                         height:100vh;
+                         align-items: flex-start; 
+                              -at top of screen
+
+                         align-items: flex-end;
+                              -at bottom of screen
+
+                         align-items: center;
+
+                         align-items: stretch;
+                              -This is will cover complete height gets stretched
+               
+               -align-self:
+                    -This property is used for children of container.
+                    -we used this property to make any element independant from others.
+                    eg.
+                         align-self: flex-start;
+                         align-self: flex-end;
+                         align-self: start;
+                         align-self: end;
+
+               -align-content:
+                    -This property will work only when you set 
+                      flex-wrap: wrap;
+          
+          -Flex Sizing:
+               content width < width < flex-basis < min-width/max-width
+               -flex-basis:-
+                    This act as height when main axis is Vertical & as width when main axis is Horizontal
+                    eg.
+                         flex-basis: 10em;
+                         flex-basis: 3px;
+                         flex-basis: 50%;
+                         flex-basis: auto;
+
+                         /* Intrinsic sizing keywords */
+                         flex-basis: max-content;
+                         flex-basis: min-content;
+                         flex-basis: fit-content;
+
+                         /* Automatically size based on the flex item's content */
+                         flex-basis: content;
+               
+               -flex-grow:
+                    -allows to grow increase the size.
+                    -/* <number> values */
+                         flex-grow: 0;       //for equally distribution
+                         flex-grow: 3;
+                         flex-grow: 0.6;
+               
+               -flex-shrink:
+                    -allows to shrink up to min size of content.
+
+               -flex-
+                    flex-basis:0;
+                    flex-grow:1;
+                    flex-shrink:1;
+
+                    flex: 1 1 0;        //grow shrink basis; 
+
+                         /* Shorthand syntax */
+                    flex:1
+                         -flex-grow:1
+                         -flex-shrink:1
+                         -flex-basis:0
+                    flex:2
+                         -flex-grow:2
+                         -flex-shrink:2
+                         -flex-basis:0
+                    flex:3
+                         -flex-grow:3
+                         -flex-shrink:3
+                         -flex-basis:0
+
+     Section 10: CSS Grid:
+
+          -display: grid;
+               -Grid is used for making 2D design.
+               -FlexBox are used to make 1D layout inline designing.
+               eg.
+                    display: grid;
+                    grid-template-columns: <how many column you want>
+                         -if you want 4 then
+                              grid-template-columns: 1fr 1fr 1fr 1fr;
+                              or
+                              grid-template-columns: repeat(4, 1fr);
+                              grid-template-rows: repeat(4, 1fr);
+
+                         
+                         if you want 10 then
+                              grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                              or
+                              grid-template-columns: repeat(10, 1fr);
+                              grid-template-rows: repeat(10, 1fr);
+
+          -Grid Sizing:
+               Shorthand for 
+                -grid-template-columns: 1fr 1fr;
+                -grid-template-row: 1fr 1fr;
+                eg.
+                    grid-template: 1fr 1fr / 1fr 1fr;            <rows> / <columns>
+               
+               -grid-template-columns: 200px auto;     //first column is of 200px , 2nd column will occupy 100% screen.
+               -grid-template-row: 100px auto;     //first row is of 100px , 2nd row will occupy only the size of conetent in it.
+               
+               -grid-template-columns: 100px minmax(400px, 800px);
+                    -here it will get min width of 400px only, after that it won't reduce the width.
+
+               -grid-template-rows: 100px 400px
+
+               -if you program create a new grid in future for that styling
+                    grid-auto-rows:200px     //row of height 200px;
+          
+          -Grid Placement:
+               grid-column-start: <number>  
+                    -this will define the grid item to start in the grid container.
+
+                    grid-column-start:1           //to mention start column
+                    grid-column-end: -1           //to mention end column
+          
+                    eg.
+                         Typing both grid-column-start and grid-column-end every time can get tiring. 
+                         Fortunately, grid-column is a shorthand property that can accept both values at once,
+                         separated by a slash.
+                         For example, 
+                              grid-column: 2 / 4;           //  <start> / <end>
+                              will set the grid item to start on the 2nd vertical grid line and end on the 4th grid line.
+
+                              grid-column: -3/-1;
+                                   start at -3 means from last 3rd.
+                                   end at -1 means complete last column
+                              
+                              grid-column: 2 / span 3
+                                   start at 2nd column & from there go for next 3 blocks.
+                              
+               grid-column-end: <number>
+                    -this will define the grid item to end in the grid container.
+
+               grid-row-start: <number>
+                    -this will define the grid item to start in the grid container.
+
+               grid-row-end: <number>
+                    -this will define the grid item to end in the grid container.
+
+               -grid-column: <number> / span <number>
+                    -this will define the grid item to start in the grid container.
+                    eg.
+                         grid-column: 1 / span 2;    //start at first column , end at 3rd column
+
+                         grid-row: 3/6;          // <start>/<end>
+                              start at 3rd grid line & end at 6th line.                    
+                    
+               -grid-row: <number> / span <number>
+                    -this will define the grid item to end in the grid container.
+
+               
+               grid properties:
+                    grid-column-start: 1;    //start at first column
+                    grid-column-end: 3;      //end at 3rd column
+                    grid-row-start: 2;
+                    grid-row-end: -1;        //row end at last row.   (-1 indicates the last row).
+               
+               Shorthand:
+                    grid-area:  <grid-row-start> / <grid-column-start> / <grid-row-end> / <grid-column-end>
+                    eg.
+                         grid-area: 2/ 1/ 3/ 3;
+
+                    If typing out both grid-column and grid-row is too much for you, there's yet another shorthand for that. 
+                    grid-area accepts four values separated by slashes: grid-row-start, grid-column-start, grid-row-end, followed by grid-column-end.
+                    One example of this would be 
+                         grid-area: 1 / 1 / 3 / 6;.
+
+                    grid-template-columns:repeat(8,12.5%)
+                         -8 columns of 12.5% width.
+                    
+                    grid-template-columns: 50px repeat(3,1fr) 50px
+                         -creating 3 columns  first is 50px, in middle 3 columns of 1fr & last column is of 50px.
+                    
+                    grid-template is a shorthand property that combines grid-template-rows and grid-template-columns.
+                    For example, 
+                         grid-template: 50% 50% / 200px; 
+                         will create a grid with two rows that are 50% each, and one column that is 200 pixels wide.
+
+     Section 11: Bootstrap:
+          -BootStrap
+               -Its a type of CSS Framework
+               -created in 2010 by twitter developer.
+               -it contain pre-made CSS style file
+               -It is famous coz of, it follows the 12 column layout system built on top of Flexbox.
+               -Mobil First Approach.
+               
+               -Pros:-
+                    -End up with good design in short period of time.
+                    -makes the desinging process fast forwards.
+               
+               -Cons:-
+                    -Disadvantage is we use HTML is for content & CSS is for styling.
+                    but if we use the external styles then we have to add so many class name on HTML 
+                    file only. It makes HTML file so complicated to understand.
+
+                    -You will not get full customization.
+
+               -So when should you use the CSS frameworks like Bootstrap and when should you not?
+                    Well, when you are building a mobile first responsive website that you want to put online very quickly
+                    and access beautiful components designed by professional designers, keeping everything on your website
+                    looking slick and uniform, then you probably want to consider using bootstrap.
+                    But if you're building a very simple website where you just need HTML and CSS and you can quickly throw
+                    it up, or if you're building a really complex custom design website and you want complete control over
+                    the design, then it's probably not a good idea to use an external CSS framework like Bootstrap.
+
+               -How to add BootStrap:
+                    Use CDN link (Content Delivery Network) for style & script.
+
+          -BootStrap Layout:
+               -Its 12 column layout system
+               -Its mobile first approach.
+               -made up of 3 components container, row & column
+               eg.
+                    <div class="container">
+                         <div class="row">
+                              <div class="col">
+                                   Hello
+                              </div>
+                         </div>
+                    </div>
+               
+               -Sized columns:
+                    eg.
+                         <div class="container">
+                              <div class="row">
+                                   <div class="col-2"> Hello </div>
+                                   <div class="col-4"> Hello </div>
+                                   <div class="col-6"> Hello </div>
+                              </div>
+                         </div>
+               
+               -BootStrap BreakPoints:
+               -xs - Extra small devices (portrait phones, less than 576px)
+               -sm - Small devices (landscape phones, 576px and up)
+               -md - Medium devices (tablets, 768px and up)
+               -lg - Large devices (desktops, 992px and up)
+               -xl - Extra large devices (large desktops, 1200px and up)
+               -xxl - Extra extra large devices (large desktops, 1400px and up)
+               -xxxl - Extra extra extra large devices (large desktops, 1600px and up)
+
+                     screen             class-infix         Dimension
+                    extra small              xs             <576px
+                    small                    sm             ≥576px
+                    medium                   md             ≥768px
+                    large                    lg             ≥992px
+                    extra large              xl             ≥1200px
+                    extra extra large        xxl            ≥1400px
+
+                    eg.
+                         col-sm-12
+                              -on small screen it will take full width of page
+
+                         col-sm-6
+                              -on small screen it will take half width
+                         -------------------
+                         
+                         col-md-12
+                              -on medium screen it will take full width of page
+                              
+                         col-md-6
+                              -on medium screen it will take half width
+                         -------------------
+                         
+                         col-lg-12
+                              -on large screen it will take full width of page
+                              
+                         col-lg-6
+                              -on large screen it will take half width
+                         -------------------
+                         
+                         col-xl-12
+                              -on extra-large screen it will take full width of page
+                              
+                         col-xl-6
+                              -on extra-large screen it will take half width
+                         -------------------
+
+                         col-xxl-12
+                              -on extra extra large screen it will take full width of page
+                              
+                         col-xxl-6
+                              -on extra-extra-large screen it will take half width
+          
+          -BootStrap Components:
+               -Spacing
+                    -These notation are used as class name
+                    -To add margin or padding to the component
+                    -m for margin
+                    -p for padding
+                    -t for top
+                    -r for right
+                    -b for bottom
+                    -l for left
+                    -x for x-axis  (horizontally)
+                    -y for y-axis  (vertically)
+                    syntax:
+                         property-side-size
+                    eg.
+                         -margin for top of 5
+                              mt-5
+                         
+                         -horizontally padding
+                              px-2
+                              
+               -BootStrap supports dark theme
+                    add dark theme.
+                    <html lang="en" data-bs-theme="dark">
+
+          -project:
