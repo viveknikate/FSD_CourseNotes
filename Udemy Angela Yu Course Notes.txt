@@ -1,3 +1,5 @@
+Full Stack Web Development Bootcamp:-
+
 Servers : A special computer needs to be online 24*7 to serve
 Client : a user requesting to Server
 
@@ -1413,7 +1415,7 @@ Comparator Operator:
     ==	equal to
     ===	equal value and equal datatype
     !=	not equal
-    !==	not equal value or not equal datatype
+    !==	not equal value and not equal datatype
     >	greater than
     <	less than
     >=	greater than or equal to
@@ -1796,8 +1798,10 @@ eg. Alert pop up after page loaded
             <body onload="alert('Page Loaded')">        //inline Scripting
                 <h1>Hello World.!</h1>
 
-                <script src="path/path"></script>       //internal Scripting before ending body tag
-                <script src="path/path"></script>       //internal Scripting before ending body tag
+                //internal Scripting before ending body tag
+                <script>
+                    //scripts
+                </script>       
             </body>
 
     3)External Scripting(Putting all scripts to another file, JS file & adding link of file at ending of body tag)        
@@ -2548,4 +2552,148 @@ Challenge:-
             });
 
             -first slideUp then slideDown laterwords opacity will change.
-========================================================END============================================================
+------------------------------------------------------------------------------------------------------------------------------------
+Section 21: The Unix Command Line:
+    -Git installation
+    -CLI (Command Line Interface)
+        BASH = Bourne Again SHell
+            -Bash is a Command line interpreter for Unix systems.
+            -Linux is also a Unix like system.
+            -If you use Command line then you will have greater control over system
+            eg.
+                creating folder which is hidden
+                    mkdir .Secret
+                    mkdir .dummy
+
+    -Directory Navigation:
+        -list command
+            ls
+        -Change Directory
+            cd directoy
+            cd dire1/dire2/dire3     -3 step inside that Directory
+            eg.
+                cd document/learn/language 
+
+            -hit up/down arrow button to go for previous commands
+            -to come back from current folder
+                cd ..
+            
+            to come back 2 step back 
+                cd ../../
+            
+  (          to go back to base
+                cd ~
+            
+            NOTE: You also can drag & drop a particular file in
+                  terminal or command prompt it will take its path.
+
+            -Use Alt + mouse to move your cursor in between path you want to edit.
+            -To stop current command execution press crtl + c
+
+        -Creating, Opening, Removing Files via CLI:
+            -folder creating
+                mkdir Vivek
+
+                -multiple folder
+                    mkdir two three four five six seven eight nine ten
+
+            -folder removing:
+                rm -rf <folder_name>        //-rf recursively & forcefully
+                rm -rf viVeK
+                rm -r two/                  //just recursively
+
+                -multiple folder remove:
+                    rm -r <folder1> <folder2> <folder3> <folder4> <folder5> <folder6> <folder7>
+                    rm -r two/ three/ four/ five/ six/ seven/ eight/ nine/ ten/
+
+            -file creating
+                touch vivek.txt 
+
+                -multiple:
+                touch vivek.txt vivek1.txt  vivek2.txt viVeK3.txt
+            
+            -file removing
+                rm vivek.txt 
+                
+                -multiple:
+                    rm vivek.txt vivek1.txt  vivek2.txt viVeK3.txt
+
+                -removing all files within particular folder
+                    rm *
+            
+            -pwd (Print Working Directory)
+------------------------------------------------------------------------------------------------------------------------------------
+Section 22: Backend Web Development:
+    Full Stack = Frontend + Backend
+
+    Backend:-  consists of
+            server
+            application
+            database
+    
+    WebApp:
+        -is a application which will responds to the user.
+        -for Backend using NodeJS
+------------------------------------------------------------------------------------------------------------------------------------
+Section 23: Node Js:
+    -An asynchronous event-driven JavaScript runtime, 
+     Node.Js is design to build Scalable network applications.
+
+    -To run the JS files
+    -Create index.js file then use node command
+     like  
+        node index.js
+    -This will execute the js file.
+
+    -REPL (Read Evaluation Print Loop):-
+        -var & let to create variables.
+        -const is to create contstants.
+        eg.
+            var i,a;
+            const PI = 90;
+        
+        eg. file copying using NodeJS
+            const fs = require('fs');                       //this is the Syntax
+            fs.copyFileSync('file 1.txt','file 2.txt');      //file 1.txt should be present before copying to 2nd file.
+
+    -NPM (Node Package Manager)
+        -npm init
+            -after this command give name to Project & at end it'll create package.json file.
+
+        -npm install <package_name>
+        -npm i <package_name>
+        eg.
+            npm install superheroes
+            npm i superheroes
+            npm i marvel-comics-characters
+
+            marvel.js
+                
+                var n = require('marvel-comics-characters');
+
+                //generating one random name
+                console.log(n.random());
+
+                //generating 4 random names
+                console.log(n.random(4));
+
+                //to check all names
+                console.log(n.all);
+------------------------------------------------------------------------------------------------------------------------------------
+Section 24: Express.js with Node.js
+
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+        

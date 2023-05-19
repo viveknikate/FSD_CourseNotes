@@ -1,5 +1,6 @@
      #Front-end Development:-
      to get IntelliSense in visual studio code use CRTL + SpaceBar
+     Section 1: Frontend Development
 
      Section 2: Introduction to HTML
           HTML:
@@ -1174,3 +1175,149 @@
                     <html lang="en" data-bs-theme="dark">
 
           -project:
+               Tindog website made with BootStrap.
+     
+     Section 12: WebDesign School:
+          -4 Pillars of web design
+               -Color theory
+               -Typography
+               -User Interface Design(UI)
+               -User Experience Design (UX)
+          
+          -Don't use more than 2 fonts on page.
+          -website should be more simple
+          -users reads in F or Z pattern
+     
+     Section 13: Person Site (Only HTML CSS)
+     
+     Section 14: Intro to JS:
+          -JavaScript & Java are not same.
+          -JavaScript is an interpreted language.
+          -Java is a compiled language.
+          
+          -Alerts:-
+               alert("hello");
+               -use snippets editor for JavaScript practice.
+               -you can use single quote or double quote anything it'll be acceptable.
+
+          -DataTypes:-
+               string
+               boolean
+          
+          -JavaScript variables:-
+               -prompt is a function taking input in JavaScript in string format.
+                var name = prompt("What is your name");
+                console.log(name);
+          
+          -JavaScript variable convention:
+               -use var or let keyword for creating variables
+               -use const keyword for creating const variable value.
+               valid names
+                    myName = 'name'
+                    my123 = 'name'
+                    my123$_ = 'name'
+                    my_name = 'asdf'
+                    asdf$asfd=90
+               
+               -JavaScript only can contain $ or _ except these no other special character allowed
+               -name can start with $ or _ 
+                    $name ='asdf';
+                    _one = 12;
+                    -They are valid.
+
+               -can not start with number.
+                    12me =90       //invalid
+          
+          -Strings In JS:
+               name = 'Vivek'
+               name = "Vivek"
+
+               na = 'asdf asdf'
+               'asdf asdf'
+               
+               na.slice(0,-4);
+               'asdf '                //extracting part of string except last 4 character.
+               
+               na.slice(0,-1);
+               'asdf asd'             //extracting part of string except last character.
+               
+          -Functions:
+               function funName(){
+                    //code
+               }
+
+               //calling
+               funName();
+
+               parameterized function:
+                    function funName(a,b){
+                         return a+b;
+                    }
+
+                    funName(5,5);       //10
+
+     Section 15: Intermediate JS:
+          -random number generation
+          -function
+          -control flow 
+               if else
+               if else if
+               while loop
+               for loop
+     
+     Section 16: DOM (Dcoument Object Model):
+          -document.getElementById('id');                        //singular gives one element only.
+
+          -document.getElementsByClassName('classname');         //plural it will give you array
+          -document.getElementsByTagName('h1');                  //plural it will give you array
+
+          -singular Method
+               -document.getElementById('id');
+               -document.querySelector('h1');               //in querySelector method you can put anything
+                                                            class, id or html element it doesn't matter 
+                                                            for class we have to mention . sign before
+                                                            for id # sign before name;
+               -querySelector method gives only one value which is first one only.
+                which matches with conditions.
+                other values discarded if it still matches the condition.
+               
+               -to select all using querySelector method use
+               querySelectorAll method it will you an array
+
+               -document.querySelector('#id');
+               -document.querySelector('.classname');            //select first element who match with this condition.
+
+               -document.querySelectorAll('.classname');            //select all element who class name matches.
+               -document.querySelectorAll('.classname').length;    //return length of array.
+               -document.querySelectorAll('.classname')[0].style.color='red';        //first elements color will be red.
+          
+          -HTML for content
+          -CSS for styling
+          -JS for interaction.
+
+          -document.querySelector('button').classList;                //retriving how many class have that button
+          -document.querySelector('button').classList.add('invisible');         //adding one more clas to that button
+          -document.querySelector('button').classList.remove('invisible');         //remove class from that button
+          -document.querySelector('button').classList.toggle('invisible');         
+                         //already added, then remove it, if not added then add that class to that button
+
+          -Attributes:-
+               for example, class is an attribute, or the href for an anchor tag is the attribute, 
+               or the src for an image. They’re all attributes. 
+               Everything that goes inside the tag, other than the tag name itself, are attributes.
+
+               -document.querySelector('a').attributes;          //list of all attributes associated with anchor tag.
+
+               //geting value of attribute
+               -document.querySelector('a').getAttribute('href');
+
+               //setting value to attribute
+               -document.querySelector('a').setAttribute('href','link');
+     
+     Section 17: Dice game
+          using DOM knowledge we completed this project
+
+     Section 18: Advance JavaScript DOM Manipulation:
+          -Drum kit project
+     
+     Section 19:
