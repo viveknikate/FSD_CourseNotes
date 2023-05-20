@@ -1,4 +1,4 @@
-     #Front-end Development:-
+s     #Front-end Development:-
      to get IntelliSense in visual studio code use CRTL + SpaceBar
      Section 1: Frontend Development
 
@@ -1315,9 +1315,210 @@
                -document.querySelector('a').setAttribute('href','link');
      
      Section 17: Dice game
-          using DOM knowledge we completed this project
+          -using DOM knowledge we completed this project
+          -Generated random num between 1 to 6.
+          -Math.random() * 6
+          -using floor function converted decimal num to integer
+               Math.floor(<any_num>);
+
+          -for interpolation we use back tick with $ sign
+               var num = 90;
+               console.log(`The number is ${num}`);
 
      Section 18: Advance JavaScript DOM Manipulation:
           -Drum kit project
-     
-     Section 19:
+               -link script to index.html page & test it with alert.
+                <script src="./script.js></script>
+               
+               -adding event listener:
+                events like 'click', 'keypress', 'keydown', 'keyup' etc 
+
+                -document.querySelector('.button').addEventListener('click', <function>);
+                -document.querySelector('.button').addEventListener('keypress', <function>);
+                -document.querySelector('.button').addEventListener('keydown', <function>);
+                -document.querySelector('.button').addEventListener('keyup', <function>);
+                -document.querySelector('.button').addEventListener('mouseover', <function>);
+                -document.querySelector('.button').addEventListener('mouseout', <function>);
+                -document.querySelector('.button').addEventListener('mousemove', <function>);
+                -document.querySelector('.button').addEventListener('mousedown', <function>);
+                -document.querySelector('.button').addEventListener('mouseup', <function>);
+                -document.querySelector('.button').addEventListener('dblclick', <function>);
+                -document.querySelector('.button').addEventListener('contextmenu', <function>);
+                -document.querySelector('.button').addEventListener('mouseenter', <function>);
+                eg.
+
+                function first_func(){
+                    console.log('first function');
+                }
+
+               -document.querySelector('click', first_func);
+               or
+               -document.querySelector('click', function (){
+                    console.log('function calling');
+               });
+               or
+               -document.querySelector('click', () =>{
+                    console.log('function calling');
+                    console.log(this)   //current object printed.
+               });
+          
+          -Debugging code in JS:
+               debugger;
+               <funName>
+
+          -Higher order function:
+               which will takes other function as a input.
+
+          -JavaScript Object:-
+               var HouseKeeper ={
+                         name :"House1",
+                         age :20,
+                         rank : 1,
+                         lang: ['one','two','three','four']
+                    }
+               
+                    HouseKeep.name;
+                    HouseKeep.age;
+                    HouseKeep.rank;
+                    HouseKeep.lang;
+                    HouseKeep.lang.push('five');
+                    HouseKeep.lang[0];
+
+          -button click example:
+           HTML:
+               <body>
+                    <h1>Enter text:</h1>
+                    <textarea type="text" id="demo" cols="40" rows="5"> </textarea>
+                    <br />
+                    <button type="submit" onclick="caller()">Submit</button>
+                    <p id="disp"></p>
+                    <script src="script.js"></script>
+               </body>
+           JS:
+               function caller(){
+                    var text = document.getElementById('demo').value;
+                    document.getElementById('disp').innerHTML = text;
+               }
+               
+     Section 19: JQuery:
+          -It's a Library of JavaScript.
+          eg.
+               document.querySelector('h1');
+               jQuery('h1');
+               $('h1');
+          
+          -You have to use CDN of jQuery to include jQuery in your project.
+          -CDN shoulds be kept in head or before ending body tag.
+               <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+          
+          -normal script should be kept before ending the body tag.
+          -or use this method.
+               $(document).ready(function (){
+                    $('h1').css('color','red');
+               })
+          eg.
+               jQuery('h1').css('color','red');
+               $('h1').css('color','red');        //setting value
+
+               $('h1').css('color');        //getting value
+
+          
+          -Minifying JS script file.
+
+          -Selecting Element:
+               document.querySelector is same as '$' in jQuery
+               document.querySelectorAll is also same as "$" in jQuery.
+          
+          -Manipulating styles with jQuery:
+               //adding class
+                    $('h1').addClass('classname');
+
+               //3 classes added
+                    $('h1').addClass('classname1 classname2 classname3');
+
+               //removing class
+                    $('h1').removeClass('classname');
+
+               //2 classes removed
+                    $('h1').removeClass('classname1 classname2');
+
+               //checking that element has that class or not
+                    $('h1').hasClass('classname');          //true or false
+                    $('h1').hasClass('classname1 classname2 classname3');          //true or false  
+
+          -Manipulating Text:
+               $('h1').text('bye');          //just to add the text to site.
+               $('h1').html('<cite>bye</cite>');       //with styling.
+
+          -Manipulating attributes:
+               $('a').attr('href','google.com');
+               
+               classList:
+                    $('h1').attr('class');
+          
+          -Adding EventListener jQuery:
+               $('h1').click(()=>{
+                    $("h1").css("color",'red');
+               })
+               
+               $('h1').keypress(()=>{
+                    $("h1").css("color",'red');
+               })
+
+               -Adding EventListener jQuery:
+               $('h1').on('click',()=>{
+                    $("h1").css("color",'red');
+               })
+               
+          -Adding or removing element:
+               -jQuery before method
+                    before
+                    after
+                    prepend
+                    append
+
+               eg.
+                    //Outside of tags
+                    $("h1").before('<button>Click</button>');
+                    $("h1").after('<button>Click</button>');
+
+                    //Within tags
+                    $("h1").prepend('<button>Click</button>');
+                    $("h1").append('<button>Click</button>');
+
+                    //removing
+                    $("button").remove();
+          
+          -Animation:
+               hide-
+                    $('h1').hide();
+               show-
+                    $("h1").show();
+               toggle-
+                    $("h1").toggle();
+               
+
+               fadeOut-
+                    $("h1").fadeOut();
+               fadeIn-
+                    $("h1").fadeIn();
+               fadeToggle-
+                    $("h1").fadeToggle();
+
+               slideUp-
+                    $('h1').slideUp();
+               slideDown-
+               $('h1').slideDown();
+
+               slideToggle-
+               $('h1').slideToggle();
+               
+               -animate
+               $('h1').animate({
+                    color:'red',
+                    width:'200px'
+                    },1000);
+
+                    -animate property works with only numeric values.
+               
+          

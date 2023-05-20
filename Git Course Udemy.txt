@@ -201,6 +201,11 @@ GIT NOTES BY HARRY :-
     ---------------------------------------------------------
     to modify the last commit & change heading & some content.
     git commit --amend
+    git commit --amend -m 'new updated msg goes here.'
+
+    
+    //commiting things without changing the last massage.
+    git commit --amend --no-edit
 
     // amend means change 
     to check the last commit only
@@ -385,7 +390,7 @@ GIT NOTES BY HARRY :-
     git reset
         reset staging area to the last commit without disturbing the working directory
 
-==========================================End====================================================
+===================================================================================End============================================================================
 GIT NOTES:
     to check the status of folder/project
     -git status 
@@ -1170,6 +1175,7 @@ Q. is actually possible to specify the default branch to start a repo on local s
         -TO OPEN THAT .GITCONFIG FILE TO SEE THE DEFAULT CONFIGURATION:
             -git config --global -e
             -cat ~/.gitconfig
+            -git config --edit
 
 
     #TO DOWNLOAD/ PULL THE REPO

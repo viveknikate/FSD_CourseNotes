@@ -2228,6 +2228,7 @@ JavaScript Objects:-
 
 Constructor Function:-
     function's every first letter is capitalized.
+    we can identify the Constructor function when every words first letter is capitalized.
     eg.
         function HouseKeepers(name,age,exp,addrs,lang) {
             this.name = name;
@@ -2266,6 +2267,10 @@ Callback Function:-
         }
 
         Listen('Vivek',function (e) {
+            console.log(e);
+        });
+        
+        Listen('Vivek',(e)=> {
             console.log(e);
         });
 
@@ -2569,7 +2574,7 @@ Section 21: The Unix Command Line:
         -list command
             ls
         -Change Directory
-            cd directoy
+            cd directory
             cd dire1/dire2/dire3     -3 step inside that Directory
             eg.
                 cd document/learn/language 
@@ -2581,7 +2586,7 @@ Section 21: The Unix Command Line:
             to come back 2 step back 
                 cd ../../
             
-  (          to go back to base
+            to go back to base
                 cd ~
             
             NOTE: You also can drag & drop a particular file in
@@ -2681,6 +2686,103 @@ Section 23: Node Js:
                 console.log(n.all);
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 24: Express.js with Node.js
+    Express:
+        -Express is a Node framework.
+        -We can add jQuery onto our Javascript to add extra features and make it easier working with Javascript
+        -It's a framework, or basically a bunch of code that somebody else wrote, that adds extra features and
+         helps to organize and structure your code, specifically for web applications built with Node.
+
+    Creating our first Server with Express:
+        -creating Project directory
+            mkdir <project1>
+        
+        -creating js file in that folder
+            touch index.js
+        
+        -initializing npm there.
+            npm init            //rest all default.
+        
+        -installing Express
+            npm install express
+            npm i express
+        
+        -Server Creation simple code:
+
+            const express = require('express');
+            const app = express();
+            app.listen(4555,()=>{
+                console.log("On Port no. 4555 server is running");
+            });
+
+            //This is Callback function.
+            or
+            app.listen(4555,function (){
+                console.log("On Port no. 4555 server is running");
+            });
+        
+    -Handling response & request: GET request
+            const express = require('express');
+            
+            const app = express();
+
+            app.get('/', function (response, request){
+                response.send('<h1>Hello world..!</h1>')
+            })
+                
+                or
+
+            app.get('/', (req, res) =>{
+                console.log(req);
+                res.send('<h1> Hello world..!</h1>')
+            })
+
+            app.listen(4555,()=>{
+                console.log("On Port no. 4555 server is running");
+            });
+
+            -here '/' in get method indicates home or root level or application.
+             in get method there are 2 arguments we passed,
+             first '/' path
+             second the Callback function.
+    
+    -Nodemon installation:
+        -used for restarting the server when changes detected.
+        -to install nodemon
+         npm install -g nodemon
+         npm i -g nodemon
+        
+        -with administrative Privileges
+            sudo npm i -g nodemon
+            sudo npm install -g nodemon
+
+    -Working With Routes:
+        NOTE:- This is anonymous function (function without name) Syntax
+                in Js you can use single or double quote it works fine.
+            ()=>{
+                //code
+            }
+
+        -for get request
+            -for home page:
+            
+                app.get('/', (req, res)=>{
+                    console.log("This is callback Function of Home page");
+                    res.send('<h1>Home Page</h1>')
+                })
+
+            -for Contact Us page:
+                app.get('/contact',function (){
+                    console.log('This is callback function of ContactUs page');
+                    res.send("contact me at : vivek.nikate@capgemini.com");
+                })
+            -for About Us page:
+                app.get('/about',function (){
+                    console.log('This is callback function of AboutUs page');
+                    res.send('<h1>About Us</h1>')
+                })
+            
+    -Calculator WebApp:
+        
 
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -2696,4 +2798,3 @@ Section 24: Express.js with Node.js
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
-        
