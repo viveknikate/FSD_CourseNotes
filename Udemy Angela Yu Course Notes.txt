@@ -83,6 +83,35 @@ HTML Boilerplate:   Simply the structure of writing HTML
 ==================================================
 <em> or <i> tag for italics always prefer to use <em> tag cause it conveys the meaning
 <b> or <strong> for boldness of text always use strong.
+<cite> italics.
+<abbr title="Work from home>WFH</abbr>      //abbreviation
+    HTML tags:
+        <a> tag for hyperlink
+        <img> tag for images
+        <br> tag for line break
+        <hr> tag for horizontal rule
+        <center> tag for centering
+        <p> tag for paragraph
+        <h1>, <h2>, <h3>, <h4>, <h5>, <h6> tag for heading
+        <ul> tag for unordered list
+        <ol> tag for ordered list
+        <li> tag for list item
+        <table> tag for table
+        <tr> tag for table row
+        <td> tag for table data
+        <form> tag for form
+        <input> tag for input
+        <button> tag for button
+        <label> tag for label
+        <select> tag for select
+        <option> tag for option
+        <textarea> tag for text area
+        <div> tag for div
+        <span> tag for span
+        <style> tag for style
+        <script> tag for scripting
+        <title> tag for title
+
 
 semantic in HTML:A semantic element/tag clearly describes its meaning 
                  to both the browser and the developer
@@ -1346,6 +1375,10 @@ eg.
     lifeInWeeks(26)
     //Output:   
         You have 23360 days, 3328 weeks, and 768 months left
+    
+    -To escape/print the ${} interpolation use \ back-slash.
+     console.log(`Your BMI is \${val}`);        //this will print ${val} instead of printing the value of val
+     console.log(`Your BMI is \\ \${val}`);     //this will print the \ on screen.
 --------------------------------------------------------------------------------------------------------------------------------
 eg.
     function bmiCalculator(weight,height){
@@ -2588,6 +2621,7 @@ Section 21: The Unix Command Line:
             
             to go back to base
                 cd ~
+                cd
             
             NOTE: You also can drag & drop a particular file in
                   terminal or command prompt it will take its path.
@@ -2645,8 +2679,10 @@ Section 23: Node Js:
      Node.Js is design to build Scalable network applications.
 
     -To run the JS files
-    -Create index.js file then use node command
-     like  
+    -Create index.js file 
+        touch index.js
+
+    -then use node command like  
         node index.js
     -This will execute the js file.
 
@@ -2721,6 +2757,13 @@ Section 24: Express.js with Node.js
             });
         
     -Handling response & request: GET request
+        -There should be one res.send method for one app.get request not more than one send method.
+        -but we can use res.write method more than once.
+
+            res.write("<p>Description:"+desc+"</p>");
+            res.write("<center><h1>The Temperature in Bengaluru is "+ temp1 +" </h1></center>")
+            res.send();
+            
             const express = require('express');
             
             const app = express();
@@ -2729,7 +2772,7 @@ Section 24: Express.js with Node.js
                 response.send('<h1>Hello world..!</h1>')
             })
                 
-                or
+            or
 
             app.get('/', (req, res) =>{
                 console.log(req);
@@ -2754,6 +2797,10 @@ Section 24: Express.js with Node.js
         -with administrative Privileges
             sudo npm i -g nodemon
             sudo npm install -g nodemon
+
+        -to run file with nodemon use this command
+            nodemon server.js
+            nodemon <file_name>
 
     -Working With Routes:
         NOTE:- This is anonymous function (function without name) Syntax
@@ -2782,15 +2829,895 @@ Section 24: Express.js with Node.js
                 })
             
     -Calculator WebApp:
+        -Procedure for creating WebApp
+            -create a folder
+                mkdir <folder_name>
+                mkdir project1
+            
+            -inside that folder create a  JS file
+                touch <filename.extension>
+                touch server.js
+            
+            -initialize the npm inside that folder
+                npm init
+            
+            -install Express Framework
+                npm install express
+            
+            -import express
+                const express = require('express');
+                const app = express();
+
+            -create response for Home route or different Routes
+                app.get('/', (req, res)=>{
+                        res.send('<h1>Home Page</h1>')
+                    });
+            
+            -create response for ContactUs route
+                app.get('/contact',function (){
+                        res.send("contact me at : vivek.nikate@capgemini.com");
+                    });
+
+            -Listen all things on any port 
+                app.listen(3000, ()=>{
+                    console.log('Server is running on port 3000');
+                })
+
+            -To run application use nodemon command
+                nodemon <file_name>
+                nodemon server.js
+
+    -Responding to request with HTML files:
+        -<input type="text" name="num1" placeholder="1st num">
+            -here the 'name' attribute is like a variable which is identified uniquely when we submit form.
+
+            to send the file to request
+                res.sendFile('file path');
+                -file path must be absolute or specify root to res.sendFile
+            
+            -to send the file to request
+                res.sendFile(__dirname+'/index.html');
+                res.sendFile(path.join(__dirname,'../public/file.html'));
+
+                - here __dirname is a const which will give the complete file location
+                - __dirname is directory name
+
+            -printing
+                console.log(__dirname);
+                C:\Users\vnikate\Desktop\FSD Angela Yu course\ALL SECTION WISE\Section 24 Express & NodeJS\Calculator
         
+            -body-parse:
+                //installing
+                    -npm i body-parser
+                    -npm install body-parser
+
+                //importing
+                const bodyParser = require('body-parser');
+
+    -Processing Request with bodyParser:
+        <form action='/' method='post'> & <form  method='post'> both are same.
+        -form action path is default to '/' (home).
+
+        -HTTP return code
+            100 - Hold on
+            200 - here you go (success)
+            300 - go away (security related)
+            400 - You screwed up (client side problem)
+            500 - I screwed up (server side problem)
+
+        -When you submit data then response for that we use post method
+            app.post('/', (req,res)=>{
+                res.send("Thanks for posting");
+            })
+
+            -The above code is for just one route (for home page) only.
+        
+        -whatever user entered into the form input-data, to access them we use bodyParser.
+         to tap into that data we use name attribute of input element
+            -npm i body-parser
+            -npm install body-parser
+            -importing
+            const bodyParser = require('body-parser');
+
+            app.use(bodyParse.text())
+                -parse all request into text
+                app.use(bodyParser.json())
+                -parse all request into json
+
+                --This below code urlencoded you have to write everytime when you use bodyParse
+                    app.use(bodyParser.urlencoded({extended:true}));
+                        -parse all request into urlencoded
+                        -"extended:true" is allows us to post nested object.
+
+            -to tap into the data
+                app.post('/', bodyParser.urlencoded({extended:true}), (req,res)=>{
+                    res.send(req.body);
+                    console.log(req.body);
+                })
+                -req.body is an object which contains the data. 
+                    below all are input fields name attributes value,
+                    we are accessing with req.body.<name's attribute value>
+                    -req.body.name
+                    -req.body.email
+                    -req.body.password
+                    -req.body.address
+                    -req.body.city
+                    -req.body.state
+                    -req.body.zip
+                    -req.body.phone
+                    -req.body.fax
+                    -req.body.website
+                    -req.body.company
+                    -req.body.company_name
+                    -req.body.company_address
+                    -req.body.company_city
+                    -req.body.company_state
+                    -req.body.company_zip
+                    -req.body.company_phone
+                    -req.body.company_fax
+                    -req.body.company_website
+                    -req.body.company_email
+
+            -After submiting input data will get printed.         
+                app.post('/',(req,res)=>{
+                    console.log(req.body);
+                    res.send("Thanks for posting");
+                })
+            
+            -Converting into integer there are two method using 
+                -parseInt
+                -Number
+                    var n1 = '30'
+                    var n2 = '20'
+                    n1 = parseInt(n1)
+                        -parseInt(n1) will convert n1 into integer. 
+                    n2 = Number(n2)
+                        -Number(n2) will convert n2 into integer.
+                    res.send("Thanks for posting \n"+`The result of ${n1} + ${n2} = ${n1+n2}`);
+
+    -Project:
+        inside this project folder run this below commands before starting 
+        the actual project on bash.
+        -npm init
+        -npm install express
+        -npm install body-parser
+
+        HTML code:
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Calculator</title>
+                <style>
+                    body{
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Calculator</h1>
+                <form action="/" method="post">
+                    <input type="text" name="n1" placeholder="first" /><br><br>
+                    <input type="text" name="n2" placeholder="second" /> <br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </body>
+            </html>
+        
+        JS code:
+            const bodyParser = require('body-parser');
+            const express = require('express');
+
+            const app = express();
+
+            app.use(bodyParser.urlencoded({extended:true}));
+
+            app.get('/', (req, res)=>{
+                res.sendFile(__dirname+'/index.html')
+            })
+
+
+            app.post('/',(req, res)=>{
+                
+                let a = Number(req.body.n1)
+                let b = Number(req.body.n2)
+
+                res.send(`<center> <h1>Thanks for Submiting :: Answer is ::${a+b}</h1></center>`);
+
+                // res.sendFile(__dirname+'/Outcome.html');
+            })
+
+
+            app.listen(3000, (req, res)=>{
+                console.log('Server is running on port 3000');
+            })
+
+    -BMI Challenge:
+        HTML code:
+            <!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>BMI Calculator</title>
+                    <style>
+                        body{
+                            text-align: center;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>BMI Calculator</h1>
+                    <form method="post">
+                        <input type="text" name="wt" placeholder="Enter weight" required/> <br> <br>
+                        <input type="text" name="ht" placeholder="Enter height" required/> <br> <br>
+                        <button type="submit">Calculate BMI</button>
+                    </form>
+                </body>
+            </html>
+
+        JS code:                
+            const express = require('express');
+            const bodyParse = require('body-parser');
+            
+            const app = express();
+            app.use(bodyParse(urlencoded({extended:true})));
+        
+            app.get('/bmicalculator', (req, res)=>{
+                res.sendFile(__dirname+'/bmiCalculator.html')
+            })
+
+            app.post('/bmicalculator', (req, res) =>{
+                
+                let a = parseInt(req.body.wt)
+                let b = parseInt(req.body.ht)
+                res.send(`Your BMI ${a / b}`);     
+            })
+
+            app.listen(3000, ()=>{
+                console.log("Server started running on port no.3000");
+            })
+------------------------------------------------------------------------------------------------------------------------------------
+Section 25: APIs- Application Programming Interfaces
+    An API is a set of commands, functions, protocols, and objects that programmers can use to 
+    create software or interact with an external system.
+
+    -EndPoint
+        just simple one url.
+        http://api/v1/user
+
+    -Paths
+        Path & parameters used to retrive specific data you want from an external server.
+        url which changes its path after some common part.
+        eg.
+            /api/v1/user/login
+            /api/v1/user/register
+            /api/v1/user/profile
+            /api/v1/user/logout
+
+    -Parameters
+        -parameter goes at the end of url after the question mark
+         in key-value pair
+        -parameters in the url.
+        -parameter sequence doesn't matter at all as long as the parameter separated by & sign
+         ampersign
+        eg.
+        /api/v1/user/login?email=<email>&password=<password>
+        /api/v1/user/login?email=user@gmail.com&password=123456
+
+        3 query first query followed by ? mark then
+        further/ subsequent queries separated using & sign
+        more than 1 parameter is there then we separate them with & sign
+
+            /api/v1/user/login?email=<email>&password=<password>&type=yes
+        
+        eg.
+            Postman application used for testing url
+            for this link retrived the data
+                -get link
+                    https://api.openweathermap.org/data/2.5/weather
+                -parameter
+                    https://api.openweathermap.org/data/2.5/weather?q=Bengaluru&appid=36a426e3b4273c7036e6726ddbd68c64
+                    https://api.openweathermap.org/data/2.5/weather?q=Bengaluru&appid=36a426e3b4273c7036e6726ddbd68c64&units=metric
+
+            JSON:- JavaScript Object Notation
+
+    -Authentication
+
+    -making GET request with node HTTP module:
+        creating Weather project:-
+            Practiced different things
+
+                app.get('/',(req, res)=>{
+                    const url = 'https://api.openweathermap.org/data/2.5/weather?q=Bengaluru&units=metric&appid=36a426e3b4273c7036e6726ddbd68c64'
+
+                    https.get(url, (response)=>{
+                        // console.log(response);
+                        console.log(response.statusCode);
+                        if(response.statusCode == 200)
+                            res.send("<center><h1>The Server Up & running</h1></center>")
+                        else if(response.statusCode == 404)
+                            res.send("<center><h1>Requested Page Not Found</h1></center>")
+                        else if(response.statusCode == 401)
+                            res.send("<center><h1>Authentication App Id problem.</h1></center>")
+                    });
+                })
+
+                app.listen(3000,()=>{
+                    console.log("Server is Running on port 3000");
+                })
+            --------------------------------------------------------------------------------
+                var obj = {
+                            name: 'vivek',
+                            age: 22,
+                            city: 'Bengaluru',
+                            country: 'India'
+                    }
+
+                    console.log(JSON.stringify(obj));
+                        //{"name":"vivek","age":22,"city":"Bengaluru","country":"India"}
+
+                    console.log(obj)
+                        //{ name: 'vivek', age: 22, city: 'Bengaluru', country: 'India' }
+            --------------------------------------------------------------------------------
+            -Using body-parser making post request to server:
+            Weather Project JS file:
+                
+                const express = require("express");
+                const bodyParser = require('body-parser');
+                const app = express();
+
+                const https = require('https');
+                const { urlencoded } = require("body-parser");
+
+                app.use(bodyParser(urlencoded({extended:true})));
+
+                app.get('/',(req, res)=>{
+                    res.sendFile(__dirname+'/index.html');
+                })
+
+
+                app.post('/', (req, res)=>{
+                    
+                    const apiKey = '36a426e3b4273c7036e6726ddbd68c64';
+                    const unit = 'metric';
+                    const city = req.body.cityName;
+
+                    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`
+
+                    https.get(url, (response)=>{
+                        // // console.log(response);     //response will print complete data received from that url
+                            // // console.log(response.statusCode);
+
+                            // if(response.statusCode == 200)
+                            //      res.send("<center><h1>The Server Up & running</h1></center>")
+                            // else if(response.statusCode == 404)
+                            //      res.send("<center><h1>Requested Page Not Found</h1></center>")
+                            // else if(response.statusCode == 401)
+                            //      res.send("<center><h1>Authentication App Id problem.</h1></center>")
+
+                        response.on('data', (info)=>{
+                            // console.log(info); //This is in hexadecimal code to convert it into JSON use below method
+
+                            // console.log(JSON.parse(info));
+                            // res.send(JSON.parse(info));
+                            
+                            // const weatherData = JSON.parse(info);
+                            // console.log(weatherData)
+
+                            // const id = weatherData.weather[0].id;             //in weather data there is another array called weather so we gave index there.
+                            // console.log(id);
+                            
+                            // //to ACCESS the specific data from json file you can copy the path from JSON VIEWER PRO chrom extension
+                            
+                                    // const desc = weatherData.weather[0].description;
+                                    // console.log(desc);
+
+                                    // var obj = {
+                                    //      name: 'vivek',
+                                    //      age: 22,
+                                    //      city: 'Bengaluru',
+                                    //      country: 'India'
+                                    // }
+
+                                    // console.log(JSON.stringify(obj));
+                                    // console.log(obj)
+
+                                    // const temp = weatherData.main.temp;
+                                    // console.log(temp);
+                            
+                            const weatherData = JSON.parse(info);
+                            const temp1 = weatherData.main.temp
+                            console.log(temp1);
+
+                            const desc = weatherData.weather[0].description;
+                            console.log(desc);
+
+                            const icon = weatherData.weather[0].icon;
+                            // const imgURL = `https://openweathermap.org/img/wn/${icon}@2x.png`
+                            const imgURL = "https://openweathermap.org/img/wn/"+icon+"@2x.png";
+
+                            // res.send(`<center><h1>The Temperature in Bengaluru is ${temp1} <br /> Description : ${desc}</h1></center>`)
+                            
+                            
+                            res.send("<center> <h1>The Temperature in "+city+" is "+ temp1 +" <img src="+imgURL+" /> </h1> <p>In "+city+" <cite>"+desc+"</cite> there.</p> </center>")
+                            
+                            // res.write("<p>Description:"+desc+"</p>");
+                            // res.write("<center><h1>The Temperature in Bengaluru is "+ temp1 +" <img src="+imgURL+" /> </h1></center>")
+                            // res.write(`<center><h1>The Temperature in Bengaluru is  ${temp1} <img src= ${imgURL} /> </h1></center>`)
+                            // res.send();
+
+                        })
+
+                    });
+                })
+
+                app.listen(3000,()=>{
+                    console.log("Server is Running on port 3000");
+                })
+
+            Weather Project HTML File:
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Weather App</title>
+                        <style>
+                            body{
+                                    text-align: center;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Weather Project</h1>
+                        <!-- <form action="/" method="post">          action tells the form where to submit or to which server data need to submitted. -->
+                            <!-- by default the action value is '/' this. like action='/' -->
+                        <form method="post">
+                            <label for="city">City Name :</label>
+                            <input type="text" name="cityName" id="city"/>
+                            <button>Check</button>
+                            <!-- <button type="submit">Submit</button> -->
+                            <!-- if you mention the type=submit or didn't still its ok -->
+                        </form>
+                    </body>
+                </html>
+            --------------------------------------------------------------------------------                
+            -NewsLetter/ Email marketing Project:
+                -folder created 'newletter'
+                    npm init                                //initialized
+                    npm i exrpess body-parser               //exrpess & body-parser installed.
+
+                    -creating express server
+                    const express = require('express');
+                    const app = express();
+                    
+                    app.listen(4000,()=>{
+                        console.log("Server is Running on port 4000");
+                    });
+                
+                app.use(exrpess.static('folder_name'));
+                //for keeping your static images & styles folder in it.
+
+                -Heroku:
+                    using to deploy WebApp.
+                    Heroku is a cloud platform as a service supporting several programming languages. 
+                    One of the first cloud platforms.
+
+                    -application deploying to clouds, so it will choose any port on the fly (dynamically) so use
+                        process.env.PORT
+                        app.listen(process.env.PORT,()=>{
+                            console.log("Server is Running on port 4000");
+                        });
+                        or might be on local system also
+
+                        app.listen(process.env.PORT || 4000 ,()=>{
+                            console.log("Server is Running on port 4000");
+                        });
+
+                    -initialize the git repo inside PROJECT folder & commit all changes you made.
+                    -crete Procfile file.
+                    -Procfile don't have extension.
+                     inside that Procfile mention command to run application.
+                     eg.
+                        web: node app.js
+                    
+------------------------------------------------------------------------------------------------------------------------------------
+Section 26: Git, GitHub & Version Control System (VCS)
+    -You can create a save point.
+
+    -to edit file using terminal there are 3 commands
+        vi <file_name.txt>
+        eg.
+            vi index.html
+
+        Type  :qa!  and press <Enter> to abandon all changes and exit Vim
+        To save changes you made press :wq press <Enter>
+        press CRTL + C 
+
+        vim <file_name.txt>
+        eg.
+            vim index.html
+        
+        nano <file_name.txt>
+            eg.
+                nano index.html
+
+    -git init           
+        // in project/specific folder where your all important code is there use this command to initialize new repository
+    
+    -create new file 
+        touch sample.txt
+    
+    -add files in staging/tracking area:
+        git add <file_name>
+        git add sample.txt      // to add specific file
+
+        git add .
+                //to add all files in that folder at once.
+    
+    -to check the status of project
+        git status
+    
+    -git commit --amend     // to change last commit msg.
+    
+    -git diff       //to check difference between last commit file & recent changes made
+
+    -git checkout <file_name>   //to go back previous version of file
+
+    -git checkout -f            //all files go to previous version
+
+    //to check all commits
+    -git log 
+
+    //just one commit
+    git log -1
+
+    //for just 2 commits
+    git log -2 
+
+    //shor oneline msg
+    git log -2 --oneline
+    git log --oneline
+
+     //to push the existing repo on github
+    git remote add <name_here> <url>
+    -git remote add origin git@github.com:viveknikate/GitHarryPractice.git
+
+    //to remove remote which you added before
+         git remote remove <remote_name>
+         git remote remove origin
+        
+    //to check all remotes link
+    git remote -v
+
+    //to remove from commited or staging area
+    git rm --cached <file_name>
+
+    //to see which files are in tracking mode
+    -git ls-files
+
+    //#To check files which are ignored but still in tracking use this command
+    git ls-files -ci --exclude-standard
+
+    after you found such files then remove them using this command
+    git rm --cached <file_name_you_want_to_ignore>
+
+    //to ignore the particular files
+        create .gitignore file
+            -touch .gitignore
+
+        -in .gitignore file you can comment using # sign (Pound).
+        
+        -in that file mention the extensions you want to ignore
+         or specific file name
+            eg.
+                secrete.txt         //just ignore secrete txt file but track other .txt files.
+                *.html
+                *.web
+        
+        -VISIT THE .gitignore Repository ON GitHub FOR PARTICULAR Project THEY WILL TELL YOU WHICH FILES
+        SHOULD BE IGNORED
+
+    -Git clone:
+        //clone in current folder
+            git clone https://github.com/the-pratik/react-counter-app.git .
+        
+        //clone with Vivek as name
+            git clone https://github.com/the-pratik/react-counter-app.git Vivek
+        
+        //just clone with defaul name
+            git clone https://github.com/the-pratik/react-counter-app.git
+
+    -Git branch
+        git branch      //list  * (asterik) represent the currently in which branch you are.
+        git branch <name>    //create
+        git branch new    //create
+
+        change branch
+        git checkout <branch_name>
+        git checkout new
+
+    -to check the branch graph
+        go to GitHub
+        go to any repository -> insight -> Network tab
+
+    -Fork:
+        Copying the repository to our account.
+------------------------------------------------------------------------------------------------------------------------------------
+Section 27: EJS
 
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 28: Blog WebSite
+
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 29: Database
+    -Database based on SQL & NoSQL.
+        -SQL based on table format
+            all data needs to be followed this structure.
+            every cell or column must have the value in it, can't be empty.
+            -relational DB
+            eg.
+                MySQL
+                postgreSQL
+        -NoSQL based on Document Format (data store in JSON format, key-value pair)
+            -Non-relational DB
+            eg.
+                MongoDB
+            
+        -MySQL:
+            More Mature (old)
+            Table structure
+            Require Schema (means table structure how many columns/rows should be there, must be defined before creating the DB).
+            Great with relational (relation between table, works faster)
+            scales vertically
+            
+        -MongoDB:
+            Shiny & new
+            document Structured
+            more flexiple to changes
+            Not great with complex relation between tables.
+            horizontally scale
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 30: SQL (Structured Query Language)
+    -SQL is used for storing, Manipulating & retriving Data from Database. 
+    -SQL used to perform CRUD operation on Database.
+        C - Create
+        R - Read
+        U - Update
+        D - Delete/ Destroy
+    -SQL not a case-sensitive language
+
+    -primary key = Uniquely identifies each record in a database table.
+
+    -Creating Table:
+
+        CREATE TABLE table_name (
+                column_name data_type,
+                column_name data_type,
+                column_name data_type
+                )        
+        
+        CREATE TABLE Products(
+            ID INT NOT NULL,
+            name string,
+            price money,
+            PRIMARY KEY(ID)
+        )
+
+        //for primary key
+        CREATE TABLE Products (
+            id INT PRIMARY KEY,
+            name VARCHAR(20),
+            price FLOAT
+            )
+
+        //for primary key & foreign key
+        CREATE TABLE Products (
+            id INT PRIMARY KEY,
+            name VARCHAR(20),
+            price FLOAT,
+            //for foreign key
+            CONSTRAINT fk_name FOREIGN KEY (id) REFERENCES table_name (id)
+            )
+
+    -INSERTING INTO TABLE:
+        INSERT INTO Products
+        values(1,'Pen',1.20)
+
+        //multiple insertion
+        INSERT INTO customer
+        VALUES(1,'vivek','nikate','Bengaluru'),
+        (2,'angela','yu','London')
+    
+        NOTE:-  if you are inserting into the table then 2 Syntax there. 
+                firstly if you are entering value for all columns then no need to mention the columns name in query
+                2nd is mention both columns name & values to be inserted into the table
+
+        INSERT INTO Products (id, name)
+        values(2,'Pecil');
+    
+    -Read Data From Database table:
+
+        //for all records
+        SELECT * FROM Products
+        
+        //for specific column
+        SELECT name, price FROM Products
+
+        //for specific column & row
+        SELECT name, price FROM Products WHERE id = 1
+
+        SELECT name, price FROM Products WHERE id = 1 AND name = 'Pen'
+
+        SELECT name, price FROM Products WHERE id = 1 OR name = 'Pen'
+
+        SELECT name, price FROM Products WHERE id = 1 OR name = 'Pen' OR price = 1.20
+    
+    -Updating data in table of Database:
+        Update sql Syntax
+            UPDATE table_name
+            SET column_name = new_value
+            WHERE condition
+            eg.
+                UPDATE Products
+                SET name = 'Pen'
+                WHERE id = 1
+            
+            //for all columns
+            UPDATE Products
+            SET price = 1.20
+            
+            //for specific column
+            UPDATE Products
+            SET price = 1.20
+            WHERE id = 1
+
+            //for specific column & row
+            UPDATE Products
+            SET price = 1.20
+            WHERE id = 1 AND name = 'Pen'
+
+            //for specific column & row
+            UPDATE Products
+            SET price = 1.20
+            WHERE id = 1 OR name = 'Pen' OR price = 1.20
+
+    -Deleting data from table of Database:
+        Delete sql Syntax
+            DELETE FROM table_name
+            WHERE condition
+
+            //for all columns, all records gets deleted
+            DELETE FROM Products
+            
+            //for specific column
+            DELETE FROM Products
+            WHERE id = 1
+            
+            //for specific column & row
+            DELETE FROM Products
+            WHERE id = 1 AND name = 'Pen'
+            
+            //for specific column & row
+            DELETE FROM Products
+            WHERE id = 1 OR name = 'Pen' OR price = 1.20
+                
+    -Alter Table:
+        Alter table statement is used to add, delete or Modify columns in an existing table.
+        Syntax:
+        
+            ALTER TABLE table_name
+            ADD column_name data_type
+            eg.
+                ALTER TABLE Products
+                ADD stock INT
+
+    -joins in SQL:
+        -Foreign Key: used to link two tables together.
+        -field in one table refers to the PRIMARY KEY in another table.
+        -Inner Join:
+            Inner join is the most common join type in SQL. It is used to select data from two tables based on the common column.
+            Syntax:
+                SELECT column_name(s)
+                FROM table_name1
+                INNER JOIN table_name2
+                ON table_name1.column_name = table_name2.column_name
+                
+                eg.
+                    SELECT p.id, p.name, p.price
+                    FROM Products p
+                    INNER JOIN Categories c
+                    ON p.category_id = c.id
+
+                    select  o.order_num, c.fname, c.lname, c.address, p.name, p.price
+                    from orders o
+                    JOIN customers c
+                    join Products p
+                    ON o.cust_id = c.ID And o.prod_id = p.id
+
+        -Left Join:
+            Left join is used to select data from one table and add the data from the other table.
+                Syntax:
+                    SELECT column_name(s)
+                    FROM table_name1
+                    LEFT JOIN table_name2
+                    ON table_name1.column_name = table_name2.column_name
+
+                    eg.
+                        SELECT p.id, p.name, p.price
+                        FROM Products p
+                        LEFT JOIN Categories c
+                        ON p.category_id = c.id
+
+        -Right Join:
+            Right join is used to select data from one table and add the data from the other table.
+                Syntax:
+                    SELECT column_name(s)
+                    FROM table_name1
+                    RIGHT JOIN table_name2
+                    ON table_name1.column_name = table_name2.column_name
+
+                    eg.
+                        SELECT p.id, p.name, p.price
+                        FROM Products p
+                        RIGHT JOIN Categories c
+                        ON p.category_id = c.id
+
+        -Union:
+            Union is used to select data from two tables.
+                Syntax:
+                    SELECT column_name(s)
+                    FROM table_name1
+                    UNION
+                    SELECT column_name(s)
+                    FROM table_name2
+
+                    eg.
+                        SELECT p.id, p.name, p.price
+                        FROM Products p
+                        UNION
+                        SELECT c.id, c.name, c.price
+                        FROM Categories c
+
+        -Intersect:
+            Intersect is used to select data from two tables.
+                Syntax:
+                    SELECT column_name(s)
+                    FROM table_name1
+                    INTERSECT
+                    SELECT column_name(s)
+                    FROM table_name2
+
+                    eg.
+                        SELECT p.id, p.name, p.price
+                        FROM Products p
+                        INTERSECT
+                        SELECT c.id, c.name, c.price
+                        FROM Categories c
+
+        -Except:
+                Except is used to select data from one table and add the data from the other table.
+                    Syntax:
+                        SELECT column_name(s)
+                        FROM table_name1
+                        EXCEPT
+                        SELECT column_name(s)
+                        FROM table_name2
+
+                        eg.
+                            SELECT p.id, p.name, p.price
+                            FROM Products p
+                            EXCEPT
+                            SELECT c.id, c.name, c.price
+                            FROM Categories c
 ------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
+Section 31: MangoDB:
+
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------

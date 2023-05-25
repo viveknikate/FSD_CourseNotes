@@ -25,11 +25,29 @@ GIT NOTES BY HARRY :-
     to add file in staging area to commit
     git add name.ext
 
+    -to edit file using terminal there are 3 commands
+        vi <file_name.txt>
+        eg.
+            vi index.html
+
+        Type  :qa!  and press <Enter> to abandon all changes and exit Vim
+        To save changes you made press :wq press <Enter>
+        press CRTL + C 
+
+        vim <file_name.txt>
+        eg.
+            vim index.html
+        
+        nano <file_name.txt>
+            eg.
+                nano index.html
+
+
     for commiting changes
     git commit
     then i to insert
     then esc key to out
-    then press :wq 
+    then press :wq    or     :qa!
     then enter to exit
     or
 
@@ -233,8 +251,12 @@ GIT NOTES BY HARRY :-
     pull = download the files from server with it's complete history (taking from github)
 
     //to push the existing repo on github
-    git remote add name_here url
+    git remote add <name_here> <url>
     -git remote add origin git@github.com:viveknikate/GitHarryPractice.git
+
+    //to remove remote which you added before
+         git remote remove <remote_name>
+         git remote remove origin
 
     //to check branches
     git branch
@@ -457,11 +479,12 @@ GIT NOTES:
     to remove file from tracking & from hard disk also
     -git rm  file_name
 
-    to just remove file from tracking only use
+    to just remove file from tracking or committed by mistake use
     -git rm --cached file_name
     eg.
         git rm --cached index.html
         git rm --cached  -r -f .        //removing all files from staging area recursively & forcefully.
+        git rm --cached  -r .        //removing all files from of current directory staging area recursively.
 
     to get short msg for git status
     -git status -s
@@ -707,6 +730,12 @@ TO COMMIT USE
     it shows which files currently in tracking mode
         -git ls-files
 
+#To check files which are ignored but still in tracking use this command
+    git ls-files -ci --exclude-standard
+
+    after you found such files then remove them using this command
+    git rm --cached <file_name_you_want_to_ignore>
+
 #TO REMOVE FILES :
     =The difference between the (rm <file_name>) command & (git rm <file_name>) is 
     that, rm just delete the files without knowing to git 
@@ -734,7 +763,7 @@ TO COMMIT USE
 
 #DIRECT COMMIT:
     -git commit -a -m "direct commit"   //this will work when file is added 
-    -git commit -am "direct commit"     //this will work when the file is previously is in tracking mode of git
+    -git commit -am "direct commit"     //this will work when the file is previously is in tracking mode of git or added.
 
 #TO INGORE THE PARTICULAR FILE ADD THEM IN .gitignore folder
 name must be same 
@@ -758,6 +787,10 @@ name must be same
             -to ingore the content of that folder 
                 just put the folder_name inside the  ".gitignore" file
             FOLDER_NAME
+
+        
+        -VISIT THE .gitignore Repository ON GitHub FOR PARTICULAR Project THEY WILL TELL YOU WHICH FILES
+        SHOULD BE IGNORED
 
 #TO RESTORE THE PREVIOUS BUG FREE FILE USE
     -git checkout <file_name>

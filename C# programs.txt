@@ -1,0 +1,1330 @@
+//Creating new project commands
+    -dotnet new console
+//to run 
+    -dotnet run
+
+                                             :: 13/04/2023 ::
+//1.String Creation
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "Vivek";
+        string str2 = "Nikate";
+        Console.WriteLine(str1);             //Vivek
+        Console.WriteLine(str2);             //Nikate
+    }
+}
+
+//2.String Length
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "qwertyuiopasdfghjklzxcvbnm";
+        Console.WriteLine(str1+" "+str1.Length);                 //qwertyuiopasdfghjklzxcvbnm 26
+
+        string str2 = "Vivek";
+        Console.WriteLine(str2+" "+str2.Length);                 //Vivek 5
+    }
+}
+
+
+//3.String ToUpper()
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "qwertyuiopasdfghjklzxcvbnm";
+        Console.WriteLine(str1+" "+str1.ToUpper());                   //QWERTYUIOPASDFGHJKLZXCVBNM
+        
+        string str2 = "Vivek";
+        Console.WriteLine(str2+" "+str2.ToUpper());                   //VIVEK
+    }
+}
+
+//4.String ToLower()
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "QWERTYUIOPASDFGHJKLZXCVBNM";         
+        Console.WriteLine(str1+" "+str1.ToLower());         //qwertyuiopasdfghjklzxcvbnm
+        
+        string str2 = "VIVEK nikate";
+        Console.WriteLine(str2+" "+str2.ToLower());         //vivek nikate
+    }
+}
+
+//5.String Concatenation
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "Vivek ";
+        string str2 = "Nikate";
+        
+        Console.WriteLine(str1 + str2 );        //Vivek Nikate
+        
+        //or
+        
+        string name = str1 + str2;
+        Console.WriteLine(name);            //Vivek Nikate
+        
+        //or
+
+        str1 = "johny";
+        str2 = "dep";
+        Console.WriteLine(string.Concat(str1," ",str2));            //Vivek Nikate
+        
+        name = string.Concat(str1,str2);
+        Console.WriteLine(name);                    //Vivek Nikate
+        
+    }
+}
+=======================================================================================================================================
+                                                    :: 14/04/2023 ::                                        
+//1.String Concatenation & addition operation                                                    
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int x = 10, y =20;
+        Console.WriteLine($"{x} + {y} = "+(x+y));       //30
+        Console.WriteLine($"{x} + {y} = "+x+y));        //1020
+    }
+}
+
+//2.String Interpolation:
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "hello ", str2 = "world.!";
+        Console.WriteLine($"{str1} {str2}");            //hello world
+    }
+}
+
+//3.String index
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "hello ", str2 = "world.!";
+        Console.WriteLine(str1[0]);             //h
+        Console.WriteLine(str1[1]);             //e
+        Console.WriteLine(str1[2]);             //l
+    }
+}
+
+//4.IndexOf method
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str1 = "hello ", str2 = "world.!";
+        Console.WriteLine("The index of H :: "+str1.IndexOf('h'));      //0
+        Console.WriteLine("The index of r :: "+str2.IndexOf('r'));      //2
+        Console.WriteLine("The index of d :: "+str2.IndexOf('d'));      //4
+    }
+}
+
+//5.Substring example
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+       string str = "Hello Mono World";  
+       int charPos = str.IndexOf('M');  //6
+
+       string restString = str.Substring(charPos);
+       
+       Console.Write(restString);               //Mono World
+    }
+}
+=======================================================================================================================================
+                                                    ::  17/04/2023  ::                                                
+//1.Escape characters in String:
+
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str = "Hello Mono World";
+        
+        Console.WriteLine(str);                 //Hello Mono World
+        
+        str = "Hello \"Giant\" World";
+        Console.WriteLine(str);                 //Hello "Giant" World
+        
+        str = "Hello 'Giant' World";
+        Console.WriteLine(str);                   //Hello 'Giant' World
+    }
+}
+
+//2.Word & character counter in string
+using System;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Enter String to count the words & letter :: ");
+        string str = Console.ReadLine();
+
+        Console.WriteLine("The entered string is :: "+str);
+        Console.WriteLine("The no.of char in string is :: "+str.Length);
+        
+        int wrd=1, i=0;
+        while(i<str.Length)
+        {
+            if(str[i] == ' ')
+            {
+                wrd++;
+            }
+            i++;
+        }
+        Console.WriteLine("The no.of words in string is:: "+wrd);
+    }
+}
+
+//3.C# Program of reverse string
+    using System;
+    class ReverseString
+    {
+        static void Main(string[] args)
+        {
+            string str = "Vivek Nikate";
+            
+            char[] stringArray = str.ToCharArray();
+            
+            Array.Reverse(stringArray);
+            
+            string reversedStr = new string(stringArray);
+
+            Console.Write($"Actual String is : {str} \n");                  //Vivek Nikate
+            Console.Write($"Reversed String is : {reversedStr} ");          //etakiN keviV
+        }
+    }
+
+//4.C# Program to count lines in a string.
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            string str = "Hello there, I'm Vivek Nikate.\n From Solapur, completed B-tech in SVERI.\n currently living in Banglore\n working in capgemini\n as a Software Engineer.\n Thank You..!";
+            
+            // str = Console.ReadLine();
+            int i=0;
+            int newLineChar = 0;
+            while(i < str.Length){
+                if(str[i] == '\n')
+                    newLineChar++;
+                i++;
+            }
+            
+            Console.WriteLine("The no.of new lines in string :: {0}",newLineChar);      //The no.of new lines in string :: 5.
+        }
+    }
+    
+//5.C# Program Counts number of Vowels and consonants from a given String.
+
+//1.C# Program to Display the Abbreviation of a Text
+================================================================================================================================================================
+                                                                    18/04/2023
+1).
+//Example of Stack
+    public class Hello{
+            static void Main(string[] args)
+                {
+                    int x = 3;
+                    int y = x;
+                    x = 5;
+                    Console.WriteLine($"x = {x}");
+                    Console.WriteLine($"y = {y}");
+                }
+        }
+
+//Example of Heap
+    using System;
+    class Person
+        {
+            public string Name { get; set; }
+            public int Age { get; set; }
+        
+        static void Main(string[] args)
+        {
+            Person P1 = new Person { Name = "Vivek", Age = 22 };
+            
+            Console.WriteLine($"P1 name :: {P1.Name} \t Age :: {P1.Age}\n");
+            
+            Person P2 = P1;
+            P2.Name = "NewName";
+        
+            Console.WriteLine($"P1's name: {P1.Name} \nP2's name: {P2.Name}");
+        }
+    }
+
+//2)
+    Regex:
+        using System.Text.RegularExpressions;
+    1)
+    using System;
+    using System.Text.RegularExpressions;
+
+    public class HelloWorld
+    {
+        static string ptrn = "^S.t$";
+        public static void Main(string[] args)
+        {
+            Regex rg = new Regex(ptrn);
+            
+            string str = "Sat";
+            
+            if(rg.IsMatch(str))
+            {
+                Console.WriteLine("Sat String matches the pattern");
+            }
+            else{
+                Console.WriteLine("String does not matches the pattern");
+            }
+            
+            if(rg.IsMatch("Sit"))
+            {
+                Console.WriteLine("Sit String matches the pattern");
+            }
+            else{
+                Console.WriteLine("String does not matches the pattern");
+            }
+            
+            if(rg.IsMatch("Set"))
+            {
+                Console.WriteLine("Set String matches the pattern");
+            }
+            else{
+                Console.WriteLine("String does not matches the pattern");
+            }
+            
+            if(rg.IsMatch("ABC"))
+            {
+                Console.WriteLine("String matches the pattern");
+            }
+            else{
+                Console.WriteLine(" ABC String does not matches the pattern");
+            }
+        }
+    }
+
+    3).
+        RegularExpressions for a to m only, with min 1 char & max 5 char.
+            Start of string ^
+            End of String $
+            eg. 
+                ^[a-m]{1,5}$
+
+    //Regular Expression for email validation..
+    using System;
+    using System.Text.RegularExpressions;
+
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            string mail1 = "Viveknikate.2000@gmail.com";
+            string mail2 = "Vivek.nikate@capgemini.com";
+            string mail3 = "Vivek.nikate@capgemini.n";
+            string mail4 = "Vivek.nikate@capgemini.go";
+            string mail5 = "Vivek.nikate@capgemini.xyz";
+            
+            //caller function
+            Check(mail1);
+            Check(mail2);
+            
+            Console.WriteLine("\n\n");
+            Check(mail3);       //ending with .n
+            Check(mail4);       //.go
+            Check(mail5);       //.xyz
+            
+        }
+        
+        public static void Check(string mail)
+        {
+            string ptrn = "^[a-zA-Z0-9.]{3,20}@[a-zA-Z0-9]{3,10}.(com|in|org|net|co)$";
+            Regex reg = new Regex(ptrn);
+            
+            if(reg.IsMatch(mail))
+            {
+                Console.WriteLine($"The mail is Valid :: {mail}");
+            }
+            else{
+                Console.WriteLine($"The mail is not Valid {mail}");
+            }
+        }
+    }
+
+
+//4) Constructor:
+    In C#, constructors can be divided into 5 types
+        1.Default Constructor
+        2.Parameterized Constructor
+        3.Copy Constructor
+        4.Static Constructor
+        5.Private Constructor 
+
+    eg.
+        public class Hello  
+        {  
+            int a, b;
+
+            static Hello(){
+                //Static contructor
+                //This contructor will get called before any other thing start to execute.
+            }
+
+            public Hello()   //default contructor
+            {
+                a = 100;
+                b = 175;
+            }
+
+            public Hello(int a,int b)   //Parameterized Constructor
+            {  
+                this.a = a;
+                this.b = b;
+            }
+
+            public Hello(Hello h1)   // declaring Copy constructor.
+            {
+                a = h1.a;
+                b = h1.b;
+            }
+        }  
+
+//5. Time taken to execute the C# Program
+    using System;
+    using System.Diagnostics;
+
+    public class HelloWorld
+    {
+        public static void Display(){
+            Console.WriteLine("Vivek Nikate");
+        }
+        
+        public static void Main(string[] args)
+        {
+            Stopwatch s = new Stopwatch();
+            
+            s.Start();
+            for(int i=0;i<10;i++){
+                Display();
+            }
+            s.Stop();
+
+            int ts = (int) ((s.Elapsed.TotalMilliseconds));
+            Console.WriteLine($"The time take :: {ts}ms");
+        }
+================================================================================================================================================================
+                                                                    19/04/2023
+//OOPs Programs
+
+///Abstraction
+using System;
+abstract class car
+{
+    public abstract void carbrand();
+    public void duration()
+    {
+        Console.WriteLine("2003-Present, Luxury Electric Vehicles");
+    }
+}
+
+class newcar : car
+{
+    public override void carbrand()
+    {
+        Console.WriteLine("Ford");
+    }
+}
+
+class program
+{
+    static void Main(string[] args)
+    {
+        newcar c = new newcar();
+        c.carbrand();
+        c.duration();
+    }
+}
+
+///Polymorphism
+using System;
+class Polygon
+{
+    // method to render a shape
+     public virtual void render()
+     {
+        Console.WriteLine("Rendering Polygon...");
+     }
+}
+
+class Square : Polygon
+{
+     //overriding render() method 
+     public override void render()
+     {
+        Console.WriteLine("Rendering Square...");
+     }
+}
+
+class Rectangle : Polygon
+{
+    // overriding render() method 
+    public override void render()
+    {
+    Console.WriteLine("Rendering Rectangle...");
+    }
+}
+
+class myProgram
+{
+    public static void Main()
+    {
+        // obj1 is the object of Polygon class
+        Polygon obj1 = new Polygon();
+
+        // calls render() method of Polygon Superclass 
+        obj1.render();
+        
+        // here, obj1 is the object of derived class Square 
+        obj1 = new Square();
+        
+        // calls render() method of derived class Square
+        obj1.render();
+        
+        // here, obj1 is the object of derived class Square 
+        obj1 = new Rectangle();
+        
+        // calls render() method of derived class Square
+        obj1.render();
+    }
+}
+
+///Inheritance
+
+using System;
+namespace Inheritance {
+
+    // base class
+    class Employee{
+        public string name;
+        public void display() {
+            Console.WriteLine("I am an employee");
+        }
+    }
+
+    // derived class of Animal 
+    class Associate : Employee {
+        public void getName() {
+        Console.WriteLine("My name is " + name);
+        }
+    }
+
+    class Program {
+        static void Main(string[] args) {
+            // object of derived class
+            Associate emp = new Associate();
+            
+            // access field and method of base class
+            emp.name = "Nancy Shrestha";
+            emp.display();
+            
+            // access method from own class
+            emp.getName();
+            Console.ReadLine();
+        }
+    }
+}
+
+///ENCAPSULATION
+using System;
+namespace Encapsulation  
+{
+    class Student  
+    {
+        // Creating setter and getter for each property  
+        public string EmpID { get; set; }  
+        public string Name { get; set; }  
+        public string Email { get; set; }  
+        static void Main(string[] args)  
+        {  
+            Student student = new Student();  
+            // Setting values to the properties  
+
+            student.EmpID = "46255399";  
+            student.Name = "Nancy Shrestha";  
+            student.Email = "nancyshrestha@gmail.com";  
+
+            // getting values  
+            Console.WriteLine("Employee ID : "+student.EmpID);  
+            Console.WriteLine("Name : "+student.Name);  
+            Console.WriteLine("Email : "+student.Email);  
+        }  
+    }  
+}  
+
+================================================================================================================================================================
+Design pattern:
+
+Design pattern
+Singleton:
+    - in singleton pattern there is just a single instance available to all clients;
+    -a single database object shared by different parts of the program
+
+
+using System;
+public class Singleton
+{
+    private static Singleton _instance;
+    private Singleton()
+    {
+    }
+    public static Singleton Instance
+    {
+        get
+        {
+              if (_instance == null)
+                _instance = new Singleton();
+            return _instance;
+        }
+    }
+    public void DoSingletonOperation()
+    {
+           Console.WriteLine("singleton operation");
+    }
+    static void Main(string[] args)
+       {
+        Singleton s1 = Singleton.Instance;
+        Singleton s2 = Singleton.Instance;
+        Console.WriteLine(s1 == s2); // true
+    }
+}
+
+
+//Facade pattern:-
+using System;
+public interface IPizza {  
+    void GetVegPizza();  
+    void GetNonVegPizza();  
+}  
+
+public class PizzaProvider: IPizza {  
+    public void GetNonVegPizza() {  
+        GetNonVegToppings();  
+        Console.WriteLine("Getting Non Veg Pizza.");  
+    }  
+    public void GetVegPizza() {  
+        Console.WriteLine("Getting Veg Pizza.");  
+    }  
+    private void GetNonVegToppings() {  
+        Console.WriteLine("Getting Non Veg Pizza Toppings.");  
+    }  
+}  
+
+ 
+
+public interface IBread {  
+    void GetGarlicBread();  
+    void GetCheesyGarlicBread();  
+}
+
+ 
+
+public class BreadProvider: IBread {  
+    public void GetGarlicBread() {  
+        Console.WriteLine("Getting Garlic Bread.");  
+    }  
+    public void GetCheesyGarlicBread() {  
+        GetCheese();  
+        Console.WriteLine("Getting Cheesy Garlic Bread.");  
+    }  
+    private void GetCheese() {  
+        Console.WriteLine("Getting Cheese.");  
+    }  
+}  
+
+ 
+
+
+public class RestaurantFacade {  
+    private IPizza _PizzaProvider;  
+    private IBread _BreadProvider;  
+    public RestaurantFacade() {  
+        _PizzaProvider = new PizzaProvider();  
+        _BreadProvider = new BreadProvider();  
+    }  
+    public void GetNonVegPizza() {  
+        _PizzaProvider.GetNonVegPizza();  
+    }  
+    public void GetVegPizza() {  
+        _PizzaProvider.GetVegPizza();  
+    }  
+    public void GetGarlicBread() {  
+        _BreadProvider.GetGarlicBread();  
+    }  
+    public void GetCheesyGarlicBread() {  
+        _BreadProvider.GetCheesyGarlicBread();  
+    }  
+}
+ 
+class Program{
+    static void Main(string[] args) {  
+        Console.WriteLine("----------------------Customer ORDERS FOR PIZZA----------------------------\n");  
+    
+    
+        var facadeForClient = new RestaurantFacade();  
+        facadeForClient.GetNonVegPizza();  
+        facadeForClient.GetVegPizza();  
+    
+    
+        Console.WriteLine("\n----------------------Customer ORDERS FOR BREAD----------------------------\n");  
+    
+    
+        facadeForClient.GetGarlicBread();  
+        facadeForClient.GetCheesyGarlicBread();  
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+
+class Employee{
+    public int ID {get;set;}
+    public string name {get;set;}
+    
+    public Employee(){
+        
+    }
+    
+    public Employee(int id, string n){
+        ID = id;
+        name = n;
+    }
+}
+
+class Program{
+    public static void Main(string[] args){
+        Employee e1 = new Employee();
+        e1.ID = 101;
+        e1.name = "Vivek";
+        
+        Employee e2,e3,e4,e5;
+        
+        e2 = new Employee(102,"Mahesh");
+        e3 = new Employee(103,"Nikate");
+        e4 = new Employee(104,"Rohini");
+        e5 = new Employee(105,"Pranav");
+        
+        Queue<Employee> empQ = new Queue<Employee>();
+        
+        
+        //inserting into Queue
+        empQ.Enqueue(e1);
+        empQ.Enqueue(e2);
+        empQ.Enqueue(e3);
+        empQ.Enqueue(e4);
+        empQ.Enqueue(e5);
+        
+        foreach(Employee emp in empQ){
+             Console.WriteLine("ID: "+emp.ID+" Name: "+emp.name);
+        }   
+        
+        //Counting objects
+        Console.WriteLine("\nTotal obj in Queue : "+empQ.Count+"\n");
+        
+        //removing from Queue
+        empQ.Dequeue();
+        
+        foreach(Employee emp in empQ){
+             Console.WriteLine("ID: "+emp.ID+" Name: "+emp.name);
+        }
+        
+        Console.WriteLine("\n After removing, Total obj in Queue : "+empQ.Count);
+        
+        //Peek will show the first element in Queue
+        
+        Console.WriteLine("\n\n The peek 1st Element of Queue :: "+empQ.Peek().name);
+        
+        //AFter peeking
+        foreach(Employee emp in empQ){
+             Console.WriteLine("ID: "+emp.ID+" Name: "+emp.name);
+        } 
+        
+        Console.WriteLine("The Total Count is :: "+empQ.Count);
+    }
+}
+
+
+
+//stack
+using System;
+using System.Collections.Generic;
+
+class Employee{
+    public int ID {get;set;}
+    public string name {get;set;}
+    
+}
+
+class Program{
+    public static void Main(string[] args){
+        Employee e1 = new Employee(){ID = 501, name = "Vivek"};
+        Employee e2 = new Employee(){ID = 502, name = "Pratham"};
+        Employee e3 = new Employee(){ID = 503, name = "Pranav"};
+        Employee e4 = new Employee(){ID = 504, name = "Saru"};
+        Employee e5 = new Employee(){ID = 505, name = "Srujan"};
+        
+        Stack<Employee> empStack = new Stack<Employee>();
+        
+        //Pushing inserting object in stack LIFO
+        empStack.Push(e1);
+        empStack.Push(e2);
+        empStack.Push(e3);
+        empStack.Push(e4);
+        empStack.Push(e5);
+       
+       //priting
+        foreach(Employee emp in empStack){
+             Console.WriteLine("ID: "+emp.ID+" Name: "+emp.name);
+        }   
+        
+        //Count method
+        Console.WriteLine("\n\nThe Total no.of obj in stack ::"+empStack.Count);
+        
+        //peek method
+        Console.WriteLine("\n\nFirst Element in STack ::"+empStack.Peek().name);
+        
+        Console.WriteLine("Poping the element from stack ::"+empStack.Pop().name+"\n\n");
+        
+        
+        foreach(Employee emp in empStack){
+             Console.WriteLine("ID: "+emp.ID+" Name: "+emp.name);
+        } 
+        
+        //Count AFter removing
+        Console.WriteLine("\n\nThe Total no.of obj in stack ::"+empStack.Count);
+           
+    }
+}
+
+//Array..
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
+
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        ArrayList ar = new ArrayList(){1,2,3,4,5,"Vivek","Nikate",true,false,'A','z'};
+        
+        //Count
+        Console.WriteLine("Total no.of element in Array :: "+ar.Count+"\n\n");
+        
+        foreach(object e in ar){
+            Console.WriteLine(e);
+        }
+        
+        //Add 
+        ar.Add(100);
+        
+        Console.WriteLine("Elements of Arraylist :: \n");
+        
+        foreach(object e in ar){
+            Console.WriteLine(e);
+        }
+        
+        //Count
+        Console.WriteLine("Total no.of element in Array :: "+ar.Count);
+        
+        //Contains method
+    
+        Console.Write("Array contain 5? :: ");
+        Console.WriteLine((ar.Contains(5)?"yes":"no"));
+        
+        Console.Write("Array contain 100? :: ");
+        Console.WriteLine((ar.Contains(10)?"yes":"no"));
+        
+    }
+}
+=================================================================================================================
+#Datatypes in C#:
+
+    using System;
+
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            //int : 4 bytes	Stores whole numbers from -2,147,483,648 to 2,147,483,647
+            int n = 4;
+            Console.WriteLine("Num is :: "+n);
+            
+            //double : 8 bytes	Stores fractional numbers. Sufficient for storing 15 decimal digits
+            double D = 5.948D, E = 4.495d;
+            Console.WriteLine("The Double num is :: "+D+" & "+E);
+            
+            //float	4 bytes	Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+            float F = 9.95F, G = 5.45f;
+            Console.WriteLine($"The float values are :: {F} & {G} ");
+            
+            //Long : Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+            long L = 9_223_372_036;
+            Console.WriteLine($"The long L : {L}");
+            
+            //char : 2 bytes Stores a single character/letter, surrounded by single quotes
+            char C = 'V';
+            Console.WriteLine("The Char is :: "+C);
+            
+            //bool : 1 bit	Stores true or false values
+            bool B = true;
+            Console.WriteLine("Boolean value:: "+B);
+            
+            //string : 2 bytes per character Stores a sequence of characters, surrounded by double quotes
+            string str = "My name is Vivek";
+            Console.WriteLine($"string : {str}");            
+        }
+    }
+
+#Boxing & Un-Boxing:
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            int num = 255;
+            
+            //Boxing
+            //implicitly /automatically
+            object obj = num;
+            
+            num = 355;
+            Console.WriteLine($"The num :{num}");
+            Console.WriteLine($"The num :{obj}");
+            
+            //Un-Boxing
+            //Explicitly /mannually
+            int z = (int) obj;
+            Console.WriteLine($"The num :{z}"); 
+        }
+    }
+
+#Value type reference type:
+    using System;
+
+    public class Employee{
+        public string name {get;set;}
+        public Employee(){
+            //Default Constructor
+        }
+    }
+
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            
+            //value type
+            int i = 20;
+            int z = i;
+            
+            Console.WriteLine("First i::"+i);
+            Console.WriteLine("new z ::"+z);
+            
+            i =100;
+            Console.WriteLine("2nd i ::"+i);
+            Console.WriteLine("new z ::"+z);
+            
+            Employee emp = new Employee(){name = "Vivek"};
+            Console.WriteLine("Name: "+emp.name);
+            
+            Employee emp2 = emp;
+            
+            //reference type
+            emp.name = "Nikate";
+            Console.WriteLine("Name: "+emp2.name); 
+            Console.WriteLine("Name: "+emp.name);   
+            
+        }
+    }
+
+#Ref & Out :
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            int Z,J;
+
+            //passed without Initializing
+            MainFunc(out Z, out J);
+
+            //Initialized within function            
+            Console.WriteLine($"The Value of Z : {Z}");
+        }
+        
+        public static void MainFunc(out int g, out int z){
+            g = 404;
+            z = 100;
+        }
+    }
+
+//Ref
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            //Initialized within main method
+            string str = "Hello Mono World";
+            
+            Console.WriteLine($"Before : {str}");
+            
+            //passed the reference
+            StringManipulator(ref str);
+            
+            Console.WriteLine($"New Value : {str}");
+            
+        }
+        
+        public static void StringManipulator(ref string s){
+            s = "New World..!";
+        }
+    }
+===========================================================================================================================
+#Exception Handling in .NET :
+    In C#, we use 4 keywords to perform exception handling:
+
+        try
+        catch
+        finally, and
+        throw
+    1)
+
+    try 
+    {
+    //  Block of code to try
+    }
+    catch (Exception e)
+    {
+    //  Block of code to handle errors
+    }
+
+//or
+2)
+    try
+    {
+    }
+    catch (Exception exp1)
+    {
+        // Block 1
+    }
+    catch (IOException exp2)
+    {
+        // Block
+    }
+try block: Any suspected code that may raise exceptions should be put inside a try{ } block. 
+            During the execution, if an exception occurs, the flow of the control jumps to the first matching catch block.
+
+catch block: The catch block is an exception handler block, Specific 
+            exception type using which you can get the details of an exception.
+
+finally block: The finally block will always be executed whether an exception raised or not. 
+                Usually, a finally block should be used to release resources, 
+                e.g., to close any stream or file objects that were opened in the try block.
+
+Types of Exception:
+    NullReferenceException
+    Exception and SystemException.
+    ApplicationException.
+    InvalidOperationException.
+    ArgumentException, ArgumentNullException, and ArgumentOutOfRangeException.
+    NullReferenceException, IndexOutOfRangeException, and AccessViolationException.
+    StackOverflowException.
+    OutOfMemoryException.
+
+eg.
+    1)
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            int z = 10;
+            try{
+                Console.WriteLine("Dividing by 0 :: "+z/0);
+            }
+            catch(Exception e){
+                Console.WriteLine(e);
+            }
+            finally{
+                Console.WriteLine("Done!");
+            }
+        }
+    }
+
+    2)
+    using System;
+    public class HelloWorld
+    {
+        public static void Main(string[] args)
+        {
+            int[] arr = {1,2,3,4,5};
+            try{
+                // Console.WriteLine("No error");
+                int z = arr[10];
+                Console.WriteLine($"10th Element :: {z}");
+            }
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+            finally{
+                Console.WriteLine("Execution Completed..!");
+            }
+        }
+    }
+============================================================
+    Threading..
+============================================================
+#File Handling:-
+    -We use the file to store the data.
+    -File handling refers to,
+        1.Creating file
+        2.Reading from file
+        3.Writing to file
+        4.Appending to file.
+
+    -The file becomes the STREAM  when we open file for reading & writing.
+    -STREAM is a sequence of bytes which is used for communication.
+    -Two stream can be formed from file.
+        • one is INPUT STREAM which is used to READ the File.
+        • another is OUTPUT STREAM which is used to WRITE in the File.
+
+    -In C# System.IO namespace contains the classes which handle INPUT & OUTPUT stream & provide information about file.
+    eg.
+        Writing into the file.
+            class Program{
+                public static void Main(string[] args)
+                {
+                    StreamWriter sw = new StreamWriter(@"C:\Users\vnikate\Desktop\Vivek.txt");
+                    Console.WriteLine("Enter you Data :: ");
+
+                    string str = Console.ReadLine();
+
+                    sw.WriteLine(str);
+                    sw.Flush();
+                    sw.Close();
+                }
+            }
+===============================================================================================
+#Access Modifires:
+
+        Caller's location	                   public	protected internal	protected	internal	private protected	private
+    Within the class	                        ✔️️	         ✔️                ✔️         ✔️              ✔️             ✔️
+    Derived class (same assembly)	            ✔️	        ✔️                ✔️         ✔️              ✔️             ❌
+    Non-derived class (same assembly)	        ✔️	        ✔️                ❌         ✔️              ❌             ❌
+    Derived class (different assembly)	        ✔️	        ✔️                ✔️         ❌              ❌             ❌
+    Non-derived class (different assembly)	    ✔️	        ❌                ❌         ❌              ❌             ❌
+    ===============================================================================================
+NOTE: By default, all members of a class are private if you don't specify an access modifier.
+    1) public               
+        The code is accessible for all classes
+
+    2) private
+    3) protected
+    4) protected internal
+    5) private protected
+
+        eg.
+            using System;
+            namespace MyApplication
+            {
+                class Car
+                {
+                    private string model = "Mustang";
+                    public string brand = "Mercedes";
+                    protected string Desc;
+                    internal int CarNum;
+                }
+                
+                class Program: Car
+                {
+                    static void Main(string[] args)
+                    {
+                        Car myObj = new Car();
+                        //Console.WriteLine(myObj.model);
+                        Console.WriteLine(myObj.brand);
+                        
+                        Program p = new Program();
+                        p.Desc = "New Description";
+                        Console.WriteLine(p.Desc);
+                        
+                        p.CarNum = 99;
+                        Console.WriteLine("The Car num is :: "+p.CarNum);
+                    }    
+                }
+            }
+    
+#Break Continue:
+    -Break:
+    using System;
+    namespace HelloWorld
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                int i =1;
+                for(;i<11;i++)
+                {
+                    if(i == 8)
+                        break;
+                    Console.WriteLine($"i = {i}");
+                }
+                Console.WriteLine("\n\n End");
+            }
+        }
+    }
+    
+    -Continue:
+        using System;
+        //Program to print num 1 to 10 but skip 4 & 8.
+        namespace HelloWorld
+        {
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    int i =1;
+                    for(;i<11;i++)
+                    {
+                        if(i == 4 || i == 8)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"i = {i}");
+                        }
+                    }
+                    Console.WriteLine("\n\n End");
+                }
+            }
+        }
+=========================================================END====================================================================
+SQL:-   
+    -Structured Query Language
+    -it can perform various tasks like create a table, add data to tables, drop the table, modify the table, set permission for users.
+    -Types of SQL commands
+        -five types of SQL commands: 
+            1) DDL (Data Definition Language)
+                -CREATE
+                    -CREATE It is used to create a new table in the database.
+                     syntax:
+                        CREATE TABLE TABLE_NAME (COLUMN_NAME DATATYPES[,....]);  
+                     eg.
+                        CREATE TABLE Student(Name VARCHAR2(20), Email VARCHAR2(100), DOB DATE);
+
+                -ALTER
+                       -to modify the characteristics of an existing attribute or probably to add a new attribute.
+                        syntax:
+                            ALTER TABLE table_name ADD column_name COLUMN-definition;
+                        eg.
+                            ALTER TABLE Student ADD(ADDRESS VARCHAR2(20));  
+
+                -DROP
+                    -It is used to delete both the structure and record stored in the table.
+                     DROP TABLE table_name; 
+                     DROP TABLE Student; 
+ 
+
+
+                -TRUNCATE:
+                     It is used to delete all the rows from the table and free the space containing the table.
+                     eg.
+                        TRUNCATE TABLE <table_name>;  
+                        TRUNCATE TABLE Student;  
+
+
+            2) DML ()
+                -INSERT INTO
+                    INSERT INTO TABLE_NAME    
+                    (col1, col2, col3,.... col N)  
+                    VALUES (value1, value2, value3, .... valueN);  
+
+                    or
+
+                    INSERT INTO TABLE_NAME    
+                    VALUES (value1, value2, value3, .... valueN);    
+
+                -UPDATE
+                    UPDATE table_name SET [column_name1= value1,...column_nameN = valueN] [WHERE CONDITION]   
+
+                    UPDATE students    
+                    SET User_Name = 'Sonoo'    
+                    WHERE Student_Id = '3'  
+
+                -DELETE
+                    It is used to remove one or more row from a table.
+
+                    Syntax:
+
+                    DELETE FROM table_name [WHERE condition];  
+
+                    DELETE FROM Student  
+                    WHERE Name="Sonoo";  
+
+            3) DCL(Data Control Language)
+                -GRANT
+                -REVOKE
+
+            4) TCL (Transaction Control Language)
+                -TCL are used with DML commands only
+
+                -COMMIT
+                    Commit: Commit command is used to save all the transactions to the database.
+                    eg.
+                        DELETE FROM Student  
+                        WHERE ID = 252;  
+
+                        COMMIT; 
+
+                -ROLLBACK
+                    Rollback command is used to undo transactions that have NOT already been saved to the database.
+                    eg.
+                        DELETE FROM Student  
+                        WHERE ID = 25;  
+
+                        ROLLBACK;  
+
+                -SAVE POINT
+                    It is used to roll the transaction back to a certain point without rolling back the entire transaction.
+                    eg.
+                        SAVEPOINT SAVEPOINT_NAME; 
+
+
+            5) DQL (Data Query Language)
+                -SELECT
