@@ -296,6 +296,12 @@ GIT NOTES BY HARRY :-
     creates a new branch & also switch to that,
     git checkout -b develop
 
+    //to go back HEAD/index by one commit using relative refs(^)
+    git checkout HEAD^
+
+    //to go back HEAD/index by three commit using relative refs(^)
+    git checkout HEAD^^^
+
     //to switch branch
     git checkout software_Engine
     git checkout <branch_name>
@@ -518,6 +524,34 @@ GIT NOTES:
     to push branch
     -git push -u origin branch_name
 
+    //Rebase
+        Rebasing essentially takes set of all commits, "copies" them, and plops them down somewhere else.
+        he advantage of rebasing is that it can be used to make a nice linear sequence of commits. 
+        The commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
+
+        Scenario of Rebase:
+            -You are main branch 4 commits are there.
+            -created new branch called 'FEATURE', on feature branch there are 5 commits.
+
+            -now you switched to the main branch & want to fetch all commits of FEATURE branch to main branch.
+            in this case you need to use rebase.
+
+            -want to fetch all changes in main branch & continue the project building on main branch, then
+             stay in main branch & use this command
+             git rebase <Other_branch_name>
+             git rebase FEATURE;          //this will bring all commits from feature branch to main
+
+             if you stay in feature branch & run this command then project head start to point feature branch
+             -git rebase main   //this will bring all commits from main branch to feature.
+    
+    git rebase -i HEAD~3  //rebase 3 commits backwards
+    git checkout newBranch;
+    git commit <on_newBranch>;
+    
+    -want to change its commit to main branch
+    git rebase main
+
+    
 ==========================================End====================================================
 Udemy git course
 

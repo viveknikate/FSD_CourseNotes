@@ -3,6 +3,12 @@
 //to run 
     -dotnet run
 
+//creating mvc.net core project in vs code.
+    dotnet new mvc
+
+//to run
+    -dotnet watch.
+
                                              :: 13/04/2023 ::
 //1.String Creation
 using System;
