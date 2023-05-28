@@ -312,6 +312,8 @@ CSS: Cascading Style Sheets
     <img class="becon2 CIRCULAR" src="https://emojipedia-us.s3.amazonaws.com/thumbs/240/apple/118/bacon_1f953.png" alt="bacon-img">
     .becon2{
         background-color: rebeccapurple;
+        background-image: -webkit-linear-gradient(30deg, #A683E3 , #E4E9FD, #f1ddd2);
+        background-image: -webkit-linear-gradient(60deg, #A683E3 50%, #E4E9FD 50%);
     }
 
     .CIRCULAR{
@@ -3449,8 +3451,145 @@ Section 26: Git, GitHub & Version Control System (VCS)
     -Fork:
         Copying the repository to our account.
 ------------------------------------------------------------------------------------------------------------------------------------
-Section 27: EJS
+Section 27: EJS:
+    -Template:
+        EJS stands for Embedded JavaScript.
+        EJS is a template engine.
+        eg.
+            app.get('/', (req, res)=>{
+                var today = new Date();
 
+                if(today.getDay() === 6 || today.getDay() ===0)
+                {
+                    res.write("<h1>This is a Weekend.! no work Yah..!</h1>")
+                    res.write("<p>This is paragram of weekdays</p>")
+                }
+                else{
+                    res.write("<h1>Uh..! NO..!, I have to work.. This is weekday</h1>")
+                    
+                }
+                res.send();         //writing multiple write methods & sending them all at once using send method.
+            })
+
+    -Creating Your first EJS Template:
+        -need to install ejs module first.
+         npm i ejs
+
+        -for using EJS template after installing create views folder inside that
+         create files with '.ejs' extension.
+
+        -if you have more than 5 if-else statements then use switch statements
+
+        -EJS interpolation Markup (place variable's value within this markup )
+            <h1>Today day is <%=  %></h1>
+            eg.
+                HTML:
+                    <body>
+                        <h1>Today day is <%=  kindOfDay%> </h1>
+                    </body>
+
+                JS:
+                    var today = new Date().getDay();
+                    //today=4
+                    var day='';
+
+                    switch(today){
+                        case 0:
+                        day = 'Sunday'
+                        break;
+                        case 1:
+                            day = 'Monday'
+                            break;
+                        case 2:
+                            day = 'Tuesday'
+                            break;
+                        case 3:
+                            day = 'Wednesday'
+                            break;
+                        case 4:
+                            day = 'Thursday'
+                            break;
+                        case 5:
+                            day = 'Friday'
+                            break;
+                        case 6:
+                            day = 'Saturday'
+                            break;
+                        case 7:
+                            day = 'Sunday'
+                            break;
+                        default:
+                        console.log("Invalid Day.!");
+                        break;
+                    }
+
+                    res.render('list',{kindOfDay:day});         //above html code is within the list.ejs file
+                
+        -Scriptlet tag <% %>
+            -control flow no ouput
+            -You need to add this tag at start & end of line.
+            -just add this tag for condition/ decision making statements.
+            eg.
+                <body>
+                    <% if(kindOfDay === 'Saturday' || kindOfDay === 'Sunday'){ %>
+                    
+                        <h1 style="color: purple;">Today day is <%=  kindOfDay %> Enjoy the day.!</h1>
+
+                    <% }else{ %>
+
+                        <h1 style="color: red;">Today day is <%=  kindOfDay %>  Need to work.</h1>
+
+                    <% }%>
+                </body>
+        
+        -For loop
+            <% for(let i=0;i<newListItems.length; i++) { %>  
+                <li>
+                    <%= newListItems[i] %>
+                </li>
+            <%}%>
+        
+        -post method:
+            app.post('/',(req, res)=>{
+
+                const item = req.body.newItem;
+                items.push(item);
+
+                // console.log(items);
+                res.redirect('/');
+            })
+
+        -Scope of variable
+            FOR JavaScript ONLY.
+            Most of the time use let or const keywords to declare variable. Avoid Using var keyyword.
+            Local variable- 
+                    the variable are accessible where they are declared.
+                    will not be accessible out of that function or block
+            
+            Global variable-
+                    accessible anywhere in program.
+            
+            -function is like hard wall, we can't access the variable declared inside the function,
+             outside of that function
+
+            -anything other than function, if we declare variable inside if block or else block or in while/for loop
+             we can access them outside of that block, these block are like soft walls.
+
+            -if you declare variable with var keyword inside if/else block or for/while/do-while loop, 
+             then it is considered as Global variable, you can access them anywhere in program
+            
+            -if you declare variable with let/const keywords inside if/else block for/while/do-while loop,
+             then it is considered as local variable. you can acces them inside block only.
+        
+        -Styling to To-Do List:
+            -styling won't work directly here.
+            -all styles or static files also served by our server.
+
+            -need to create 'public' folder inside that
+             you can have CSS folder, Javascript folder, images folder 
+             & then we can tell express to serve this public folder as static folder.
+            -we can serve static content like css, js, images, html files from public folder.
+            
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 28: Blog WebSite
 
@@ -3716,7 +3855,7 @@ Section 30: SQL (Structured Query Language)
                             SELECT c.id, c.name, c.price
                             FROM Categories c
 ------------------------------------------------------------------------------------------------------------------------------------
-Section 31: MangoDB:
+Section 31: MongoDB:    
 
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
