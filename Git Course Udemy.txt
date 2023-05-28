@@ -536,13 +536,21 @@ GIT NOTES:
             -now you switched to the main branch & want to fetch all commits of FEATURE branch to main branch.
             in this case you need to use rebase.
 
+            -if you stay in main branch & ran the command with same branch name like
+             git rebase main
+             then ouput like 'BRANCH IS ALREADY UP-TO-DATE'.
+
             -want to fetch all changes in main branch & continue the project building on main branch, then
-             stay in main branch & use this command
+             stay in other branch & use this command
              git rebase <Other_branch_name>
-             git rebase FEATURE;          //this will bring all commits from feature branch to main
+             git rebase main;          
 
              if you stay in feature branch & run this command then project head start to point feature branch
-             -git rebase main   //this will bring all commits from main branch to feature.
+             -git rebase main  
+
+             whatever you write at the end of rebase command (the branch) the all commits of the branch you are currently
+             present in. are moved to that other branch (gets appended).
+             
     
     git rebase -i HEAD~3  //rebase 3 commits backwards
     git checkout newBranch;
@@ -551,7 +559,59 @@ GIT NOTES:
     -want to change its commit to main branch
     git rebase main
 
-    
+    changing particular branch's head to specific commit:
+        git branch -f main HEAD~3
+        -main branch moved back by 3 commits
+        
+        git branch -f feature HEAD~3
+        -feature branch moved back by 3 commits
+
+
+        -git checkout <commit_hash>   
+        //HEAD will point to that hash.
+
+        -git checkout <branch_name>
+        //changing branch
+
+        git branch -f <branch_name> HEAD~3
+        eg.
+            git branch -f bugFix HEAD~3         
+
+            here, -f means forcefully changing head of that brach, means that branch.
+            HEAD~3 means go back (previous) 3 commits 
+        
+        -git branch -f <branch_name> <commit_hash>  
+        eg.
+            git branch -f bugFix c6.
+            pointing that branch to that commit_hash
+
+    Git Reset
+        git reset reverses changes by moving a branch reference backwards in time to an older commit. 
+        In this sense you can think of it as "rewriting history;" 
+        git reset will move a branch backwards as if the commit had never been made in the first place.
+        Let's see what that looks like:
+
+            git reset HEAD~1
+
+             Git moved the main branch reference back to C1; 
+             now our local repository is in a state as if C2 had never happened.
+
+    Git Revert
+        While resetting works great for local branches on your own machine, 
+        its method of "rewriting history" doesn't work for remote branches that others are using.
+        In order to reverse changes and share those reversed changes with others, 
+        we need to use git revert. Let's see it in action.
+
+            git revert HEAD
+
+                Weird, a new commit plopped down below the commit we wanted to reverse. 
+                That's because this new commit C2' introduces changes 
+                -- it just happens to introduce changes that exactly reverses the commit of C2.
+                With reverting, you can push out your changes to share with others.
+
+
+
+
 ==========================================End====================================================
 Udemy git course
 
