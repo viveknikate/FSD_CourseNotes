@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/styles.css">
-  <title>To do</title>
-</head>
-<body>
+<%- include('Header') -%>
 
-  <!-- <% if(kindOfDay === 'Saturday' || kindOfDay === 'Sunday'){ %>
-    <h1 style="color: purple;">Today day is <%=  kindOfDay %> Enjoy the day.!</h1>
-  <% }else{ %>
-    <h1 style="color: red;">Today day is <%=  kindOfDay %>  Need to work.</h1>
-  <% }%> -->
+<div class="box" id="heading">
+     <h1><%= title %></h1>
+</div>
+<center>
+     <h2>ToDo on <%= whichDay %></h2>
+</center>
+<div class="box">
+     <% for(let i=0;i< ListItems.length;i++){ %>
+          <div class="item">
+               <input type="checkbox">
+               <p><%= ListItems[i] %></p>
+          </div>
+          <% } %>
 
-  <div class="box" id="heading">
-    <h1>Today is <%= kindOfDay %></h1>
-  </div>
-  <div class="box">
-    <% for(let i=0;i<newListItems.length; i++) { %>
-      <div class="item">  
-          <input type="checkbox" />
-          <p> <%= newListItems[i] %> </p>
-      </div>
-    <% } %>
-    
-    <form class="item" action="/" method="post">
-      <input type="text" name="newItem" placeholder="New Task" autocomplete="off"/>
-      <button type="submit">+</button>
-    </form>
-  </div>
-  
-</body>
-</html>
+          <form class="item" method="post" action="/">
+               <input type="text" id="input" name="task" placeholder="Enter Task" autocomplete="off">
+               <button type="submit" name="buttonValue" value= <%= title %>>+</button>    
+          </form>
+</div>
+
+<%- include('Footer') -%>

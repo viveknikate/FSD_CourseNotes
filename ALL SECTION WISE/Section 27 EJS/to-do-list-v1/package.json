@@ -1,10 +1,11 @@
 {
-  "name": "to-do-list-v1",
+  "name": "to-do-list",
   "version": "1.0.0",
-  "description": "The to-do List version-1",
-  "main": "app.js",
+  "description": "The to-do list application",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Vivek Nikate",
   "license": "ISC",
