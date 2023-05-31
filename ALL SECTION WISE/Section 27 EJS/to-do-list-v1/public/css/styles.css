@@ -1,6 +1,7 @@
 html {
-  background-color: #0333f3;
-  background-image: -webkit-linear-gradient(30deg, #A683E3 , #E4E9FD, #f1ddd2);
+  background-color: #E4E9FD;
+  background-image: -webkit-linear-gradient(65deg, #A683E3,rgb(149, 0, 255),rgb(228, 86, 162), #E4E9FD);
+  /* background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%); */
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
@@ -19,7 +20,9 @@ h1 {
 }
 
 #heading {
-  background-color: #A683E3;
+  /* background-color: #A683E3; */
+  background-image: -webkit-linear-gradient(65deg,#E4E9FD ,rgb(228, 86, 162),rgb(149, 0, 255), #A683E3);
+
   text-align: center;
 }
 
