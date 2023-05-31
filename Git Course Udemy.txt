@@ -167,6 +167,9 @@ GIT NOTES BY HARRY :-
 
     Default branch of git is MASTER or Main
 
+    to see the total no.of commits on git bash/terminal
+        git rev-list --all --count
+
     to see the short summary of commits
     git log --stat
 
