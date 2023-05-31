@@ -3855,7 +3855,114 @@ Section 30: SQL (Structured Query Language)
                             SELECT c.id, c.name, c.price
                             FROM Categories c
 ------------------------------------------------------------------------------------------------------------------------------------
-Section 31: MongoDB:    
+Section 31: MongoDB:
+    -MongoDB is a NoSQL database.
+    -MongoDB is a document-oriented database.
+    -MongoDB is a scalable, high-performance, and fault-tolerant database.
+    -MongoDB is a cloud-based, open-source, distributed database.
+    -MongoDB is a widely-used database.
+    -MongoDB is a popular database. It stores data in key-value pair
+
+    -CRUD Opertaions:
+        -need to install MongoDB & node.
+        -commands  
+            -help
+            -show dbs   //list of databases
+
+            -creating database & using that DB
+                use <database_name>
+                *use shopDB
+                    -to show this database in database list, 
+                    then there must a some content inside it.
+                
+                -to check in which database, you are operating currently.
+                    db
+                
+                -inserting document in collection
+                    db.<column_name>.insert({})
+                    db.<collection_name>.insertOne({})            //if collection doesn't exist in database then it create that collection
+                    db.collection.insertMany()
+                    eg.
+                        db.users.insertOne(
+                            {
+                                name:'Vivek',
+                                age:23,
+                                status:'Subscribed'
+                            }
+                        )
+                
+                    -Collections in MongoDB is similar to table in SQL.
+                        collection is bunch of documents
+                    
+                    -document is a just single data record, like a single row in SQL.
+
+                    -to check how many collection/table are there in database
+                        show collections
+
+                    -insert into collection Products
+                        db.products.insertOne({id:1, name:'pen', price:1.20})
+                    
+            -Reading data from database
+                db.<collection_name>.find();
+                db.products.find()
+
+                finding particular data
+                    db.products.find({name:'pencil'})
+                
+                price > 1:
+                    db.products.find({price: {$gt: 1}})
+                
+                to just print particular column or value of that field.
+                    db.products.find({name:'pencil'}, {name:1})
+
+                    just print the data with name. mention data field with 1 means print, 0 means don't print
+                        db.products.find({name:'pencil'}, {name:1,_id:0})
+                        //but _id field comes by default.
+
+            -Updating database
+                Syntax
+                    db.collection.updateOne(<filter>,<update>,<options>)
+                    db.collection.updateMany(<filter>,<update>,<options>)
+                    db.collection.replaceOne(<filter>,<update>,<options>)
+
+
+                    db.<collection_name>.updateOne({query},{new_value})
+                eg.
+                    db.products.updateOne({_id:1},{$set:{stock:32}})
+
+            -Delete data from database
+                db.collection.deleteOne()
+                db.collection.deleteMany()
+                eg.
+                    db.products.deleteOne({_id: ObjectId("64771aeea5a9ccd137f1d40f")})
+                    db.products.deleteOne( { id: 2 })
+            
+            -Relationships in MongoDB:
+
+                db.products.insert({ 
+                    _id: 2, 
+                    name: "Rubber", 
+                    price: 1.3, 
+                    stock: 98, 
+                    reviews: [
+                        { authorName: 'Vicky', rating: 5, msg: 'Best Rubber ever' }, 
+                        { authorName: "Mahesh", rating: 4, msg: 'Good Rubber' }
+                    ] 
+                })
+
+                eg.
+                     db.products.insert({
+                        _id:3,
+                        name: 'pencil',
+                        price: 0.80,
+                        stock:90,
+                        reviews:[
+                            {authorName:'author1', rating:5, msg:'good pencil'},
+                            {authorName:'author2', rating:4, msg:'Awesome pencil'},
+                            {authorName:'author3', rating:5, msg:'Good pencil, suggest you to try once'}
+                        ]
+                    })
+
 
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
