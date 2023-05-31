@@ -3549,259 +3549,259 @@ Section 27: EJS:
                 }
 
                 
-        -Scriptlet tag <% %>
-            -control flow no ouput
-            -You need to add this tag at start & end of line.
-            -just add this tag for condition/ decision making statements.
+    -Scriptlet tag <% %>
+        -control flow no ouput
+        -You need to add this tag at start & end of line.
+        -just add this tag for condition/ decision making statements.
+        eg.
+            <body>
+                <% if(kindOfDay === 'Saturday' || kindOfDay === 'Sunday'){ %>
+                
+                    <h1 style="color: purple;">Today day is <%=  kindOfDay %> Enjoy the day.!</h1>
+
+                <% }else{ %>
+
+                    <h1 style="color: red;">Today day is <%=  kindOfDay %>  Need to work.</h1>
+
+                <% }%>
+            </body>
+    
+    -For loop
+        <% for(let i=0;i<newListItems.length; i++) { %>  
+            <li>
+                <%= newListItems[i] %>
+            </li>
+        <%}%>
+    
+    -post method:
+        app.post('/',(req, res)=>{
+
+            const item = req.body.newItem;
+            items.push(item);
+
+            // console.log(items);
+            res.redirect('/');
+        })
+
+    -Scope of variable
+        FOR JavaScript ONLY.
+        Most of the time use let or const keywords to declare variable. Avoid Using var keyyword.
+        Local variable- 
+                the variable are accessible where they are declared.
+                will not be accessible out of that function or block
+        
+        Global variable-
+                accessible anywhere in program.
+        
+        -function is like hard wall, we can't access the variable declared inside the function,
+            outside of that function
+
+        -anything other than function, if we declare variable inside if block or else block or in while/for loop
+            we can access them outside of that block, these block are like soft walls.
+
+        -if you declare variable with var keyword inside if/else block or for/while/do-while loop, 
+            then it is considered as Global variable, you can access them anywhere in program
+        
+        -if you declare variable with let/const keywords inside if/else block for/while/do-while loop,
+            then it is considered as local variable. you can acces them inside block only.
+    
+    -Styling to To-Do List:
+        -styling won't work directly here.
+        -all styles or static files also served by our server.
+
+        -need to create 'public' folder inside that
+            you can have CSS folder, Javascript folder, images folder 
+            & then we can tell express to serve this public folder as static folder.
+        -we can serve static content like css, js, images, html files from public folder.
+        Syntax:
+            app.use(express.static('folder_name'));
+            app.use(express.static('public'));
+
+    -Template vs Layout:
+        Layouts persist across routes and maintain their state (Design of page stays same). 
+        Templates create a new instance for each of their children on navigation (when page changes the title & content gets changed), 
+        no state is preserved and DOM elements are re-created(but design stays the same).
+
+        Design stays same is called Layout.
+            <%- include('file_name') -%>
             eg.
-                <body>
-                    <% if(kindOfDay === 'Saturday' || kindOfDay === 'Sunday'){ %>
-                    
-                        <h1 style="color: purple;">Today day is <%=  kindOfDay %> Enjoy the day.!</h1>
+                <%- include('Footer') -%>
+                <%- include('Header') -%>
 
-                    <% }else{ %>
+                *Header.ejs
+                    //half header file
 
-                        <h1 style="color: red;">Today day is <%=  kindOfDay %>  Need to work.</h1>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <link rel="stylesheet" href="../css/styles.css">
+                        <title>ToDo List</title>
+                    </head>
+                    <body>
 
-                    <% }%>
-                </body>
-        
-        -For loop
-            <% for(let i=0;i<newListItems.length; i++) { %>  
-                <li>
-                    <%= newListItems[i] %>
-                </li>
-            <%}%>
-        
-        -post method:
-            app.post('/',(req, res)=>{
+                *Footer.ejs
+                    //footer file rest part of header & tags
 
-                const item = req.body.newItem;
-                items.push(item);
+                            <footer>
+                                <div class="box">
+                                    <p>
+                                        Copyright&copy; VivekNikate@2024
+                                    </p>
+                                </div>
+                            </footer>
+                        </body>
+                    </html>
 
-                // console.log(items);
-                res.redirect('/');
-            })
-
-        -Scope of variable
-            FOR JavaScript ONLY.
-            Most of the time use let or const keywords to declare variable. Avoid Using var keyyword.
-            Local variable- 
-                    the variable are accessible where they are declared.
-                    will not be accessible out of that function or block
-            
-            Global variable-
-                    accessible anywhere in program.
-            
-            -function is like hard wall, we can't access the variable declared inside the function,
-             outside of that function
-
-            -anything other than function, if we declare variable inside if block or else block or in while/for loop
-             we can access them outside of that block, these block are like soft walls.
-
-            -if you declare variable with var keyword inside if/else block or for/while/do-while loop, 
-             then it is considered as Global variable, you can access them anywhere in program
-            
-            -if you declare variable with let/const keywords inside if/else block for/while/do-while loop,
-             then it is considered as local variable. you can acces them inside block only.
-        
-        -Styling to To-Do List:
-            -styling won't work directly here.
-            -all styles or static files also served by our server.
-
-            -need to create 'public' folder inside that
-             you can have CSS folder, Javascript folder, images folder 
-             & then we can tell express to serve this public folder as static folder.
-            -we can serve static content like css, js, images, html files from public folder.
-            Syntax:
-                app.use(express.static('folder_name'));
-                app.use(express.static('public'));
-
-        -Template vs Layout:
-            Layouts persist across routes and maintain their state (Design of page stays same). 
-            Templates create a new instance for each of their children on navigation (when page changes the title & content gets changed), 
-            no state is preserved and DOM elements are re-created(but design stays the same).
-
-            Design stays same is called Layout.
-                <%- include('file_name') -%>
-                eg.
+                *about.ejs
+                    <%- include('Header') -%>
                     <%- include('Footer') -%>
+                eg.
+
                     <%- include('Header') -%>
 
-                    *Header.ejs
-                        //half header file
+                    <div class="container">
+                        <h1>About Us</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed erat sed nunc ultricies ultrices.
+                            Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed
+                            nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies
+                            ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed
+                            erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc
+                            ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices.
+                        </p>
+                    </div>
 
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <link rel="stylesheet" href="../css/styles.css">
-                            <title>ToDo List</title>
-                        </head>
-                        <body>
+                    <%- include('Footer') -%>
 
-                    *Footer.ejs
-                        //footer file rest part of header & tags
+        content or title of page changes is called Template.
+            <%= variableName %>
 
-                                <footer>
-                                    <div class="box">
-                                        <p>
-                                            Copyright&copy; VivekNikate@2024
-                                        </p>
-                                    </div>
-                                </footer>
-                            </body>
-                        </html>
+    -Node Module exports how to pass functions & data:
+        -module creation:
+        date.js
+            module.exports = getDate;           //exports one function only
 
-                    *about.ejs
-                        <%- include('Header') -%>
-                        <%- include('Footer') -%>
-                    eg.
+            function getDate(){
+                let today = new Date().toLocalDateString('en-US',{weekday:'long', month:'long', year:'numeric', day:'numeric'})
+                return today;
+            }
 
-                        <%- include('Header') -%>
-
-                        <div class="container">
-                            <h1>About Us</h1>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed erat sed nunc ultricies ultrices.
-                                Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed
-                                nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies
-                                ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed
-                                erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc
-                                ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices. Etiam sed erat sed nunc ultricies ultrices.
-                            </p>
-                        </div>
-
-                        <%- include('Footer') -%>
-
-            content or title of page changes is called Template.
-                <%= variableName %>
-
-        -Node Module exports how to pass functions & data:
-            -module creation:
-            date.js
-                module.exports = getDate;           //exports one function only
+            ---------------------------
+            -making to exports 2 or more functions
+                module.exports.getDate = getDate;           //exports one or more function only
 
                 function getDate(){
-                    let today = new Date().toLocalDateString('en-US',{weekday:'long', month:'long', year:'numeric', day:'numeric'})
+                    let today = new Date().toLocalDateString('en-US',{weekday:'long', month:'long', year:'numeric', day:'numeric'});
+                    return today;
+                }
+                
+                module.exports.getDay = getDay;
+                
+                function getDay(){
+                    let today = new Date().toLocalDateString('en-US',{weekday:'long'});
                     return today;
                 }
 
-                ---------------------------
-                -making to exports 2 or more functions
-                    module.exports.getDate = getDate;           //exports one or more function only
 
-                    function getDate(){
-                        let today = new Date().toLocalDateString('en-US',{weekday:'long', month:'long', year:'numeric', day:'numeric'});
-                        return today;
+
+        -importing local file we created.
+            const date = require(__dirname+'/date.js');
+            console.log(date);      //just print the name of function
+            console.log(date());      //this will execute the function
+
+            console.log(date.getDate());      //this will execute the function
+            console.log(date.getDay());      //this will execute the function
+
+        -function declaring ways:
+                            
+            //normale declaration
+                module.exports.fetchDate = fetchDate;
+                function fetchDate(){
+                    
+                    var options = {
+                        weekday:'long',
+                        month:'long',
+                        year:'numeric',
+                        day:'numeric'
                     }
                     
-                    module.exports.getDay = getDay;
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }
+
+                module.exports.fetchDay = fetchDay;
+                function fetchDay(){
                     
-                    function getDay(){
-                        let today = new Date().toLocalDateString('en-US',{weekday:'long'});
-                        return today;
+                    var options = {
+                        weekday:'long',
+                        year:'numeric'
                     }
+                    
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }
 
+            // or  without using function name like anonymouse function
 
-
-            -importing local file we created.
-                const date = require(__dirname+'/date.js');
-                console.log(date);      //just print the name of function
-                console.log(date());      //this will execute the function
-
-                console.log(date.getDate());      //this will execute the function
-                console.log(date.getDay());      //this will execute the function
-
-            -function declaring ways:
-                                
-                //normale declaration
-                    module.exports.fetchDate = fetchDate;
-                    function fetchDate(){
-                        
-                        var options = {
-                            weekday:'long',
-                            month:'long',
-                            year:'numeric',
-                            day:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
+                module.exports.fetchDate = function (){
+                    var options = {
+                        weekday:'long',
+                        month:'long',
+                        year:'numeric',
+                        day:'numeric'
                     }
+                    
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }
 
-                    module.exports.fetchDay = fetchDay;
-                    function fetchDay(){
-                        
-                        var options = {
-                            weekday:'long',
-                            year:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
+                module.exports.fetchDay = function (){
+                    var options = {
+                        weekday:'long',
+                        year:'numeric'
                     }
+                    
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }
 
-                // or  without using function name like anonymouse function
+            // or without using module again & again 
 
-                    module.exports.fetchDate = function (){
-                        var options = {
-                            weekday:'long',
-                            month:'long',
-                            year:'numeric',
-                            day:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
+                exports.fetchDate = fetchDate;
+                function fetchDate(){
+                    
+                    var options = {
+                        weekday:'long',
+                        month:'long',
+                        year:'numeric',
+                        day:'numeric'
                     }
+                    
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }
 
-                    module.exports.fetchDay = function (){
-                        var options = {
-                            weekday:'long',
-                            year:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
+                exports.fetchDay = fetchDay;
+
+                function fetchDay(){
+                    
+                    var options = {
+                        weekday:'long',
+                        year:'numeric'
                     }
-
-                // or without using module again & again 
-
-                    exports.fetchDate = fetchDate;
-                    function fetchDate(){
-                        
-                        var options = {
-                            weekday:'long',
-                            month:'long',
-                            year:'numeric',
-                            day:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
-                    }
-
-                    exports.fetchDay = fetchDay;
-
-                    function fetchDay(){
-                        
-                        var options = {
-                            weekday:'long',
-                            year:'numeric'
-                        }
-                        
-                        var today = new Date().toLocaleDateString('en-US',options);
-                        return today;
-                    }   
-                
+                    
+                    var today = new Date().toLocaleDateString('en-US',options);
+                    return today;
+                }   
             
-            -NOTE:
-                const arr = [];
-                it is const arr but still we can push element inside this array.
-                but we can't re-assign it to new object.
+        
+        -NOTE:
+            const arr = [];
+            it is const arr but still we can push element inside this array.
+            but we can't re-assign it to new object.
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 28: Blog WebSite
 
