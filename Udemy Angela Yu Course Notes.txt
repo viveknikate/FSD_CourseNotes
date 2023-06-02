@@ -2711,6 +2711,9 @@ Section 23: Node Js:
     -NPM (Node Package Manager)
         -npm init
             -after this command give name to Project & at end it'll create package.json file.
+        
+        -npm init -y 
+            //keeping all default option & initializing npm.
 
         -npm install <package_name>
         -npm i <package_name>

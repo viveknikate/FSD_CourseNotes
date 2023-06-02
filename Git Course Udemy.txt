@@ -429,6 +429,21 @@ GIT NOTES BY HARRY :-
     git reset
         reset staging area to the last commit without disturbing the working directory
 
+    #Cherry-Pick:
+        -git cherry-pick <Commit1> <Commit2> <...>
+            It's a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD). 
+            I personally love cherry-pick because there is very little magic involved and it's easy to understand.
+            
+            Here's a repository where we have some work in branch side that we want to copy to main. 
+            This could be accomplished through a rebase (which we have already learned), but let's see how cherry-pick performs.
+            That's it! We wanted commits C2 and C4 and git plopped them down right below us. Simple as that!
+
+            git cherry-pick <commit_hash> <commit_hash>
+        
+        -git rebase -i HEAD~4
+            Reorder 4 commits or exclude(remove) also.
+
+
 ===================================================================================End============================================================================
 GIT NOTES:
     to check the status of folder/project
@@ -620,7 +635,56 @@ GIT NOTES:
                 -- it just happens to introduce changes that exactly reverses the commit of C2.
                 With reverting, you can push out your changes to share with others.
 
+    Git Describe:
+        Because tags serve as such great "anchors" in the codebase, 
+        git has a command to describe where you are relative to the closest "anchor" (aka tag). And that command is called git describe!
+        Git describe can help you get your bearings after you've moved many commits backwards or forwards in history;
+        eg.
+            Git describe takes the form of:
+                git describe <ref>
+                Where <ref> is anything git can resolve into a commit. 
+                If you don't specify a ref, git just uses where you're checked out right now (HEAD)
+                The output of the command looks like:
+                    <tag>_<numCommits>_g<hash>
+                    Where tag is the closest ancestor tag in history, numCommits is how many commits away that tag is, 
+                    and <hash> is the hash of the commit being described.
+    
+    -Specifying Parents
+        Like the ~(tild) modifier, the ^(caret) modifier also accepts an optional number after it.
+        Rather than specifying the number of generations to go back (what ~ takes), 
+        the modifier on ^ specifies which parent reference to follow from a merge commit. 
+        Remember that merge commits have multiple parents, so the path to choose is ambiguous.
+        Git will normally follow the "first" parent upwards from a merge commit, but specifying a number with ^ changes this default behavior.
 
+        Here we have a merge commit. If we checkout main^ without the modifier, 
+        we will follow the first parent after the merge commit.            
+        (In our visuals, the first parent is positioned directly above the merge commit.)
+
+            git checkout main^
+        
+        Now let's try specifying the second parent instead...
+
+            git checkout main^2
+        
+        Chaining:
+            git checkout HEAD~          //one commit back
+            git checkout HEAD^2         //from merge follow 2nd parent as processing branch
+            git check HEAD~2            // go back by 2 commits.
+
+            these modifiers can be chained together! 
+
+                git checkout HEAD~^2~2
+
+    -Remote:
+        git fetch        //for downloading the commit without changing the local file system.
+        git pull         //for downloading & merging all commits. fetch + merge
+
+        after downloading to merge all commits use
+            git rebase
+            git merge
+
+            -shorthand for a fetch and a rebase!
+                git pull --rebase
 
 
 ==========================================End====================================================
