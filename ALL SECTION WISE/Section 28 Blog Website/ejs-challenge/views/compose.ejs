@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+
+<h1>Compose</h1>
+<form method="post">
+     <div class="form-group">
+          <label for="title">Title</label>
+          <input 
+               type="text" 
+               class="form-control" 
+               name="postName" 
+               placeholder="Post title"
+               oninvalid="this.setCustomValidity('Enter post title Here..')"
+               oninput="this.setCustomValidity('')"
+               required
+               autofocus
+          />
+     </div>
+     <div class="form-group">
+          <label for="postDesc">Post</label>
+          <textarea 
+               name="postDesc" 
+               cols="30" 
+               rows="10" 
+               class="form-control" 
+               placeholder="Post description.."
+               oninvalid="this.setCustomValidity('Please enter post description here..')"
+               oninput="this.setCustomValidity('')"
+               required
+          ></textarea>
+     </div>
+     <center>
+          <button class="btn btn-success">Submit</button>
+     </center>
+</form>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,46 @@
+<%- include('partials/header') -%>
+     <h1>Home</h1>
+     <p>
+          <%= homeText %>
+     </p>
+     
+     <!-- <% for(let i=0;i<content.length; i++){ %>
+          <h1> <%= content[i].title %> </h1>
+          <p> <%= content[i].body %> </p>
+          <% } %> -->
+
+          <% content.forEach((i)=>{ %>
+               <h1><%= i.title %></h1>
+               <!-- <p><%= i.body.slice(0,120) %>...</p> -->
+               <p>
+                    <%= i.body.substring(0,100) %>
+                    <a href="/posts/<%= i.title %>"> Read More...</a>
+               </p>
+          <% }) %>
+          
+<!-- 
+     <% let allPosts = [] %>
+     <% for(let i=0; i < allPosts.length; i++ ){ %>
+          <h1><%= allPosts[i].title %></h1>
+          <p>
+               <%= allPosts[i].Desc %>
+          </p>
+     <% } %>
+
+     using Advance for loop
+
+     <% allPosts.forEach( (i)=>{ %>
+          <h1><%= i.title %> </h1>
+          <p>
+               <%= i.Desc %>
+          </p>
+     <% }) %>  -->
+          
+     <center>
+          <button class="btn btn-outline-primary" style="border-radius: 20%;font-size: 3em;">
+               <a href="/compose" style="text-decoration: none;">+</a>
+          </button>
+     </center>
+<%- include('partials/footer') -%>
+
+

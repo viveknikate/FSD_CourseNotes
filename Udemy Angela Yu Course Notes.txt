@@ -3626,7 +3626,21 @@ Section 27: EJS:
         no state is preserved and DOM elements are re-created(but design stays the same).
 
         Design stays same is called Layout.
-            <%- include('file_name') -%>
+
+            This Syntax we used for partials design, all are located inside 'views' folder
+            <%- include('path/file_name') -%>
+            <%- include('./partial/header'); -%>
+            <%- include('./partial/header');%>
+            
+            other ways,
+                <%- include('header'); -%>
+                <% include ./header.ejs %>
+                
+                <% include partials/header.ejs %>
+
+                <%- include ./header.ejs -%>
+                <%- include ./header.ejs %>
+
             eg.
                 <%- include('Footer') -%>
                 <%- include('Header') -%>
@@ -3807,7 +3821,219 @@ Section 27: EJS:
             but we can't re-assign it to new object.
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 28: Blog WebSite
+    -When you download sample project from github, always run 'npm install' or 'npm i' command
+     this will download all your required depenencies from package-lock.json file.
 
+    -home.ejs file
+        <%- include('header') -%>
+            <h1>Home</h1>
+            <p>
+                <%= homeText %>
+            </p>
+            
+            <!-- 
+                <% for(let i=0;i<content.length; i++){ %>
+                    <h1> <%= content[i].title %> </h1>
+                    <p> <%= content[i].body %> </p>
+                <% } %> 
+            -->
+
+                <% content.forEach((i)=>{ %>
+                    <h1><%= i.title %></h1>
+                    <p><%= i.body %></p>
+                <% }) %>
+                
+            <!-- 
+                <% let allPosts = [] %>
+                <% for(let i=0; i < allPosts.length; i++ ){ %>
+                    <h1><%= allPosts[i].title %></h1>
+                    <p>
+                        <%= allPosts[i].Desc %>
+                    </p>
+                <% } %>
+
+                using Advance for loop
+
+                <% allPosts.forEach( (i)=>{ %>
+                    <h1><%= i.title %> </h1>
+                    <p>
+                        <%= i.Desc %>
+                    </p>
+                <% }) %>  
+            -->
+                
+            <center>
+                <button class="btn btn-outline-primary" style="border-radius: 20%;font-size: 3em;">
+                    <a href="/compose" style="text-decoration: none;">+</a>
+                </button>
+            </center>
+        <%- include('footer') -%>
+
+    -app.js file        
+        const express = require("express");
+        const bodyParser = require("body-parser");
+        const ejs = require("ejs");                     //importing ejs module
+
+        const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
+        const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
+        const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
+
+        const app = express();
+
+        let Tasks =[];
+
+        app.set('view engine', 'ejs');
+
+        app.use(bodyParser.urlencoded({extended: true}));           //bodyParse query taking from url
+        app.use(express.static("public"));                          //accessing styles files from public folder
+
+
+        app.get('/',(req,res)=>{
+        res.render('home',{homeText :homeStartingContent, content:Tasks});
+        })
+
+        app.get('/about',(req, res)=>{
+        res.render('about',{aboutText:aboutContent})
+        })
+
+        app.get('/contact',(req, res)=>{
+        res.render('contact',{contactText:contactContent})
+        })
+
+        app.get('/compose',(req, res)=>{
+        res.render('compose');
+        })
+
+        app.get('/posts/:matter', function(req, res){               //params to access the url navigation 
+        console.log(req.params.matter);
+        });
+
+        app.post('/compose',(req,res)=>{
+
+        let obj = {
+            title: req.body.postName,
+            body: req.body.postDesc
+        };
+
+        Tasks.push(obj);
+        res.redirect('/')
+        })
+
+        app.listen(3000, function() {
+        console.log("Server started on port 3000");
+        });
+
+    -Challenge-1
+        home.ejs
+            <h1>Home</h1>
+            <p> <%= para %> </p>         //Syntax for printing the value of variable we pass.
+
+    -Challenge-2
+        Displaying content of home.ejs file.
+            let text = '..../....some text';
+            app.get('/', (req, res)=>{
+                res.render('home',{para: text});      
+            })
+
+    -Challenge-3
+        header & footer as partials
+        <%- include('file_name') -%>
+    
+    -Challenge-4
+        adding partials with path
+        <%- include('folder1/file_name') -%>
+        <%- include('folder1/header') -%>
+
+    -Challenge-5
+        app.get('/page_name',(req,res)=>{
+            res.send("<h1>On page_name</h1>")
+        })
+    
+    -Challenge-6
+        navigation bar linking properly..
+                <a href='/about'>about</a>
+                <a href='/contact'>contact</a>
+
+    -Challenge-7
+        -creating compose.ejs page form.
+            <%- include('header') -%>
+            <h1>Compose</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="postName" 
+                        placeholder="Post title"
+                        oninvalid="this.setCustomValidity('Enter post title Here..')"
+                        oninput="this.setCustomValidity('')"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="postDesc">Post</label>
+                    <textarea 
+                        name="postDesc" 
+                        cols="30" 
+                        rows="10" 
+                        class="form-control" 
+                        placeholder="Post description.."
+                        oninvalid="this.setCustomValidity('Please enter post description here..')"
+                        oninput="this.setCustomValidity('')"
+                        required
+                    ></textarea>
+                </div>
+                <center>
+                    <button class="btn btn-success">Submit</button>
+                </center>
+            </form>
+
+            <%- include('footer') -%>
+
+    -Challenge-8,9,10,11,12,13,14
+        compose get & post method
+
+            app.get('/compose',(req, res)=>{
+            res.render('compose');              //after going to '/compose' url the compose page will get opened.
+            })
+            
+            app.post('/compose',(req,res)=>{
+
+                let obj = {
+                    title: req.body.postName,                   //accessing the attributes name of input field as postName
+                    body: req.body.postDesc                     //accessing the attributes name of textarea field as postDesc.
+                };
+
+                Tasks.push(obj);                                //inserting that obj in array.
+                res.redirect('/')                               //redirecting back to home page/root page.
+            })
+            
+        -Challenge-15
+            Advance for loop
+                <% <varName>.forEach(function(items){ %>
+                    <h1><%= items.title %></h1>
+                    <p><%= items.body %></p>
+                <% }) %>
+
+                -complete coding part should enclosed within  "<% %>" these tags.
+                    <% ....codes.... %>
+                -for everyline it <% %> should be there.
+            
+        -Challenge-16,17,18,19
+            url =  /posts/:matter
+
+            app.get('/posts/:matter',(req,res)=>{       //here :matter in url will get replaced by any text come at that position.    
+                console.log(req.params.matter);
+            })
+        
+            rs - for restarting the server.
+
+        -Challenge-20
+            dynamic url
+                    <a href="/posts/<%= i.title %>"> Read More...</a>
+                    
+                            
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 29: Database
     -Database based on SQL & NoSQL.
@@ -4177,8 +4403,6 @@ Section 31: MongoDB:
                             {authorName:'author3', rating:5, msg:'Good pencil, suggest you to try once'}
                         ]
                     })
-
-
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
