@@ -2714,6 +2714,7 @@ Section 23: Node Js:
         
         -npm init -y 
             //keeping all default option & initializing npm.
+            //-y yes for Everything
 
         -npm install <package_name>
         -npm i <package_name>
@@ -4032,8 +4033,7 @@ Section 28: Blog WebSite
         -Challenge-20
             dynamic url
                     <a href="/posts/<%= i.title %>"> Read More...</a>
-                    
-                            
+        
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 29: Database
     -Database based on SQL & NoSQL.
@@ -4073,6 +4073,14 @@ Section 30: SQL (Structured Query Language)
     -SQL not a case-sensitive language
 
     -primary key = Uniquely identifies each record in a database table.
+
+    -creating database
+        create database <database_name>
+        create database products
+    
+    -deleting database
+        drop database <database_name>
+        drop database products
 
     -Creating Table:
 
@@ -4303,6 +4311,7 @@ Section 31: MongoDB:
     -MongoDB is a cloud-based, open-source, distributed database.
     -MongoDB is a widely-used database.
     -MongoDB is a popular database. It stores data in key-value pair
+    -Whenever we try new database, research on How to perform CRUD Opertaions.
 
     -CRUD Opertaions:
         -need to install MongoDB & node.
@@ -4320,7 +4329,7 @@ Section 31: MongoDB:
                     db
                 
                 -inserting document in collection
-                    db.<column_name>.insert({})
+                    db.<collection_name>.insert({})
                     db.<collection_name>.insertOne({})            //if collection doesn't exist in database then it create that collection
                     db.collection.insertMany()
                     eg.
@@ -4377,6 +4386,8 @@ Section 31: MongoDB:
                 eg.
                     db.products.deleteOne({_id: ObjectId("64771aeea5a9ccd137f1d40f")})
                     db.products.deleteOne( { id: 2 })
+
+                    db.products.deleteMany({stock:{$gt:10}})    // delete those records whos stock is > 10
             
             -Relationships in MongoDB:
 
@@ -4403,8 +4414,497 @@ Section 31: MongoDB:
                             {authorName:'author3', rating:5, msg:'Good pencil, suggest you to try once'}
                         ]
                     })
+
+    -MongoDB native driver vs ODM(mongoose)    
+        ODM - object document mapper (mongoose)
+        -install mongoose
+            npm i mongoose
+        
+        -Deleting database first switch to it, then 
+            use <database_name>
+            db.dropDatabase()
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 32: Mongoose
+    -need to install mongoose package.
+        npm i mongoose.
+    
+    connecting with database, require package..
+        -const mongoose = require('mongoose');
+        -mongoose.connect('mongodb://localhost:27017/fruitsDB')     //at end the name of database.
+
+            //if database is not present then it will create the database, with specified name
+        
+        -create collection structure/Schema
+            const <collection_schema> = new mongoose.Schema({
+                var1: type,
+                var2: type,
+                var3: type,
+                var4: type
+            })
+
+        -collection_name
+            const collection = mongoose.model('<name>',<collection_schema>)
+
+        -creating document/record
+            const first = new <collection>({
+                key:value,
+                key:value,
+                key:value,
+                key:value
+            })
+
+            first.save();
+        
+        eg.
+            const mongoose = require('mongoose');
+
+            mongoose.connect('mongodb://localhost:27017/fruitsDB')
+
+            const fruitSchema = new mongoose.Schema({
+                name: String,
+                rating: Number,
+                review: String
+            });
+
+            const Fruit = mongoose.model('Fruit', fruitSchema);
+
+            const fruit = new Fruit({
+                name:'Apple',
+                rating: 7,
+                review:'Pretty Solid as fruit'
+            });
+
+            // fruit.save();
+
+
+            const personSchema = new mongoose.Schema({
+                name:String,
+                age:Number
+            });
+
+            const person = mongoose.model('People', personSchema);
+
+            const p1 = new person({
+                name: 'Nikate',
+                age:22
+            })
+
+            // p1.save();
+
+            const Kiwi = new Fruit({
+                name: 'Kiwi',
+                rating:10,
+                review:'The bets fruit'
+            });
+
+            const Pineapple = new Fruit({
+                name:'Pineapple',
+                rating:9,
+                review:'Tasty fruit'
+            });
+
+            const Mango = new Fruit({
+                name:'Mango',
+                rating:8,
+                review:'Sweet fruit'
+            })
+
+            // Fruit.insertMany([Kiwi, Pineapple, Mango]).then(()=>{
+            //      console.log('Successfully added the fruits');
+            // }).catch(
+            //      (err)=>{
+            //           console.log(err);
+            //      }
+            // )
+
+            // throw new MongooseError('Model.find() no longer accepts a callback');
+            // Fruit.find((err,fruits)=>{
+            //      if(err){
+            //           console.log(err);
+            //      }else{
+            //           console.log(fruits);
+            //      }
+            // })
+
+
+
+            Fruit.find().then((fruits)=>{
+
+                // console.log(fruits);          //printing all fruits data
+
+                fruits.forEach( element => {
+                    console.log(element.name);              //just printing the name of fruits
+                });
+            }).catch((err)=>{
+                console.log(err);
+            }).finally(()=>{
+                mongoose.connection.close(); 
+            })
+
+    -Data Validation:
+        const fruitSchema = new mongoose.Schema({
+            name: String,
+            rating: {
+                type: Number,
+                min: 1,
+                max: 10
+            },
+            review: String
+        });
+
+        name as required field..
+         const fruitSchema = new mongoose.Schema({
+            name:{
+                type: String,
+                required:true           //required :[1]         or
+                                        //required :[true, 'msg']
+            },
+            rating: {
+                type: Number,
+                min: 1,
+                max: 10
+            },
+            review: {
+                type: String,
+                required: true
+            }
+        });
+
+    -Update & Deleting Data using mongoose
+
+        Fruit.updateOne({_id: "64861e6dfa3f5b14cf21a38d"}, {name: "AnonymousFruit2"}).then(function(){
+            console.log('sucessfully updated..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        Fruit.deleteOne({name: 'AnonymousFruit2'}).then(function(){
+            console.log('sucessfully deleted..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        Fruit.deleteOne({_id:'64861da600df48632c4cc5fa'}).then(function(){
+            console.log('sucessfully deleted..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        person.deleteMany({age:{$gt:20}}).then(function(){
+            console.log('sucessfully deleted..!');
+        });
+
+    -Relationships between document of different collections
+
+        //Fruit collection structure:
+            const fruitSchema = new mongoose.Schema({
+                name:{
+                    type: String,
+                    required:true
+                },
+                rating: {
+                    type: Number,
+                    min: 1,
+                    max: 10
+                },
+                review: {
+                    type: String,
+                    required: true
+                }
+            });
+
+        //creating collection with Fruit name   
+            const Fruit = mongoose.model('Fruit', fruitSchema);
+
+        //fruit document
+            const Kiwi = new Fruit({
+                name: 'Kiwi',
+                rating:10,
+                review:'The best fruit'
+            });
+
+        //Person Collection structure
+            const personSchema = mongoose.Schema({
+                name:String,
+                age:Number,
+                // likeFruit: fruitSchema
+                FavFruit: {
+                    type: fruitSchema,          //FavFruit is a type of fruitSchema.
+                    required: true              //making the field required if didn't entered value it will crash.
+                }
+            });
+
+        //person collection
+            const person = mongoose.model('People', personSchema);
+
+        //person document
+            const p3 = new person({
+                name:'Person99',
+                age:99,
+                likeFruit: Kiwi
+            });
+
+            p3.save().then(()=>{
+                console.log("Saved successfully ✔");
+            })
+    
+    -Complete code of this section
+
+        const mongoose = require('mongoose');    
+        mongoose.connect('mongodb://localhost:27017/fruitsDB')
+
+        const fruitSchema = new mongoose.Schema({
+            name:{
+                type: String,
+                required:true
+            },
+            rating: {
+                type: Number,
+                min: 1,
+                max: 10
+            },
+            review: {
+                type: String,
+                required: true
+            }
+        });
+
+        const Fruit = mongoose.model('Fruit', fruitSchema);
+
+        const fruit = new Fruit({
+            name:'Apple',
+            rating: 8,
+            review:'Pretty Solid as fruit'
+        });
+
+        fruit.save();
+
+        const fruit2 = new Fruit({
+            name:'New_fruit2',
+            rating: 10,
+            review:'Pretty New as fruit'
+        });
+
+        fruit2.save();
+
+        const fruit3 = new Fruit({
+            name:"NamedAnonymousFruit1",
+            review:'This is a review for anonymous Fruit',
+            rating: 9
+        });
+
+        fruit3.save();
+
+        const personSchema = mongoose.Schema({
+            name:String,
+            age:Number,
+            likeFruit: fruitSchema
+            likeFruit: {
+                type: fruitSchema,
+                required: true
+            }
+        });
+
+        const person = mongoose.model('People', personSchema);
+
+        const p1 = new person({
+            name: 'Nikate',
+            age:22
+        })
+
+        p1.save();
+
+        const p2 = new person({
+            name:'Vivek',
+            age:23
+        })
+
+        const Mango = new Fruit({
+            name:'Mango',
+            rating:8,
+            review:'Sweet fruit'
+        });
+
+        const Kiwi = new Fruit({
+            name: 'Kiwi',
+            rating:10,
+            review:'The best fruit'
+        });
+
+        Mango.save();
+
+        const p3 = new person({
+            name:'Person99',
+            age:99,
+            likeFruit: Kiwi
+        })
+
+        p3.save().then(()=>{
+            console.log('Saved succesffully')
+        })
+
+        p2.save();
+
+
+
+        const Pineapple = new Fruit({
+            name:'Pineapple',
+            rating:9,
+            review:'Tasty fruit'
+        });
+
+
+        Fruit.insertMany([Kiwi, Pineapple, Mango]).then(()=>{
+            console.log('Successfully added the fruits');
+        }).catch(
+            (err)=>{
+                console.log(err);
+            }
+        )
+
+        throw new MongooseError('Model.find() no longer accepts a callback');
+        Fruit.find((err,fruits)=>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log(fruits);
+            }
+        })
+
+
+        Fruit.updateOne({_id: "64861e6dfa3f5b14cf21a38d"}, {name: "AnonymousFruit2"}).then(function(){
+            console.log('sucessfully updated..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        Fruit.deleteOne({name: 'AnonymousFruit2'}).then(function(){
+            console.log('sucessfully deleted..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        Fruit.deleteOne({_id:'64861da600df48632c4cc5fa'}).then(function(){
+            console.log('sucessfully deleted..!');
+        }).catch(function(err){
+            console.log(err);
+        })
+
+        Fruit.find().then((fruits)=>{
+
+            console.log(fruits);          //printing all fruits data
+
+            fruits.forEach( element => {
+                    console.log(element.name);              //just printing the name of fruits
+            });
+        }).catch((err)=>{
+            console.log('enable to connect .. '+err);
+        }).finally(()=>{
+            mongoose.connection.close();
+        })
+
+        person.deleteMany({age:{$gt:20}}).then(function(){
+            console.log('sucessfully deleted..!');
+        });
+
+
+        person.find().then((ppl)=>{
+            console.log(ppl)
+        }).catch(()=>{
+            console.log("Enable to connect..!");
+        }).finally(()=>{
+            mongoose.connection.close();
+        })
+
+    -Practiced code:
+        -created one folder
+        -created file of .js extension
+        -npm init -y
+        -installed the mongoose package
+            npm i mongoose
+        
+        -need to remember this string, at the end there is name of your custom database
+            mongodb://localhost:27017/MyDB
+
+        const mongoose = require('mongoose');
+
+        //creating connection with database
+        mongoose.connect('mongodb://localhost:27017/MyDB');
+
+        // Fruit collection structure
+        const fruitSchema = new mongoose.Schema({
+            name: {
+                type: String,
+                required: true
+            },
+            color: {
+                type: String,
+                required: true
+            },
+            rating:{
+                type: Number,
+                required: true
+            }
+        });
+
+        //Person collection Structure
+        const personShema = new mongoose.Schema({
+            name:{
+                type: String,
+                required: true
+            },
+            age:{
+                type: Number,
+                required: true
+            },
+            loveFruit: {
+                type:fruitSchema,
+                required: true
+            }
+        });
+
+
+        //fruit collection name is manyfruit
+        const manyFruit = mongoose.model('manyFruit', fruitSchema)       //it will create the collection with name you mentioned within quotes ""
+
+        //person collection name is manyPerson
+        const manyPerson  = mongoose.model('loka', personShema);         //here it'll create the collection with name lokas, it adds extra 's' at end automatically
+
+
+        //fruit 1st record/document
+        const Apple = new manyFruit({
+            name:'APPLE',
+            color: 'RED',
+            rating: 8
+        })
+
+        Apple.save();
+
+
+        //person 1st record/document
+        const p1 = new manyPerson({
+            name:'Vivek',
+            age:23,
+            loveFruit:Apple
+        });
+
+        p1.save();
+
+        const p2 = new manyPerson({
+            name:'Mahesh',
+            age:45,
+            loveFruit:Apple
+        })
+
+        p2.save().then(()=>{
+            console.log("saved Successfully");
+        }).finally(()=>{
+            console.log('Closing the connection');
+            mongoose.connection.close();       //saving the document safely then closing the connection
+        });
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 33: Putting Everything Together
+    //complete projec with database connected with frontend.MongoDB database.
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
