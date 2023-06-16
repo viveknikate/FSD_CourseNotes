@@ -4341,6 +4341,14 @@ Section 31: MongoDB:
                             }
                         )
                 
+                    eg. many
+                         db.First.insertMany([
+                                { name: 'Mahesh', age: 44}, 
+                                { name: 'Nikate', age: 1}, 
+                                { name: 'Rohini', age: 20}, 
+                                { name: 'Aai', age: 38}
+                            ])
+
                     -Collections in MongoDB is similar to table in SQL.
                         collection is bunch of documents
                     
