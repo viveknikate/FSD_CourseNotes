@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const { Schema, model } = require("mongoose");
 const app = express();
 
+require('dotenv').config();
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,6 +16,7 @@ app.use(express.static("public"));
 
 // const items = ["Buy Food", "Cook Food", "Eat Food"];
 const workItems = [];
+const PORT = process.env.PORT || 3000;
 
 // mongoose.connect('mongodb://localhost:27017/todolistDB')  
 mongoose.connect('mongodb+srv://viveknikate:Vivek%4012345@cluster0.1mlfhsg.mongodb.net/todolistDB?retryWrites=true&w=majority')
@@ -28,15 +31,15 @@ const itemSchema = new mongoose.Schema({
 const Item = model('Item', itemSchema)
 
 const I1 = new Item({
-  name: 'Item-1'
+  name: 'Welcome to your todolist!'
 });
 
 const I2 = new Item({
-  name: 'Item-2'
+  name: 'Hit the + button to add a new item.'
 })
 
 const I3 = new Item({
-  name: 'Item-3'
+  name: '<== Hit this box to delete an item.'
 })
 
 const defaultItems = [I1,I2,I3]
@@ -55,7 +58,7 @@ app.get("/", function(req, res) {
   Item.find().then((item)=>{
     // console.log(item)
 
-    if(item.length == 0){
+    if(item.length === 0){
       Item.insertMany(defaultItems);
       res.redirect('/')
     }else{
@@ -76,11 +79,12 @@ app.post("/", function(req, res){
   })
   
   if(listName === 'today'){
-    addingItem.save()
+    addingItem.save();
     res.redirect('/')
   }else{
     List.findOne({name:listName}).then((foundElement)=>{
-      foundElement.items.push(addingItem)
+      foundElement.items.push(addingItem);
+
       foundElement.save();
       res.redirect('/'+listName);
     }).catch(()=>{
@@ -99,7 +103,7 @@ app.post('/delete',(req, res)=>{
       res.redirect('/')
     })
   }else{
-    List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkId}}}).then((foundItem)=>{
+    List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkId}}}).then(()=>{
       res.redirect('/'+listName);
     })
   }
@@ -130,6 +134,6 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });

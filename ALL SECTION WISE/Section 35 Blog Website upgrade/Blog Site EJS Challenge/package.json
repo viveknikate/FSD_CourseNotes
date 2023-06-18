@@ -1,8 +1,8 @@
 {
-  "name": "todolist-v1",
+  "name": "ejs-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^16.3.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "lodash": "^4.17.21",
-    "mongoose": "^7.2.4"
+    "mongoose": "^7.3.0"
   }
 }

@@ -4318,6 +4318,7 @@ Section 31: MongoDB:
         -commands  
             -help
             -show dbs   //list of databases
+            -show databases   //list of databases
 
             -creating database & using that DB
                 use <database_name>
@@ -4913,6 +4914,9 @@ Section 32: Mongoose
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 33: Putting Everything Together
     //complete projec with database connected with frontend.MongoDB database.
+    for Cylic deployment 
+        npm i dotenv
+        const PORT = process.env.PORT || 3000;
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
