@@ -1530,21 +1530,28 @@ Bitwise     Operator:
 --------------------------------------------------------------------------------------------------------------------------------
 #Arrays:    
 
-    var a = [];
+    var array = [];
 
-    a=[1,2,3,4,5,6,7,8,9,10];
-    console.log(a);
-    console.log(a.length);
+    array=[1,2,3,4,5,6,7,8,9,10];
+    console.log(array);
+    console.log(array.length);
 
-    for(var i=0;i<a.length;i++)
-        document.write(a[i]+"<br />");
+    //Normal for loop
+    for(var i=0;i<array.length;i++)
+        document.write(array[i]+"<br />");
 
-    document.write("The 2nd item in list :"+a[1]+"<BR>");
+    //Advance for loop
+    array.forEach((value, index)=>{
+        console.log(`The Value ${value}, the Index : ${index}`)
+    })
+
+    
+    document.write("The 2nd item in list :"+array[1]+"<BR>");
     //array starts counting from 0
-    document.write(`The last forth in list :${a[3]} <br/>`);
+    document.write(`The last forth in list :${array[3]} <br/>`);
 
-    document.write(`The last item in list using length method :${a[a.length-1]} <br/>`);
-    document.write(`The last item in list using slice :${a.slice(-1)}`);
+    document.write(`The last item in list using length method :${array[array.length-1]} <br/>`);
+    document.write(`The last item in list using slice :${array.slice(-1)}`);
 
     NOTE:   To access the last element in array 
             3 ways are there.
@@ -4313,6 +4320,11 @@ Section 31: MongoDB:
     -MongoDB is a popular database. It stores data in key-value pair
     -Whenever we try new database, research on How to perform CRUD Opertaions.
 
+    -Naming convention for MongoDB Collection
+        Databases: consist of the purpose (word in singular) and end with “db” – all lower case: imagedb, resumedb, memberdb, etc.
+        Collections: plural in lower case: images, resumes,
+        Document fields: lowerCamelCase, e.g. memberFirstName, fileName, etc.    
+
     -CRUD Opertaions:
         -need to install MongoDB & node.
         -commands  
@@ -4918,7 +4930,79 @@ Section 33: Putting Everything Together
         npm i dotenv
         const PORT = process.env.PORT || 3000;
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 34, 35 Project work.
 ------------------------------------------------------------------------------------------------------------------------------------
+Section 36: RESTful API
+    -WHAT IS REST:-
+        -REST - REpresentation State Transfer
+        -Request & Response.
+        -Request are made in form of HTTP, HTTPs or FTP
+
+        -GET : Used to retrieve data from server, Read Data.
+            app.get(function (){
+                
+            })
+
+        -POST : Create a resource on Server
+            app.post(function (){
+
+            })
+
+        -PUT : Update an existing Resource(completely changing or Updating the previously present data)  /
+               PUT is a method of Updating record when the client transmits data that update the whole record.
+            app.put(function (){
+
+            })
+
+        PATCH : Partially update a Resource (means which data is broken, fixing only that one.)
+                PATCH is a technique for transforming the resources when the client transmits 
+                partial data that will be updated without changing the whole data.
+                -updating particular data field is patch
+
+            app.patch(function (){
+                
+            })
+
+        -DELETE : Delete a Resource
+            app.delete(function (){
+                    
+            })
+
+    -Database With Robo 3T:
+
+    -Using Postman Testing URL
+        Methods:
+            const app = express();        
+            1)GET
+                app.get('/articles',(req, res)=>{
+                    res.send("Request Processed.");
+                })
+
+            2)POST
+                app.post('/articles',(req, res)=>{
+                    console.log('body:', req.body);
+                })
+
+            3)DELETE
+                app.delete('/articles',(req, res)=>{
+                    res.send('message:Deleted Successfully');
+                })
+
+    -Chaining Route Handlers
+        -instead of writing all method separately for same route we can chain them together.
+        -GET, POST, DELETE
+         Syntax:
+            app.route('/articles').get().post().delete()
+
+            eg.
+                app.route('/articles')
+                .get()
+                .post()
+                .delete()
+
+
+        
+    
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
