@@ -167,6 +167,14 @@ Content in that
       Hyper Link:-
         here the target attribute used to open the page on new tab      
         <a href="https://www.capgemini.com/" target="_blank">Capgemini</a>
+
+      Random Photo link:
+        https://picsum.photos/200/300
+        https://picsum.photos/200/200;
+        
+        grayscale mode:
+        https://picsum.photos/200/200?grayscale
+
     ------------------------------------------------------------------------------------------
     table:
     cellspacing ="4" 
@@ -440,6 +448,57 @@ CSS: Cascading Style Sheets
                 color: white;
                 border-bottom-right-radius: 30px;
             }
+        
+        accent-color	Specifies an accent color for user-interface controls
+            copy paste code in browser
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <style>
+                input[type=checkbox] {
+                accent-color: yellow;
+                }
+
+                input[type=radio] {
+                accent-color: green;
+                }
+
+                input[type=range] {
+                accent-color: rgb(0, 155, 255);
+                }
+
+                progress {
+                accent-color: hsl(39, 100%, 50%);
+                }
+
+                </style>
+                </head>
+                <body>
+
+                <h1>The accent-color Property</h1>
+
+                <h3>Accent color for checkboxes:</h3>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
+                <label for="vehicle1"> I have a bike</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+                <label for="vehicle2"> I have a car</label><br><br>
+
+                <h3>Accent color for radiobuttons:</h3>
+                <input type="radio" id="html" name="fav" value="HTML">
+                <label for="html">HTML</label><br>
+                <input type="radio" id="css" name="fav" value="CSS" checked>
+                <label for="css">CSS</label><br>
+
+                <h3>Accent color for a range field:</h3>
+                <label for="vol">Volume:</label>
+                <input type="range" id="vol" name="vol" min="0" max="50">
+
+                <h3>Accent color for a progress element:</h3>
+                <label for="file">Downloading progress:</label>
+                <progress id="file" value="92" max="100"> 72% </progress>
+
+                </body>
+                </html>
     ---------------------------------------------------------------------------------------
     //below styling will stop selecting the text from user end 
         & won't be able to copy the text
@@ -4999,10 +5058,776 @@ Section 36: RESTful API
                 .get()
                 .post()
                 .delete()
+------------------------------------------------------------------------------------------------------------------------------------
+Section 37: Authentication & Security
+    Github repo for Authentication revision:
+        https://github.com/londonappbrewery/Authentication-Secrets.git
 
+    -Level-1
+        const userSchema = new mongoose.Schema({
+            email: String,
+            password: String
+        });
 
+        const User = new mongoose.model('User',userSchema);
+
+        app.post('/register',(req, res)=>{
+            const newUser = new User({
+                email: req.body.username,
+                password: req.body.password
+            })
+
+            newUser.save().then(()=>{
+                res.render("secrets")
+            });
+        })
+
+        app.post('/login',(req, res)=>{
+            const username = req.body.username;
+            const password = req.body.password;
+
+            User.findOne({email:req.body.username}).then((foundUser)=>{
+                if (foundUser){
+                    if(foundUser.password === req.body.password){
+                            res.render('secrets');
+                    }
+                }else{
+                    console.log('user not exist');
+                }
+            })
+        })
+
+        app.post('/login',(req, res)=>{
+            const username = req.body.username;
+            const password = md5(req.body.password);
+
+            User.findOne({email: username}).then((foundUser)=>{
+                if (foundUser){
+                    if(foundUser.password === password){
+                            res.render('secrets');
+                    }
+                    else{
+                            res.send("<h1>Wrong Password</h1>")
+                    }
+                }else{
+                    console.log('user not exist');
+                }
+            })
+        })
+
+        Files:
+            //jshint esversion:6
+            const express = require("express");
+            const bodyParser = require("body-parser");
+            const ejs = require("ejs");
+            const mongoose = require("mongoose");
+
+            const app = express();
+
+            app.use(express.static("public"));
+            app.set('view engine', 'ejs');
+            app.use(bodyParser.urlencoded({
+            extended: true
+            }));
+
+            mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+
+            const userSchema = ({
+            email: String,
+            password: String
+            });
+
+            const User = new mongoose.model("User", userSchema);
+
+            app.get("/", function(req, res){
+            res.render("home");
+            });
+
+            app.get("/login", function(req, res){
+            res.render("login");
+            });
+
+            app.get("/register", function(req, res){
+            res.render("register");
+            });
+
+            app.post("/register", function(req, res){
+            const newUser =  new User({
+                email: req.body.username,
+                password: req.body.password
+            });
+            newUser.save().then((req, res)=>{
+                res.render("secrets");
+                })
+            });
+
+            app.post("/login", function(req, res){
+            const username = req.body.username;
+            const password = req.body.password;
+
+            User.findOne({email: username}).then((foundUser)=>{
+                if (foundUser) {
+                    if (foundUser.password === password) {
+                    res.render("secrets");
+                    }else{
+                    res.render("Wrong password")
+                    }
+                    
+                }
+            });
+            });
+
+            app.listen(3000, function() {
+            console.log("Server started on port 3000.");
+            });
+
+    -Level-2
+        Encryption:
+            const userSchema = new mongoose.Schema({
+                email: String,
+                password: String
+            });
+
+            const secretMsg = 'Thisisourlittlesecret.';
+            userSchema.plugin(encrypt,{secret:secretMsg})          
+            userSchema.plugin(encrypt,{secret: process.env.secret_msg, encryptedFields:['password'] })
+            //plugin should be added first before creating model for collection
+
+            const User = new mongoose.model('User',userSchema);
+
+    -Level-3
+        npm i dotenv
+        require('dotenv').config(); //place this line at the top
         
+        create .env file
+            Syntax
+                name=value      //no space no quotation separated by underscore (_)
+                //NO COMMA (,) NOTHING TO SEPARATE OR SOMETHING.
+                Example
+                    PORT=5001
+                    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.<EMAIL>/test?retryWrites=true&w=majority
+                    SECRET_MSG=Thisisourlittlesecret.
+                    API_KEY=QWERTYUIOP12345
+
+            
+            accessing .env file variables
+                //variableName are not case-sensitive
+                console.log(process.env.API_KEY);
+                console.log(process.env.SECRET_MSG);
+                console.log(process.env.api_key);
+                console.log(process.env.secret_msg);
+        
+        -Before pushing/ starting any project to GitHub you must create .env file & .gitignore file
+         & ignore the file which is critical for project, or non usable files.
     
+    -Level-4
+        -Hashing password
+            -install md5 package
+            npm i md5
+            const md5 = require('md5');
+
+        -Hashing & Salting:
+            -Hashing is process of running password through hash function.
+            -Salting is process of adding extra set of random character.
+            -This will make it harder to crack your hashed passwords by brute force attack.
+            -To do this we use bcrypt library in node js
+                install bcrypt
+                npm i bcrypt
+                npm i bcrypt@3.0.2      //specific version
+
+            -no.of round to password means 
+                original password adding salt to it running through hash function first time.
+                taking the output from first & again adding same salt to it & running through hash function again this is 2nd time.
+                how times you do this that much amount of rounds you have.
+             
+            -const saltRounds =10;
+
+                bcrypt.hash(req.body.password, saltRounds, function (err, passwdHash){
+                    const newUser = new User({
+                        email: req.body.username,
+                        password: passwdHash
+                    })
+                
+                    newUser.save().then(()=>{
+                        res.render("secrets")
+                    });
+                })
+
+            -bcrypt
+                app.post('/register',(req, res)=>{
+                    bcrypt.hash(req.body.password, saltRounds, function (err, passwdHash){
+                        const newUser = new User({
+                            email: req.body.username,
+                            password: passwdHash
+                        })
+                    
+                        newUser.save().then(()=>{
+                            res.render("secrets")
+                        });
+                    })
+                })
+
+                app.post('/login',(req, res)=>{
+                    const username = req.body.username;
+                    // const password = md5(req.body.password);
+                    const password = req.body.password;
+
+                    User.findOne({email: username}).then((foundUser)=>{
+                        if (foundUser){
+                            bcrypt.compare(password, foundUser.password, function (err, result){
+                                    if(result === true){
+                                        res.render('secrets');
+                                    }else{
+                                        res.send("<h1>Wrong Password</h1>")
+                                    }
+                            })
+                        }else{
+                            console.log('user not exist');
+                        }
+                    })
+                })            
+
+    -Level-1 to 4:
+        //jshint esversion:6
+        require('dotenv').config();
+        const express = require("express");
+        const bodyParser = require("body-parser");
+        const ejs = require("ejs");
+        const mongoose = require('mongoose');
+        const bcrypt = require('bcrypt');
+
+        const saltRounds = 10;
+
+        // //password encryption methods
+        // const md5 = require('md5');
+        // // const encrypt = require('mongoose-encryption')
+
+        const app = express();
+
+        app.set('view engine', 'ejs');
+
+        app.use(bodyParser.urlencoded({
+            extended: true
+        }));
+        app.use(express.static("public"));
+
+        mongoose.connect('mongodb://localhost:27017/userDB')
+
+        const userSchema = new mongoose.Schema({
+            email: String,
+            password: String
+        });
+
+
+        // console.log(process.env.API_KEY);
+        // console.log(process.env.SECRET_MSG);
+        // console.log(process.env.api_key);
+        // console.log(process.env.secret_msg);
+
+        // userSchema.plugin(encrypt,{secret: process.env.secret_msg, encryptedFields:['password'] })          //plugin should be added first before creating model for collection
+
+        const User = new mongoose.model('User',userSchema);
+
+
+        app.get('/',(req, res)=>{
+            res.render("home");
+        })
+
+        app.get('/register',(req, res)=>{
+            res.render("register");
+        })
+
+        app.get('/login',(req, res)=>{
+            res.render("login");
+        })
+
+        app.post('/register',(req, res)=>{
+
+            bcrypt.hash(req.body.password, saltRounds, function (err, passwdHash){
+                const newUser = new User({
+                    email: req.body.username,
+                    password: passwdHash
+                })
+            
+                newUser.save().then(()=>{
+                    res.render("secrets")
+                });
+            })
+
+            // const newUser = new User({
+            //      email: req.body.username,
+            //      password: md5(req.body.password)
+            // })
+
+            // newUser.save().then(()=>{
+            //      res.render("secrets")
+            // });
+        })
+
+        app.post('/login',(req, res)=>{
+            const username = req.body.username;
+            // const password = md5(req.body.password);
+            const password = req.body.password;
+
+            User.findOne({email: username}).then((foundUser)=>{
+                if (foundUser){
+                    bcrypt.compare(password, foundUser.password, function (err, result){
+                            if(result === true){
+                                res.render('secrets');
+                            }else{
+                                res.send("<h1>Wrong Password</h1>")
+                            }
+                    })
+                }else{
+                    console.log('user not exist');
+                }
+            })
+        })
+
+
+
+        app.listen(3000, function() {
+            console.log("Server started on port 3000");
+        });
+
+    -Level-5(Session & Cookies)
+        Cookies:
+            Cookies are client-side files that are stored on a local computer and contain user information(inside browser).
+        
+        Session:
+            Sessions are server-side files that store user information.
+
+        -Sessions are more secured compared to cookies, as they save data in encrypted form. 
+         Cookies are not secure, as data is stored in a text file, 
+         and if any unauthorized user gets access to our system, he can temper the data.
+
+        -Packages we need
+            passport
+            passport-local
+            passport-local-mongoose
+            express-session
+
+        -Hashing, Salting & Authentication using passport & above Packages
+            File at start
+                //jshint esversion:6
+                require('dotenv').config();
+                const express = require("express");
+                const bodyParser = require("body-parser");
+                const ejs = require("ejs");
+                const mongoose = require('mongoose');
+
+                const app = express();
+
+                app.set('view engine', 'ejs');
+
+                app.use(bodyParser.urlencoded({
+                    extended: true
+                }));
+                app.use(express.static("public"));
+
+                mongoose.connect('mongodb://localhost:27017/userDB')
+
+                const userSchema = new mongoose.Schema({
+                    email: String,
+                    password: String
+                });
+
+                const User = new mongoose.model('User',userSchema);
+
+                app.get('/',(req, res)=>{
+                    res.render("home");
+                })
+
+                app.get('/register',(req, res)=>{
+                    res.render("register");
+                })
+
+                app.get('/login',(req, res)=>{
+                    res.render("login");
+                })
+
+                app.post('/register',(req, res)=>{
+
+                })
+
+                app.post('/login',(req, res)=>{
+
+                })
+
+                app.listen(3000, function() {
+                    console.log("Server started on port 3000");
+                });
+            
+            -Modification started:
+                Installed these Packages
+                    npm i passport passport-local passport-local-mongoose express-session
+                                
+                File:
+                    //jshint esversion:6
+                    require('dotenv').config();
+                    const express = require("express");
+                    const bodyParser = require("body-parser");
+                    const ejs = require("ejs");
+                    const mongoose = require('mongoose');
+                    const session = require('express-session');
+                    const passport = require('passport')
+                    const passportLocalMongoose = require('passport-local-mongoose')
+
+                    const app = express();
+
+                    app.set('view engine', 'ejs');
+
+                    app.use(bodyParser.urlencoded({
+                        extended: true
+                    }));
+                    app.use(express.static("public"));
+
+                    //session code must put between connect & requiring package
+                    app.use(session({
+                        secret:'Our little Secret.',
+                        resave:false, 
+                        saveUninitialized: false
+                    }));
+
+                    app.use(passport.initialize());
+                    app.use(passport.session());
+
+                    mongoose.connect('mongodb://localhost:27017/userDB')
+
+                    const userSchema = new mongoose.Schema({
+                        email: String,
+                        password: String
+                    });
+
+                    userSchema.plugin(passportLocalMongoose);
+
+                    const User = new mongoose.model('User',userSchema);
+
+                    passport.use(User.createStrategy());
+
+                    passport.serializeUser(User.serializeUser());
+                    passport.deserializeUser(User.deserializeUser());
+
+                    app.get('/',(req, res)=>{
+                        res.render("home");
+                    })
+
+                    app.get('/register',(req, res)=>{
+                        res.render("register");
+                    })
+
+                    app.get('/login',(req, res)=>{
+                        res.render("login");
+                    })
+
+                    app.get('/secrets',(req, res)=>{
+                        if(req.isAuthenticated()){
+                            res.render('secrets');
+                        }else{
+                            res.redirect('/login'); 
+                        }
+                    })
+
+                    app.get('/logout',(req, res)=>{
+                        req.logout(function(err){
+                            if(err){
+                                console.log(err);
+                            }else{
+                                res.redirect('/')
+                            }
+                        });
+                    })
+
+                    app.post('/register',(req, res)=>{
+                        User.register({username: req.body.username}, req.body.password, function(err, user){
+                            if(err){
+                                console.log(err);
+                                res.redirect('/register');
+                            }else{
+                                passport.authenticate('local')(req, res, function(){
+                                        res.redirect('/secrets')
+                                }) 
+                            }
+                        })
+                    })
+
+                    app.post('/login',(req, res)=>{
+                        const user = new User({
+                            username : req.body.username,
+                            password : req.body.password
+                        });
+
+
+                        req.login(user, function(err){
+                            if(err){
+                                console.log(err);
+                            }else{
+                                passport.authenticate('local')(req, res, function(){
+                                        res.redirect('/secrets')
+                                })
+                            }
+                        })
+
+                    })
+
+                    app.listen(3000, function() {
+                        console.log("Server started on port 3000");
+                    });
+
+    Level-6(OAuth 2.0 Signin with Google)
+        OAuth - Open Authentication
+        1) Granular Access Levels
+        2) Read/ Read+Write Access
+        3) Revoke Access
 ------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
+Section 38: React.Js
+    React is a JavaScript library for building user interfaces (Frontend).
+    React is used to build single-page applications.
+    React allows us to create reusable UI components.
+
+    frontend JavaScript library created by Facebook.
+    React is a tool for building UI components.
+    React creates a VIRTUAL DOM in memory.
+
+    Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, 
+    where it does all the necessary manipulating, before making the changes in the browser DOM.
+
+    React only changes what needs to be changed!
+
+    Babel: it's a JavaScript compiler
+    eg.
+        npm i react react-dom
+
+        var React = require("react");
+        var ReactDOM = require("react-dom");
+
+        ReactDOM.render(<h1>Vivek</h1>, document.getElementById("root"));
+
+        import React from "react";
+        import ReactDOM from "react-dom";
+
+        ReactDOM.render(
+        <div>
+            <h1>Vivek</h1>
+            <p>My name is Vivek Mahesh Nikate</p>
+        </div>,
+        document.getElementById("root")
+        );
+
+    eg. implementing ReactDOM.render method.
+        import React from "react";
+        import ReactDOM from "react-dom";
+
+        ReactDOM.render(
+            <div>
+                <h1>Vivek Nikate</h1>
+                <h2>My favorite sweets are...</h2>
+                <ul>
+                    <li>Gulab Jamun</li>
+                    <li>Kaju Katali</li>
+                    <li>Barfi</li>
+                </ul>
+            </div>,
+            document.getElementById("root")
+        );
+    
+    eg. printing value {}
+        import React from "react";
+        import ReactDOM from "react-dom";
+
+        const name = 'Vivek';
+        const favNum = 4;
+
+        ReactDOM.render(
+                        <div>
+                            <h1>Hello world...</h1>
+                            <p>My name is {name}</p>
+                            <p>My favNum is {favNum}</p>                  
+                        </div>, 
+                        document.getElementById("root")
+                    );
+
+    -In React within '{ }' you only can write expression (expression means an equation who will evaluate to value)
+     you can't write statements there. like if-else statement.
+    
+    -template literals /string interpolation, So basically injecting strings into a piece of JavaScript.
+    eg.
+        import React from "react";
+        import ReactDOM from "react-dom";
+
+        const fname = "Vivek";
+        const lname = "Nikate";
+
+        ReactDOM.   render(
+            <div>
+                <h1>Info</h1>
+                <p>Name : {fname + lname}</p>
+                <p>
+                Name : {fname} {lname}
+                </p>
+                <p>Name : {fname + " " + lname}</p>
+                <p>Name string interpolation : {`${fname} ${lname}`}</p>
+            </div>,
+            document.getElementById("root")
+        );
+    
+    -Date
+        import React from "react";
+        import ReactDOM from "react-dom";
+
+        const name = "Vivek";
+        const year = new Date().getFullYear();
+
+        ReactDOM.render(
+        <div>
+            <p>Created by {name}.</p>
+            <p>Copyright {year}.</p>
+        </div>,
+        document.getElementById("root")
+        );
+    
+    -Image: Image tag in JSX must be self closing else error. <img />
+            attributes names are camelCase like class is className.
+
+        style.css file.
+            .heading{
+                color: blueviolet;
+            }
+
+        index.js
+            import React from "react";
+            import ReactDOM from "react-dom";
+
+            ReactDOM.render(
+                <div>
+                    <h1
+                    className="heading"
+                    style={{ color: "red" }}
+                    contentEditable
+                    spellCheck="false"
+                    >
+                        My Favourite Foods
+                    </h1>
+                    <div>
+                        <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" height='200px' width='200px'/>
+                        <img src="https://media.istockphoto.com/id/1382384282/photo/bangalore-or-bengaluru.jpg?s=612x612&w=0&k=20&c=6pxwL3JxNV2B_NZSLMZLhrSLqAbyCPlGuSZYKImpjKQ=" height='200px' width='200px'/>
+                        <img src="https://picsum.photos/200/400" height='200px' width='200px' />
+                    </div>
+                </div>,
+                document.getElementById("root")
+            );
+
+            const imgURL = "https://picsum.photos/200/300";
+            ReactDOM.render(
+            <div>
+                <img src="https://picsum.photos/200/200" />
+                <img src="https://picsum.photos/200/300?grayscale" />
+                <img src={imgURL} />
+                <img src={imgURL+"?grayscale"} />
+                <img src={imgURL} />
+            </div>,
+            document.getElementById("root")
+            );
+
+    -Inline Styling React        
+        const customStyles = {
+        color: 'deeppink',
+        fontSize:'30px'
+        }
+
+        //giving border to the para
+            customStyles.border='3px solid green';
+        
+        //changing previous color:
+            customStyles.color='brown'
+        
+        //general styles
+            customStyles.borderRadius = '20px'
+            customStyles.padding = '20px'
+
+        ReactDOM.render(
+        <div>
+            <h1 className='heading'>My Favourite Foods</h1>
+            
+            //in same line single attribute
+            <p style={{color:'green'}}>loreum ipsum paragraph loreum ipsum paragraph loreum ipsum paragraphloreum ipsum paragraph</p>
+
+            //in same line with multiple Attributes
+            <p style={{color:'yellow', lineHeight:'4'}}>loreum ipsum paragraph loreum ipsum paragraph loreum ipsum paragraphloreum ipsum paragraph</p>
+
+            //creating different object of style
+            <p style={customStyles}>loreum ipsum paragraph loreum ipsum paragraph loreum ipsum paragraphloreum ipsum paragraph</p>
+
+        </div>,
+        document.getElementById("root")
+        );
+    
+    -React Styling Practice
+        styles.css file
+        
+            .heading {
+                font-size: 50px;
+                font-weight: bold;
+                border-bottom: 5px solid black;
+            }
+        
+        index.html file
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <title>JSX</title>
+                <link rel="stylesheet" href="styles.css" />
+            </head>
+
+            <body>
+                <div id="root"></div>
+                <script src="../src/index.js" type="text/JSX"></script>
+            </body>
+            </html>
+
+
+        index.js file 
+            
+            import React from "react";
+            import ReactDOM from "react-dom";
+
+            let Greet = "";
+
+            //priting time in JS
+            // console.log(new Date().toLocaleTimeString());
+
+            //Priting hour only.
+            const time = new Date().getHours();
+            // console.log(time);
+
+            //passing custom dateTime
+            // const time2 = new Date(1, 1, 2024, 4).getHours();
+
+            let customStyles = {
+            fontFamily: "Arial"
+            };
+
+            if (time >= 0 && time <= 12) {
+
+                Greet = "Good Morning!";
+                customStyles.color = "red";
+                
+            } else if (time > 12 && time <= 18) {
+
+                Greet = "Good Afternoon!";
+                customStyles.color = "green";
+            
+            } else {
+
+                Greet = "Good Evening.!";
+                customStyles.color = "blue";
+                
+            }
+
+            ReactDOM.render(
+                <h1 style={customStyles} className="heading">
+                    {Greet}
+                </h1>,
+                document.getElementById("root")
+            );
+------------------------------------------------------------------------------------------------------------------------------------ 
