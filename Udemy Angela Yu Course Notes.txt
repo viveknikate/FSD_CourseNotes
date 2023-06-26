@@ -1,3 +1,7 @@
+shortcut:
+    alt + enter (hit it after writing something in url) //open search on new tab.
+    crtl+ enter (hit it after writing in url ) it add the .com at end
+----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
 
 Servers : A special computer needs to be online 24*7 to serve
@@ -47,7 +51,9 @@ Tags:
     <br> or <br /> in XHTML
 
     Horizontal Rule <hr>, self closing tag
-    <hr size="3">
+    self closing tag is a tag who has no children.
+    <img />
+    <hr size="3" />
     eg.
         <center>
             <hr size="5" color="black" width="50%">
@@ -2257,10 +2263,24 @@ Adding click event to button:-
         function (){
 
         }
+
         or
-        () =>{
+        (parameters) =>{
 
         }
+
+        or      //if single parameter is there then no need of parenthesis.
+        x => {
+            return x+10;
+        }
+
+        if more than one parameters are there in a function then,
+        (x,y)=>{
+            return x+y;
+        }
+
+        & if you are return a single statement then no need of curly braces.
+        x=> x * x;
 
         you can pass arguments also.
        eg.
@@ -2782,6 +2802,9 @@ Section 23: Node Js:
             //keeping all default option & initializing npm.
             //-y yes for Everything
 
+        -running multiple commands at same Line
+            touch index.html index.js; npm init -y      //creating files & initializing npm also.
+        
         -npm install <package_name>
         -npm i <package_name>
         eg.
@@ -3511,7 +3534,7 @@ Section 26: Git, GitHub & Version Control System (VCS)
         //clone with Vivek as name
             git clone https://github.com/the-pratik/react-counter-app.git Vivek
         
-        //just clone with defaul name
+        //just clone with default name
             git clone https://github.com/the-pratik/react-counter-app.git
 
     -Git branch
@@ -3764,6 +3787,7 @@ Section 27: EJS:
             <%= variableName %>
 
     -Node Module exports how to pass functions & data:
+        -Don't forget TO EXPORT the module after creattion
         -module creation:
         date.js
             module.exports = getDate;           //exports one function only
@@ -5824,10 +5848,1084 @@ Section 38: React.Js
                 
             }
 
-            ReactDOM.render(
+            ReactDOM.render (
                 <h1 style={customStyles} className="heading">
                     {Greet}
                 </h1>,
                 document.getElementById("root")
             );
------------------------------------------------------------------------------------------------------------------------------------- 
+
+    -React Components
+        -its like a function
+            define the first letter always capital.
+
+        -Components are in different files with .jsx extension.
+
+            Heading.jsx file
+                import React from "react";
+
+                function Heading() {
+                    return <h1>My Favourite Foods</h1>;
+                }
+
+                function List() {
+                    return (
+                        <ul>
+                            <li>Bacon</li>
+                            <li>Jamon</li>
+                            <li>Noodles</li>
+                        </ul>
+                    );
+                }
+
+                export {Heading, List};         //when exporting more than one components
+
+            List.jsx
+
+                import React from "react";
+                function List() {
+                    return (
+                        <ul>
+                        <li>Bacon</li>
+                        <li>Jamon</li>
+                        <li>Noodles</li>
+                        </ul>
+                    );
+                }
+                export default List;
+
+        -Importing from other files
+            import { Heading as Nav, List as L } from "./Heading";
+            // import { Heading as Nav, List as L } from "./Heading.jsx";            
+            import Heading from "./Heading";
+            import List from "./List.jsx";              //exntension is not mandatory
+
+            App.jsx
+                import React from "react";
+                import Heading from "./Heading";
+                import List from "./List";
+
+                function App() {
+                    return (
+                        <div>
+                        <Heading />
+                        <List />
+                        <List />
+                        </div>
+                    );
+                }
+
+                export default App;
+        
+        -React Components:
+
+            index.js file
+                import React from "react";
+                import ReactDOM from "react-dom";
+                import App from "./components/App";
+
+                ReactDOM.render(<App />, document.getElementById("root"));
+            
+            App.jsx file
+                import React from "react";
+                import Greeting from "./Greeting";
+
+                function App() {
+                    return <Greeting />;
+                }
+                export default App;
+            
+            Greeting.jsx file
+                import React from "react";
+
+                const date = new Date();
+                const currentTime = date.getHours();
+
+                let greeting;
+
+                const customStyle = {
+                color: ""
+                };
+
+                if (currentTime < 12) {
+                    greeting = "Good Morning";
+                    customStyle.color = "red";
+                } else if (currentTime < 18) {
+                    greeting = "Good Afternoon";
+                    customStyle.color = "green";
+                } else {
+                    greeting = "Good Night";
+                    customStyle.color = "blue";
+                }
+
+                function Greeting() {
+                return (
+                    <h1 className="heading" style={customStyle}>
+                        {greeting}
+                    </h1>
+                );
+                }
+                export default Greeting;
+
+    -React Import/Export:
+        -DON'T FORGET TO EXPORT THE MODULE.
+        -you can name anything you want for default export while importing.
+        -if more than one thing exported, then it will be the same as named exports while importing. but you can rename using 'as' keyword. 
+        -there MUST be one DEFAULT export per file.
+
+        -multiple export 
+            export {compo1, compo2,..., compoN} from 'path'.
+        
+        -default export
+            export default componentName.
+        
+        eg.
+            variable import /export
+            math.js
+                const PI = 3.149;
+                export default PI;
+
+            App.js
+                import PIE from './math';       //name anything you want its default export
+                //import PIE from './math.js';       //name anything you want its default export & if you want give exntension else don't give its fine.
+                
+                ReactDOM.render(
+                <ul>
+                    <li>{PIE}</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>,
+                document.getElementById("root")
+                );
+        -----------------------------------------------------
+            Function export/import
+                math.js
+                    const PI = 3.149;
+
+                    function doublePI() {
+                        return PI * 2;
+                    }
+
+                    function triplePI() {
+                        return PI * 3;
+                    }
+
+                    export default PI; //exporting default single only. (variable)  & the EXPORT DEFAULT is single for per file.
+
+                    //exporting multiple, functions.
+                    export { doublePI, triplePI };
+
+                App.js
+                    import React from "react";
+                    import ReactDOM from "react-dom";
+                    import PIE, { doublePI as DPI, triplePI } from "./math";
+
+                    ReactDOM.render(
+                        <ul>
+                            <li>{PIE}</li>
+                            <li>{DPI()}</li>            //doublePI is imported as DPI & they are function so braces is important
+                            <li>{triplePI()}</li>       // at the end.
+                        </ul>,
+                        document.getElementById("root")
+                    );
+        -----------------------------------------------------
+            WildCard import /export
+                App.js file:
+                    import React from "react";
+                    import ReactDOM from "react-dom";
+                    import * as ALL from "./math";
+
+                    ReactDOM.render(
+                    <ul>
+                        <li>{ALL.default}</li>
+                        <li>{ALL.doublePI()}</li>
+                        <li>{ALL.triplePI()}</li>
+                    </ul>,
+                    document.getElementById("root")
+                    );
+        -----------------------------------------------------
+        import/export practice
+            -imported using WildCard (*).
+            calculator.js file
+                function add(n1, n2) {
+                    return n1 + n2; 
+                }
+
+                function multiply(n1, n2) {
+                    return n1 * n2;
+                }
+
+                function subtract(n1, n2) {
+                    return n1 - n2;
+                }
+
+                function divide(n1, n2) {
+                    return n1 / n2;
+                }
+                export { add, multiply, subtract, divide };
+
+            app.js file
+                import React from "react";
+                import ReactDOM from "react-dom";
+                import * as ALL from "./calculator";
+
+                //import { divide, add, multiply, subtract } from "./calculator";
+
+
+                ReactDOM.render(
+                <ul>
+                    <li>{ALL.add(1, 2)}</li>
+                    <li>{ALL.multiply(2, 3)}</li>
+                    <li>{ALL.subtract(7, 2)}</li>
+                    <li>{ALL.divide(5, 2)}</li>
+
+                {/*
+                    <li>{add(1, 2)}</li>
+                    <li>{multiply(2, 3)}</li>
+                    <li>{subtract(7, 2)}</li>
+                    <li>{divide(5, 2)}</li>
+                /*}
+
+                </ul>,
+                document.getElementById("root")
+                );
+    
+    -Local Environment SetUp for React:
+        1) Install Node updated
+        2) Install VS code
+        3) Create react app
+        4) Run App
+        -creating react app
+            npx create-react-app <app-name>
+                npx create-react-app first-app
+
+            -creating within current folder use . (period) at the end.
+                npx create-react-app .
+        
+        -Run App
+             npm start
+    
+    -Keeper App Project
+        -Ran npm i command at start.
+            npm i
+        -Done Project
+        -Don't apply styling for custom created components apply for HTML elements only.
+
+    -React Props:
+        -React Properties.
+        -Using this you can make component customizable.
+        -you can pass custom values to the component.
+        -attributes of custom Components are called properties (Props)
+        -You can't ADD THE CLASS TO THE CUSTOM COMPONENTS. it'll consider it as custom property.
+        eg.
+            index.js file:
+                import React from "react";
+                import ReactDOM from "react-dom";
+
+
+                function Card({name, img, tel, mail}){       //this is called the de-structuring of attributes
+                    return(
+                        <div>
+                        <h2>{name}</h2>
+                        <img
+                            src={img}
+                            alt="avatar_img"
+                        />
+                        <p>{tel}</p>
+                        <p>{mail}</p>
+                        </div>
+                    );
+                }
+
+                //OR
+
+                function Card(props){
+                    return(
+                        <div>
+                        <h2>{props.name}</h2>
+                        <img
+                            src={props.img}
+                            alt="avatar_img"
+                        />
+                        <p>{props.tel}</p>
+                        <p>{props.mail}</p>
+                        </div>
+                    );
+                }
+
+
+                ReactDOM.render(
+                    <div>
+                        <h1>My Contacts</h1>
+                        <Card 
+                            name='Beyonce' 
+                            img='https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg' 
+                            tel='+123 456 789'
+                            mail='b@beyonce.com'
+                        />
+
+                        <Card 
+                            name='Chuck Norris' 
+                            img='https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png' 
+                            tel='+918 372 574'
+                            mail='gmail@chucknorris.com'
+                        />
+
+                        <Card 
+                            name='Jack Bauer' 
+                            img='https://pbs.twimg.com/profile_images/625247595825246208/X3XLea04_400x400.jpg' 
+                            tel='+987 654 321'
+                            mail='jack@nowhere.com'
+                        />
+                    </div>,
+                    document.getElementById("root")
+                );
+
+    -React props practice:
+        src->contact.js file
+            const contacts = [
+                {
+                    name: "Beyonce",
+                    imgURL:
+                    "https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg",
+                    phone: "+123 456 789",
+                    email: "b@beyonce.com"
+                },
+                {
+                    name: "Jack Bauer",
+                    imgURL:
+                    "https://pbs.twimg.com/profile_images/625247595825246208/X3XLea04_400x400.jpg",
+                    phone: "+987 654 321",
+                    email: "jack@nowhere.com"
+                },
+                {
+                    name: "Chuck Norris",
+                    imgURL:
+                    "https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png",
+                    phone: "+918 372 574",
+                    email: "gmail@chucknorris.com"
+                },
+                {
+                    name: "Sarang Channe",
+                    imgURL:
+                    "https://media.licdn.com/dms/image/C4E03AQEsM94KhBCmEw/profile-displayphoto-shrink_800_800/0/1622289009432?e=2147483647&v=beta&t=rVJx5DX8B5GMV0YtbPviJQo2rPtmQKH_kpXdVzv9u8c",
+                    phone: "+123456789",
+                    email: "Sarangi.com"
+                }
+            ];
+            export default contacts;
+
+        src-> index.js file
+            import React from "react";
+            import ReactDOM from "react-dom";
+            import App from "./components/App";
+
+            ReactDOM.render(<App />, document.getElementById("root"));
+        
+        src->components-> Card.jsx file
+            import React from "react";
+            function Card(props) {
+                return (
+                    <div className="card">
+                    <div className="top">
+                        <h2 className="name">{props.name}</h2>
+                        <img src={props.imgURL} alt="avatar_img" className="circle-img" />
+                    </div>
+                    <div className="bottom">
+                        <p className="info">{props.phone}</p>
+                        <p className="info">{props.email}</p>
+                    </div>
+                    </div>
+                );
+            }
+            export default Card;
+        
+        src->components-> App.jsx file
+            import React from "react";
+            import contcts from "../contacts";
+            import Card from "./Card";
+
+            function App() {
+            return (
+                <div>
+                <h1 className="heading">My Contacts</h1>
+                <Card
+                    name={contcts[0].name}
+                    email={contcts[0].email}
+                    phone={contcts[0].phone}
+                    imgURL={contcts[0].imgURL}
+                />
+                <Card
+                    name={contcts[1].name}
+                    email={contcts[1].email}
+                    phone={contcts[1].phone}
+                    imgURL={contcts[1].imgURL}
+                />
+                <Card
+                    name={contcts[2].name}
+                    email={contcts[2].email}
+                    phone={contcts[2].phone}
+                    imgURL={contcts[2].imgURL}
+                />
+                <Card
+                    name={contcts[3].name}
+                    email={contcts[3].email}
+                    phone={contcts[3].phone}
+                    imgURL={contcts[3].imgURL}
+                />
+                </div>
+            );
+            }
+            export default App;
+
+    -React DevTools:
+        for Debugging websites
+        inspect mode in that goto COMPONENT tab. for 
+
+        src->components-> Information.jsx file          //you can name file anything & create component with other name.
+                                                        //but use it as the name you exported here we'll use it as <Details />
+            import React from "react";
+
+            function Details(props){
+                return (
+                    <p className="info">{props.info}</p>
+                );
+            }
+            export default Details;
+    
+        -project splitted in smaller components:
+            public->index.html
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <title>React App</title>
+                    <link rel="stylesheet" href="styles.css" />
+                </head>
+
+                <body>
+                    <div id="root"></div>
+                    <script src="../src/index.js" type="text/jsx"></script>
+                </body>
+                </html>
+
+            public->styles.css
+                body {
+                    font-family: sans-serif;
+                    margin: 0 auto;
+                    padding: 25px;
+                    max-width: 400px;
+                    min-width: 400px;
+                    background-color: #dfe6e9;
+                    text-align: center;
+                }
+
+                .heading {
+                    text-align: center;
+                    font-size: 2em;
+                    color: #2d3436;
+                    margin: 20px 0 30px;
+                }
+
+                .card {
+                    border-radius: 25px;
+                    position: relative;
+                    padding: 25px 15px;
+                    background-color: #81ecec;
+                    margin: 50px 0;
+                    height: 200px;
+                    box-shadow: 0 2px 5px #ccc;
+                    text-align: left;
+                }
+
+                .top {
+                    border-radius: 25px 25px 0 0;
+                    height: 100px;
+                    width: 100%;
+                    background-color: #00cec9;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: flex;
+                }
+
+                .name {
+                    font-size: 2em;
+                    color: #2d3436;
+                    display: flex;
+                    flex: 1;
+                    margin: 10% 20px 0;
+                }
+
+                .card img {
+                    margin: 30px 20px 0 0;
+                }
+
+                .circle-img {
+                    border-radius: 50%;
+                    border: 7px solid #fff;
+                    width: 120px;
+                    height: 120px;
+                }
+
+                .bottom {
+                    margin-top: 120px;
+                }
+
+                .info {
+                    margin: 20px 0;
+                    color: #1a7e76;
+                }
+
+            src->components-> App.jsx
+                import React from "react";
+                import contcts from "../contacts";
+                import Avatar from "./Avatar";
+                import Card from "./Card";
+
+                function App() {
+                return (
+                    <div>
+                    <h1 className="heading">My Contacts</h1>
+                    <Avatar img='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8cOVE8YmNjAIjh3ysyKfHFZL9vcDzNInHiWwOu_gthA&s' />
+                    <Card
+                        name={contcts[0].name}
+                        email={contcts[0].email}
+                        phone={contcts[0].phone}
+                        imgURL={contcts[0].imgURL}
+                    />
+                    <Card
+                        name={contcts[1].name}
+                        email={contcts[1].email}
+                        phone={contcts[1].phone}
+                        imgURL={contcts[1].imgURL}
+                    />
+                    <Card
+                        name={contcts[2].name}
+                        email={contcts[2].email}
+                        phone={contcts[2].phone}
+                        imgURL={contcts[2].imgURL}
+                    />
+                    <Card
+                        name={contcts[3].name}
+                        email={contcts[3].email}
+                        phone={contcts[3].phone}
+                        imgURL={contcts[3].imgURL}
+                    />
+
+                    //or creating cards using map function.
+
+                    {
+                        contcts.map((i,index)=>{
+                        return(
+                            <Card 
+                            num = {index}
+                            key ={i.name}   //this key should be unique not duplicated. & this key is not a prop its used to render all DOM item properly.
+                            name= {i.name}
+                            imgURL = {i.imgURL}
+                            phone = {i.phone}
+                            email = {i.email}
+                            />
+                        );
+                        })
+                    }
+
+
+                    </div>
+                );
+                }
+
+                export default App;
+
+            src->components-> Avatar.jsx
+                import React from 'react';
+
+                function  Avatar(props){
+                    return(
+                        <img src={props.img} alt="avatar_img" className="circle-img" />
+                    );
+                }
+
+                export default Avatar;
+
+            src->components-> Card.jsx
+                import React from "react";
+                import Avatar from "./Avatar";
+                import Details from "./Information";
+
+                function Card(props) {
+                return (
+                    <div className="card">
+                    <div className="top">
+                        <h2 className="name">{props.name}</h2>
+                        <Avatar img={props.imgURL}/>
+                    </div>
+                    <div className="bottom">
+                        <Details info={props.phone} />
+                        <Details info={props.email}/>
+                    </div>
+                    </div>
+                );
+                }
+
+                export default Card;
+
+            src->components-> Information.jsx
+                import React from "react";
+                function Details(props){
+                    return (
+                        <p className="info">{props.info}</p>
+                    );
+                }
+
+                export default Details;
+
+            src->contact.js file
+                const contacts = [
+                    {
+                        name: "Beyonce",
+                        imgURL:
+                        "https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg",
+                        phone: "+123 456 789",
+                        email: "b@beyonce.com"
+                    },
+                    {
+                        name: "Jack Bauer",
+                        imgURL:
+                        "https://pbs.twimg.com/profile_images/625247595825246208/X3XLea04_400x400.jpg",
+                        phone: "+987 654 321",
+                        email: "jack@nowhere.com"
+                    },
+                    {
+                        name: "Chuck Norris",
+                        imgURL:
+                        "https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png",
+                        phone: "+918 372 574",
+                        email: "gmail@chucknorris.com"
+                    },
+                    {
+                        name: "Sarang Channe",
+                        imgURL:
+                        "https://media.licdn.com/dms/image/C4E03AQEsM94KhBCmEw/profile-displayphoto-shrink_800_800/0/1622289009432?e=2147483647&v=beta&t=rVJx5DX8B5GMV0YtbPviJQo2rPtmQKH_kpXdVzv9u8c",
+                        phone: "+123456789",
+                        email: "Sarangi.com"
+                    }
+                ];
+
+                export default contacts;
+
+            src->index.js file
+                import React from "react";
+                import ReactDOM from "react-dom";
+                import App from "./components/App";
+
+                ReactDOM.render(<App />, document.getElementById("root"));
+
+        -Minimizing Repetition: Mapping
+            {
+                contcts.map((i,index)=>{            //this is arrow anonymous function. & function must return.
+                return(
+                    <Card 
+                    num = {index}
+                    key ={i.name}   //this key should be unique not duplicated. & this key is not a prop its used to render all DOM item properly.
+                    name= {i.name}
+                    imgURL = {i.imgURL}
+                    phone = {i.phone}
+                    email = {i.email}
+                    />
+                );
+                })
+            }
+
+        -Mapping function:
+            public->index.html
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <title>React App</title>
+                    <link
+                    href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+                    rel="stylesheet"
+                    />
+                    <link rel="stylesheet" href="styles.css" />
+                </head>
+
+                <body>
+                    <div id="root"></div>
+                    <script src="../src/index.js" type="text/jsx"></script>
+                </body>
+                </html>
+
+            public->styles.css
+                body {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
+                line-height: 1.666;
+                background: #c0d2d4;
+                color: #555;
+                }
+
+                h1 {
+                font-weight: 900;
+                font-size: 500%;
+                text-align: center;
+                margin-top: 4rem;
+                color: #fff;
+                line-height: 1.2;
+                }
+
+                h1 span {
+                padding: 5px 15px;
+                background: #2ec2b0;
+                }
+
+                .dictionary {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin: 4rem auto;
+                max-width: 90%;
+                }
+
+                .dictionary > .term {
+                text-align: center;
+                max-width: 20rem;
+                margin-bottom: 3rem;
+                padding: 2rem;
+                border-radius: 3px;
+                box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                transition: all 100ms ease-in-out;
+                }
+
+                .dictionary > .term > dt {
+                margin-bottom: 1rem;
+                }
+
+                dt {
+                color: #2ec2b0;
+                line-height: 1;
+                }
+
+                dt span {
+                font-size: 200%;
+                font-weight: 900;
+                }
+
+                .emoji {
+                margin: 0 auto 20px;
+                display: block;
+                font-size: 400%;
+                }
+
+                dd {
+                font-size: 92.5%;
+                margin-left: 0;
+                }
+
+                dd dt {
+                margin-top: 1rem;
+                margin-bottom: 0.25rem;
+                font-weight: 600;
+                font-size: inherit;
+                }
+
+                dd dl {
+                font-size: 90%;
+                margin: 1rem auto 0 auto;
+                letter-spacing: 0.33px;
+                max-width: 15rem;
+                }
+
+                dd dl .term {
+                margin-bottom: 1rem;
+                }
+
+            src->components->App.jsx
+                import React from "react";
+                import Entry from "./Entry";
+                import emojipedia from "../emojipedia";
+
+                function App() {
+                return (
+                    <div>
+                    <h1>
+                        <span>emojipedia</span>
+                    </h1>
+                    <dl className="dictionary">
+                        {
+                            emojipedia.map((emojiTerm) => {
+                                return (
+                                    <Entry
+                                    key={emojiTerm.id}
+                                    emoji={emojiTerm.emoji}
+                                    name={emojiTerm.name}
+                                    description={emojiTerm.meaning}
+                                    />
+                                );
+                            })
+                        }
+                    </dl>
+                    </div>
+                );
+                }
+
+            src->components->Entry.jsx
+                import React from "react";
+
+                function Entry(props) {
+                return (
+                    <div className="term">
+                    <dt>
+                        <span className="emoji" role="img" aria-label="Tense Biceps">
+                        {props.emoji}
+                        </span>
+                        <span>{props.name}</span>
+                    </dt>
+                    <dd>{props.description}</dd>
+                    </div>
+                );
+                }
+
+                export default Entry;
+
+            src->components-> emojipedia.js file
+                const emojipedia = [
+                    {
+                        id: 1,
+                        emoji: "💪",
+                        name: "Tense Biceps",
+                        meaning:
+                        "“You can do that!” or “I feel strong!” Arm with tense biceps. Also used in connection with doing sports, e.g. at the gym."
+                    },
+                    {
+                        id: 2,
+                        emoji: "🙏",
+                        name: "Person With Folded Hands",
+                        meaning:
+                        "Two hands pressed together. Is currently very introverted, saying a prayer, or hoping for enlightenment. Is also used as a “high five” or to say thank you."
+                    },
+                    {
+                        id: 3,
+                        emoji: "🤣",
+                        name: "Rolling On The Floor, Laughing",
+                        meaning:
+                        "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+                    },
+                    {
+                        id: 4,
+                        emoji: "🤣",
+                        name: "Rolling On The Floor, Laughing",
+                        meaning:
+                        "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+                    },
+                    {
+                        id: 5,
+                        emoji: "🤣",
+                        name: "Rolling On The Floor, Laughing",
+                        meaning:
+                        "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+                    },
+                    {
+                        id: 6,
+                        emoji: "🤣",
+                        name: "Rolling On The Floor, Laughing",
+                        meaning:
+                        "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+                    },
+                    {
+                        id: 7,
+                        emoji: "🤣",
+                        name: "Rolling On The Floor, Laughing",
+                        meaning:
+                        "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+                    }
+                ];
+
+                export default emojipedia;
+      
+            src->components-> index.js file
+                import React from "react";
+                import ReactDOM from "react-dom";
+                import App from "./components/App";
+
+                ReactDOM.render(<App />, document.getElementById("root"));
+
+    -Map/ Filter/ Reduce/ Find/ FindIndex :
+
+            import EMJPD from "./emojipedia";
+            let newArr = [];
+
+            EMJPD.map(function (curItem) {
+                newArr.push(curItem.meaning.substring(1,100)+"...");
+            });
+
+            console.log(newArr);
+
+        -var numbers = [3, 56, 2, 48, 5];
+
+        //Map -Create a new array by doing something with each item in an array.
+        let newMapNum = [];
+
+        //passing function to the map or forEach funtion
+        function tripleIt(x) {
+        return x * 3;
+        }
+
+        let num = numbers.map(tripleIt);
+        console.log("the num arry " + num); //1st
+
+        let mapNum = numbers.map((num) => {
+        return newMapNum.push(num + 10);
+        });
+
+        console.log(newMapNum); //new array increment by 10;      //2nd
+
+        //or
+        newMapNum = [];
+        //using forEach
+
+        numbers.forEach(function (x) {
+        newMapNum.push(x * 10);
+        });
+
+        console.log(newMapNum); //multiplied by 10          //3rd
+
+        //Filter - Create a new array by keeping the items that return true.
+
+        let numFiltered = numbers.filter(function (item_got_from_numbers) {
+            return item_got_from_numbers > 10;
+        });
+
+        console.log(numFiltered); //4th num > 10 will get added.
+
+        //Reduce - Accumulate a value by doing something to each item in an array.
+        //sum of
+        let numReduced = numbers.reduce((accumulator, currentNumber) => {
+        console.log("accumulator :" + accumulator);
+        console.log("currentNumber :" + currentNumber);
+        return accumulator + currentNumber;
+        });
+
+        console.log(numReduced);
+
+        //Find - find the first item that matches from an array.
+
+        let numFind = numbers.find(function (x){
+        return x >50
+        })
+
+        console.log(numFind); //5th
+
+
+
+        //FindIndex - find the index of the first item that matches.
+        let numFindIndex = numbers.findIndex((x)=>{
+        return x > 2;
+        })
+
+        console.log(numFindIndex); //6th
+    
+    -JS Arrow Function:
+        if function have single parameter & single return statement then NO NEED of curly braces {}, parenthesis () 
+        & return keyword also.
+        eg.
+            let numFind = numbers.find(function (x){
+                return x >50
+            })
+            console.log(numFind);
+
+        //or in arrow function no return statement & curly {} braces is there. 
+
+            let numFind = numbers.find(x => x >50)
+            console.log(numFind);
+
+            //or
+            let numFind = numbers.find(x => x > 50);
+            let numFind = numbers.find((x) => x > 50);
+        
+        eg.
+            let numFiltered = numbers.filter(function (item_got_from_numbers) {
+                return item_got_from_numbers > 10;
+            });
+
+        //or arrow function
+
+            numFiltered = numbers.filter(item_got_from_numbers => item_got_from_numbers > 10);
+
+        //normal
+            {   
+                emojipedia.map((emojiTerm) => {
+                    return (
+                        <Entry
+                        key={emojiTerm.id}
+                        emoji={emojiTerm.emoji}
+                        name={emojiTerm.name}
+                        description={emojiTerm.meaning}
+                        />
+                    );
+                })
+            }
+        
+        //using arrow funtion
+             {
+                emojipedia.map(emojiTerm =>  (
+                        <Entry
+                            key={emojiTerm.id}
+                            emoji={emojiTerm.emoji}
+                            name={emojiTerm.name}
+                            description={emojiTerm.meaning}
+                        />
+                    );
+                )
+            }
+
+        -Keeper-2
+            Section 38 -> refere Keeper-2 folder 
+    
+    -React Conditional Rendering with the Ternary Operator & AND Operator
+        -Single Responsibility Principle (chopping the giant code into smaller pieces.)
+            always create reusable components
+
+        -each component should have single Responsibility.
+
+            let isLogin = true
+
+            {isLogin === true ? <h1>Hello</h1> : <Login />}         //or
+            {isLogin ? <h1>Hello</h1> : <Login />}
+
+            let isTime = new Date().getHours();
+            {(isTime > 12) ? <h1>Why are you working..?</h1> : null}
+
+            //or
+            //using && operator if both side are true then right side will be printed. 
+                if left side is false then it won't check for the right side condition.
+
+            let isTime = new Date().getHours();
+            {isTime > 12 && <h1>Why are you working..?</h1>}
+            {isLogin && <h1>Hello</h1> }
+    
+    -React calling function:
+        I have a question regarding calling a function in React.
+        Say I have this code:
+
+            function test() {
+                console.log("hi");
+            }
+
+        Then I am implementing it like this:
+
+                return (
+                    <TextField label="Name" name='itemName' value={formValues.itemName} onChange={test} />
+                )
+        
+        If I do it this way: test it will be fine. It will only change when I put something on the field.
+        But if I do it test() then the function will be triggered right away on every render.
+
+        When you write test() you are calling the function on the spot (executing your function).
+        On the other hand, writing it like this test will pass a pointer to the function that needs to be executed later (onChange in your case).
+
+    -React Hooks
+        
+
+    
+------------------------------------------------------------------------------------------------------------------------------------

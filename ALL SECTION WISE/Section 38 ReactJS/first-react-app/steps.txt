@@ -1,0 +1,12 @@
+
+1)
+     npx create-react-app <appName>
+     eg.
+          npx create-react-app .             //in current folder
+          npx create-react-app first-project            //with specific name
+
+2)  Go to that folder
+     -cd <folderName>
+     
+3)  Run this command 
+     npm start
