@@ -1,6 +1,7 @@
 shortcut:
     alt + enter (hit it after writing something in url) //open search on new tab.
     crtl+ enter (hit it after writing in url ) it add the .com at end
+    'crtl + [' or  'crtl+ ]' moving forward or backword line/lines
 ----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
 
@@ -5008,7 +5009,7 @@ Section 32: Mongoose
         });
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 33: Putting Everything Together
-    //complete projec with database connected with frontend.MongoDB database.
+    //complete project with database connected with frontend.MongoDB database.
     for Cylic deployment 
         npm i dotenv
         const PORT = process.env.PORT || 3000;
@@ -6925,7 +6926,595 @@ Section 38: React.Js
         On the other hand, writing it like this test will pass a pointer to the function that needs to be executed later (onChange in your case).
 
     -React Hooks
-        
+        eg.
+            const state = useState(1)       //whatever value you put here. that's a starting value/state.   
 
+            const [red, green, blue] = [234, 178, 160];         //array de-structuring.
+
+            const [red, green, ...blue] = [234, 178, 160, 2,3,4,5,6,7];
+
+            <p>{red}</p>            //234
+            <p>{green}</p>          //178
+            <p>{blue}</p>           //rest all values
+
+        eg.
+
+            function App() {
+            const [count, setCount] = useState(0);
+
+            function increment() {
+                setCount(count + 1);
+            }
+
+            function decrement() {
+                setCount(count - 1);
+            }
+
+            return (
+                <div className="container">
+                <h1>{count}</h1>
+                <button onClick={increment}>+</button>
+                <button onClick={decrement}>-</button>
+                </div>
+            );
+            }
+
+            export default App;
     
+    -useState hook:
+        -calling function every second
+            function funName(){
+                //code
+            }
+            setInterval(funName,1000)
+    
+    -Array De-Structuring JS:
+        Animal.js file:
+            const animals = [
+                {
+                    name: "cat",
+                    sound: "meow",
+                    feedingRequirement: {
+                    food: 2,
+                    water: 4,
+                    foodName: "CatFood"
+                    }
+                },
+                { name: "dog", sound: "woof" }
+            ];
+            export default animals;
+
+        index.js file:
+            import animal from "./data";
+
+            const [cat, ...dog] = animal;
+
+            console.log(cat);
+            console.log(dog);
+
+            console.log(cat.name);
+            console.log(cat.sound);
+
+            //or
+
+            // const { name, sound } = cat;
+            // console.log(name);
+            // console.log(sound);
+
+            //or Renaming properties of object.
+
+            const { name: catName, sound: catSound } = cat;
+            console.log(catName);
+            console.log(catSound);
+
+            //or passing default value if actual is not present
+
+            const { name: dogName = "shera", sound: dogSound = "BowBow" } = dog;            //de-structuring Object.
+
+            console.log(dogName);
+            console.log(dogSound);
+
+            //destructuring single object of cat.
+            const {
+                feedingRequirement: { food, water, foo dName }
+            } = cat;
+
+            console.log(`cat food name is ${foodName}`);
+            console.log(`cat feeded by ${food} times a day`);
+            console.log(`cat need to drunk water by ${water} times a day`);    
+
+            //function
+            animal.js file
+            function useAnimal(animals) {
+                return [
+                    animals.name,
+                    function () {
+                    console.log(animals.sound);
+                    }
+                ];
+            }
+
+            export { useAnimal };
+
+            index.js file
+                
+                const [cat, dog] = animal;           //for de-structuring array
+
+                const [animal, makeSound] = useAnimals(dog);
+                console.log(animal);
+                makeSound()
+            
+    -Challenge:
+        cars.js file:
+            const cars = [
+                {
+                    model: "Honda Civic",
+                    //The top colour refers to the first item in the array below:
+                    //i.e. hondaTopColour = "black"
+                    coloursByPopularity: ["black", "silver"],
+                    speedStats: {
+                    topSpeed: 140,
+                    zeroToSixty: 8.5
+                    }
+                },
+                {
+                    model: "Tesla Model 3",
+                    coloursByPopularity: ["red", "white"],
+                    speedStats: {
+                    topSpeed: 150,
+                    zeroToSixty: 3.2
+                    }
+                }
+            ];
+            export default cars;
+
+        index.js file:
+            // CHALLENGE: uncomment the code below and see the car stats rendered
+            import React from "react";
+            import ReactDOM from "react-dom";
+            import cars from "./practice";
+
+            const [honda, tesla] = cars;
+
+            const {
+            speedStats: { topSpeed: hondaTopSpeed }
+            // coloursByPopularity: hondaTopColour
+            } = honda;
+
+            const {
+            speedStats: { topSpeed: teslaTopSpeed }
+            // coloursByPopularity: teslaTopColour
+            } = tesla;
+
+            // const [teslaTopColour] = tesla.coloursByPopularity
+            // const [hondaTopColour] = honda.coloursByPopularity
+
+            const { coloursByPopularity: [hondaTopColour]} = honda;
+            const { coloursByPopularity: [teslaTopColour]} = tesla;
+
+            //other way
+
+            // const [honda, tesla] = cars;
+
+            // const {
+            //   speedStats: { topSpeed: hondaTopSpeed }
+            // } = honda;
+
+            // const {
+            //   speedStats: { topSpeed: teslaTopSpeed }
+            // } = tesla;
+
+            // const {
+            //   coloursByPopularity: [, hondaTopColour]      //accessing 2nd color
+            // } = honda;
+            // const {
+            //   coloursByPopularity: [, teslaTopColour]
+            // } = tesla;
+
+
+
+            ReactDOM.render(
+            <table>
+                <tr>
+                <th>Brand</th>
+                <th>Top Speed</th>
+                </tr>
+                <tr>
+                <td>{tesla.model}</td>
+                <td>{teslaTopSpeed}</td>
+                <td>{teslaTopColour}</td>
+                </tr>
+                <tr>
+                <td>{honda.model}</td>
+                <td>{hondaTopSpeed}</td>
+                <td>{hondaTopColour}</td>
+                </tr>
+            </table>,
+            document.getElementById("root")
+            );
+    
+    -Event Handling:
+         function App() {
+            const [text, setText] = useState("Hello");
+            const [mouseOver, setMouseOver] = useState(false);
+
+            function clicked() {
+                setText("submitted");
+            }
+
+            function changeColor() {
+                setMouseOver(true)
+            }
+            function originalColor() {
+                setMouseOver(false)
+            }
+
+            return (
+                <div className="container">
+                <h1>{text}</h1>
+                <input type="text" placeholder="What's your name?" />
+                <button
+                    onClick={clicked}
+                    style={{backgroundColor: mouseOver? 'black' : 'white'}}
+                    onMouseOver={changeColor}
+                    onMouseOut={originalColor}
+                >
+                    Submit
+                </button>
+                </div>
+            );
+        }
+
+        export default App;
+
+    -React forms:
+        function changing(e){
+            console.log(e.target.value);
+            console.log(e.target.placeholder);
+            console.log(e.target.type);
+        }
+
+        <input 
+            onChange={changing}
+            type="text" 
+            placeholder="What's your name?" 
+         />
+        
+        -App.js
+            import React, { useState } from "react";
+
+            function App() {
+                const [name, setName] = useState("");
+
+                const [head, setHead] = useState("");
+
+                function changeName() {
+                    setHead(name);
+                }
+
+                function handleChange(event) {
+                    setName(event.target.value);
+                    //event.preventDefault();           //prevent form from submiting
+                }
+
+                <form onSubmit={handleChange}>
+                
+                </form>
+
+                return (
+                    <div className="container">
+                    <h1>Hello {head}</h1>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        placeholder="What's your name?"
+                    />
+                    <button onClick={changeName}>Submit</button>
+                    </div>
+                );
+            }
+
+            export default App;
+
+    -Class component vs. functional component:
+        eg.
+            class App extends React.Component{
+                render(
+                    return <h1>Hello </h1>
+                )
+            }
+        
+        -you can use hooks with only functional components NOT WITH CLASS COMPONENTS
+
+    -Complex State practice:
+        ----------------------------------------------------------
+            import React, { useState } from "react";
+
+            function App() {
+            const [contact, setContact] = useState({
+                fName: "",
+                lName: "",
+                email: ""
+            });
+
+            function handleChange(event) {
+                // const name = event.target.name;
+                // const value = event.target.value;
+
+                const { name, value } = event.target;
+
+                // console.log(name);
+                // console.log(value);
+
+                setContact((storedValue) => {
+                if (name === "fName") {
+                    return {
+                    fName: value,
+                    lName: storedValue.lName,
+                    email: storedValue.email
+                    };
+                } else if (name === "lName") {
+                    return {
+                    fName: storedValue.fName,
+                    lName: value,
+                    email: storedValue.email
+                    };
+                } else {
+                    return {
+                    fName: storedValue.fName,
+                    lName: storedValue.lName,
+                    email: value
+                    };
+                }
+                });
+            }
+
+            return (
+                <div className="container">
+                <h1>
+                    Hello {contact.fName} {contact.lName}
+                </h1>
+                <p>{contact.email}</p>
+                <form>
+                    <input
+                        onChange={handleChange}
+                        name="fName"
+                        placeholder="First Name"
+                        value={contact.fName}
+                    />
+                    <input
+                        onChange={handleChange}
+                        name="lName"
+                        placeholder="Last Name"
+                        value={contact.lName}
+                    />
+                    <input
+                        onChange={handleChange}
+                        name="email"
+                        placeholder="Email"
+                        value={contact.email}
+                    />
+                    <button>Submit</button>
+                </form>
+                </div>
+            );
+            }
+
+            export default App;
+
+        --------------------------------------------------------
+            import React, { useState } from "react";
+
+            function App() {
+            const [fullName, setFullName] = useState({
+                frName: "",
+                lsName: ""
+            });
+
+            function handleChange(event) {
+                const name = event.target.name;
+                const value = event.target.value;
+
+                setFullName((preValue) => {
+                if (name === "fName") {
+                    return {
+                    frName: value,
+                    lsName: preValue.lsName
+                    };
+                } else {
+                    return {
+                    frName: preValue.frName,
+                    lsName: value
+                    };
+                }
+                });
+            }
+
+            //or for handleChange function
+            function handleChange(event) {
+                const { name, value } = event.target;
+
+                setContact((Prevalues) => {
+                return {
+                    ...Prevalues,
+                    [name]: value
+                }; 
+
+                // OR FOR setContact
+                // setContact((prevValue) => ({ ...prevValue, [name]: value }));
+
+            });
+
+            return (
+                <div className="container">
+                <h1>
+                    Hello {fullName.frName} {fullName.lsName}
+                </h1>
+                <form>
+                    <input
+                    onChange={handleChange}
+                    name="fName"
+                    placeholder="First Name"
+                    value={fullName.frName}
+                    />
+                    <input
+                    onChange={handleChange}
+                    name="lName"
+                    placeholder="Last Name"
+                    value={fullName.lsName}
+                    />
+                    <button>Submit</button>
+                </form>
+                </div>
+            );
+            }
+
+            export default App;
+
+    -JS Spread Operator:
+        const citrius = ["lemon", "tartaric", "cold-drinks"];
+
+        let fruits = ["Apple", "banana", "Chiku", ...citrius];
+
+        console.log(citrius);                   //["lemon", "tartaric", "cold-drinks"]
+        console.log(fruits);                    // ["Apple", "banana", "Chiku", "lemon", "tartaric", "cold-drinks"]
+
+        fruits = ["Apple", ...citrius, "banana", "Chiku"];          //using spread operator.
+        console.log(fruits);                    //["Apple", "lemon", "tartaric", "cold-drinks", "banana", "Chiku"]
+
+
+        fruits = ["Apple", citrius, "banana", "Chiku"];     //without using spread operator
+        console.log(fruits);                                // ["Apple", Array(3), "banana", "Chiku"]
+                                                                0: "Apple"
+                                                                1: Array(3)
+                                                                    0: "lemon"
+                                                                    1: "tartaric"
+                                                                    2: "cold-drinks"
+                                                                2: "banana"
+                                                                3: "Chiku"
+
+    -ES6 Spread Operator Practice:
+        import React, { useState } from "react";
+
+        function App() {
+            const [task, setTask] = useState("");
+            const [works, setWorks] = useState([]);
+
+            function handleChange(event) {
+                setTask(event.target.value);
+            }
+
+            function btnClick() {
+                // setWorks((oldValues) => [...oldValues, task]);
+                //or
+
+                setWorks((oldValues)=>{
+                return[...oldValues, task]
+                })
+
+                setTask("");
+            }
+
+            return (
+                <div className="container">
+                <div className="heading">
+                    <h1>To-Do List</h1>
+                </div>
+                <div className="form">
+                    <input type="text" onChange={handleChange} value={task} />
+                    <button onClick={btnClick}>
+                    <span>Add</span>
+                    </button>
+                </div>
+                <div>
+                    <ul>
+                    <li>A Item</li>
+                    {works.map((todoItem) => {
+                        return <li>{todoItem}</li>;
+                    })}
+                    </ul>
+                </div>
+                </div>
+            );
+        }
+
+        export default App;
+    
+    -Managing Component Tree:
+        -Props are readOnly.
+
+        -App.js file
+            import ToDoItem from "./ToDoItem";
+             <ul>
+                {items.map((todoItem) => (
+                    // <li>{todoItem}</li>
+                    <ToDoItem name={todoItem} />
+                ))}
+            </ul>
+        -ToDoItem.jsx file
+            import React from "react";
+
+            function ToDoItem(props) {
+                return <li>{props.name}</li>;
+            }
+
+            export default ToDoItem;
+
+        -ToDoItem file
+            import React, { useState } from "react";
+
+            function ToDoItem(props) {
+                const [clicked, setClick] = useState(false);
+
+                function chnageStyle() {
+                    //setClick(!clicked);
+
+                    // or
+                    setClick((oldValue) => {
+                        return !oldValue;
+                    });
+
+                    //or
+
+                    // let i = clicked;
+                    // if (i == true) setClick(false);
+                    // else setClick(true);
+
+                    console.log(clicked);
+                }
+
+                //or
+                //const customStyle = { textDecoration: clicked ? "line-through" : "none" };
+
+
+                return (
+                    <li
+                    onClick={chnageStyle}
+                    style={{ textDecoration: clicked ? "line-through" : "none" }}
+                    //style={customStyle}
+                    >
+                    {props.name}
+                    </li>
+                );
+            }
+
+            export default ToDoItem;
+
+        -passing function to the component:
+            -I'm going to use the index as the key. Now in an ideal world, React advises us 
+             to not use the index for the key and instead use some sort of unique identifying string.            
+------------------------------------------------------------------------------------------------------------------------------------
+Section 39: Web3 De-centralised App (DApp)
+    -BlockChain is a ledger
+    -Instead of using Encryption BlockChain uses Hashing.
+    -Cause from Encryption msg can be decrypted.
+------------------------------------------------------------------------------------------------------------------------------------
+Section 45: QNA
+    -Start making Projects.
+    -Start making Simple project first.
+    -start making portfolio / unpaid freelancing.
+    
+    -Stay consistent.
+    -min 1hr/day. programming.
+    -
 ------------------------------------------------------------------------------------------------------------------------------------

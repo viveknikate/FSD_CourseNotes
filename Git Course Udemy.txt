@@ -674,6 +674,11 @@ GIT NOTES:
             these modifiers can be chained together! 
 
                 git checkout HEAD~^2~2
+            
+        Multiple Command with ; at the end..
+            checking status & creating new file.
+            eg.
+                git status; touch index.js
 
     -Remote:
         git fetch        //for downloading the commit without changing the local file system.
