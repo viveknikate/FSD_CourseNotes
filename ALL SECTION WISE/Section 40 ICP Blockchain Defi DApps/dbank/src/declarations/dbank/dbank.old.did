@@ -1,0 +1,6 @@
+service : {
+  WithDraw: (float64) -> () oneway;
+  checkBalance: () -> (float64) query;
+  compound: () -> () oneway;
+  topUP: (float64) -> () oneway;
+}

@@ -2,6 +2,8 @@ shortcut:
     alt + enter (hit it after writing something in url) //open search on new tab.
     crtl+ enter (hit it after writing in url ) it add the .com at end
     'crtl + [' or  'crtl+ ]' moving forward or backword line/lines
+
+    scroll fast using mouse up/down & press shift button along with.
 ----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
 
@@ -1283,7 +1285,7 @@ JavaScript variable:
             string.charAt(index)
             Example:
 
-            const str = 'flexiple';
+            const str = 'flexible';
             const str2 = str.charAt(0);
             console.log(str2);
 
@@ -1298,11 +1300,11 @@ JavaScript variable:
             string.toUpperCase()
             Example
 
-            const str = 'flexiple';
+            const str = 'flexible';
             const str2 = str.toUpperCase();
             console.log(str2);
 
-            //Output: FLEXIPLE
+            //Output: FLEXIBLE
 
     eg.
         var name = prompt("Enter your name:")
@@ -2701,6 +2703,11 @@ Section 21: The Unix Command Line:
                     mkdir .Secret
                     mkdir .dummy
 
+    -To Open File explorer:
+        explorer.exe
+    -open in current folder use period(.)
+        explorer.exe .
+
     -Directory Navigation:
         -list command
             ls
@@ -2825,6 +2832,10 @@ Section 23: Node Js:
 
                 //to check all names
                 console.log(n.all);
+            
+    -QR code Generator:
+        -for URLs.
+        
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 24: Express.js with Node.js
     Express:
@@ -4150,7 +4161,7 @@ Section 29: Database
         -MongoDB:
             Shiny & new
             document Structured
-            more flexiple to changes
+            more flexible to changes
             Not great with complex relation between tables.
             horizontally scale
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -7508,6 +7519,239 @@ Section 39: Web3 De-centralised App (DApp)
     -BlockChain is a ledger
     -Instead of using Encryption BlockChain uses Hashing.
     -Cause from Encryption msg can be decrypted.
+
+    -commands:
+        open powershell & then type..
+            wsl --install
+            wsl --install -d <distro_name>
+                wsl --install -d Ubuntu
+            
+            To turn on Ubuntu machine, use command 
+                wsl 
+    
+    -Project Creation:
+        -mkdir ic-projects
+        -cd ic-projects
+        -dfx new <Project_name>
+        eg.
+            dfx new hello
+            dfx new dbank
+        -mkdir ic-projects; cd ic-projects; dfx new hello
+
+        -to open file explorer
+            explorer.exe .      //in current folder.
+        
+        -open project in vs code.
+        -to run project
+            dfx start
+        
+        -in new terminal
+            -dfx deploy
+
+        to run 
+            -npm start (if got error related webpack cli use below command)
+                -npm install webpack-cli@4.10.0
+------------------------------------------------------------------------------------------------------------------------------------
+Section 40: DeCentralised Finanace App
+
+    -make a folder
+        mkdir project
+
+    -create new project
+        dfx new <Project_name>
+    
+    -main.mo file:
+        import Debug "mo:base/Debug";
+
+        actor DBank{
+            var currentValue = 300;                 //implicit datatype (not mentioned). Nat stands for natural number.
+            var value: Int = 300;                 //explicitly datatype (mentioned).
+            var value: Nat = 300;                 //explicitly datatype (mentioned).
+
+            currentValue := 100;
+
+            // Debug.print("Vivek Nikate,")
+
+            Debug.print(debug_show(currentValue));
+        }
+    
+    -actor is our canister.
+    -let keyword is used to create contstants.
+    -var keyword is used to create variable.
+
+    -Motoko Function & candid user interface
+    
+        //creating function
+            func topUP() {
+                currentValue +=1;
+                Debug.print("Updated Value : ");
+                Debug.print(debug_show(currentValue));
+            };
+
+        //calling
+        topUP();
+
+        -instead of deploying complete project using dfx deploy.
+         we can call the specific method also. using this command,
+            -dfx canister call <canister_name> <function_name> 
+            -dfx canister call dbank topUP          (it will give error if function is private).
+
+        -public functions:
+            public func topUP() {
+                currentValue +=1;
+                Debug.print("Updated Value : ");
+                Debug.print(debug_show(currentValue));  
+            };
+        
+        -Candid:
+            -candid is an interface description language
+            
+            -creating candid id:
+                -dfx canister id __Candid_UI
+                -copy the ouput of above command.
+                
+                -then open the link of starting server which is came after running 'dfx start' command. eg.
+                    http://127.0.0.1:8000/
+
+                put ? at end, & canisterId as key & value the copied canisterid.
+                eg.
+                    http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai
+                
+                -asking for canister id:
+                    run this command
+                        dfx canister id <your_canister_name>.
+                        dfx canister id dbank
+
+                    -copy its output & put into 'Provide a canister ID' this field.
+                
+                -this will create fronted for that function
+
+        -Argument to function:  amount is name & Nat is natural num.
+            public func topUP(amount: Nat) {
+                currentValue +=1;
+                Debug.print("Updated Value : ");
+                Debug.print(debug_show(currentValue));
+            };
+
+        -Query function & Update function:
+            usually making changes in this, its slow,
+            to go ultra fast mode need to use query method.
+            -end of every line there should be semicolon.
+            -if its last function, then no need to add semicolon.
+            eg.
+                Update funtion:
+                    public func topUP(amount: Nat) {
+                        currentValue +=amount;
+                        Debug.print("Credited Amount: ");
+                        Debug.print(debug_show(currentValue)); 
+                    };
+
+                Query Function: (query functions are read only.)
+                    public query func checkBalance(): async Nat {
+                        return currentValue;
+                    }
+        
+        -Orthogonal Persistance:
+            -ICP - Internet Computer Protocol.
+            -Orthogonal Persistance means previous data is saved. 
+            -using stable keyword.
+                normal/ flexible
+                    var num1: Nat = 200;
+                    num1 += 200;
+                    //400
+                
+                stable
+                    stable var num1: Nat = 200;
+
+        -Frontend part:
+            -html/css
+            -js file:
+                import {dbank} from '../../declarations/dbank';
+                // dbank
+
+                window.addEventListener('load', async function(){
+                // console.log("Finished Loading");
+                Update();
+                })
+
+                document.querySelector('form').addEventListener('submit', async function(event){
+                event.preventDefault();
+                // console.log('Submitted');
+                const button = event.target.querySelector('#submit-btn');
+
+                const inputAmount =  parseFloat(document.getElementById('input-amount').value);
+                const withdrawalAmount =  parseFloat(document.getElementById('withdrawal-amount').value);
+
+                button.setAttribute('disabled', true);
+
+                if(document.getElementById('input-amount').value.length != 0)
+                    await dbank.topUP(inputAmount);
+                
+                if(document.getElementById('withdrawal-amount').value.length != 0)
+                    await dbank.WithDraw(withdrawalAmount);
+                
+
+                await dbank.compound();
+
+                Update();
+
+                document.getElementById('input-amount').value = '';
+                document.getElementById('withdrawal-amount').value = '';
+
+                button.removeAttribute("disabled");
+
+                });
+
+                async function Update(){
+
+                // var currentAmount = await dbank.checkBalance();
+                // currentAmount = currentAmount.toFixed(2);
+                // document.getElementById('value').innerText = currentAmount;
+
+                var currentAmount = await (await dbank.checkBalance()).toFixed(2);
+                // currentAmount = currentAmount.toFixed(2);
+                document.getElementById('value').innerText = currentAmount;
+                }
+
+        -Cycles & ICP Tokens:
+            NNS - Network Nervous System
+
+            -hosting on live
+                DFX Principle Id
+                    dfx identity get-principal
+                
+                dfx identity --network ic get-wallet
+
+------------------------------------------------------------------------------------------------------------------------------------
+Section 41: ICP Live BlockChain
+    -Deploy static site on IC:
+            -store all files inside one folder named assets
+            -all images, files are on same level not one inside other.
+
+            -create dfx.json file & inside that write,
+                {
+                    'canister':{
+                        'website':{
+                            'type': 'assets',
+                            'source': ['assets']
+                        }
+                    }
+                }       
+            
+            -to deploy on live
+                dfx deploy --network ic
+
+            -to get the id:
+                dfx canister --network ic id <canister_name>
+                dfx canister --network ic id website
+                    //copy the output of above command then at the end add '.raw.ic0.app'
+------------------------------------------------------------------------------------------------------------------------------------
+Section 42:Building DApps With React Frontend:
+    -installing node of 16th version:
+        npm i node@16       
+------------------------------------------------------------------------------------------------------------------------------------
+Section 43: Create your own Crypto Token
+    
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 45: QNA
     -Start making Projects.
@@ -7516,5 +7760,5 @@ Section 45: QNA
     
     -Stay consistent.
     -min 1hr/day. programming.
-    -
-------------------------------------------------------------------------------------------------------------------------------------
+========================================================END=============================================================================
+========================================================FSD Completed===================================================================
