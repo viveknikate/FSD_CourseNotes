@@ -1,0 +1,1348 @@
+tString:
+     -string is a collection of Unicode characters or an array of characters.
+     -string is a keyword that is an alias for the System.String class.
+     -System.String class is immutable, which means that once created, the state cannot be changed. 
+     -Strings can be used for a variety of operations such as concatenation, comparison, searching, trimming, removing, splitting, and replacing. 
+     -String class has two properties: character and length.
+
+     string vs String
+          In C#, string is keyword which is an alias for System.String class. 
+          That is why string and String are equivalent. We are free to use any naming convention.
+
+          string s1 = "hello";     //creating string using string keyword  
+          String s2 = "welcome";   //creating string using String class  
+
+eg.
+     Sample Program
+          using System;
+                    
+          class Vivek{
+               public static void Main(){
+                    Console.WriteLine("Vivek Nikate");
+               }
+          }
+eg.
+     1. Creating Simple String
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "Hii Vivek..!";
+                    Console.WriteLine(str);                 //Hii Vivek..!
+               }
+          }
+
+     2.Length of a String
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Sveri";
+                    string str2 = "Computer Science";
+
+                    Console.WriteLine($"The Length of {str1} is {str1.Length}");               //The Length of Sveri is 5
+                    Console.WriteLine($"The Length of {str2} is {str2.Length}");               //The Length of Computer Science is 16
+                    
+               }
+          }
+     
+     3.Number of Lines in a String
+
+          using System;
+
+          class Vivek{
+               public static void Main(){
+                    string para = "jklasdfasdf \n jsfkljasdfj \n asdlfjsalkj \t sadgasfwer\n shfkajshfkljklwe sadkjflks sdljklsgnwe lkjkla\n sljflksjfkljsdlfs.";
+                    
+                    int lines = 1;
+                    
+                    foreach(char i in para){
+                         // Console.WriteLine(i);
+                         
+                         if (i == '\n')
+                         lines++;
+                    }
+                    
+                    Console.WriteLine(para);
+                    
+                    Console.WriteLine("The total char in paragraph : "+para.Length);
+                    Console.WriteLine($"The no.of Lines in Paragraph is {lines}");
+               }
+          }
+          //output
+               jklasdfasdf 
+               jsfkljasdfj   
+               asdlfjsalkj 	 sadgasfwer
+               shfkajshfkljklwe sadkjflks sdljklsgnwe lkjkla
+               sljflksjfkljsdlfs.
+               The total char in paragraph : 119
+               The no.of Lines in Paragraph is 5
+     
+     4.Number of Vowels and Consonants in a String
+
+          using System;
+
+          class Vivek{
+               public static void Main(){
+                    
+                    string txt = "This is the AAABBB ...???!@#$%^_-+)(& sample text.";
+                    int vowelsCount=0, consonants=0;
+                    
+                    foreach(char ch in txt){
+                         
+                         // simple
+                         // if(ch == 'a' ||ch == 'e' ||ch == 'i' ||ch == 'o' ||ch == 'u' || ch == 'A' ||ch == 'E' ||ch == 'I' ||ch == 'U' ||ch == 'O'){
+                         //     vowelsCount++;
+                         // }else if(ch != ' ' && ch != '.') {
+                         //     consonants++;
+                         // }
+                         
+                         if(ch == 'a' ||ch == 'e' ||ch == 'i' ||ch == 'o' ||ch == 'u' || ch == 'A' ||ch == 'E' ||ch == 'I' ||ch == 'U' ||ch == 'O'){
+                              vowelsCount++;
+                         }
+                         else if(Char.IsLetter(ch) && (ch != 'a' ||ch != 'e' ||ch != 'i' ||ch != 'o' ||ch != 'u' || ch != 'A' ||ch != 'E' ||ch != 'I' ||ch != 'U' ||ch != 'O'))
+                         {
+                              consonants++;
+                         }
+                         else{
+                              //do nothing
+                         }
+                         
+                    }
+                    
+                    Console.WriteLine("para= "+txt);
+                    
+                    Console.WriteLine("Length: "+txt.Length);
+                    Console.WriteLine("Vowels in Para : "+vowelsCount);
+                    Console.WriteLine("Consonants in Para : "+consonants);
+                    
+                    // Console.WriteLine("Consonants = "+(txt.Length-vowelsCount));
+               }
+          }
+
+          //output:
+               para= This is the AAABBB ...???!@#$%^_-+)(& sample text.
+               Length: 50
+               Vowels in Para : 9
+               Consonants in Para : 16
+         
+     5.Converting Char Array to String
+          using System;
+
+          class Vivek{
+               public static void Main(){
+                    
+                    char[] ch = {'h','e','l','l','o'};
+                    
+                    string str = new string(ch);
+                    
+                    
+                    Console.WriteLine(ch[0]);
+                    
+                    Console.WriteLine(ch[1]);
+                    Console.WriteLine(ch[2]);
+                    Console.WriteLine(ch);
+                    
+                    Console.WriteLine(str);
+                    
+               }
+          }
+
+          //output:
+               h
+               e
+               l
+               hello
+               hello
+
+     6. String concatenation:
+
+          using System;
+
+          class Vivek{
+          
+               public static void Main(){
+                    string str1 = "Good";
+                    string str2 = "Day";
+                    
+                    string str3 = string.Concat(str1," ",str2);                 
+                    Console.WriteLine(str3);                                                   //Good Day
+               }
+          }
+
+     7. Converting Date to String Using ToString method
+
+          using System;
+
+          class Vivek{
+               public static void Main(){
+                    DateTime dt = new DateTime();
+                    
+                    string strMonth = dt.ToString("M");
+                    string strYear= dt.ToString("Y");
+                    string strDay = dt.ToString("D");
+                    
+                    Console.WriteLine(dt);
+                    Console.WriteLine(strMonth);
+                    Console.WriteLine(strYear);
+                    Console.WriteLine(strDay);
+               }
+          }
+     
+     8.Abbreviation of String:          
+               using System;
+
+               class Vivek{
+                    public static void Main(){
+                         string str = "Shri Vithal Education and Research Institute.";
+
+                         
+                         //string str = Console.ReadLine();                     // taking user input.
+                         
+                         string[] strArr = str.Split(' ');
+                         string abbr = "";
+                         
+                         
+                         Console.WriteLine(str);
+                         Console.WriteLine(strArr);
+                         
+                         foreach(string sr in strArr){
+                              
+                              if(Char.IsLetter(sr[0]) && Char.IsUpper(sr[0])){
+                                   //abbr += sr[0];
+                                   abbr += sr[0]+".";
+                              }else{
+                                   //do nothing
+                              }
+                         }
+                         
+                         Console.WriteLine("The Abbreviation of given string is :: "+abbr);    
+                    }
+               }
+
+               ouput:
+                    Shri Vithal Education and Research Institute.
+                    System.String[]
+                    The Abbreviation of given string is :: S.V.E.R.I.
+     
+     9. Reversing String:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "Hello Mono World";
+                    
+
+                    //important steps.
+                    char[] stringArray = str.ToCharArray();           //converting to char array
+                    Array.Reverse(stringArray);                       //reversing using method
+                    string reversedStr = new string(stringArray);     //converting back to string.
+                    
+                    Console.WriteLine(str);
+                    
+                    Console.WriteLine($"The reverse of String : {reversedStr}");
+               }
+          }
+
+          //ouput
+               Hello Mono World
+               The reverse of String : dlroW onoM olleH
+
+     10.  Addition from string
+
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "19-this is number123123";
+                    int sum = 0;
+                    
+                    
+                    foreach(char ch in str){
+                         if(Char.IsDigit(ch)){
+                              sum += (Convert.ToInt32(ch)-48);
+                         }else{
+                              //do nothing
+                         }        
+                    }
+                         Console.WriteLine("\n"+sum);                 //22
+               }
+          }
+
+     11. Reversing Strig without function:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "Hello Mono World";
+                    string revString ="";
+                    
+                    for(int i = str.Length-1 ; i >=0 ; i--){
+                         revString += str[i];
+                    }
+                    
+                    Console.WriteLine("Original : "+str);
+                    
+                    Console.WriteLine("Reverse : "+revString);
+               }
+          }
+
+          //ouput:
+               Original : Hello Mono World
+               Reverse : dlroW onoM olleH
+
+     12.  Trim method:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "               Hello Mono World           ";
+                    
+                    System.Console.WriteLine("The String Before Trimming :" + "(" + str + ")");
+                    System.Console.WriteLine("The String After Trimming :" + "(" + str.Trim() + ")");
+                    
+               }
+          }
+     
+     13. PadLeft right method:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "Hello World";
+                    string newString;
+                    
+                    newString = str.PadRight(100,'%');
+                    
+                    newString = str.PadLeft(40,'#');
+                    
+                    Console.WriteLine("["+newString+"]");
+               }
+          }
+     
+     14.String ToUpper()
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "qwertyuiopasdfghjklzxcvbnm";
+                    Console.WriteLine(str1+" "+str1.ToUpper());                   //QWERTYUIOPASDFGHJKLZXCVBNM
+                    
+                    string str2 = "Vivek";
+                    Console.WriteLine(str2+" "+str2.ToUpper());                   //VIVEK
+               }
+          }
+
+     15.String ToLower()
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "QWERTYUIOPASDFGHJKLZXCVBNM";         
+                    Console.WriteLine(str1+" "+str1.ToLower());         //qwertyuiopasdfghjklzxcvbnm
+                    
+                    string str2 = "VIVEK nikate";
+                    Console.WriteLine(str2+" "+str2.ToLower());         //vivek nikate
+               }
+          }
+     
+     16.String index accessing
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "hello ", str2 = "world.!";
+                    Console.WriteLine(str1[0]);             //h
+                    Console.WriteLine(str1[1]);             //e
+                    Console.WriteLine(str1[2]);             //l
+               }
+          }
+
+     17.IndexOf method
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "hello ", str2 = "world.!";
+                    Console.WriteLine("The index of H :: "+str1.IndexOf('h'));      //0
+                    Console.WriteLine("The index of r :: "+str2.IndexOf('r'));      //2
+                    Console.WriteLine("The index of d :: "+str2.IndexOf('d'));      //4
+               }
+          }
+     
+     18.Substring:
+
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "Hello World";
+                    
+                    Console.WriteLine(str.Substring(5));    //Accessing substrig after index 5           //World
+               }
+          }
+     
+     19.Replace:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s = "Hello World";
+                    
+                    Console.WriteLine(s.Replace("o","{-}"));
+                    
+               }
+          }
+
+          //ouput:
+               Hell{-} W{-}rld
+
+     20.Replace String with string:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s = "coding is easy, Machine Learning is easy";
+                    
+                    Console.WriteLine(s);
+                    Console.WriteLine(s.Replace("easy","simple")); 
+               }
+          }
+     
+     21. Clone
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s1 = "coding is easy, Machine Learning is easy";
+                    
+                    string s2 = s1;
+                    // or
+                    
+                    s2 = (string) s1.Clone();
+                    
+                    Console.WriteLine(s1);
+                    Console.WriteLine(s2);
+               }
+          }
+
+          ouput:
+               coding is easy, Machine Learning is easy
+               coding is easy, Machine Learning is easy
+          
+     22. String Compare:
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "World";
+                    string str2 = "World";
+                    
+                    string str3 = "There";
+                    
+                    
+                    Console.WriteLine("Same String return : "+string.Compare(str1, str2));
+                    Console.WriteLine("First > Second Strings return : "+string.Compare(str1, str3));
+                    Console.WriteLine("First < Second Strings return : "+string.Compare(str3, str1));
+                    
+               }
+          }
+     
+     23. Contains Method:
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Hello World, This is me..";
+                    string str2 = "World is big giant.... There is so much space";
+                    
+                    Console.WriteLine("Is str1 contains me? : "+str1.Contains("me"));
+                    
+                    Console.WriteLine("Is str1 contains is? : "+str1.Contains("is"));
+                    
+                    Console.WriteLine("Is str2 contains place? : "+str2.Contains("place"));
+               }
+          }
+     
+     24. Remove Method:
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Hello World, This is me..";
+                    string str2 = "World is big giant.... There is so much space";
+                    
+                    
+                    //start index only.
+                    Console.WriteLine("Removing all after 3rd index in str1 : "+ str1.Remove(3));
+                    
+                    //start index, length
+                    string subString = str2.Remove(8,10);
+                    Console.WriteLine(subString);
+                    
+               }
+          }
+
+          //ouput:
+               Removing all after 3rd index in str1 : Hel
+               World is.... There is so much space
+     
+     25. Split Method:
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Hello World, This is me.. World is big giant.... There is so much space";
+                    
+                    Console.WriteLine(str1);
+                    
+                    //Converting string to string array..
+                    string[] strArr = str1.Split(' ');
+                    
+                    Console.WriteLine("\n");
+                    
+                    foreach(string s in strArr){
+                         Console.WriteLine(s);
+                    }
+               }
+          }
+               //output:
+               Hello World, This is me.. World is big giant.... There is so much space
+
+               Hello
+               World,
+               This
+               is
+               me..
+               World
+               is
+               big
+               giant....
+               There
+               is
+               so
+               much
+               space
+
+     26. Equals Method:
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Hii", str2 = "Hii";
+                    
+                    string str3 = "Vivek";
+                    
+                    
+                    Console.WriteLine($"Str1 :{str1}");
+                    Console.WriteLine($"Str2 :{str2}");
+                    Console.WriteLine($"Str3 :{str3}");
+                    
+                    Console.WriteLine("str1 & str2 are same : "+(str1.Equals(str2)? "Yes": "No"));
+                    
+                    Console.WriteLine("str1 & str3 are same : "+(str1.Equals(str3)? "Yes" : "No"));
+               }
+          }
+
+          //ouput
+               Str1 :Hii
+               Str2 :Hii
+               Str3 :Vivek
+               str1 & str2 are same : Yes
+               str1 & str3 are same : No
+
+     27.  String Interpolation:
+
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str1 = "Hii";
+                    
+                    string str2 = $"{str1} Vivek";
+                    
+                    
+                    Console.WriteLine($"Str1 :{str1}");
+                    Console.WriteLine($"Str2 :{str2}");
+               }
+          }
+     
+     28. Program in C# Sharp to count a total number of alphabets and special characters in a string
+          using System;  
+          public class String  
+          {  
+               public static void Main() 
+               {
+               string str;
+               int alp, digit, splch, i,l;
+               alp = digit = splch = i = 0;
+               Console.Write("Input the string : ");
+               str = Console.ReadLine();
+               l=str.Length;
+               while(i<l)
+               {
+               if((str[i]>='a' && str[i]<='z') || (str[i]>='A' && str[i]<='Z'))
+               {
+                    alp++;
+               }
+               else if(str[i] >= '0' && str[i] <='9')
+               {
+                    digit++;
+               }else{
+                    splch++;
+               }
+                    i++;
+               }
+               Console.Write("Number of Alphabets in the string is : {0}\n", alp);
+               Console.Write("Number of Special characters in the string is : {0}\n\n", splch);
+               
+               Console.Write("Number of Digit in the string is : {0}\n\n", digit);
+               }   
+          }
+     
+     29.Words counter:
+          using System;
+          public class String
+          {
+               public static void Main(string[] args)
+               {
+                    string str;
+                    int i, wrd,l;
+               Console.Write("Input the string : ");
+               str = Console.ReadLine();
+                    l = 0;
+                    wrd = 1;
+               while (l <= str.Length - 1)
+               {
+                    if(str[l]==' ' || str[l]=='\n' || str[l]=='\t')
+                    {
+                         wrd++;
+                    }
+                         l++;
+               }
+               Console.Write("Total number of words in the string is : {0}\n", wrd);
+               }
+          }
+     
+     30.Escape Sequence:
+          using System;
+          namespace MyApplication
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string txt1 = "I work in \"Capgemini\" in Bangalore.";//\" inserts a double quote in a string
+                         string txt2 = "I'm a fresher."; // inserts a double quote in a string
+                         string txt3 = "The character \\ is called backslash.";//\\ inserts a single backslash in a string
+                         Console.WriteLine(txt1);
+                         Console.WriteLine(txt2);
+                         Console.WriteLine(txt3);
+                    }
+               }
+          }
+     
+     31.Filtering string:
+          using System;
+          namespace MyApplication
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string str = "V!@#i^&*(vek_)(*";
+                         
+                         string name= "";
+                         
+                         
+                         
+                         Console.WriteLine("String with special chars :"+str);
+                         
+                         foreach(char c in str){
+                              if(Char.IsLetter(c)){
+                                   name += c;
+                              }
+                         }
+                         Console.WriteLine("Filtered string : "+name);
+
+                    }
+               }
+          }
+          //ouput:
+               String with special chars :V!@#i^&*(vek_)(*
+               Filtered string : Vivek
+
+     32.
+               using System;
+               public class Program
+               {
+                    public static void Main(string[] args)
+                    {
+                         string str = "P@#i#nky";
+                         Console.WriteLine(RemoveSpecialChars(str));
+                    }
+                    public static string RemoveSpecialChars(string str)
+                    {
+                         // Create  a string array and add the special characters you want to remove
+                         string[] chars = new string[] { ",", ".", "/", "!", "@", "#", "$", "%", "^", "&", "*", "'", "\"", ";", "_", "(", ")", ":", "|", "[", "]" };
+                         //Iterate the number of times based on the String array length.
+                         for (int i = 0; i < chars.Length; i++)
+                         {
+                              if (str.Contains(chars[i]))
+                              {
+                                   str = str.Replace(chars[i], "");
+                              }
+                         }
+                         return str;
+                    }
+               }
+          
+     33.Get the first char of each word in capital letter
+   
+          using System;
+          using System.Globalization;
+
+          public class Example
+          {
+               public static void Main()
+               {
+                    string s = "hello world";
+
+                    TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                    string titleCase = textInfo.ToTitleCase(s);
+
+                    Console.WriteLine(titleCase);       
+               }
+          }
+          //OR
+     52.
+          using System;
+          public class HelloWorld
+          {
+          public static void Main(string[] args)
+          {
+               string s = "this is what we called the arrogance.";
+               
+               string[] sr = s.Split(' ');
+               string st = "";
+               foreach(string i in sr){
+                    
+                    // Console.WriteLine();
+                    st += i.Substring(0,1).ToUpper() + i.Substring(1) + " ";
+               }
+               Console.WriteLine(st);
+          }
+          }
+     
+     34.  Duplicate Characters:
+          using System;
+
+          namespace LogicalPrograms
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         Console.Write("Enter a String : ");
+                         string inputString = Console.ReadLine();
+                         string resultString = string.Empty;
+          
+                    for (int i = 0; i < inputString.Length; i++)
+                    {
+                         if (resultString.Contains(inputString[i]))             //if (!resultString.Contains(inputString[i]))
+                         {
+                              //do nothing
+                         }else{
+                              resultString += inputString[i];
+                         }
+                    }
+                    Console.WriteLine(resultString);
+                    Console.ReadKey();
+                    }
+               }
+          }
+
+          //or
+     51.
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    // string s ="this is the string"; //this esrng
+
+                    string s ="Capgemini Banglore"; //Capgemin Blor
+                    
+                    string nonDupliChar="";
+                    
+                    
+                    foreach(char ch in s){
+                         if(!(nonDupliChar.Contains(ch))){
+                              nonDupliChar += ch;
+                         }
+                    }
+                    
+                    Console.WriteLine("Non Repeated char String : "+nonDupliChar);    
+                    Console.WriteLine("End");
+               }
+          }
+       
+     35.Palindrome:
+
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s1 = "madam";
+                                        
+                    char[] ch = s1.ToCharArray();
+                    Array.Reverse(ch);
+                    
+                    string s = new string(ch);
+                    
+                    
+                    Console.WriteLine("s = "+s);
+                    Console.WriteLine("s1 = "+s1);
+                    
+                    if(s.Equals(s1)){
+                         Console.WriteLine("The String is Palindrome");
+                    }    
+               }
+          }
+     
+     36.program to input a string and print it.
+
+          using System;  
+               public class String
+               {
+                    public static void Main()  
+                    {  
+                         string str;
+                         Console.WriteLine("Input the string : ");
+                         str= Console.ReadLine();
+                         Console.WriteLine("The string you entered is : {0}\n", str);
+
+                    }
+               }
+          
+     37.Word Frequency counter:
+     
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string str = "This is first Program line line is is";
+                    
+                    //check frequency of 'is' word.
+                    string[] strArr = str.Split(' ');
+                    
+                    
+                    
+                    Console.WriteLine(str);
+                    
+                    string word = "is";
+                    int counter=0;
+                    
+                    foreach(string s in strArr){
+                         if(s.Equals(word)){
+                              counter++;
+                         }else{
+                              //nothing
+                         }
+                    }
+                    
+                    Console.WriteLine(counter);
+               }
+          }
+     
+     38.String is null/empty checking:
+          using System;
+          namespace HelloWorld
+          {
+               class Program
+               {
+               static void Main(string[] args)
+                    {
+                    string str1 = "", str2 = "Vivek";
+                    
+                    bool b1, b2;
+                    b1 = string.IsNullOrEmpty(str1);
+                    b2 = string.IsNullOrEmpty(str2);
+                    
+                    
+                    Console.WriteLine("String 1 is empty? :"+ (b1 ? "yes" : $"no, The Value of string is {str1}"));
+                    Console.WriteLine($"String 2 is empty? :"+(b2 ? "yes" : $"no, The Value of string is {str2}"));
+                    Console.WriteLine();
+               
+                    
+                    
+                    }
+               }
+          }
+     
+     39.program to read a sentence and replace lowercase characters with uppercase and vice-versa.
+
+          using System;
+          public class String
+          {
+               public static void Main()
+               {
+                    string str1;
+                    char[] arr1;
+                    int l,i;
+                    l=0;
+                    char ch;
+                    Console.Write("Input the string : ");
+                    str1 = Console.ReadLine();
+                    l=str1.Length;
+                    arr1 = str1.ToCharArray(0, l); // Converts string into char array.
+                    Console.Write("\nAfter conversion, the string is : ");
+                    
+                    for(i=0; i < l; i++)
+                    {
+                    ch=arr1[i];
+                    if (Char.IsLower(ch)) // check whether the character is lowercase
+                    Console.Write(Char.ToUpper(ch)); // Converts lowercase character to uppercase.
+
+                    else
+                    Console.Write(Char.ToLower(ch)); // Converts uppercase character to lowercase.
+                    }
+                    Console.Write("\n\n");    
+
+               }
+          }
+
+     40.program to find the length of a string without using a library function.
+          using System;
+
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s = "Vivek Nikate";
+
+                    int i=0;
+                    foreach(char c in s){
+                         i++;
+                    }
+                    
+                    Console.WriteLine("The Length " +i);
+               }
+          }
+     
+     41.C# String StartsWith()
+
+          using System;  
+          public class StringExample    
+          {    
+               public static void Main(string[] args)    
+               {    
+                    string s1 = "Welcome to Capgemini";  
+                    bool b1 = s1.StartsWith("c"); //False
+                    bool b2 = s1.StartsWith("W"); //True
+                    Console.WriteLine(b1);  
+                    Console.WriteLine(b2);  
+               }    
+          }
+     
+     42.Escape Sequece -2 with @ sing:
+          using System;
+
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string s1 = @"Vivek\desk\one\two.txt";
+                         Console.WriteLine(s1);
+                         
+                         string s2 = "Vivek\\desk\\one\\two.txt";
+                         Console.WriteLine(s2);
+                         
+                         string s3 = @"Vivek\desk\one\two\n\n.txt";
+                         Console.WriteLine(s3);
+                         //to neglect the escape sequence use @ sign
+                         
+                    }
+               }
+          }
+          ouput:
+               Vivek\desk\one\two.txt
+               Vivek\desk\one\two.txt
+               Vivek\desk\one\two\n\n.txt
+
+     43.Interpolation +  Escape Sequence
+          using System;
+
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         
+                         string str = "custom";
+                         string s1 = $@"Vivek\desk\{str}\two.txt";
+                         Console.WriteLine(s1);
+                         
+                         str = "part-1";
+                         string s2 = $@"Vivek\desk\{str}\two.txt";
+                         Console.WriteLine(s2);
+                         
+                         str = "section-3";
+                         string s3 = $@"Vivek\desk\{str}\two.txt";
+                         Console.WriteLine(s3);
+                         
+                         //to neglect the escape sequence use @ sign
+                    }
+               }
+          }
+               ouput:
+                    Vivek\desk\custom\two.txt
+                    Vivek\desk\part-1\two.txt
+                    Vivek\desk\section-3\two.txt
+
+     44.EndsWith method:
+          using System;
+
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string str = "section-3";
+                         string s3 = $@"Vivek\desk\{str}\two.css";
+                         
+                         Console.WriteLine(s3.EndsWith("CSS"));
+                         Console.WriteLine(s3.EndsWith("css"));   //case sensitive
+                         
+                         //to neglect the escape sequence use @ sign    
+                    }
+               }
+          }
+          ouput:    
+               False
+               True
+          
+     45.String array to String:
+          using System;
+
+          namespace HelloWorld
+          {
+          class Program
+          {
+          static void Main(string[] args)
+          {
+               string[] strArr = {"akjsdflksaf","asdfasfwe","jwoeirqwe","asdjweoruiwe","Vivek","werqwireop","ncvnm,wepr","eiropirtnm"};
+               
+               
+               Console.WriteLine(strArr[4]);
+               
+               Console.WriteLine();
+               
+               //Converting Array to string using join.
+               string str = String.Join(" ",strArr);
+               
+               Console.WriteLine(str);
+               
+               //using concat also
+               string str2 = string.Concat(strArr);
+               
+               Console.WriteLine(str2);
+               
+               
+          }
+          }
+          }
+
+          ouput:
+               Vivek
+               akjsdflksaf asdfasfwe jwoeirqwe asdjweoruiwe Vivek werqwireop ncvnm,wepr eiropirtnm
+               akjsdflksafasdfasfwejwoeirqweasdjweoruiweVivekwerqwireopncvnm,wepreiropirtnm
+          
+          57.
+               using System;
+
+               public class HelloWorld
+               {
+               public static void Main(string[] args)
+               {
+                    int[] arr = {1,2,3,4,5,6,7,8,9,10};
+                    // Console.WriteLine(arr);
+                    
+                    foreach(int a in arr){
+                         Console.WriteLine(a);
+                    }
+                    
+                    string s = string.Join(',',arr);
+                    
+                    Console.WriteLine(s.Length);
+                    Console.WriteLine(s);
+                    
+               }
+               }
+
+     46. LastIndexOf & IndexOf
+          using System;
+
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string s = "Vivek Mahesh Nikate";
+                         
+                         Console.WriteLine(s.LastIndexOf('i'));          //14
+                         Console.WriteLine();
+                         Console.WriteLine(s.IndexOf('i'));              //1
+                    }
+               }
+          }
+
+     47.Substring start-end
+
+          using System;
+          namespace HelloWorld
+          {
+               class Program
+               {
+               static void Main(string[] args)
+               {
+                    string s = "zxcvbnmahjklqwyuiop";
+                    Console.WriteLine(s.Substring(0,4));              //zxcv
+               }
+               }
+          }
+     
+     48.TrimStart:
+          using System;
+                    
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string s = "*********zxcvbnmahjklqwyuiop";
+                         
+                         Console.WriteLine(s);                                       //*********zxcvbnmahjklqwyuiop
+                         Console.WriteLine(s.TrimStart('*'));                        //zxcvbnmahjklqwyuiop
+                    }
+               }
+          }
+
+     49.TrimEnd:
+          using System;
+
+               namespace HelloWorld
+               {
+                    class Program
+                    {
+                         static void Main(string[] args)
+                         {
+                              string s = "zxcvbnmahjklqwyuiop%%%%%%%%%%%%%%%%%%%%%%%%*********";
+                              
+                              Console.WriteLine(s);                                                      //zxcvbnmahjklqwyuiop%%%%%%%%%%%%%%%%%%%%%%%%*********
+                              Console.WriteLine(s.TrimEnd('*'));                                         //zxcvbnmahjklqwyuiop%%%%%%%%%%%%%%%%%%%%%%%%
+                              Console.WriteLine(s.TrimEnd('*').TrimEnd('%'));                            //zxcvbnmahjklqwyuiop
+                         }
+                    }
+               }
+     
+     50.Insert method:
+          using System;
+
+          namespace HelloWorld
+          {
+               class Program
+               {
+                    static void Main(string[] args)
+                    {
+                         string s1 = "Wel to ", s2 = "Cap!";
+                    
+                         string modstr1, modstr2;
+                         
+                         modstr1 = s1.Insert(3,"come");
+                         modstr2 = s2.Insert(3,"gemini");
+                         
+                         
+                         Console.WriteLine(s1);                  //Wel to 
+                         Console.WriteLine(s2);                  //Cap!
+                         
+                         Console.WriteLine(modstr1);                 //Welcome to 
+                         
+                         Console.WriteLine(modstr2);                  //Capgemini!    
+                    }
+               }
+          }
+     
+     53.String Swapping:
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s1 = "Vivek", s2="Nikate";
+                    string s3="";
+                    
+                    Console.WriteLine($"Before Swapping :: s1 {s1} s2 {s2}");
+                    
+                    s3 = s1;
+                    s1= s2;
+                    s2 =s3;
+                    
+                    
+                    Console.WriteLine($"After Swapping :: s1 {s1} s2 {s2}");
+                    
+               }
+          }
+
+          or 54.    
+               using System;
+
+               public class HelloWorld
+               {
+                    public static void Main(string[] args)
+                    {
+                         string s1 = "qwerty", s2 = "zxcv";
+                         Console.WriteLine($"Before Swapping s1 ={s1} s2 ={s2} ");
+
+                         s1 = s1+s2;
+                         s2 = s1.Substring(0,4);
+                         s1 = s1.Substring(s2.Length);
+
+                         Console.WriteLine($" After swapping ");
+                         Console.WriteLine($" s1 ={s1}  ");
+                         Console.WriteLine($" s2 ={s2}  ");
+                    }
+               }
+     
+     55. Check if two strings are the same ignoring their cases?
+
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    Console.WriteLine ("Enter String 1:");
+                    string s1 = Console.ReadLine();
+                    
+                    Console.WriteLine ("Enter String 2:");
+                    string s2 = Console.ReadLine();
+
+                    //Console.WriteLine(s1.ToLower());
+                    //Console.WriteLine(s2.ToLower());
+
+
+                    //first s1 converted to lowercase
+                    //then s2 converted to lowercase
+                    //at last check them both using Equals method like 'are them same?'
+                    //trim method is optional.
+
+
+                    //Trim method is used to ignore space kept by mistake at the end.
+                    if((s1.ToLower().Trim()).Equals(s2.ToLower().Trim())){
+                         Console.WriteLine($"Both String {s1} {s2} are Same");
+                    }else{
+                         Console.WriteLine($"Strings {s1} {s2} are Different.");
+                    }
+               }
+          }
+
+     56. Reverse the words from the given string sentence?
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    // string s ="Hello Mono World"; //olleH onoM dlroW
+                    
+                    Console.WriteLine("Enter the String to Reverse it:: ")
+                    string s = Console.ReadLine();
+                    
+                    string[] sr = s.Split(' ');
+                    
+                    foreach(string st in sr){
+                         for(int i= st.Length-1; i>=0; i--){
+                              Console.Write(st[i]);
+                         }
+                         Console.Write(" ");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("---------------Program Ends---------------");
+               }
+          }
+     
+     58.count the occurrence of the given character in a string
+          using System;
+
+          public class HelloWorld
+          {
+          public static void Main(string[] args)
+          {
+               string s = "This is a Sample Para";
+               Console.WriteLine("Enter the char to count its frequency :");
+               
+               //taking char as input
+               
+               char ch =  Console.ReadKey().KeyChar;       //for a
+               // ch = Convert.ToChar(Console.ReadLine());
+               
+               Console.WriteLine(s);
+               Console.WriteLine();
+               
+               Console.WriteLine(ch);      //a
+               
+               int counter =0;
+               foreach(char c in s){
+                    if(c == ch){
+                         counter++;
+                    }
+               }
+               Console.WriteLine(counter);
+          }
+          }
+
+          //ouput:
+               Enter the char to count its frequency :
+               a
+               This is a Sample Para
+               a
+               4
+--
