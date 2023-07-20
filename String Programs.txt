@@ -1,4 +1,4 @@
-tString:
+          tString:
      -string is a collection of Unicode characters or an array of characters.
      -string is a keyword that is an alias for the System.String class.
      -System.String class is immutable, which means that once created, the state cannot be changed. 
@@ -252,6 +252,23 @@ eg.
           //ouput
                Hello Mono World
                The reverse of String : dlroW onoM olleH
+          
+               using System;
+               public class HelloWorld
+               {
+                    public static void Main(string[] args)
+                    {
+                         string s = "Shri Vithal Education & Research Institute, Pandharpur";
+                         for(int i=s.Length-1; i>=0;i--){
+                              Console.Write(s[i]);
+                         }
+                         Console.WriteLine("\nProgram Ends...");
+                    }
+               }
+
+     ASCII VALUE OF 0-9 ARE :  48 TO 57
+     ASCII VALUE OF A-Z ARE :  65 TO 90
+     ASCII VALUE OF a-z ARE :  97 TO 122     
 
      10.  Addition from string
 
@@ -266,13 +283,36 @@ eg.
                     
                     foreach(char ch in str){
                          if(Char.IsDigit(ch)){
-                              sum += (Convert.ToInt32(ch)-48);
+                              sum += (ch-48);
                          }else{
                               //do nothing
                          }        
                     }
                          Console.WriteLine("\n"+sum);                 //22
                }
+          }
+
+          using System;
+          public class HelloWorld
+          {
+          public static void Main(string[] args)
+          {
+               string s = "Shri Vithal Education & Research Institute, Pandharpur123456789";
+               
+               int sum  =0;
+               
+               foreach(char c in s){
+                    
+                    if(char.IsDigit(c)){
+                         
+                         sum +=  Convert.ToInt32(c.ToString());            //converting char to string then into integer
+                         //sum +=  Int32.Parse(c.ToString());
+                         // sum += c-48;                                   //ascci value reducing
+                         // Console.WriteLine(c);
+                    }
+               }
+               Console.WriteLine("The  Sum :"+sum);
+          }
           }
 
      11. Reversing Strig without function:
@@ -415,6 +455,18 @@ eg.
 
           //ouput:
                Hell{-} W{-}rld
+
+          using System;
+          public class HelloWorld
+          {
+          public static void Main(string[] args)
+          {
+               string s = "Vivek Good Boy, Vivek Works at Capgemini";
+               
+               Console.WriteLine("replace "+s.Replace('e','-'));
+               Console.WriteLine("replace "+s.Replace("vek","cky"));
+          }
+          }
 
      20.Replace String with string:
           using System;
@@ -1345,4 +1397,41 @@ eg.
                This is a Sample Para
                a
                4
---
+     59.
+          using System;
+          public class HelloWorld
+          {
+               public static void Main(string[] args)
+               {
+                    string s = "Vi*())*v@#$%e%^#$%k @#$%#M$%^ahesh$#^%#$ N$#%^ikat$%$%e";
+                    string newStr = "";
+                    foreach(char c in s){
+                         if((c >= 'a' && c<='z') || (c >= 'A' && c<='Z') || c == ' ')
+                         {
+                              newStr += c;
+                         }
+                    }            
+                    Console.WriteLine(newStr);
+               }
+          }
+
+          60.
+               using System;
+               public class HelloWorld
+               {
+                    public static void Main(string[] args)
+                    {
+                         char[] chArr = {'v','i','v','e','k'};
+                         Console.WriteLine(chArr);
+                         
+                         string s = chArr.ToString();
+                         Console.WriteLine(s);
+                         
+                         string[] str = {"wqr","sdf","er","ertyre","fgd","opty","rtdgf"};
+                         Console.WriteLine(str);
+                    }
+               }
+               ouput:
+                    vivek
+                    System.Char[]
+                    System.String[]

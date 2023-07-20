@@ -4,6 +4,7 @@ shortcut:
     'crtl + [' or  'crtl+ ]' moving forward or backword line/lines
 
     scroll fast using mouse up/down & press shift button along with.
+    -rearrange the tabs open in chrome using crtl + shift + (page up/ page down).
 ----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
 
@@ -1952,7 +1953,7 @@ JS Sample functions:
                     //it will give     
                     //<strong>Hello world</strong>
 
-    This is how the ouput looks like for following:
+    This is how the output looks like for following:
     
         <h1 id="demo">
             <strong>
@@ -1965,7 +1966,7 @@ JS Sample functions:
         1)textContent used:
                         spacing & actual content will be given
                 document.querySelector('h1').textContent;
-    ouput:-         '\n      \n        Hello\n      \n    '
+    output:-         '\n      \n        Hello\n      \n    '
 
                 document.querySelectorAll('li')[1].textContent='<b>TextContent</b>';
                     //won't work with tag 
@@ -1975,7 +1976,7 @@ JS Sample functions:
         2)innerHTML used:
                         all the thing between mentioned tag will be given
                 document.querySelector('h1').innerHTML;
-    ouput:-         '\n      <strong>\n        Hello\n      </strong>\n    '
+    output:-         '\n      <strong>\n        Hello\n      </strong>\n    '
 
                document.querySelectorAll('li')[1].innerHTML='<b>innerHTML</b>';
                         //work with HTML tags
@@ -1984,7 +1985,7 @@ JS Sample functions:
         3)innerText used:   just gives the text between the tags 
                             the actual content
                 document.querySelector('h1').innerText;
-    ouput:-         'Hello'
+    output:-         'Hello'
 
                 document.querySelectorAll('li')[1].innerText='<b>innerText</b>';
                     //won't work with tag 
@@ -2987,7 +2988,9 @@ Section 24: Express.js with Node.js
         -<input type="text" name="num1" placeholder="1st num">
             -here the 'name' attribute is like a variable which is identified uniquely when we submit form.
 
-            to send the file to request
+            to send the file to request:- 
+                -we need to use res.sendFile method.
+                -but res.sendFile is used for STATIC FILES only.
                 res.sendFile('file path');
                 -file path must be absolute or specify root to res.sendFile
             
@@ -3196,6 +3199,62 @@ Section 24: Express.js with Node.js
             app.listen(3000, ()=>{
                 console.log("Server started running on port no.3000");
             })
+
+    -Introduction to Middleware:
+        -body-parser
+        -to get the path of computer
+            import {dirname} from 'path';
+            import {fileURLToPath} from 'url';
+            const __dirname = dirname(fileURLToPath(import.meta.url));
+        
+        -sample stuff:
+            <form action="/vicky" method="POST">                    //what path in action we mention, then we have to create post request for that path.
+                <label for="street">Street Name:</label>            //if instead of vicky there is submit then, we need to create submit post route.
+                <input type="text" name="street" required>
+                <label for="pet">Pet Name:</label>
+                <input type="text" name="pet" required>
+                <input type="submit" value="Submit">
+            </form>
+
+            index.js file:
+                app.post('/vicky',(req, res)=>{
+                    res.send('<h1>This is form submited data on vicky\'s path.</h1>')
+                });
+
+                import bodyParser from 'body-parser';
+                app.use(bodyParser.urlencoded({extended:true}));
+                app.post('/submit',(req, res)=>{
+                     console.log(req.body);
+                })
+    
+    -Custom Middleware: Morgan
+
+        import morgan from 'morgan';
+        app.use(morgan("tiny"))
+
+
+        function logger(req, res, next){
+            console.log("Method: ",req.method,"Url :", req.url);
+            next();
+        }
+        app.use(logger);
+    
+    -Secret Access Project:
+        let isUserAuthenticated = false;
+
+        //creating middleware
+        function passwordCheck(req, res, next) {
+            const pass = req.body['password'];
+
+            if(pass == 'Vivek@123')
+            {
+                isUserAuthenticated = true;
+            }
+            next();
+        }
+
+        //using middleware
+        app.use(passwordCheck);
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 25: APIs- Application Programming Interfaces
     An API is a set of commands, functions, protocols, and objects that programmers can use to 
@@ -3441,8 +3500,7 @@ Section 25: APIs- Application Programming Interfaces
                      inside that Procfile mention command to run application.
                      eg.
                         web: node app.js
-                    
-------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 Section 26: Git, GitHub & Version Control System (VCS)
     -You can create a save point.
 
@@ -3655,7 +3713,7 @@ Section 27: EJS:
 
                 
     -Scriptlet tag <% %>
-        -control flow no ouput
+        -control flow no output
         -You need to add this tag at start & end of line.
         -just add this tag for condition/ decision making statements.
         eg.
@@ -3721,6 +3779,15 @@ Section 27: EJS:
         Syntax:
             app.use(express.static('folder_name'));
             app.use(express.static('public'));
+    
+    -EJS Tags:
+        <%= variable %>                     JS output
+        <% console.log('asdf') %>           JS code
+        <%- <h1>Hello</h1> %>               Render HTML
+        <%%  %%>                        to show <% %> ejs tags
+        <%# This is comment %>              comment
+        <%- include('filename') %>          insert ejs file
+
 
     -Template vs Layout:
         Layouts persist across routes and maintain their state (Design of page stays same). 
@@ -4135,7 +4202,6 @@ Section 28: Blog WebSite
         -Challenge-20
             dynamic url
                     <a href="/posts/<%= i.title %>"> Read More...</a>
-        
 ------------------------------------------------------------------------------------------------------------------------------------
 Section 29: Database
     -Database based on SQL & NoSQL.
@@ -7608,7 +7674,7 @@ Section 40: DeCentralised Finanace App
             
             -creating candid id:
                 -dfx canister id __Candid_UI
-                -copy the ouput of above command.
+                -copy the output of above command.
                 
                 -then open the link of starting server which is came after running 'dfx start' command. eg.
                     http://127.0.0.1:8000/
