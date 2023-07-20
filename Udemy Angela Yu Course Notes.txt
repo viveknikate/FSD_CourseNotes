@@ -3777,7 +3777,7 @@ Section 27: EJS:
             & then we can tell express to serve this public folder as static folder.
         -we can serve static content like css, js, images, html files from public folder.
         Syntax:
-            app.use(express.static('folder_name'));
+            app.use(express.sztatic('folder_name'));
             app.use(express.static('public'));
     
     -EJS Tags:
@@ -3787,7 +3787,27 @@ Section 27: EJS:
         <%%  %%>                        to show <% %> ejs tags
         <%# This is comment %>              comment
         <%- include('filename') %>          insert ejs file
+    
+    -EJS & Passing Data:
+        locals keyword in EJS to check did we sent the data along with file.
+        in res.render method.
 
+            //here i'm not send the len 
+        app.get("/", (req, res) => {
+            res.render('index')
+        });
+
+            //here i'm sending the parameter len
+        app.post("/submit", (req, res) => {
+            let Length = (req.body.fName).length + (req.body.lName).length;
+            res.render('index',{len:Length})
+        });
+
+        <% if(locals.len){ %>
+            <h1>Your name is of <%= len %> char long</h1>
+        <% }else{ %>
+            <h1>Enter your Name 👇</h1>
+        <% } %>
 
     -Template vs Layout:
         Layouts persist across routes and maintain their state (Design of page stays same). 
@@ -4052,18 +4072,19 @@ Section 28: Blog WebSite
 
         let Tasks =[];
 
-        app.set('view engine', 'ejs');
+        app.set('view engine', 'ejs');          //you can use this line also or else in res.render method mention filename with extension.
+                                                //then no need to use this set view engine line.
 
         app.use(bodyParser.urlencoded({extended: true}));           //bodyParse query taking from url
         app.use(express.static("public"));                          //accessing styles files from public folder
 
 
         app.get('/',(req,res)=>{
-        res.render('home',{homeText :homeStartingContent, content:Tasks});
+            res.render('home',{homeText :homeStartingContent, content:Tasks});
         })
 
         app.get('/about',(req, res)=>{
-        res.render('about',{aboutText:aboutContent})
+            res.render('about',{aboutText:aboutContent})
         })
 
         app.get('/contact',(req, res)=>{
