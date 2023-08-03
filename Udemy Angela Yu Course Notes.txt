@@ -3,6 +3,9 @@ shortcut:
     crtl+ enter (hit it after writing in url ) it add the .com at end
     'crtl + [' or  'crtl+ ]' moving forward or backword line/lines
 
+    -To format code properly shortcut is
+        shift + alt + F
+
     scroll fast using mouse up/down & press shift button along with.
     -rearrange the tabs open in chrome using crtl + shift + (page up/ page down).
 ----------------------------------------------------------------------------------
@@ -3259,21 +3262,23 @@ Section 24: Express.js with Node.js
 Section 25: APIs- Application Programming Interfaces
     An API is a set of commands, functions, protocols, and objects that programmers can use to 
     create software or interact with an external system.
-
+    -It bridges the communication between different pieces of software.
+    -its an interface between two pieces of software.
+    
     -EndPoint
         just simple one url.
         http://api/v1/user
 
     -Paths
         Path & parameters used to retrive specific data you want from an external server.
-        url which changes its path after some common part.
+        url which changes its path after some common part. (different end points)
         eg.
             /api/v1/user/login
             /api/v1/user/register
             /api/v1/user/profile
             /api/v1/user/logout
 
-    -Parameters
+    -Query Parameters
         -parameter goes at the end of url after the question mark
          in key-value pair
         -parameters in the url.
@@ -3283,7 +3288,7 @@ Section 25: APIs- Application Programming Interfaces
         /api/v1/user/login?email=<email>&password=<password>
         /api/v1/user/login?email=user@gmail.com&password=123456
 
-        3 query first query followed by ? mark then
+        if there are 3 queries, first query followed by ? mark then
         further/ subsequent queries separated using & sign
         more than 1 parameter is there then we separate them with & sign
 
@@ -3843,8 +3848,8 @@ Section 27: EJS:
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <link rel="stylesheet" href="../css/styles.css">
-                        <title>ToDo List</title>
+                        <link rel="stylesheet" href="../css/styles.css">            //here don't consider the root folder it's default
+                        <title>ToDo List</title>                                    //give the path from relative to root folder.
                     </head>
                     <body>
 

@@ -151,7 +151,19 @@ GIT NOTES BY HARRY :-
     to copy file or its content 
     cp name.ext copied_version_Mannual_name.ext
 
-    to see the content of file
+    -In Windows [Redirectional Operator (>)]
+        echo 'some content' > file.txt
+
+    -to check the content in window:
+        more filename.txt
+        or
+        type filename.txt
+    
+    -in window:
+        type file.txt file2.txt > vivek.txt             //combined 2 files.
+        more file.txt file2.txt > vivek.txt             //combined 2 files.
+
+    -to see the content of file
     cat home.html
     cat filename.ext
 

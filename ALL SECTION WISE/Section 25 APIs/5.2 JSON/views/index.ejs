@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Taco Recipes</title>
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+
+<body>
+  <h1>Taco Town 🌮</h1>
+
+  <form action="/recipe" method="POST" class="buttons">
+    <button type="submit" value="chicken" name="choice">🍗</button>
+    <button type="submit" value="beef" name="choice">🥩</button>
+    <button type="submit" value="fish" name="choice">🐟</button>
+  </form>
+  <div id="recipeContainer" class="hidden">
+
+  <%if(locals.selected){%>
+    <!-- If no recipe yet, show: -->
+      <% if(selected === 'chicken'){ %>
+        <h2><%= arr[0].name %></h2>
+        <h3>Ingredients : </h3>
+        <p><%= arr[0].ingredients.protein.name %></p>
+        <p><%= arr[0].ingredients.protein.preparation %></p>
+        <p><%= arr[0].ingredients.salsa.name %></p>
+
+        <% arr[0].ingredients.toppings.forEach((i)=>{ %>
+          <p><%= i.quantity %> <%= i.name %></p>
+        <%})%>
+        
+      <% }else if(selected === 'beef'){%>
+        <h2><%= arr[1].name %></h2>
+        <h3>Ingredients : </h3>
+        <p><%= arr[1].ingredients.protein.name %></p>
+        <p><%= arr[1].ingredients.protein.preparation %></p>
+        <p><%= arr[1].ingredients.salsa.name %></p>
+
+        <% arr[1].ingredients.toppings.forEach((i)=>{ %>
+          <p><%= i.quantity %> <%= i.name %></p>
+        <%})%>
+
+      <% }else if(selected === 'fish'){%>
+        <h2><%= arr[2].name %></h2>
+        <h3>Ingredients : </h3> 
+        <p><%= arr[2].ingredients.protein.name %></p>
+        <p><%= arr[2].ingredients.protein.preparation %></p>
+        <p><%= arr[2].ingredients.salsa.name %></p>
+
+        <% arr[2].ingredients.toppings.forEach((i)=>{ %>
+          <p><%= i.quantity %> <%= i.name %></p>
+        <%})%>
+      <%}%>
+    <%}else{%>
+      <h2>Pick your favourite taco ingredient 👆</h2>
+    <%}%>
+    <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
+  </div>
+</body>
+
+</html>
