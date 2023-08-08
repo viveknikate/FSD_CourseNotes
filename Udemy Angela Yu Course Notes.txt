@@ -6,7 +6,10 @@ shortcut:
     -To format code properly shortcut is
         shift + alt + F
 
-    scroll fast using mouse up/down & press shift button along with.
+    -scroll fast using mouse up/down & press shift button along with. horizontal & vertical movement happens.
+    -scroll fast using mouse up/down & press alt button along with. scrolling speed increases. like boosting scrolling speed.
+    -go to next tab CRTL + [page up] button
+    -go to previous tab CRTL + [page down] button
     -rearrange the tabs open in chrome using crtl + shift + (page up/ page down).
 ----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
@@ -851,21 +854,11 @@ row, col = row  & column
 --------------------------------------------------------------------------------------------------
 eg.
     <div class="row">
-        <div class="col" style="border:2px solid; background-color:black;color:white;">
-            1
-        </div>
-        <div class="col" style="border:2px solid; background-color:black;color:white;">
-            2
-        </div>
-        <div class="col" style="border:2px solid; background-color:black;color:white;">
-            3
-        </div>
-        <div class="col" style="border:2px solid; background-color:black;color:white;">
-            4
-        </div>
-        <div class="col" style="border:2px solid; background-color:black;color:white;">
-            5
-        </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;"> 1 </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;"> 2 </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;"> 3 </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;"> 4 </div>
+        <div class="col" style="border:2px solid; background-color:black;color:white;"> 5 </div>
     </div>
 
 #2.
@@ -3813,6 +3806,9 @@ Section 27: EJS:
         <% }else{ %>
             <h1>Enter your Name 👇</h1>
         <% } %>
+
+        locals. :-
+            means if exists then execute if, not then go for else.
 
     -Template vs Layout:
         Layouts persist across routes and maintain their state (Design of page stays same). 
