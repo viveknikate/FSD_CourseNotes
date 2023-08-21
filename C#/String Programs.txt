@@ -1,4 +1,4 @@
-          tString:
+String:
      -string is a collection of Unicode characters or an array of characters.
      -string is a keyword that is an alias for the System.String class.
      -System.String class is immutable, which means that once created, the state cannot be changed. 
@@ -192,7 +192,7 @@ eg.
                }
           }
      
-     8.Abbreviation of String:          
+     8.Abbreviation of String:
                using System;
 
                class Vivek{
