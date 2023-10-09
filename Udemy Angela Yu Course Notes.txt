@@ -11,6 +11,20 @@ shortcut:
     -go to next tab CRTL + [page up] button
     -go to previous tab CRTL + [page down] button
     -rearrange the tabs open in chrome using crtl + shift + (page up/ page down).
+
+    Ctrl + K + Ctrl + 0: fold all levels (namespace, class, method, and block)
+    Ctrl + K + Ctrl + 1: namespace / @Component(For Angular)
+    Ctrl + K + Ctrl + 2: class / methods
+    Ctrl + K + Ctrl + 3: methods / blocks
+    Ctrl + K + Ctrl + 4: blocks / inner blocks
+    Ctrl + K + Ctrl + [ or Ctrl + k + ]: current cursor block or
+    Ctrl + Shift + [ : to fold current cursor block.
+    Ctrl + Shift + ] : to unfold current cursor block.
+    Ctrl + K + Ctrl + j: UnFold All
+
+    -To Select text from youtube videos below thumbnails, when you 
+     try to select, but video is playing then use
+         alt + mouse-click keep selecting.
 ----------------------------------------------------------------------------------
 Full Stack Web Development Bootcamp:-
 
