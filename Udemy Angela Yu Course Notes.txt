@@ -1,7 +1,7 @@
 shortcut:
     alt + enter (hit it after writing something in url) //open search on new tab.
     crtl+ enter (hit it after writing in url ) it add the .com at end
-    'crtl + [' or  'crtl+ ]' moving forward or backword line/lines
+    'crtl + [' or  'crtl+ ]' / 'crtl + {' or  'crtl+ }'  moving forward or backword line/lines
 
     -To format code properly shortcut is
         shift + alt + F
