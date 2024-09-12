@@ -1513,4 +1513,26 @@ Git Pull:
 #Gist:-
     short/ small program/script files.
     Gist is a simple way to share snippets and pastes with others. 
+------------------------------------------------------------------------------------
+# git switch & git checkout:
+
+    Both `git switch` and `git checkout` are used to switch branches in Git, but they have some differences and purposes:
+    ### `git checkout`
+    - **Versatile**: It can be used for multiple tasks—switching branches, checking out commits, or restoring files.
+    - **Usage**:
+    - To switch branches: `git checkout branch-name`
+    - To restore a file: `git checkout file-name`
+    - To check out a specific commit: `git checkout commit-hash`
+
+    ### `git switch`
+    - **More focused**: It is specifically designed to switch branches, making it simpler and more user-friendly.
+    - **Usage**:
+    - To switch branches: `git switch branch-name`
+    - To create and switch to a new branch: `git switch -c new-branch-name`
+    
+    The main idea behind `git switch` is to separate the branch-switching functionality from the more complex `git checkout`. It simplifies branch switching without the risk of unintentionally doing other tasks like restoring files. 
+
+    In summary:
+    - **Use `git switch`** when you only need to switch branches.
+    - **Use `git checkout`** for more complex tasks, like checking out files or specific commits.
 =================================End================================================
