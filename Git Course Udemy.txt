@@ -1252,6 +1252,29 @@ Spcial Markers:
             
     >>To get back the changes made & temporarily saved by stash command use:
         -git stash pop
+
+    >>To delete all the stashes use:
+        -git stash clear
+    
+    >>To delete a particular stash use:
+        -git stash drop stash@{0}   // or
+        -git stash drop 0
+
+        -git stash drop stash@{2}      //or
+        -git stash drop 2
+
+    
+    >>To stash a particular file
+        -git stash -- <filename.extension>
+
+    >> Stash all changes with a message:
+        -git stash push -m "msg"
+
+    >> To see the changes you made in that stash ID:
+        -git stash show stash@{0}
+
+    >> To see detail changes
+        -git stash show -p stash@{1}
 --------------------------------------------------------------------------------------
 #TimeTravelling:    getting back in time 
     -with reset & reflog
@@ -1515,7 +1538,6 @@ Git Pull:
     Gist is a simple way to share snippets and pastes with others. 
 ------------------------------------------------------------------------------------
 # git switch & git checkout:
-
     Both `git switch` and `git checkout` are used to switch branches in Git, but they have some differences and purposes:
     ### `git checkout`
     - **Versatile**: It can be used for multiple tasks—switching branches, checking out commits, or restoring files.
@@ -1535,4 +1557,19 @@ Git Pull:
     In summary:
     - **Use `git switch`** when you only need to switch branches.
     - **Use `git checkout`** for more complex tasks, like checking out files or specific commits.
+--------------------------------------------------------------------------------------
+Q. In a project there is a branch called code-1 & also contain file code-1, when we checkout here using git then what happens?
+    When you run git checkout code-1, Git will interpret this as checking out the branch code-1 rather than the file code-1, because branch names take precedence over file names.
+
+    What happens:
+    Branch code-1 is checked out: Git will switch the current working directory to reflect the state of the code-1 branch.
+
+    File code-1 remains unchanged: If you meant to check out the file code-1 from a specific branch, you'd need to clarify that by using the full path or commands to indicate you're targeting a file.
+
+    To check out the file code-1 (instead of the branch):
+
+    git checkout <branch-name> -- code-1
+    This will checkout the file code-1 from a specific branch (like main) while keeping your current branch intact.
+
+    If both the branch and file have the same name, Git prioritizes the branch unless you specify otherwise.
 =================================End================================================
