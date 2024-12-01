@@ -1263,18 +1263,21 @@ Spcial Markers:
         -git stash drop stash@{2}      //or
         -git stash drop 2
 
-    
     >>To stash a particular file
         -git stash -- <filename.extension>
 
     >> Stash all changes with a message:
         -git stash push -m "msg"
+        
+    >> Stash changes & also untracked files
+        -git stash push --include-untracked -m "msg"
 
     >> To see the changes you made in that stash ID:
-        -git stash show stash@{0}
+        -git stash show 0
 
     >> To see detail changes
-        -git stash show -p stash@{1}
+        -git stash show -p 1
+        -git stash show -p
 --------------------------------------------------------------------------------------
 #TimeTravelling:    getting back in time 
     -with reset & reflog
