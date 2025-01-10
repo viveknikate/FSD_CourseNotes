@@ -1576,3 +1576,9 @@ Q. In a project there is a branch called code-1 & also contain file code-1, when
 
     If both the branch and file have the same name, Git prioritizes the branch unless you specify otherwise.
 =================================End================================================
+Q. How to check remote branches in git? /How to List Remote Branches in Git?
+    git branch -r . Lists all the remote branches.
+    git branch -r -v . Lists all the remote branches with the latest commit hash and commit message.
+    git ls-remote . Lists all the references in the remote repository, including the branches.
+    git remote show [remote_name ]. ...
+    git branch -a .
