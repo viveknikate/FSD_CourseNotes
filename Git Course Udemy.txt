@@ -1470,6 +1470,11 @@ Git Fetch: is the command that tells the local repository that there
              -git fetch <remote>
              -git fetch     //makes related updates to the local repo from remote repo
 
+    - After git fetch command, to see what all commits it brought from remote use
+        git log master..origin/master           // or
+        git log origin/master ^master           // this is the difference of log from current master branch to remote origin/master branch
+ 
+
 Git Pull:
         -pull is 2 commands in one.(fetch+merge)
         -Fetch brings remote changes to local repo & merge them to local repo
