@@ -1270,7 +1270,9 @@ Spcial Markers:
         -git stash push -m "msg"
         
     >> Stash changes & also untracked files
-        -git stash push --include-untracked -m "msg"
+        -git stash push --include-untracked -m "msg"            //or
+        -git stash push -u -m "msg"
+        -git stash push -um "msg"
 
     >> To see the changes you made in that stash ID:
         -git stash show 0
