@@ -1593,3 +1593,10 @@ Q. How to check remote branches in git? /How to List Remote Branches in Git?
     git ls-remote . Lists all the references in the remote repository, including the branches.
     git remote show [remote_name ]. ...
     git branch -a .
+
+git branch -av:
+    The command git branch -av is used in Git to list all branches in your repository along with their latest commit details. Here's what each part of the command means:
+    git branch: Lists all the local branches in your Git repository.
+    -a: This option tells Git to show all branches, including both local branches and remote-tracking branches.
+    -v: This option shows the latest commit on each branch, including the commit hash and the commit message.
+====================================================================================
