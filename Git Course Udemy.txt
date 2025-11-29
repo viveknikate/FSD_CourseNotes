@@ -71,6 +71,7 @@ GIT NOTES BY HARRY :-
     git add -A
     git add --all
     git add --a
+    git add *
 
     adding particular file
     git add name.ext 
