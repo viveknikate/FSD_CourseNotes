@@ -275,6 +275,244 @@ Content in that
           then click save to host the application live "
 
           Home page name must must "index.html" lowercase
+- Interview Question:
+    1. What is HTML & what is purpose of it in Web development?
+    ->  HTML is Hypertext markup language, is a set of codes that define how web pages are structured & displayed.
+    - html is the skeleton of a website.
+    - html plays a crucial role in accessibility by allowing screen readers to read the content for visual impaired user.
+
+    2. difference between element, tag & attributes?
+    -> tags keywords placed inside <> angle brackets, these are the instruction to the browser to how to display the content inside it
+    for a heading, we can use <h1> tag
+    for a paragraph, we can use <p> tag. (most tags in html come with closing tags).
+
+    - HTML element: the opening tag, the content inside it, and the closing tag -- is called an HTML element.
+    - HTML attribute: adds more detail to the element
+        - attributes are placed inside the opening tag, & define how that element shold behave and appear.
+        - eg.
+            <img src='' alt=''/>
+            - here src is attribute, tells browser where the image file is located.
+            - here alt is another attribute, that provides alternative text in case the image does not load
+    
+    3. what is semantic element in HTML & <div> is a semantic elemment?
+    ->  - semantic element: they provide meaningful strucutre to content, making it easier for both developers & browsers to interpret. improve readability, accessibility and SEO (Search Engine Optimization)
+        eg. header, nav, article, footer
+        - search engine prioritize structured content, and assitive technologies like screen readers rely
+        - <div> is a not a semantic element, its just used for styling & layout with no built-in significance.
+        - semantic element improves search engine rankings & makes web pages more accessible for all users.
+    
+    4. Block-element & inline element in HTML?
+    -> - Block elements: full width section on page -- they always start on a new line and take up the entire width available. like title.
+        - block elements organize content into sections, like book chapters
+        eg. <h1>, <heading>, <p>, <div>, etc
+        - inline element: fits naturally within sentence, dont start on new line & takes as much space as they needed.
+        - enhances specific words, like text formatting within paragraph.
+        eg. <span>, <em>, <b>, <i>, <a>, <u>, <strong> etc
+
+    5. Difference between <strong>, <b>, <em> & <i> tag?
+    ->  <b> makes text bold, but its just for looks
+        <strong> makes text bold and tells browsers its important
+        <i> makes text slanted (italic), just for styling
+        <em> makes text slanted (italic), adds emphasis on reading aloud.
+        - if you want to make the text just bold or italic use <b> & <i>
+        - but if you want to add meaning to it use <strong> & <em> 
+    
+    6. Absolute URL & Relative URL:
+    - Absolute URL: is a complete web address that includes the protocol (http:// or https://), domain name, and file path. it works from any location
+    eg.  https://www.example.com/images/logo.png
+    - Relative URL:
+        A partial web address that links to a file or page based on the current page's location.
+        its shorter and used within the same website.
+        eg. contact.html
+
+    7. difference between id and class attribute in HTML?
+    -> id - identifies one unique element.
+            #special {
+                color: red;
+            }
+            - Must be unique on the page
+            - <p id="special"></p>
+            - for targeting a specific section. eg. navbar
+        class - applies style/behaviour to multiple elements
+                .highlight {
+                    color: blue;
+                }
+                - can be shared across multiple elements
+                - <p class="">....</p>
+                - <div class="">content</div>
+                - for styling purpose.
+    
+    8. Difference between session & local storage HTML?
+    -> 
+            Local storage:
+                - stays even after closing the browser.
+                - 5MB to 10MB storage capacity, depending on browser
+                - stays permanent until manually deleted
+                - available across all tabs and windows of the same origin
+                - will not sent to server (just stays on user's machine)
+                - eg. saving preferences, themes, cart items, login state
+
+            Session Storage:
+                - gets deleted when the tab or browser is closed
+                - storage is 5MB.
+                - stays temporary -- only for that session
+                - only available in the tab it was created in
+                - will not sent to server
+                - eg. text on whiteboard that gets erased after session
+
+    9. how do you add CSS styling in HTML?
+    -> External:
+            CSS is written in separate .css file
+            linked using <link> tag in that rel, & href attribute used.
+            - the link tag is placed inside head tag of HTML
+            eg. <link rel="stylesheet" href="style.css"/>
+
+        Internal:
+            CSS is written inside a <style> tag within the <head> of the HTML file.
+            affects only that specific HTML page
+
+        Inline:
+            CSS is added directly to an HTML element using style attribute.
+            Good for quick or one-time style
+        - priority order is Inline >> Internal >> External >> Browser default.
+
+    10. How do you create a hyperlink in HTML?
+    -> use <a> anchor tag to create a clickable link, the href attribute defines where the link should go.
+        - <a href="https://www.google.com">Click here</a>
+        
+    11. Difference between cell spacing & cell padding?
+    -> padding: the space between cells wall and the content is cell padding
+       spacing/ margin: space between two cells is cell space.
+
+    12. how do you create a table in HTML, with table name and column headers?
+    -> table helps to display data in rows & columns.
+        tables can be created using <table> tag
+        each row is created using <tr>
+        column headers created using <th>
+        for actual data using <td>
+        we can use caption for table name
+eg.
+    tags involes:    <table>, <caption>, <tbody>, <tfoot>, <th>, <tr>, <td>
+
+    13. how do you create a checkbox in HTML?
+    -> A checkbox lets users select one or more options from a list. You often see it for:
+        - Accepting terms
+        - subscribing to emails
+        - selecting preferences
+        eg.
+            <p>Select your hobbies:</p>
+            <input type="checkbox" id="music" name="hobby" value="music" />
+            <label for="music">music</label>
+            <input type="checkbox" id="game" name="hobby" value="game" />
+            <label for="game">game</label>
+
+
+    14. drop-down list in HTML?
+        - <select> define the main drop-down list & acts as container for option
+        - <option> represents individual item in drop-down list
+        - <label> Associate a label with drop-down list, which is important for accessibility 
+        - name - specifies name for drop-down, used to reference data when form is submitted
+        - value - defines the value associated with option, which is sent to server.
+        - selected -  a boolean attribute that makes an option the default selection when page loads
+        - required - Ensures that the user must select a value before submitting the form.
+        - Clicking the label focuses/selects that field, for="NUM" → links label to element with id="NUM"
+eg.
+    <body>
+          <label for="NUM">choose</label>
+          <select name="NUM" id="NUM">
+            <option value="" selected disabled>-- select --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+      </body>
+
+    -- this by default shows 4 options
+        <select name="NUM" id="NUM" size="4">             // or size=4 (with or without quote works fine)
+            <option value="" selected disabled>-- select --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+          </select>
+
+    --  <select name="NUM" id="NUM" size=6 multiple>
+        - if we define the multiple attribute in select, then we can make multiple choices in drop-down list with holding shift for consecutive selection or ctrl for custom select ilke 1st, 5th, 8th etc.
+        
+    -- multiple option group, with unselectable headers:
+        <label for="gggg">my lable</label>
+          <select id="gggg">
+            <option value="" selected disabled>Please select value</option>
+            <optgroup label="First">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </optgroup>
+            <optgroup label="Second">
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </optgroup>
+            <!--to make below group unselectable-->
+            <optgroup label="Third" disabled>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </optgroup>
+          </select>
+
+15. suggestion list in HTML?
+    -> 
+        - list attribute in input & id attribute of datalist must match
+      <input list="browsers" name="browser">
+        <datalist id="browsers">
+          <option value="Chrome">
+          <option value="Chrome1">
+          <option value="Chrome2">
+          <option value="Firefox">
+          <option value="Edge">
+        </datalist>
+19. what are forms and how to create them in HTML?
+    - HTML form allow users to input data, which can be sent to a server using POST method
+    eg.
+    <form onsubmit="return checkHobby()">
+          <label for="person_name">Your name</label>
+          <input id="person_name" type="text" required />
+        
+          <br />
+        
+          <label for="email">email</label>
+          <input id="email" type="email" required />
+        
+          <p>Select your hobbies:</p>
+          <input type="checkbox" name="hobby" value="music" />
+          <label>music</label>
+        
+          <input type="checkbox" name="hobby" value="game" />
+          <label>game</label>
+        
+          <br />
+          <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+      function checkHobby() {
+        return document.querySelectorAll('input[name="hobby"]:checked').length > 0;
+      }
+    </script>
 ==========================================================================================================
 Video tag HTML:-
     <video 
