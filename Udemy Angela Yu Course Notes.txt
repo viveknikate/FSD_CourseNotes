@@ -275,7 +275,7 @@ Content in that
           then click save to host the application live "
 
           Home page name must must "index.html" lowercase
-- Interview Question:
+- HTML Interview Question:
     1. What is HTML & what is purpose of it in Web development?
     ->  HTML is Hypertext markup language, is a set of codes that define how web pages are structured & displayed.
     - html is the skeleton of a website.
@@ -513,6 +513,39 @@ eg.
         return document.querySelectorAll('input[name="hobby"]:checked').length > 0;
       }
     </script>
+
+    20. Image map:
+        -image, map, area
+    <img src="combination tree.webp" usemap="#image-map" alt="Combination tree" title="Combination tree">
+    <map name="image-map">
+        <area target="_blank" alt="Dead tree" title="Dead tree" href="https://media.istockphoto.com/id/1650103602/photo/lonely-old-tree-in-the-middle-of-a-meadow-in-autumn-hungary.jpg?s=1024x1024&amp;w=is&amp;k=20&amp;c=76tdfTb9Xu7eYj3qhy5lGNWXLER4ZKSOpPXVJbH_zV0=" coords="392,112,336,109,236,149,160,251,99,357,126,424,225,425,264,456,303,450,338,475,384,482,380,577,396,581" shape="poly">
+        <area target="_blank" alt="Live tree" title="Live tree" href="https://png.pngtree.com/thumb_back/fw800/background/20240913/pngtree-a-young-tree-grows-from-stones-the-desire-to-live-love-image_16179048.jpg" coords="398,111,397,579,412,579,410,504,433,496,446,489,474,484,512,486,552,490,568,485,623,485,667,481,684,474,694,458,704,431,715,427,715,412,717,385,717,353,710,317,705,269,662,230,650,204,622,181,594,159,574,159,557,165,545,176,536,156,530,144,492,127,446,113,413,98" shape="poly">
+        <area target="_blank" alt="Sky" title="Sky" href="https://img.freepik.com/free-photo/sky-sunset_1203-1666.jpg?semt=ais_hybrid&amp;w=740&amp;q=80" coords="3,582,5,7,199,6,799,6,800,571,722,285,601,149,466,93,273,110,155,228,122,303,91,367,118,431,200,439,238,454,381,493,373,581,253,584" shape="poly">
+    </map>
+
+30. picture: shows different image based on browser's width.
+    <picture>
+      <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
+      <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+      <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+    </picture>
+    eg.
+        <picture>
+            <!-- flower -->
+            <source media="(min-width: 1000px)" srcset="https://www.img2go.com/assets/img/resize_images/blue_flower_original@2x.png">
+    
+            <!-- tree -->
+            <source media="(min-width: 800px)" srcset="https://static.vecteezy.com/system/resources/thumbnails/046/925/153/small/solitary-tree-in-a-verdant-meadow-photo.jpg">
+            
+            <!-- car -->
+            <source media="(min-width: 600px)" srcset="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9s9RBL5ZNrEw5gCquTwrP-Wnhe7p0ivLjlw&s">
+            
+            <!-- bike -->
+            <source media="(min-width: 400px)" srcset="https://img.freepik.com/free-photo/view-cool-powerful-motorcycle_23-2150704851.jpg?semt=ais_hybrid&w=740&q=80">
+            
+            <!-- mountain -->
+            <img src="https://media.istockphoto.com/id/512151966/photo/man-hike-on-the-peak-of-rocks-mountain-at-sunset.jpg?s=612x612&w=0&k=20&c=NRhk0D-Hjt8wcOvKCEAdOyhsyr4ks8ti6Kir-iwRo8I=" alt="mountain">
+        </picture>
 ==========================================================================================================
 Video tag HTML:-
     <video 
