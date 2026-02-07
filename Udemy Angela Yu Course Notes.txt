@@ -63,6 +63,7 @@ SECTION 2: Intro to HTML
 HTML : HyperText Markup Language
  HyperText means link, When we clicked goes to other documents
  Extension is eiter .htm OR .html
+    Tip: You can use either .htm or .html as file extension. There is no difference; it is up to you.
 
 Tags:
     heading : <h1></h1>
@@ -275,6 +276,7 @@ Content in that
           then click save to host the application live "
 
           Home page name must must "index.html" lowercase
+
 - HTML Interview Question:
     1. What is HTML & what is purpose of it in Web development?
     ->  HTML is Hypertext markup language, is a set of codes that define how web pages are structured & displayed.
