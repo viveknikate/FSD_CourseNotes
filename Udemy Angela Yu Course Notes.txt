@@ -73,6 +73,7 @@ Tags:
     -vertical text
 
     Line break/new line not closing tag/self closing tag
+    - the tags which are self-closing also known as empty HTML element
     <br> or <br /> in XHTML
 
     Horizontal Rule <hr>, self closing tag
@@ -88,7 +89,192 @@ Tags:
             <hr size="5" color="grey" width="30%">
             <hr size="3" noshade>
         </center>
+
+- The HTML element is everything from the start tag to the end tag:
+    <tagname>Content goes here...</tagname>
+    eg.
+        <h1>My First Heading</h1>
+        <p>My first paragraph.</p>
+
+- Nested HTML Elements
+    <html>
+    <body>
     
+    <h1>My First Heading</h1>
+    <p>My first paragraph.</p>
+    
+    </body>
+    </html>
+
+- HTML elements with no content are called empty elements.
+    eg. <br>, <hr>, <img> etc
+
+- HTML is Not Case Sensitive
+    HTML tags are not case sensitive: <P> means the same as <p>.
+    The HTML standard does not require lowercase tags, but W3C recommends lowercase in HTML, and demands lowercase for stricter document types like XHTML (extensible HyperText Markup Language).
+
+- Always Use Lowercase Attributes
+    eg. <p title="I'm a tooltip">This is a paragraph.</p>
+    - The value of the title attribute will be displayed as a tooltip when you mouse over the element:
+    - The HTML standard does not require lowercase attribute names.
+    - The title attribute (and all other attributes) can be written with uppercase or lowercase like title or TITLE.
+    - However, W3C recommends lowercase attributes in HTML, and demands lowercase attributes for stricter document types like XHTML.
+
+- Always Quote Attribute Values
+    The HTML standard does not require quotes around attribute values.
+    However, W3C recommends quotes in HTML, and demands quotes for stricter document types like XHTML.
+    Good:
+        <a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a>
+    Bad:
+        <a href=https://www.w3schools.com/html/>Visit our HTML tutorial</a>
+    Sometimes you have to use quotes. This example will not display the title attribute correctly, because it contains a space:
+    Example:
+        <p title=Description of W3Schools>
+
+- Single or Double Quotes?
+    Double quotes around attribute values are the most common in HTML, but single quotes can also be used.
+    In some situations, when the attribute value itself contains double quotes, it is necessary to use single quotes:
+    <p title='John "ShotGun" Nelson'>
+    Or vice versa:    
+    <p title="John 'ShotGun' Nelson">
+
+- Search engines use the headings to index the structure and content of your web pages.
+
+-    the HTML <pre> element defines preformatted text.
+The text inside a <pre> element is displayed in a fixed-width font (usually Courier), and it preserves both spaces and line breaks:
+<pre>
+  My Bonnie lies over the ocean.
+  My Bonnie lies over the sea.
+  My Bonnie lies over the ocean.
+  Oh, bring back my Bonnie to me.
+</pre>
+
+- style:
+    The HTML style attribute has the following syntax:
+        <tagname style="property:value;">
+eg.
+    <p style="font-family: fantasy">this is my custom paragraph with font-family is fantasy</p>
+    <p style="color:red;">This is a paragraph.</p>
+    <p style="background-color:tomato;">This is a paragraph.</p>
+
+    <p style='font-size: 100px'>bigger font</p>
+    <p style='font-size: 100%'>bigger font</p>
+    <p style='font-size: 5rem'>bigger font</p>
+    <p style='font-size: 5em'>bigger font</p>
+
+    - Text Alignment:
+        The CSS text-align property defines the horizontal text alignment for an HTML element.
+            
+        <h1 style="text-align: right;">right Heading</h1>
+        <p style="text-align: center;">Centered paragraph.</p>
+        <p style="text-align: left;">left paragraph.</p>
+
+    - Direction: ltr default & rtl we need to set
+        <p>direction is default ltr</p>
+        <p style="direction: rtl">direction is default ltr</p>
+        <p dir='rtl'>this is from right to left</p
+
+    - HTML Text Formatting:
+    eg.
+        <p><b>This text is bold</b></p>
+        <p><i>This text is italic</i></p>
+        <p style='font-size: 3em'>This is subscript H<sub>2</sub>O and 2<sup>10</sup>= 1024</p>
+
+        - The HTML <strong> element defines text with strong importance. The content inside is typically displayed in bold.
+        <strong>This text is important!</strong>
+
+        - The HTML <i> element defines a part of text in an alternate voice or mood. The content inside is typically displayed in italic.
+            <i>This text is italic</i>
+        - The HTML <em> element defines emphasized text. The content inside is typically displayed in italic.
+            Tip: A screen reader will pronounce the words in <em> with an emphasis, using verbal stress.
+            <em>This text is emphasized</em>
+
+        - The HTML <small> element defines smaller text:
+            <small>This is some smaller text.</small>
+
+        - mark:
+            The HTML <mark> element defines text that should be marked or highlighted:
+            <p>Do not forget to buy <mark>milk</mark> today.</p>
+
+        - del:
+            - The HTML <del> element defines text that has been deleted from a document. Browsers will usually strike a line through deleted text:
+            <p style='font-size: 30px'>My favorite color is <del>blue</del> red.</p>
+
+        - <ins> or <u>: 
+            The HTML <ins> element defines a text that has been inserted into a document. Browsers will usually underline inserted text:
+            <p style="font-size: 30px">Check this: <ins>red</ins> Another word <u>Underlined</u>.</p>
+
+        - sub:
+            - for chemical formulas
+            - subscript text, appear half a character below a normal line with smaller font.
+            eg.
+                <p>This is <sub>subscripted</sub> text.</p>
+
+        - sup:
+            - superscript text.
+            - superscript text appears half a character above the normal line. sometimes rendered in smaller font
+            - can be used for footnotes or power of number.
+            <p>This is <sup>superscripted</sup> text.</p>
+
+        - HTML <blockquote> for Quotations
+            The HTML <blockquote> element defines a section that is quoted from another source.
+            Browsers usually indent <blockquote> elements.
+            eg.
+                <p>Here is a quote from WWF's website:</p> 
+                <blockquote cite="http://www.worldwildlife.org/who/index.html">
+                    For 60 years, WWF has worked to help people and nature thrive. As the world's leading conservation organization, WWF works in nearly 100 countries. 
+                    At every level, we collaborate with people around the world to develop and deliver innovative solutions that protect communities, wildlife, and the places in which they live.
+                </blockquote>
+
+        - HTML <q> for Short Quotations
+            The HTML <q> tag defines a short quotation.
+            Browsers normally insert quotation marks around the quotation.
+            
+            eg.
+                <p>Browsers usually insert quotation marks around the q element.</p>
+                <p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+
+        - abbr:
+            - The HTML <abbr> tag defines an abbreviation or an acronym, like "HTML", "CSS", "Mr.", "Dr.", "ASAP", "ATM".
+            - Marking abbreviations can give useful information to browsers, translation systems and search-engines.
+            - Tip: Use the global title attribute to show the description for the abbreviation/acronym when you mouse over the element. 
+        eg.
+            <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+
+        - address:
+            The HTML <address> tag defines the contact information for the author/owner of a document or an article.
+            The contact information can be an email address, URL, physical address, phone number, social media handle, etc.
+            The text in the <address> element usually renders in italic.
+        eg.
+            <p>The HTML address element defines contact information (author/owner) of a document or article.</p>
+            
+            <address>
+            Written by John Doe.<br> 
+            Visit us at:<br>
+            Example.com<br>
+            Box 564, Disneyland<br>
+            USA
+            </address>
+
+        - cite:
+            - cite tag defines the title of a creative work (e.g. a book, a poem, a song, a movie, a painting, a sculpture, etc.).
+            - A person's name is not the title of a work.
+            - The text in the <cite> element usually renders in italic.
+        eg.
+            <p><cite>The Scream</cite> by Edvard Munch. Painted in 1893.</p>
+
+        - bdo - bi-directional override
+            BDO stands for Bi-Directional Override.
+            The HTML <bdo> tag is used to override the current text direction:
+        eg.
+            <bdo dir="rtl">This text will be written from right to left</bdo>
+
+        - HTML Comments:
+            - we can use <!-- --> to comment text of multiple tags in HTML
+            eg.
+                <p>This is a <!-- great text --> paragraph</p>
+
+
 
 HTML Boilerplate:   Simply the structure of writing HTML
 <!DOCTYPE html>     - says reading document of HTML5 version
@@ -115,7 +301,7 @@ HTML Boilerplate:   Simply the structure of writing HTML
 <em> or <i> tag for italics always prefer to use <em> tag cause it conveys the meaning
 <b> or <strong> for boldness of text always use strong.
 <cite> italics.
-<abbr title="Work from home>WFH</abbr>      //abbreviation
+<abbr title="Work from home">WFH</abbr>      //abbreviation
     HTML tags:
         <a> tag for hyperlink
         <img> tag for images
