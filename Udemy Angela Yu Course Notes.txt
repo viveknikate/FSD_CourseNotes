@@ -274,7 +274,18 @@ eg.
             eg.
                 <p>This is a <!-- great text --> paragraph</p>
 
+        - HTML Colors:
+            - HTML colors are specified with predefined color names, or with RGB, HEX, HSL, RGBA, or HSLA values.
+            - In HTML, a color can be specified by using a color name: (camel works but not mandatory to use like LightGray also works as lightgray)
+            - HTML supports 140 standard color names.
+                eg. Tomato, Orange, DodgerBlue, MediumSeaGreen, Gray, SlateBlue, Violet, LightGray, powderblue, pink, red, green, yellow, lightgreen, lightpink, crimson, etc.
+        - Background Color:
+            - You can set the background color for HTML elements:
+            eg.
+                <h1 style="background-color:DodgerBlue;">Hello World</h1>
+                <p style="background-color:Tomato;">Lorem ipsum...</p>
 
+        - Refer HTML notes from here.
 
 HTML Boilerplate:   Simply the structure of writing HTML
 <!DOCTYPE html>     - says reading document of HTML5 version
