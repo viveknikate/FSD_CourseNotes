@@ -417,16 +417,20 @@ GIT NOTES BY HARRY :-
     git --version
     git config --global user.name "Your Name"
 
-    -to checkout the default config list.
+    - to checkout the default config list.
     git config --list
+
+    - to check the all global values in config
+    git config --global --list
 
     -to unset/ change the name or mail
         git config --global --unset user.name
         git config --global --unset user.email
     
-    -to edit the file.
-    git config --global --edit
-
+    - to edit the file.
+        git config --global --edit
+        // or just type this name on command prompt
+            .gitconfig
 
 
     -To check out the index.html from the second commit, find the number of the second commit using the git log, and then type the following at the prompt:
